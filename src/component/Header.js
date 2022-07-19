@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 const Header = ({ setDark, dark }) => {
   
 
-
     return (
         <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0">
             <div className="navbar-start">
