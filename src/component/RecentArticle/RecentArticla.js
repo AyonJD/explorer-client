@@ -11,7 +11,7 @@ const RecentArticla = () => {
             </div>
             <div className="grid grid-cols-3 mt-10 gap-5 ">
 
-                <div className=" bg-neutral shadow-xl rounded-xl">
+                <div className=" bg-neutral shadow-xl rounded">
                     <figure><img className='w-full rounded-t' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                     <div className="card-body p-5">
                         <p className="text-warning text-sm">
@@ -33,7 +33,7 @@ const RecentArticla = () => {
                         </div>
                     </div>
                 </div>
-                <div className=" bg-neutral shadow-xl rounded-xl">
+                <div className=" bg-neutral shadow-xl rounded">
                     <figure><img className='w-full rounded-t' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                     <div className="card-body p-5">
                         <h2 className="text-warning text-sm">
@@ -55,7 +55,7 @@ const RecentArticla = () => {
                         </div>
                     </div>
                 </div>
-                <div className=" bg-neutral shadow-xl rounded-xl">
+                <div className=" bg-neutral shadow-xl rounded">
                     <figure><img className='w-full rounded-t' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                     <div className="card-body p-5">
                         <h2 className="text-warning text-sm">
