@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import Header from './component/Header';
+import Header from './component/Shared/Header';
 
 function App() {
   const [dark, setDark] = useState(false)
