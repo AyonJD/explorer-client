@@ -29,7 +29,7 @@ const Header = ({ setDark, dark }) => {
                         <li><Link to='/contact'><FontAwesomeIcon className='icon text-secondary' icon={faContactBook} /> <span className='item'>Contact</span></Link></li>
                     </ul>
                 </div>
-                <Link className="logo text-2xl font-bold text-secondary" to={'/'}><FontAwesomeIcon className='text-primary' icon={faUtensils} /> Food</Link>
+                <Link className="logo text-2xl font-bold text-secondary" to={'/'}><FontAwesomeIcon className='text-primary' />Explorer</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
