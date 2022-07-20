@@ -4,14 +4,11 @@ import { faArrowRightArrowLeft, faBarsProgress, faBlog, faBurger, faCartShopping
 import './Header.css'
 import { Link } from 'react-router-dom';
 
-
-
-
 const Header = ({ setDark, dark }) => {
-  
+
 
     return (
-        <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0">
+        <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0 relative">
             <div className="navbar-start">
                 <div className="dropdown dropdown-items">
                     <label tabIndex="0" className="btn btn-sm btn-accent btn-square lg:hidden h-9 w-10 mr-3">
@@ -28,7 +25,7 @@ const Header = ({ setDark, dark }) => {
                         <li><Link to='/contact'><FontAwesomeIcon className='icon text-secondary' icon={faContactBook} /> <span className='item'>Contact</span></Link></li>
                     </ul>
                 </div>
-                <Link className="logo text-2xl font-bold text-secondary" to={'/'}><FontAwesomeIcon className='text-primary' icon={faUtensils} /> Food</Link>
+                <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link></h1>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -71,7 +68,7 @@ const Header = ({ setDark, dark }) => {
                 </div></> : <Link to="/login"><button className='btn btn-sm btn-success btn-outline'>Login</button></Link>} */}
 
                 <Link to="/"><button className='btn btn-sm btn-success btn-outline'>Sign IN</button></Link>
-                
+
             </div>
         </div>
     );
