@@ -9,8 +9,7 @@ h2, p {
 }
 
 .mid-container {
-  padding: 5rem 9%;
-
+  padding: 5rem 10%;
 }
 
 @media only screen and (max-width: 990px) {
