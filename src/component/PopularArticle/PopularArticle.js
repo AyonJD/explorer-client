@@ -8,7 +8,7 @@ const PopularArticle = () => {
             <p><small>Popular articles are selected based on the number of readers</small></p>
 
             <div className='mt-10'>
-                <div class="card lg:card-side bg-base-100 shadow-xl grid grid-cols-2  border border-info">
+                <div className="card lg:card-side bg-base-100 shadow-xl grid grid-cols-2  border border-info">
                     <figure className='w-full'><img className='w-full' src={img1} alt="Album" /></figure>
                     <div className='p-5 flex items-center'>
                         <div>
@@ -16,8 +16,8 @@ const PopularArticle = () => {
                             <h1 className='text-2xl font-bold my-2'>Stimulation Child's Sensory and Motor Development</h1>
                             <p className='text-sm'>The objective of this study is to assess the findings of selected articles regarding the therapeutic...</p>
                             <div className='flex gap-5 items-center mt-5'>
-                                <div class="avatar">
-                                    <div class="lg:w-20 md:w-10 sm:w-10 rounded-full">
+                                <div className="avatar">
+                                    <div className="lg:w-20 md:w-10 sm:w-10 rounded-full">
                                         <img src="https://placeimg.com/192/192/people" alt='' />
                                     </div>
                                 </div>
