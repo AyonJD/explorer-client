@@ -4,8 +4,11 @@ import img1 from '../../assets/blog-img/news-1.jpg'
 const PopularArticle = () => {
     return (
         <div className='mid-container'>
-            <h1 className='text-3xl font-bold'> Popular Article</h1>
-            <p><small>Popular articles are selected based on the number of readers</small></p>
+            <div className='flex w-full items-center'>
+                <h1 className='text-3xl font-bold lg:w-72 w-72'>Popular Article</h1>
+                <span className='bg-primary h-[2px] w-full '></span>
+            </div>
+            <p className='text-sm mt-2'>Popular articles are selected based on the number of readers</p>
 
             <div className='mt-10'>
 
@@ -73,7 +76,7 @@ const PopularArticle = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card lg:card-side bg-base-100 shadow-xl grid grid-cols-2 gap-5  border mb-8">
+                <div className="card lg:card-side bg-base-100 shadow-xl grid grid-cols-2 gap-5  border ">
                     <figure className='w-full'><img className='w-full' src={img1} alt="Album" /></figure>
                     <div className='p-5 flex items-center'>
                         <div>

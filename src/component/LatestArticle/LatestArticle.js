@@ -15,7 +15,67 @@ const LatestArticle = () => {
                     <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                     <div class="card-body text-warning px-5 py-8">
                         <div className='flex justify-between items-center'>
-                            <div class="badge bg-primary ">NEW</div>
+                            <div class="badge bg-primary ">Lifestyle</div>
+                            <div className='text-sm'>Jan 24, 2022</div>
+                        </div>
+                        <h1 className='text-xl font-bold'>The basis of making the correct system</h1>
+                        <p className='text-sm'>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
+                    </div>
+                </div>
+                
+                <div class="card shadow-xl bg-neutral">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div class="card-body text-warning px-5 py-8">
+                        <div className='flex justify-between items-center'>
+                            <div class="badge bg-primary ">Lifestyle</div>
+                            <div className='text-sm'>Jan 24, 2022</div>
+                        </div>
+                        <h1 className='text-xl font-bold'>The basis of making the correct system</h1>
+                        <p className='text-sm'>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
+                    </div>
+                </div>
+                
+                <div class="card shadow-xl bg-neutral">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div class="card-body text-warning px-5 py-8">
+                        <div className='flex justify-between items-center'>
+                            <div class="badge bg-primary ">Lifestyle</div>
+                            <div className='text-sm'>Jan 24, 2022</div>
+                        </div>
+                        <h1 className='text-xl font-bold'>The basis of making the correct system</h1>
+                        <p className='text-sm'>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
+                    </div>
+                </div>
+                
+                <div class="card shadow-xl bg-neutral">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div class="card-body text-warning px-5 py-8">
+                        <div className='flex justify-between items-center'>
+                            <div class="badge bg-primary ">Lifestyle</div>
+                            <div className='text-sm'>Jan 24, 2022</div>
+                        </div>
+                        <h1 className='text-xl font-bold'>The basis of making the correct system</h1>
+                        <p className='text-sm'>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
+                    </div>
+                </div>
+                
+                <div class="card shadow-xl bg-neutral">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div class="card-body text-warning px-5 py-8">
+                        <div className='flex justify-between items-center'>
+                            <div class="badge bg-primary ">Lifestyle</div>
+                            <div className='text-sm'>Jan 24, 2022</div>
+                        </div>
+                        <h1 className='text-xl font-bold'>The basis of making the correct system</h1>
+                        <p className='text-sm'>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
+                    </div>
+                </div>
+                
+                <div class="card shadow-xl bg-neutral">
+                    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                    <div class="card-body text-warning px-5 py-8">
+                        <div className='flex justify-between items-center'>
+                            <div class="badge bg-primary ">Lifestyle</div>
                             <div className='text-sm'>Jan 24, 2022</div>
                         </div>
                         <h1 className='text-xl font-bold'>The basis of making the correct system</h1>

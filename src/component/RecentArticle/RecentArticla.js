@@ -5,10 +5,11 @@ const RecentArticla = () => {
     const year = today.getFullYear();
     return (
         <section className='mid-container'>
-            <div className="">
-                <h1 className='text-3xl font-bold mt-24'>Recent Article</h1>
-                <p className='mt-2'>Recent Article are selected based on the number of readers</p>
+            <div className='flex w-full items-center mt-24'>
+                <h1 className='text-3xl font-bold lg:w-60 w-72'>Recent Article</h1>
+                <span className='bg-primary h-[2px] w-full '></span>
             </div>
+            <p className='text-sm mt-2'>Popular articles are selected based on the number of readers</p>
             <div className="grid grid-cols-3 mt-10 gap-5 ">
 
                 <div className=" bg-neutral shadow-xl rounded">
