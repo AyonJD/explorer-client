@@ -1,0 +1,9 @@
+.mid-container{
+    padding: 2rem 9%;
+  }
+  @media only screen and (max-width: 990px) {
+    .mid-container{
+      padding: 1.5rem;
+    }
+  }
+  
