@@ -3,8 +3,8 @@ import img from "../../assets/banner-img/bored.png"
 
 const Banner = () => {
     return (
-        <section className='mid-container relative banner'>
-            <div className=' grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1'>
+        <section className='mid-container relative banner absolute '>
+            <div className=' grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 border-b-4 border-indigo-500'>
                 <div className='flex justify-center items-center'>
                     <div>
                         <span className='bg-neutral p-2 rounded-2xl text-warning'><button class="btn btn-xs btn-primary">Tiny</button> Becoming a new program online</span>
