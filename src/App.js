@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import './App.css';
 import Header from './component/Header';
 
 function App() {
+  const [dark, setDark] = useState(false)
   return (
-    <div>
-      <Header></Header>
+    <div data-theme={dark ? "dark" : "light"}>
+      <Header  setDark={setDark} dark={dark}></Header>
       
     </div>
   );
