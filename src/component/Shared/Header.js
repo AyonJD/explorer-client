@@ -4,14 +4,11 @@ import { faArrowRightArrowLeft, faBarsProgress, faBlog, faBurger, faCartShopping
 import './Header.css'
 import { Link } from 'react-router-dom';
 
-
-
-
 const Header = ({ setDark, dark }) => {
   
 
     return (
-        <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0">
+        <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0 relative">
             <div className="navbar-start">
                 <div className="dropdown dropdown-items">
                     <label tabIndex="0" className="btn btn-sm btn-accent btn-square lg:hidden h-9 w-10 mr-3">
