@@ -16,7 +16,7 @@ const Banner = () => {
                     <img src={img} alt="" />
                 </div>
             </div>
-            <div class="card lg:w-1/4 bg-neutral shadow-xl p-10 absolute lg:bottom-[-50px] md:bottom-[-120px] bottom-[-180px] border-t-8 border-primary border">
+            <div className="card lg:w-1/4 bg-neutral shadow-xl p-10 absolute lg:bottom-[-50px] md:bottom-[-120px] bottom-[-180px] border-t-8 border-primary border">
                 <div className='grid grid-cols-2 gap-5 text-warning '>
                     <div className='text-center'>
                         <h2 className='text-3xl font-semibold'>2000+</h2>
