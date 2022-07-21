@@ -17,6 +17,6 @@ h2, p {
 
 @media only screen and (max-width: 990px) {
   .mid-container {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 }

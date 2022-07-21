@@ -21,9 +21,9 @@ const Header = ({ setDark, dark, setTheme }) => {
                         <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHome} /> <span className='item'>Home</span></Link></li>
                         <li className='mb-1'><Link to='/about'><FontAwesomeIcon className='icon text-secondary' icon={faBurger} /> <span className='item'>About</span></Link></li>
                         <li className='mb-1'><Link to='/popular'><FontAwesomeIcon className='icon text-secondary' icon={faBarsProgress} /> <span className='item'>Popular</span></Link></li>
-                        <li className='mb-1'><Link to='/menu'><FontAwesomeIcon className='icon text-secondary' icon={faStar} /> <span className='item'>Menu</span></Link></li>
+                        <li className='mb-1'><Link to='/menu'><FontAwesomeIcon className='icon text-secondary' icon={faStar} /> <span className='item'>Latest</span></Link></li>
                         <li className='mb-1'><Link to='/order'><FontAwesomeIcon className='icon text-secondary' icon={faContactBook} /> <span className='item'>Order</span></Link></li>
-                        <li><Link to='/blog'><FontAwesomeIcon className='icon text-secondary' icon={faBlog} /> <span className='item'>Blog</span></Link></li>
+                        <li><Link to='/blog'><FontAwesomeIcon className='icon text-secondary' icon={faBlog} /> <span className='item'>Premium</span></Link></li>
                         <li><Link to='/contact'><FontAwesomeIcon className='icon text-secondary' icon={faContactBook} /> <span className='item'>Contact</span></Link></li>
                     </ul>
                 </div>
@@ -34,9 +34,9 @@ const Header = ({ setDark, dark, setTheme }) => {
                     <li className='mr-1 hover:text-primary'><Link to='/'>Home</Link></li>
                     <li className='mr-1 hover:text-primary'><Link to='/about'>About</Link></li>
                     <li className='mr-1 hover:text-primary'><Link to='/popular'>Popular</Link></li>
-                    <li className='mr-1 hover:text-primary'><Link to='/menu'>Menu</Link></li>
+                    <li className='mr-1 hover:text-primary'><Link to='/menu'>Latest</Link></li>
                     <li className='mr-1 hover:text-primary'><Link to='/order'>Order</Link></li>
-                    <li className='mr-2 hover:text-primary'><Link to='/blog'>Blog</Link></li>
+                    <li className='mr-1 hover:text-primary'><Link to='/order'>Premium</Link></li>
                     <li className='mr-2 hover:text-primary'><Link to='/contact'>Contact</Link></li>
                 </ul>
             </div>
