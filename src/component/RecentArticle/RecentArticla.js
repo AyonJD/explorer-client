@@ -10,7 +10,7 @@ const RecentArticla = () => {
                 <span className='bg-primary h-[2px] w-full '></span>
             </div>
             <p className='text-sm mt-2'>Popular articles are selected based on the number of readers</p>
-            <div className="grid grid-cols-3 mt-10 gap-5 ">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 mt-10 gap-5 ">
 
                 <div className=" bg-neutral shadow-xl rounded">
                     <figure><img className='w-full rounded-t' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
