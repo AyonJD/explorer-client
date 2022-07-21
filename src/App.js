@@ -2,9 +2,16 @@ import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './component/Home/Home';
+import Footer from './component/Shared/Footer/Footer';
 import Header from './component/Shared/Header';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+  }, [])
+
   const [dark, setDark] = useState(false)
   // localStorage.setItem('theme', dark);
   useEffect(() => {
@@ -34,13 +41,13 @@ function App() {
 
   }
 
-
   return (
     <div data-theme={dark ? "dark" : "light"}>
       <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
       <Routes>
         <Route path='/' element={<Home />}></Route>
       </Routes>
+      <Footer/>
     </div>
   );
 }
