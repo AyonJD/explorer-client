@@ -13,7 +13,7 @@ function App() {
   }, [])
 
   const [dark, setDark] = useState(false)
-  // localStorage.setItem('theme', dark);
+
   useEffect(() => {
     fetch('https://floating-ocean-13139.herokuapp.com/theme')
       .then(res => res.json())
