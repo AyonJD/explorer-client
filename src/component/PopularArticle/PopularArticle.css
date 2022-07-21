@@ -1,0 +1,5 @@
+@media only screen and (max-width: 639px) {
+    .article-border {
+        display: none;
+    }
+}
