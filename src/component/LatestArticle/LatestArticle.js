@@ -4,7 +4,7 @@ const LatestArticle = () => {
     return (
         <div className='mid-container'>
             <div className='flex w-full items-center'>
-                <h1 className='text-3xl font-bold lg:w-72 md:w-96 sm:w-96 '>Latest Article</h1>
+                <h1 className='text-3xl font-bold lg:w-72 md:w-96 sm:w-96 '>Premium Article</h1>
                 <span className='bg-primary h-[2px] w-full article-border'></span>
             </div>
             <p className='text-sm mt-2'>Popular articles are selected based on the number of readers</p>
