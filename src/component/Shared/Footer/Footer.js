@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div className=' bg-base-200 lg:mt-10'>
+        <div className=' bg-base-200 lg:mt-10 mt-7'>
             <div className='mid-container'>
                 <footer className="footer py-10 text-base-content grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 grid-cols-1">
                     <div>
@@ -94,7 +94,7 @@ const Footer = () => {
                             data-aos-duration="800"
                             data-aos-easing="ease-in-out"
                             className="footer-title text-secondary opacity-80">Legal</span>
-                        <a
+                        <a 
                             data-aos="fade-up"
                             data-aos-offset="200"
                             data-aos-delay="40"
@@ -148,7 +148,7 @@ const Footer = () => {
                     </div>
                 </footer>
 
-                <footer className="footer footer-center  bg-base-200 text-base-content rounded">
+                <footer className="footer footer-center pb-5  bg-base-200 text-base-content rounded">
                     <div>
                         <div
                             data-aos="zoom-in"
