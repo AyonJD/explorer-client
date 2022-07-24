@@ -3,13 +3,13 @@ import './ArticleItem.css';
 
 const ArticleItem = ({ article }) => {
     return (
-        <div className=" bg-neutral shadow-xl rounded card-parent">
+        <div className=" bg-neutral shadow rounded card-parent hover:shadow-xl ease-in-out duration-300 pointer">
             <figure className='card-img'><img className='w-full rounded-t card-image' src="https://placeimg.com/400/225/arch" alt="author-img" /></figure>
             <div className="card-body p-5">
                 <p className="text-warning text-sm">
                     {article.date}
                 </p>
-                <h1 className='text-xl font-bold text-warning md:h-24'>{article.Title}</h1>
+                <h1 className='text-xl font-bold text-warning md:h-24 cursor-pointer'>{article.Title}</h1>
                 <p className='text-sm text-warning' title={article.desc}>{article.desc.slice(0, 150)}...</p>
 
                 <div className="flex items-center gap-5 mt-2 pb-3">
@@ -19,7 +19,7 @@ const ArticleItem = ({ article }) => {
                         </div>
                     </div>
                     <div className="text-warning">
-                        <h1 className='font-bold '>{article.author}</h1>
+                        <h1 className='font-bold cursor-pointer'>{article.author}</h1>
                         <h1 className='text-sm'>Study power CEO</h1>
                     </div>
                 </div>
