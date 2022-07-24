@@ -3,9 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './component/Home/Home';
 import Footer from './component/Shared/Footer/Footer';
-import Header from './component/Shared/Header';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Header from './component/Shared/Header/Header';
 
 function App() {
   useEffect(() => {
