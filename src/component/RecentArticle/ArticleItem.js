@@ -1,12 +1,13 @@
 import React from 'react';
+import './ArticleItem.css';
 
-const ArticleItem = ({ article, year }) => {
+const ArticleItem = ({ article }) => {
     return (
-        <div className=" bg-neutral shadow-xl rounded">
-            <figure><img className='w-full rounded-t' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+        <div className=" bg-neutral shadow-xl rounded card-parent">
+            <figure className='card-img'><img className='w-full rounded-t card-image' src="https://placeimg.com/400/225/arch" alt="author-img" /></figure>
             <div className="card-body p-5">
                 <p className="text-warning text-sm">
-                    {year}
+                    {article.date}
                 </p>
                 <h1 className='text-xl font-bold text-warning md:h-24'>{article.Title}</h1>
                 <p className='text-sm text-warning' title={article.desc}>{article.desc.slice(0, 150)}...</p>
