@@ -63,7 +63,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                 </label>
 
                 {user ? <><div className="dropdown dropdown-end dropdown-items">
-                    {user?.photoURL ? <label tabIndex="1">
+                    {user.photoURL ? <label tabIndex="1">
                         <div className="avatar p-2">
                             <div className="w-10 rounded-full">
                                 <img src={user?.photoURL} alt={user.displayName} />
