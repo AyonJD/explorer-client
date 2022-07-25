@@ -76,7 +76,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                             </div>
                         </label>
                         <ul tabIndex="1" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 border border-info">
-                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
+                            <li className='mb-1'><Link to='/profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
                             <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>My Orders</span></Link></li>
                             <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>My Wishlist</span></Link></li>
                             <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faStar} /> <span className='item'>My Reviews</span></Link></li>
