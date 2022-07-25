@@ -3,8 +3,6 @@ import { articleDataContext } from '../../App';
 import ArticleItem from './ArticleItem';
 
 const RecentArticla = () => {
-    const today = new Date();
-    const year = today.getFullYear();
     const [articles] = useContext(articleDataContext);
     console.log(articles);
     const articleCopy = [...articles];
@@ -21,10 +19,8 @@ const RecentArticla = () => {
                     articleCopy.reverse().slice(0, 3).map(article => <ArticleItem
                         key={article.id}
                         article={article}
-                        year={year}
                     ></ArticleItem>)
                 }
-
             </div>
         </section>
     );
