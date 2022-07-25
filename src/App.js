@@ -6,6 +6,8 @@ import Footer from './component/Shared/Footer/Footer';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Header from './component/Shared/Header/Header';
+import Login from './component/Authentication/Login/Login';
+import Register from './component/Authentication/Register/Register';
 
 const articleDataContext = createContext()
 function App() {
@@ -56,6 +58,8 @@ function App() {
         <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
         <Routes>
           <Route path='/' element={<Home />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/register' element={<Register />}></Route>
         </Routes>
         <Footer />
       </articleDataContext.Provider>
