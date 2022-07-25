@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
+import blankUser from '../../../assets/blank user.webp'
 
 const Header = ({ setDark, dark, setTheme }) => {
     //Set the theme in local storage
 
     const [user] = useAuthState(auth);
+    console.log(user);
 
     console.log(user)
     const logout = () => {
@@ -61,7 +63,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                 </label>
 
                 {user ? <><div className="dropdown dropdown-end dropdown-items">
-                    {user.photoURL ? <label tabIndex="1">
+                    {user?.photoURL ? <label tabIndex="1">
                         <div className="avatar p-2">
                             <div className="w-10 rounded-full">
                                 <img src={user?.photoURL} alt={user.displayName} />
@@ -70,7 +72,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                     </label> : <label tabIndex="1">
                         <div className="avatar p-2">
                             <div className="w-10 rounded-full flex items-center justify-center">
-                                <img src="https://placeimg.com/192/192/people" alt='' />
+                                <img src={blankUser} alt='' />
                             </div>
                         </div>
                     </label>}
