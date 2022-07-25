@@ -1,0 +1,16 @@
+.card-parent {
+    overflow: hidden;
+}
+
+.card-img {
+    overflow: hidden;
+}
+
+.card-parent .card-image {
+    /* overflow: hidden; */
+    transition: all .5s ease-in-out
+}
+
+.card-parent:hover .card-image {
+    transform: scale(1.2)
+}
