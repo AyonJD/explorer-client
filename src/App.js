@@ -7,7 +7,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Header from './component/Shared/Header/Header';
 
-const articleDataContext = createContext()
+const articleDataContext = createContext();
+
 function App() {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
