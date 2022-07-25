@@ -12,6 +12,7 @@ import Register from './component/Authentication/Register/Register';
 const articleDataContext = createContext()
 function App() {
   const [articles, setArticles] = useState([]);
+  const [searchValue, setSearchValue] = useState(null);
   useEffect(() => {
     AOS.init();
   }, [])
@@ -52,9 +53,16 @@ function App() {
       .then(data => setArticles(data))
   }, [])
 
+  const valueObj = {
+    articles,
+    searchValue,
+    setArticles,
+    setSearchValue
+  }
+
   return (
     <div data-theme={dark ? "dark" : "light"}>
-      <articleDataContext.Provider value={[articles, setArticles]}>
+      <articleDataContext.Provider value={valueObj}>
         <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
         <Routes>
           <Route path='/' element={<Home />}></Route>
