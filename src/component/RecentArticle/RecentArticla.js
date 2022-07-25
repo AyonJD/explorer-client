@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { articleDataContext } from '../../App';
+import ArticleItem from './ArticleItem';
 
 const RecentArticla = () => {
-    const today = new Date();
-    const year = today.getFullYear();
+    const [articles] = useContext(articleDataContext);
+    console.log(articles);
+    const articleCopy = [...articles];
+
     return (
         <section className='mid-container'>
             <div className='flex w-full items-center lg:mt-16 md:mt-36 sm:mt-44 mt-16'>
@@ -11,74 +15,12 @@ const RecentArticla = () => {
             </div>
             <p className='text-sm mt-2'>Popular articles are selected based on the number of readers</p>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 mt-10 gap-7 ">
-
-                <div className=" bg-neutral shadow-xl rounded">
-                    <figure><img className='w-full rounded-t' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                    <div className="card-body p-5">
-                        <p className="text-warning text-sm">
-                            {year}
-                        </p>
-                        <h1 className='text-xl font-bold text-warning'>Child's Sensory and Motor, Development</h1>
-                        <p className='text-sm text-warning'>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
-
-                        <div className="flex items-center gap-5 mt-2">
-                            <div className="avatar ">
-                                <div className="w-12 mt-2 rounded-full ring ring-primary ring-offset-base-100 ">
-                                    <img src="https://placeimg.com/192/192/people" alt='' />
-                                </div>
-                            </div>
-                            <div className=" text-warning">
-                                <h1 className='font-bold '>Armin Sultana</h1>
-                                <h1 className='text-sm'>Study power CEO</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className=" bg-neutral shadow-xl rounded">
-                    <figure><img className='w-full rounded-t' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                    <div className="card-body p-5">
-                        <h2 className="text-warning text-sm">
-                            {year}
-                        </h2>
-                        <h1 className='text-xl font-bold text-warning'>Child's Sensory and Motor, Development</h1>
-                        <p className='text-sm text-warning'>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
-
-                        <div className="flex items-center gap-5 mt-2">
-                            <div className="avatar ">
-                                <div className="w-12 mt-2 rounded-full ring ring-primary ring-offset-base-100 ">
-                                    <img src="https://placeimg.com/192/192/people" alt='' />
-                                </div>
-                            </div>
-                            <div className=" text-warning">
-                                <h1 className='font-bold '>Armin Sultana</h1>
-                                <h1 className='text-sm'>Study power CEO</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className=" bg-neutral shadow-xl rounded">
-                    <figure><img className='w-full rounded-t' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                    <div className="card-body p-5">
-                        <h2 className="text-warning text-sm">
-                            {year}
-                        </h2>
-                        <h1 className='text-xl font-bold text-warning'>Child's Sensory and Motor, Development</h1>
-                        <p className='text-sm text-warning'>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
-
-                        <div className="flex items-center gap-5 mt-2">
-                            <div className="avatar ">
-                                <div className="w-12 mt-2 rounded-full ring ring-primary ring-offset-base-100 ">
-                                    <img src="https://placeimg.com/192/192/people" alt='' />
-                                </div>
-                            </div>
-                            <div className=" text-warning">
-                                <h1 className='font-bold '>Armin Sultana</h1>
-                                <h1 className='text-sm'>Study power CEO</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                {
+                    articleCopy.reverse().slice(0, 3).map(article => <ArticleItem
+                        key={article.id}
+                        article={article}
+                    ></ArticleItem>)
+                }
             </div>
         </section>
     );

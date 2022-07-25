@@ -10,7 +10,7 @@ const Home = () => {
             <Banner />
             <RecentArticla></RecentArticla>
             <PopularArticle />
-            <LatestArticle/>
+            <LatestArticle />
 
         </div>
     );
