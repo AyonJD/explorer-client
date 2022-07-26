@@ -68,26 +68,26 @@ const Register = () => {
     const handleGoogleSignin = async () => {
         await signInWithGoogle();
 
-            const email = authUser?.email;
-            console.log(email);
-            userInfo = {
-                email: authUser?.email,
-                name: authUser?.displayName,
-                photoURL: authUser?.photoURL
-            }
-            //PUT API for updating users image
-            const url = `http://localhost:5000/users/${email}`
-            console.log(url)
-            fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    userInfo
-                })
+        const email = authUser?.email;
+        console.log(email);
+        userInfo = {
+            email: authUser?.email,
+            name: authUser?.displayName,
+            photoURL: authUser?.photoURL
+        }
+        //PUT API for updating users image
+        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+        console.log(url)
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userInfo
             })
-       
+        })
+
     }
     return (
         <div className='mid-container lg:my-10'>
