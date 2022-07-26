@@ -39,16 +39,21 @@
     font-size: 20px;
 }
 
-.dropdown-items .item{
+.dropdown-items .item {
     transition: .3s;
-} 
-.dropdown-items li:hover .item{
+}
+
+.dropdown-items li:hover .item {
     color: orange;
     letter-spacing: 1.5px;
 }
 
-@media only screen and (max-width: 990px) {
+.right_icon {
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 1400px) {
     .navbar-content {
-        padding: 5px 10px;
+        padding: 5px 1rem;
     }
 }

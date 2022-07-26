@@ -1,10 +1,23 @@
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './component/Home/Home';
-import Header from './component/Shared/Header';
+import Footer from './component/Shared/Footer/Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import Header from './component/Shared/Header/Header';
+import Login from './component/Authentication/Login/Login';
+import Register from './component/Authentication/Register/Register';
 
+const articleDataContext = createContext()
 function App() {
+  const [articles, setArticles] = useState([]);
+  const [searchValue, setSearchValue] = useState(null);
+  useEffect(() => {
+    AOS.init();
+  }, [])
+
+  // making theme dark
   const [dark, setDark] = useState(false)
   // localStorage.setItem('theme', dark);
   useEffect(() => {
@@ -31,18 +44,36 @@ function App() {
         setDark(!dark)
       }
       )
-
   }
 
+  // fetching all articles
+  useEffect(() => {
+    fetch('https://floating-ocean-13139.herokuapp.com/blogs')
+      .then(res => res.json())
+      .then(data => setArticles(data))
+  }, [])
+
+  const valueObj = {
+    articles,
+    searchValue,
+    setArticles,
+    setSearchValue
+  }
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
-      <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
-      <Routes>
-        <Route path='/' element={<Home />}></Route>
-      </Routes>
+      <articleDataContext.Provider value={valueObj}>
+        <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/register' element={<Register />}></Route>
+        </Routes>
+        <Footer />
+      </articleDataContext.Provider>
     </div>
   );
 }
 
 export default App;
+export { articleDataContext }
