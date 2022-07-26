@@ -7,14 +7,15 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import blankUser from '../../../assets/blank user.webp'
+import Search from './Search';
 
 const Header = ({ setDark, dark, setTheme }) => {
     //Set the theme in local storage
 
     const [user] = useAuthState(auth);
-    console.log(user);
+    // console.log(user?.photoURL);
 
-    console.log(user)
+    // console.log(user)
     const logout = () => {
         signOut(auth);
     };
@@ -22,6 +23,7 @@ const Header = ({ setDark, dark, setTheme }) => {
 
     return (
         <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0">
+
             <div className="navbar-start">
                 <div className="dropdown dropdown-items">
                     <label tabIndex="0" className="btn btn-sm btn-accent btn-square lg:hidden h-9 w-10 mr-3">
@@ -29,29 +31,30 @@ const Header = ({ setDark, dark, setTheme }) => {
                     </label>
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 border border-info">
 
-                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHome} /> <span className='item'>Home</span></Link></li>
-                        <li className='mb-1'><Link to='/about'><FontAwesomeIcon className='icon text-secondary' icon={faBurger} /> <span className='item'>About</span></Link></li>
-                        <li className='mb-1'><Link to='/popular'><FontAwesomeIcon className='icon text-secondary' icon={faBarsProgress} /> <span className='item'>Popular</span></Link></li>
-                        <li className='mb-1'><Link to='/menu'><FontAwesomeIcon className='icon text-secondary' icon={faStar} /> <span className='item'>Latest</span></Link></li>
-                        <li className='mb-1'><Link to='/order'><FontAwesomeIcon className='icon text-secondary' icon={faContactBook} /> <span className='item'>Order</span></Link></li>
-                        <li><Link to='/blog'><FontAwesomeIcon className='icon text-secondary' icon={faBlog} /> <span className='item'>Premium</span></Link></li>
-                        <li><Link to='/contact'><FontAwesomeIcon className='icon text-secondary' icon={faContactBook} /> <span className='item'>Contact</span></Link></li>
+                        <li className='mb-1'>
+                            <Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHome} /> <span className='item'>Home</span></Link>
+                        </li>
+                        <li className='mb-1'>
+                            <Link to='/about'><FontAwesomeIcon className='icon text-secondary' icon={faBurger} /> <span className='item'>About</span></Link>
+                        </li>
+                        <li>
+                            <Link to='/contact'><FontAwesomeIcon className='icon text-secondary' icon={faContactBook} /> <span className='item'>Contact</span></Link>
+                        </li>
                     </ul>
                 </div>
                 <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link></h1>
             </div>
-            <div className="navbar-center hidden lg:flex">
+
+            <div className="navbar-start hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li className='mr-1 hover:text-primary'><Link to='/'>Home</Link></li>
                     <li className='mr-1 hover:text-primary'><Link to='/about'>About</Link></li>
-                    <li className='mr-1 hover:text-primary'><Link to='/popular'>Popular</Link></li>
-                    <li className='mr-1 hover:text-primary'><Link to='/menu'>Latest</Link></li>
-                    <li className='mr-1 hover:text-primary'><Link to='/order'>Order</Link></li>
-                    <li className='mr-1 hover:text-primary'><Link to='/order'>Premium</Link></li>
                     <li className='mr-2 hover:text-primary'><Link to='/contact'>Contact</Link></li>
                 </ul>
             </div>
+
             <div className="navbar-end">
+                <Search />
                 <label className="swap swap-rotate mr-2 dark-mode bg-accent hover:bg-primary ">
 
                     <input type="checkbox" onClick={() => setTheme()} />
@@ -62,31 +65,29 @@ const Header = ({ setDark, dark, setTheme }) => {
 
                 </label>
 
-                {user ? <><div className="dropdown dropdown-end dropdown-items">
-                    {user.photoURL ? <label tabIndex="1">
-                        <div className="avatar p-2">
-                            <div className="w-10 rounded-full">
-                                <img src={user?.photoURL} alt={user.displayName} />
-                            </div>
-                        </div>
-                    </label> : <label tabIndex="1">
-                        <div className="avatar p-2">
-                            <div className="w-10 rounded-full flex items-center justify-center">
-                                <img src={blankUser} alt='' />
-                            </div>
-                        </div>
-                    </label>}
-                    <ul tabIndex="1" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 bg-base-100 border border-info">
-                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
-                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>My Orders</span></Link></li>
-                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>My Wishlist</span></Link></li>
-                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faStar} /> <span className='item'>My Reviews</span></Link></li>
-                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Returns & Cancellation</span></Link></li>
-                        <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>
-                    </ul>
-                </div></> : <Link to="/login"><button className='btn btn-sm btn-success btn-outline'>Login</button></Link>}
 
+                {user ? <>
+                    <div className="dropdown dropdown-end dropdown-items">
+                        <label tabIndex="1">
+                            <div className="avatar p-2">
+                                <div className="w-10 rounded-full">
+                                    <img src={user.photoURL ? user.photoURL : blankUser} alt={user?.displayName} />
+                                </div>
+                            </div>
+                        </label>
+                        <ul tabIndex="1" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 border border-info">
+                            <li className='mb-1'><Link to='/profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
+                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>My Orders</span></Link></li>
+                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>My Wishlist</span></Link></li>
+                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faStar} /> <span className='item'>My Reviews</span></Link></li>
+                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Returns & Cancellation</span></Link></li>
+                            <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>
+                        </ul>
+                    </div>
+                </>
+                    : <Link to="/login"><button className='btn btn-sm btn-success btn-outline'>Login</button></Link>}
             </div>
+
         </div>
     );
 };
