@@ -3,10 +3,12 @@ import img1 from '../../assets/blog-img/news-1.jpg'
 import './PopularArticle.css'
 
 import {RiArrowRightSFill } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
 // RiArrowDropRightFill
 
 
 const PopularArticle = () => {
+    const navigate = useNavigate()
     return (
         <div className='mid-container'>
             <div className='flex w-full items-center '>
@@ -93,7 +95,7 @@ const PopularArticle = () => {
                             <h2 className=' text-center text-[14px] text-warning '>Join Membership</h2>
                             <h1 className='text-[16px] font-bold text-warning'>Want to access our <br /> premium content?</h1>
                             <p className='text-[12px] text-warning'>Sometimes features require a sort <br /> description.This can be detailed <br /> description </p>
-                            <button class="btn btn-secondary rounded-full text-[14px]">Register Now</button>
+                            <button onClick={navigate('/register')} class="btn btn-secondary rounded-full text-[14px]">Register Now</button>
                             <button class="btn btn-outline  rounded-full btn-primary">Contact</button>
                            
                             
