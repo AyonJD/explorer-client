@@ -17,9 +17,7 @@ const Header = ({ setDark, dark, setTheme }) => {
     const logout = () => {
         signOut(auth);
     };
-    // console.log(valueObj)
     const DBUsers = valueObj;
-    // console.log(DBUsers?.users)
 
     //FIlter with useMemo users based on firebase user
     let filteredUsers = DBUsers?.users?.filter(userDB => userDB?.userInfo?.email === user?.email)
@@ -27,8 +25,6 @@ const Header = ({ setDark, dark, setTheme }) => {
     if (filteredUsers?.length > 0 && filteredUsers) {
         valueObj?.setSignedInUser(filteredUsers[0]?.userInfo)
     }
-
-    // console.log(filteredUsers[0]?.userInfo)
 
     return (
         <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0">
