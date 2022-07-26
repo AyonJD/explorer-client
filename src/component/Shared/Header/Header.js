@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightArrowLeft, faBarsProgress, faBlog, faBurger, faCartShopping, faContactBook, faHeart, faHome, faList, faListCheck, faRightFromBracket, faStar, faUser, faUserAlt, faUtensils } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
@@ -8,18 +8,23 @@ import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import blankUser from '../../../assets/blank user.webp'
 import Search from './Search';
+import { articleDataContext } from '../../../App';
 
 const Header = ({ setDark, dark, setTheme }) => {
-    //Set the theme in local storage
 
+    const valueObj = useContext(articleDataContext)
     const [user] = useAuthState(auth);
-    // console.log(user?.photoURL);
-
-    // console.log(user)
     const logout = () => {
         signOut(auth);
     };
+    const DBUsers = valueObj;
 
+    //FIlter with useMemo users based on firebase user
+    let filteredUsers = DBUsers?.users?.filter(userDB => userDB?.userInfo?.email === user?.email)
+
+    if (filteredUsers?.length > 0 && filteredUsers) {
+        valueObj?.setSignedInUser(filteredUsers[0]?.userInfo)
+    }
 
     return (
         <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0">
@@ -71,7 +76,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                         <label tabIndex="1">
                             <div className="avatar p-2">
                                 <div className="w-10 rounded-full">
-                                    <img src={user.photoURL ? user.photoURL : blankUser} alt={user?.displayName} />
+                                    <img src={filteredUsers[0]?.userInfo?.photoURL} alt={user?.displayName} />
                                 </div>
                             </div>
                         </label>

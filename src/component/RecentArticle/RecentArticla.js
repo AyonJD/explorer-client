@@ -3,8 +3,8 @@ import { articleDataContext } from '../../App';
 import ArticleItem from './ArticleItem';
 
 const RecentArticla = () => {
-    const [articles] = useContext(articleDataContext);
-    // console.log(articles);
+    const valueObj = useContext(articleDataContext);
+    const { articles } = valueObj;
     const articleCopy = [...articles];
 
     return (
@@ -17,7 +17,7 @@ const RecentArticla = () => {
             <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 mt-10 gap-7 ">
                 {
                     articleCopy.reverse().slice(0, 3).map(article => <ArticleItem
-                        key={article.id}
+                        key={article._id}
                         article={article}
                     ></ArticleItem>)
                 }

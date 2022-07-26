@@ -1,14 +1,15 @@
 import React from 'react';
 import img1 from '../../assets/blog-img/news-1.jpg'
+import './PopularArticle.css'
 
 
 const PopularArticleItem = ({ article }) => {
     console.log(article);
     return (
         <div>
-            <div class="hero border rounded-2xl">
-                <div class="hero-content grid lg:grid-cols-2 md:grid-cols-2 ">
-                    <div><img src={img1} class="lg:max-w-md md:max-w-sm w-full  rounded-lg shadow-2xl" alt='' /></div>
+            <div class="hero border-b-2 pb-5 popular-card">
+                <div class="hero-content grid lg:grid-cols-2 md:grid-cols-2 p-0 ">
+                    <div><img src={img1} class="lg:max-w-sm md:max-w-sm w-full  rounded-lg shadow-2xl" alt='' /></div>
                     <div className='p-3 flex items-center'>
                         <div>
                             <p className='text-sm'>Jan 24, 2022</p>

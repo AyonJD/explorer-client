@@ -8,10 +8,15 @@ import 'aos/dist/aos.css';
 import Header from './component/Shared/Header/Header';
 import Login from './component/Authentication/Login/Login';
 import Register from './component/Authentication/Register/Register';
+import Profile from './Dashboard/Profile/Profile';
+import { clear } from '@testing-library/user-event/dist/clear';
 
 const articleDataContext = createContext()
 function App() {
   const [articles, setArticles] = useState([]);
+  const [searchValue, setSearchValue] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [signedInUser, setSignedInUser] = useState(null);
   useEffect(() => {
     AOS.init();
   }, [])
@@ -52,9 +57,30 @@ function App() {
       .then(data => setArticles(data))
   }, [])
 
+  // fetching all users
+  useEffect(() => {
+    fetch('https://floating-ocean-13139.herokuapp.com/users')
+      .then(res => res.json())
+      .then(data => {
+        setUsers(data)
+      })
+  }
+    , [])
+
+  // console.log(users);
+  const valueObj = {
+    articles,
+    searchValue,
+    setArticles,
+    setSearchValue,
+    users,
+    setSignedInUser
+  }
+  // console.log(signedInUser)
+
   return (
     <div data-theme={dark ? "dark" : "light"}>
-      <articleDataContext.Provider value={[articles, setArticles]}>
+      <articleDataContext.Provider value={valueObj}>
         <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
         <Routes>
           <Route path='/' element={<Home />}></Route>

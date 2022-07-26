@@ -9,10 +9,10 @@ import { useNavigate } from 'react-router-dom';
 
 
 const PopularArticle = () => {
-    const [articles] = useContext(articleDataContext);
+    const valueObj = useContext(articleDataContext);
     // console.log(articles);
     const countPoplular = 20;
-    const popularArticle = articles.map(element => {
+    const popularArticle = valueObj?.articles?.map(element => {
         if (element.popularity > countPoplular) {
             return element
         }
@@ -43,29 +43,33 @@ const PopularArticle = () => {
                     }
                 </div>
                 <div className='w-1/4 grid ml-5 gap-5'>
-                    <div class="card  bg-base-100 shadow-xl">
-                        <div class="card-body p-4">
-                            <h2 className='font-bold text-center'> All Category</h2>
-                            <ul className='pl-5 text-sm'>
-                                <li className='flex'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span> Fashion</li>
-                                <li className='flex'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>Photography</li>
-                                <li className='flex'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span> Travel</li>
-                                <li className='flex'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span> Fitness</li>
-                                <li className='flex'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span> Food</li>
-                                <li className='flex'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span> Beauty</li>
-                                <li className='flex'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>Make Up</li>
-                                <li className='flex'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>Sport</li>
-                                <li className='flex'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>Entertainment</li>
+                    <div class="card  bg-base-100 shadow-xl border">
+                        <div class="card-body">
+                            <h2 className='text-xl font-bold text-center'> All Category</h2>
+                            <ul className='pl-5 mt-5 '>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span> Fashion</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>Photography</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span> Travel</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span> Fitness</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span> Food</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span> Beauty</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>Make Up</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>Sport</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>Entertainment</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>Make Up</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>LifeStyle</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>Home</li>
+                                <li className='flex cursor-pointer hover:text-primary duration-300 mb-1'> <span className='mt-1'><RiArrowRightSFill></RiArrowRightSFill></span>Sport</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="card bg-pink-100 shadow-xl">
-                        <div class="card-body p-4">
-                            <h2 className=' text-center text-[14px] text-warning '>Join Membership</h2>
-                            <h1 className='text-[16px] font-bold text-warning'>Want to access our <br /> premium content?</h1>
-                            <p className='text-[12px] text-warning'>Sometimes features require a sort <br /> description.This can be detailed <br /> description </p>
-                            <button onClick='/register' class="btn btn-secondary rounded-full text-[14px]">Register Now</button>
-                            <button class="btn btn-outline  rounded-full btn-primary">Contact</button>
+                    <div class="card shadow-xl register-card">
+                        <div class="card-body text-center">
+                            <h2 className='font-bold text-center text-warning '>Join Membership</h2>
+                            <h2 className=' font-bold text-warning text-xl'>Want to access our <br /> Premium Content?</h2>
+                            <p className='text-[12px] text-warning'>Sometimes features require a sort description. This can be detailed description </p>
+                            <button onClick='/register' class="btn rounded-full text-white register-btn">Register Now</button>
+                            <button class="btn btn-outline  rounded-full text-warning ">Contact Us</button>
                         </div>
                     </div>
                 </div>
