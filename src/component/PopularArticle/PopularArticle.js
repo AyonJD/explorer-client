@@ -33,8 +33,8 @@ const PopularArticle = () => {
                 <span className='bg-primary h-[2px] w-full article-border'></span>
             </div>
             <p className='text-sm mt-2'>Popular articles are selected based on the number of readers</p>
-            <div className='mt-10 flex'>
-                <div className='w-3/4 grid gap-5'>
+            <div className='mt-10 lg:flex md:flex'>
+                <div className='lg:w-3/4 grid gap-5 lg:mb-0 md:mb-0 sm:mb-5 mb-5'>
                     {
                         popularArticleArr.slice(0, 4).map(article => <PopularArticleItem
                             key={article.id}
@@ -42,7 +42,7 @@ const PopularArticle = () => {
                         ></PopularArticleItem>)
                     }
                 </div>
-                <div className='w-1/4 grid ml-5 gap-5'>
+                <div className='lg:w-1/4 grid  ml-5 gap-5'>
                     <div class="card  bg-base-100 shadow-xl border">
                         <div class="card-body">
                             <h2 className='text-xl font-bold text-center'> All Category</h2>
