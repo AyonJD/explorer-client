@@ -32,7 +32,6 @@ const Register = () => {
         socialError = <p className='text-red-500 py-3'>{gError?.message}</p>
     }
 
-
     const onSubmit = async data => {
         console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password);
