@@ -4,7 +4,7 @@ import ArticleItem from './ArticleItem';
 
 const RecentArticla = () => {
     const [articles] = useContext(articleDataContext);
-    console.log(articles);
+    // console.log(articles);
     const articleCopy = [...articles];
 
     return (
