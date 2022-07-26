@@ -41,7 +41,7 @@ const PopularArticle = () => {
                     </div>
                 </div>
                 <div className="">
-                    <div class="card w-52  bg-base-100 shadow-xl ml-10  ">
+                    <div class="card w-52  bg-base-100 shadow-xl ml-5  ">
                         <div class="card-body ">
                             <h2 className='font-bold text-center'>. All Category</h2>
                             <ul className='pl-5 text-sm'>
@@ -88,13 +88,13 @@ const PopularArticle = () => {
                     </div>
                 </div>
                 <div className="">
-                    <div class="card w-52  bg-pink-100 shadow-xl ml-10  ">
-                        <div class="card-body p-4 ">
-                            <h2 className=' text-center text-[14px] '>Join Membership</h2>
-                            <h1 className='text-[16px] font-bold'>Want to access our <br /> premium content?</h1>
-                            <p className='text-sm'>Sometimes features require a sort <br /> description.This can be detailed <br /> description </p>
+                    <div class="card w-52  bg-pink-100 shadow-xl ml-5  ">
+                        <div class="card-body p-4 ml-3 ">
+                            <h2 className=' text-center text-[14px] text-warning '>Join Membership</h2>
+                            <h1 className='text-[16px] font-bold text-warning'>Want to access our <br /> premium content?</h1>
+                            <p className='text-[12px] text-warning'>Sometimes features require a sort <br /> description.This can be detailed <br /> description </p>
                             <button class="btn btn-secondary rounded-full text-[14px]">Register Now</button>
-                            <button class="btn btn-outline  rounded-full btn-primary">Button</button>
+                            <button class="btn btn-outline  rounded-full btn-primary">Contact</button>
                            
                             
                         </div>
