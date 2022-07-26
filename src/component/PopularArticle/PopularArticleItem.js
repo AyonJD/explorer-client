@@ -12,8 +12,8 @@ const PopularArticleItem = ({ article }) => {
                     <div className='p-3 flex items-center'>
                         <div>
                             <p className='text-sm'>Jan 24, 2022</p>
-                            <h1 className='text-xl font-bold my-2'>Stimulation Child's Sensory and Motor Development</h1>
-                            <p className='text-sm'>The objective of this study is to assess the findings of selected articles regarding the therapeutic...</p>
+                            <h1 className='text-xl font-bold my-2'>{article.Title}</h1>
+                            <p className='text-sm'>{article.desc}</p>
                             <div className='flex gap-5 items-center mt-5'>
                                 <div className="avatar">
                                     <div className="lg:w-12 md:w-14 sm:w-16 w-14 rounded-full">
@@ -21,7 +21,7 @@ const PopularArticleItem = ({ article }) => {
                                     </div>
                                 </div>
                                 <div>
-                                    <h2 className='font-semibold '>Bithika Abhedancada</h2>
+                                    <h2 className='font-semibold '>{article.author}</h2>
                                     <p className='text-sm'>Study Power CEO</p>
                                 </div>
                             </div>
