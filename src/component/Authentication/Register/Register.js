@@ -34,8 +34,32 @@ const Register = () => {
 
 
     const onSubmit = async data => {
-        console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password);
+
+        const userInfo = {
+            email: data.email,
+            name: data.name,
+            password: data.password,
+            role: 'user',
+            ocupation: data.ocupation || "N/A",
+            dob: data.dob || "N/A",
+            phone: data.phone || "N/A",
+            address: data.address || "N/A",
+            photoURL: data.img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+        }
+        // console.log(userInfo)
+        // POST API
+        fetch('https://floating-ocean-13139.herokuapp.com/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userInfo
+            })
+        })
+
+
 
     }
     return (
