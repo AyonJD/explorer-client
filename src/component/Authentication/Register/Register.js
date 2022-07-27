@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import image from '../../../assets/icon/Google.png'
@@ -62,21 +62,22 @@ const Register = () => {
         })
 
     }
+    // console.log(authUser?.email)
 
-    //Handle google signing
-
+    const email = authUser?.email;
+    console.log(email);
+    userInfo = {
+        email: authUser?.email,
+        name: authUser?.displayName,
+        photoURL: authUser?.photoURL
+    }
+    //Handle google signin
     const handleGoogleSigning = async () => {
         await signInWithGoogle();
 
-        const email = authUser?.email;
-        // console.log(email);
-        userInfo = {
-            email: authUser?.email,
-            name: authUser?.displayName,
-            photoURL: authUser?.photoURL
-        }
-        const url = `https://floating-ocean-13139.herokuapp.com/users/${authUser?.email}`
 
+        //PUT API for updating users image
+        const url = `http://localhost:5000/users/${email}`
         console.log(url)
         fetch(url, {
             method: 'PUT',
@@ -88,8 +89,6 @@ const Register = () => {
             })
         })
     }
-
-
 
     return (
         <div className='mid-container lg:my-10'>
