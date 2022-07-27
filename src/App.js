@@ -77,7 +77,7 @@ function App() {
     users,
     setSignedInUser
   }
-  // console.log(signedInUser)
+  // console.log(articles)
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
@@ -89,6 +89,7 @@ function App() {
           <Route path='/post-article' element={<PostArticle />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Register />}></Route>
+          <Route path='/post-article' element={<PostArticle />}></Route>
         </Routes>
         <Footer />
       </articleDataContext.Provider>
