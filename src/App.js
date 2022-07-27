@@ -34,6 +34,7 @@ function App() {
       )
   }, [])
 
+
   const setTheme = () => {
     fetch('https://floating-ocean-13139.herokuapp.com/theme/62d829c706b5a80f8247a020', {
       method: 'PUT',
@@ -77,7 +78,7 @@ function App() {
     users,
     setSignedInUser
   }
-  // console.log(signedInUser)
+  // console.log(articles)
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
@@ -89,6 +90,7 @@ function App() {
           <Route path='/post-article' element={<PostArticle />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Register />}></Route>
+          <Route path='/post-article' element={<PostArticle />}></Route>
         </Routes>
         <Footer />
       </articleDataContext.Provider>
@@ -98,3 +100,4 @@ function App() {
 
 export default App;
 export { articleDataContext }
+

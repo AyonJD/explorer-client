@@ -91,6 +91,8 @@ const Register = () => {
         })
     }
 
+
+
     return (
         <div className='mid-container lg:my-10'>
             {/* <div className='w-full flex order-2'>
