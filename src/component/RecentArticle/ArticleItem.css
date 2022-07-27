@@ -12,5 +12,5 @@
 }
 
 .card-parent:hover .card-image {
-    transform: scale(1.2)
+    transform: scale(1.1)
 }

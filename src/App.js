@@ -23,7 +23,7 @@ function App() {
 
   // making theme dark
   const [dark, setDark] = useState(false)
-  // localStorage.setItem('theme', dark);
+
   useEffect(() => {
     fetch('https://floating-ocean-13139.herokuapp.com/theme')
       .then(res => res.json())
@@ -84,9 +84,9 @@ function App() {
         <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
         <Routes>
           <Route path='/' element={<Home />}></Route>
+          <Route path='/profile' element={<Profile />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Register />}></Route>
-          <Route path='/profile' element={<Profile />}></Route>
         </Routes>
         <Footer />
       </articleDataContext.Provider>
