@@ -6,11 +6,11 @@ const Banner = () => {
     return (
         <section className=' bg-base-200 '>
             <div className='mid-container'>
-                <div className=' relative banner absolute'>
+                <div className=' relative banner'>
                     <div className=' grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 '>
                         <div className='flex justify-center items-center'>
                             <div className='lg:text-start md:text-start sm:text-center text-center pt-12'>
-                                <span className='bg-neutral p-2 rounded-xl text-warning border-primary border'><button class="btn btn-xs btn-primary">New</button> Becoming a new Program Online</span>
+                                <span className='bg-neutral p-2 rounded-xl text-warning border-primary border'><button className="btn btn-xs btn-primary">New</button> Becoming a new Program Online</span>
                                 <h1 className='lg:text-5xl md:text-5xl sm:text-5xl text-3xl font-bold my-5 '>Find the Best Article Online for your Thesis</h1>
                                 <p className='text-sm lg:hidden md:hidden'>The right source of knowledge can be powerful professional growth, dark up right three</p>
                             </div>

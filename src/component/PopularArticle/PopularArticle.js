@@ -13,9 +13,9 @@ const PopularArticle = () => {
 
             <div className='mt-10'>
 
-                <div class="hero border rounded-2xl mb-5">
-                    <div class="hero-content grid lg:grid-cols-2 md:grid-cols-2 ">
-                        <div><img src={img1} class="lg:max-w-md md:max-w-sm w-full  rounded-lg shadow-2xl" alt='' /></div>
+                <div className="hero border rounded-2xl mb-5">
+                    <div className="hero-content grid lg:grid-cols-2 md:grid-cols-2 ">
+                        <div><img src={img1} className="lg:max-w-md md:max-w-sm w-full  rounded-lg shadow-2xl" alt='' /></div>
                         <div className='p-3 flex items-center'>
                             <div>
                                 <p className='text-sm'>Jan 24, 2022</p>
@@ -36,9 +36,9 @@ const PopularArticle = () => {
                         </div>
                     </div>
                 </div>
-                <div class="hero border rounded-2xl mb-5">
-                    <div class="hero-content grid lg:grid-cols-2 md:grid-cols-2 ">
-                        <div><img src={img1} class="lg:max-w-md md:max-w-sm w-full  rounded-lg shadow-2xl" alt='' /></div>
+                <div className="hero border rounded-2xl mb-5">
+                    <div className="hero-content grid lg:grid-cols-2 md:grid-cols-2 ">
+                        <div><img src={img1} className="lg:max-w-md md:max-w-sm w-full  rounded-lg shadow-2xl" alt='' /></div>
                         <div className='p-3 flex items-center'>
                             <div>
                                 <p className='text-sm'>Jan 24, 2022</p>
@@ -59,9 +59,9 @@ const PopularArticle = () => {
                         </div>
                     </div>
                 </div>
-                <div class="hero border rounded-2xl mb-5">
-                    <div class="hero-content grid lg:grid-cols-2 md:grid-cols-2 ">
-                        <div><img src={img1} class="lg:max-w-md md:max-w-sm w-full  rounded-lg shadow-2xl" alt='' /></div>
+                <div className="hero border rounded-2xl mb-5">
+                    <div className="hero-content grid lg:grid-cols-2 md:grid-cols-2 ">
+                        <div><img src={img1} className="lg:max-w-md md:max-w-sm w-full  rounded-lg shadow-2xl" alt='' /></div>
                         <div className='p-3 flex items-center'>
                             <div>
                                 <p className='text-sm'>Jan 24, 2022</p>
@@ -82,9 +82,9 @@ const PopularArticle = () => {
                         </div>
                     </div>
                 </div>
-                <div class="hero border rounded-2xl ">
-                    <div class="hero-content grid lg:grid-cols-2 md:grid-cols-2 ">
-                        <div><img src={img1} class="lg:max-w-md md:max-w-sm w-full  rounded-lg shadow-2xl" alt='' /></div>
+                <div className="hero border rounded-2xl ">
+                    <div className="hero-content grid lg:grid-cols-2 md:grid-cols-2 ">
+                        <div><img src={img1} className="lg:max-w-md md:max-w-sm w-full  rounded-lg shadow-2xl" alt='' /></div>
                         <div className='p-3 flex items-center'>
                             <div>
                                 <p className='text-sm'>Jan 24, 2022</p>

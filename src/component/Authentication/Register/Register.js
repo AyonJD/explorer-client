@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import image from '../../../assets/icon/Google.png'
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 
 const Register = () => {
@@ -17,6 +17,7 @@ const Register = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
+    const [authUser] = useAuthState(auth);
 
 
     if (user || gUser) {
@@ -32,10 +33,60 @@ const Register = () => {
         socialError = <p className='text-red-500 py-3'>{gError?.message}</p>
     }
 
-
+    let userInfo = {}
     const onSubmit = async data => {
-        console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password);
+
+        userInfo = {
+            email: data.email,
+            name: data.name,
+            password: data.password,
+            role: 'user',
+            ocupation: data.ocupation || "N/A",
+            dob: data.dob || "N/A",
+            phone: data.phone || "N/A",
+            address: data.address || "N/A",
+            photoURL: data.img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+        }
+        // console.log(userInfo)
+        // POST API
+        fetch('https://floating-ocean-13139.herokuapp.com/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userInfo
+            })
+        })
+
+
+
+    }
+    console.log(authUser?.email)
+    //Handle google signin
+    const handleGoogleSignin = async () => {
+        await signInWithGoogle();
+
+        const email = authUser?.email;
+        console.log(email);
+        userInfo = {
+            email: authUser?.email,
+            name: authUser?.displayName,
+            photoURL: authUser?.photoURL
+        }
+        //PUT API for updating users image
+        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+        console.log(url)
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userInfo
+            })
+        })
 
     }
     return (
@@ -121,7 +172,7 @@ const Register = () => {
                         </form>
                         <p className='py-3 text-center '>Already have an Account?  <Link to="/login" ><span className=' link text-primary ml-1 '> Please Login</span></Link></p>
                         <div className="divider">OR</div>
-                        <button onClick={() => signInWithGoogle()} className="btn btn-outline font-bold"> <img className='w-7 mr-2' src={image} alt="" /> Continue with google</button>
+                        <button onClick={handleGoogleSignin} className="btn btn-outline font-bold"> <img className='w-7 mr-2' src={image} alt="" /> Continue with google</button>
                     </div>
                     {socialError}
                 </div>
