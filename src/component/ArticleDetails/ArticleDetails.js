@@ -33,7 +33,7 @@ const ArticleDetails = () => {
       />
       <blockquote className="text-secondary opacity-60">
         {desc}
-        <span className="text-accent">Steve Jobs</span>
+        <span className="text-accent">{Category}</span>
       </blockquote>
     </section>
   );
