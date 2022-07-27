@@ -10,6 +10,7 @@ import Login from './component/Authentication/Login/Login';
 import Register from './component/Authentication/Register/Register';
 import Profile from './Dashboard/Profile/Profile';
 import { clear } from '@testing-library/user-event/dist/clear';
+import PostArticle from './Dashboard/PostArticle/PostArticle';
 
 const articleDataContext = createContext()
 function App() {
@@ -85,6 +86,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/post-article' element={<PostArticle />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Register />}></Route>
         </Routes>
