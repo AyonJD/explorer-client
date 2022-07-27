@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import './PostArticle.css';
 import { toast } from 'react-toastify';
+import { HiArrowNarrowRight } from 'react-icons/hi';
 const PostArticle = () => {
     const { register, handleSubmit, watch, formState: { errors }, trigger, reset } = useForm();
 
@@ -22,12 +23,14 @@ const PostArticle = () => {
                     const img = result.data.url;
                     console.log(img, 'img-url');
                     const tools = {
-                        name: data.name,
-                        price: data.price,
-                        availableQuantity: data.availableQuantity,
-                        minOrderQuantity: data.minOrderQuantity,
+                        Title: data.title,
+                        category: data.category,
+                        premium: data.access,
+                        tags: [data.tags],
                         details: data.details,
-                        image: img
+                        img: img,
+                        date: new Date().toLocaleDateString(),
+
                     }
                     //send data to db
                     // fetch(`https://stormy-bayou-62598.herokuapp.com/tools`, {
@@ -53,9 +56,9 @@ const PostArticle = () => {
 
 
                     //     )
+                    // console.log(tools);
                 }
 
-                console.log('imgbb', result);
             })
 
 
@@ -178,15 +181,20 @@ const PostArticle = () => {
                             }
                         })}
                     />
-                    <label className="file_label btn-3 custom_box_shadow">
+                    <label for="file" className="file_label btn-3 custom_box_shadow">
                         <span>Choose Photo</span>
                     </label>
-                    <label for="file" className="label  btn-3">
+                    <label className="label">
                         {errors.image?.type === 'required' && <span className="label-text-alt text-red-500">{errors.image.message}</span>}
                     </label>
                 </div>
 
-                <input className='text-white transition-all transition-duration:150ms md:w-1/4 px-5 py-2 rounded-md text-sm font-bold cursor-pointer custom_box_shadow' type="submit" value="Add" />
+                <button className='hover:text-white text-white group bg-[#011e2e] hover:bg-transparent px-6 py-2 my-2 flex items-center text-lg font-bold custom_box_shadow' type="submit">
+                    Add Article
+                    <span className='group-hover:rotate-90 duration-300'>
+                        <HiArrowNarrowRight className='ml-3 ' />
+                    </span>
+                </button>
             </form>
 
         </div>
