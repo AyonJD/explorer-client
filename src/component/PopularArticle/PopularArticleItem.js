@@ -4,7 +4,7 @@ import './PopularArticle.css'
 
 
 const PopularArticleItem = ({ article }) => {
-    console.log(article);
+    // console.log(article);
     return (
         <div>
             <div class="hero border-b-2 pb-5 popular-card">

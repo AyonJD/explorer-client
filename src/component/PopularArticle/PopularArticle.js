@@ -37,7 +37,7 @@ const PopularArticle = () => {
                 <div className='lg:w-3/4 grid gap-5 lg:mb-0 md:mb-0 sm:mb-5 mb-5'>
                     {
                         popularArticleArr.slice(0, 4).map(article => <PopularArticleItem
-                            key={article.id}
+                            key={article._id}
                             article={article}
                         ></PopularArticleItem>)
                     }

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import image from '../../../assets/icon/Google.png'
 import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import { async } from '@firebase/util';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -18,7 +19,7 @@ const Register = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
     const [authUser] = useAuthState(auth);
-
+    console.log(authUser?.email);
 
     if (user || gUser) {
         navigate(from, { replace: true })
@@ -60,23 +61,22 @@ const Register = () => {
             })
         })
 
-
-
     }
-    console.log(authUser?.email)
-    //Handle google signin
-    const handleGoogleSignin = async () => {
+
+    //Handle google signing
+
+    const handleGoogleSigning = async () => {
         await signInWithGoogle();
 
         const email = authUser?.email;
-        console.log(email);
+        // console.log(email);
         userInfo = {
             email: authUser?.email,
             name: authUser?.displayName,
             photoURL: authUser?.photoURL
         }
-        //PUT API for updating users image
-        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+        const url = `https://floating-ocean-13139.herokuapp.com/users/${authUser?.email}`
+
         console.log(url)
         fetch(url, {
             method: 'PUT',
@@ -87,8 +87,10 @@ const Register = () => {
                 userInfo
             })
         })
-
     }
+
+
+
     return (
         <div className='mid-container lg:my-10'>
             {/* <div className='w-full flex order-2'>
@@ -172,7 +174,7 @@ const Register = () => {
                         </form>
                         <p className='py-3 text-center '>Already have an Account?  <Link to="/login" ><span className=' link text-primary ml-1 '> Please Login</span></Link></p>
                         <div className="divider">OR</div>
-                        <button onClick={handleGoogleSignin} className="btn btn-outline font-bold"> <img className='w-7 mr-2' src={image} alt="" /> Continue with google</button>
+                        <button onClick={handleGoogleSigning} className="btn btn-outline font-bold"> <img className='w-7 mr-2' src={image} alt="" /> Continue with google</button>
                     </div>
                     {socialError}
                 </div>
