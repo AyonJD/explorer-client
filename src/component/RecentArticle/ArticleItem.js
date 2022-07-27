@@ -3,16 +3,8 @@ import "./ArticleItem.css";
 import { useNavigate } from "react-router-dom";
 
 const ArticleItem = ({ article }) => {
-  const { _id } = article;
-  const navigate = useNavigate();
-  const handleNavigate = (id) => {
-    navigate(`/article/${id}`);
-  };
   return (
-    <div
-      className=" bg-neutral shadow rounded card-parent hover:shadow-xl ease-in-out duration-300 pointer"
-      onClick={() => handleNavigate(_id)}
-    >
+    <div className=" bg-neutral shadow rounded card-parent hover:shadow-xl ease-in-out duration-300 pointer">
       <figure className="card-img">
         <img
           className="w-full rounded-t card-image"
@@ -26,7 +18,7 @@ const ArticleItem = ({ article }) => {
           {article.Title}
         </h1>
         <p className="text-sm text-warning" title={article.desc}>
-          {article.desc.slice(0, 150)}...
+          {article?.desc?.slice(0, 150)}...
         </p>
 
         <div className="flex items-center gap-5 mt-2 pb-3">
