@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import image from '../../../assets/icon/Google.png'
 import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import { async } from '@firebase/util';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -18,7 +19,7 @@ const Register = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
     const [authUser] = useAuthState(auth);
-
+    console.log(authUser?.email);
 
     if (user || gUser) {
         navigate(from, { replace: true })
@@ -60,8 +61,6 @@ const Register = () => {
             })
         })
 
-
-
     }
     // console.log(authUser?.email)
 
@@ -73,7 +72,7 @@ const Register = () => {
         photoURL: authUser?.photoURL
     }
     //Handle google signin
-    const handleGoogleSignin = async () => {
+    const handleGoogleSigning = async () => {
         await signInWithGoogle();
 
 
@@ -89,7 +88,6 @@ const Register = () => {
                 userInfo
             })
         })
-
     }
 
     return (
@@ -175,7 +173,7 @@ const Register = () => {
                         </form>
                         <p className='py-3 text-center '>Already have an Account?  <Link to="/login" ><span className=' link text-primary ml-1 '> Please Login</span></Link></p>
                         <div className="divider">OR</div>
-                        <button onClick={handleGoogleSignin} className="btn btn-outline font-bold"> <img className='w-7 mr-2' src={image} alt="" /> Continue with google</button>
+                        <button onClick={handleGoogleSigning} className="btn btn-outline font-bold"> <img className='w-7 mr-2' src={image} alt="" /> Continue with google</button>
                     </div>
                     {socialError}
                 </div>
