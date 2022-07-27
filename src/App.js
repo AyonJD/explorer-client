@@ -34,6 +34,7 @@ function App() {
       )
   }, [])
 
+
   const setTheme = () => {
     fetch('https://floating-ocean-13139.herokuapp.com/theme/62d829c706b5a80f8247a020', {
       method: 'PUT',
@@ -99,3 +100,4 @@ function App() {
 
 export default App;
 export { articleDataContext }
+
