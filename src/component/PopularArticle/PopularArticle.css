@@ -1,0 +1,15 @@
+.popular-card:nth-child(3) {
+  border-bottom: 0 !important;
+}
+.register-btn {
+  background: linear-gradient(134.72deg, #eb4b92 0%, #ca76e3 101.5%);
+}
+.register-card {
+  background: linear-gradient(134.72deg, #fdcbf1 0%, #e6dee9 101.5%);
+}
+
+@media only screen and (max-width: 639px) {
+  .article-border {
+    display: none;
+  }
+}
