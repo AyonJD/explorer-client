@@ -10,7 +10,7 @@ const ArticleItem = ({ article }) => {
                     {article.date}
                 </p>
                 <h1 className='text-xl font-bold text-warning md:h-24 cursor-pointer'>{article.Title}</h1>
-                <p className='text-sm text-warning' title={article.desc}>{article.desc.slice(0, 150)}...</p>
+                <p className='text-sm text-warning' title={article.desc}>{article?.desc?.slice(0, 150)}...</p>
 
                 <div className="flex items-center gap-5 mt-2 pb-3">
                     <div className="avatar ">
