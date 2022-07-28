@@ -1,0 +1,27 @@
+/* .banner_height {
+    height: calc(100vh - 66px) !important;
+} */
+
+@media only screen and (max-width: 13000px) {
+    .absolute-card {
+        bottom: -100px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .absolute-card {
+        bottom: -120px;
+    }
+}
+
+@media only screen and (max-width: 890px) {
+    .absolute-card {
+        bottom: -160px;
+    }
+}
+
+@media only screen and (max-width: 635px) {
+    .absolute-card {
+        bottom: -50px;
+    }
+}
