@@ -7,6 +7,7 @@ import {
   faPlus,
   faSave,
   faShare,
+  faShareNodes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
@@ -120,7 +121,7 @@ const ArticleDetails = () => {
           <span>
             <FontAwesomeIcon
               className="icon text-secondary ml-4"
-              icon={faShare}
+              icon={faShareNodes}
             />
           </span>
           <span>
