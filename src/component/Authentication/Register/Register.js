@@ -76,8 +76,11 @@ const Register = () => {
 
     const handleGoogleSigning = async () => {
         await signInWithGoogle();
+    }
 
+    useEffect(() => {
         //PUT API for updating users image
+
         const url = `http://localhost:5000/users/${email}`
         console.log(url)
         fetch(url, {
@@ -89,7 +92,7 @@ const Register = () => {
                 userInfo
             })
         })
-    }
+    }, [userInfo, email, authUser])
 
 
 
