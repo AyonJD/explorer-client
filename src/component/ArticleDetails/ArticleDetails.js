@@ -104,7 +104,7 @@ const ArticleDetails = () => {
           </div>
           <div className="ml-6">
             <p className="antialiased  text-lg  font-normal">
-              {author}{" "}
+              {author ? author : "MD. Mozammel Hoq 🌚"}{" "}
               <span>
                 <div class="badge badge-xs  badge-primary  ml-3 p-2">
                   Author

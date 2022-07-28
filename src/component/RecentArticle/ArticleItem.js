@@ -19,12 +19,15 @@ const ArticleItem = ({ article }) => {
           alt="author-img"
         />
       </figure>
-      <div className="card-body p-5">
+      <div className="card-body   p-5">
         <p className="text-warning text-sm">{article.date}</p>
-        <h1 className="text-xl font-bold text-warning mb-10 cursor-pointer hover:text-primary duration-300">
+        <h1 className="text-xl font-bold text-warning mb-2 cursor-pointer hover:underline duration-300">
           {article.Title}
         </h1>
-        <p className="text-sm text-warning" title={article?.desc}>
+        <p
+          className="text-sm text-warning hover:underline duration-300 cursor-pointer"
+          title={article?.desc}
+        >
           {article?.desc?.slice(0, 150)}...
         </p>
 
