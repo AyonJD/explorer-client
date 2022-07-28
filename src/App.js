@@ -78,7 +78,7 @@ function App() {
     users,
     setSignedInUser
   }
-  // console.log(articles)
+  console.log(valueObj)
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
