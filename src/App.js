@@ -6,9 +6,10 @@ import Footer from './component/Shared/Footer/Footer';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Header from './component/Shared/Header/Header';
+import Login from './component/Authentication/Login/Login';
+import Register from './component/Authentication/Register/Register';
 
-const articleDataContext = createContext();
-
+const articleDataContext = createContext()
 function App() {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
@@ -17,7 +18,7 @@ function App() {
 
   // making theme dark
   const [dark, setDark] = useState(false)
-  // localStorage.setItem('theme', dark);
+
   useEffect(() => {
     fetch('https://floating-ocean-13139.herokuapp.com/theme')
       .then(res => res.json())
@@ -57,6 +58,8 @@ function App() {
         <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
         <Routes>
           <Route path='/' element={<Home />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/register' element={<Register />}></Route>
         </Routes>
         <Footer />
       </articleDataContext.Provider>
