@@ -118,7 +118,35 @@ const ArticleDetails = () => {
             </p>
           </div>
         </div>
-        <div className="">
+        <div class=" breadcrumbs">
+          <ul>
+            <li>
+              <span>
+                <FontAwesomeIcon
+                  className="icon text-secondary ml-4"
+                  icon={faShareNodes}
+                />
+              </span>
+            </li>
+            <li>
+              <span>
+                <FontAwesomeIcon
+                  className="icon text-secondary ml-4"
+                  icon={faLink}
+                />
+              </span>
+            </li>
+            <li>
+              <span>
+                <FontAwesomeIcon
+                  className="icon text-secondary mx-4"
+                  icon={faEllipsis}
+                />
+              </span>
+            </li>
+          </ul>
+        </div>
+        {/* <div className="">
           <span>
             <FontAwesomeIcon
               className="icon text-secondary ml-4"
@@ -138,7 +166,7 @@ const ArticleDetails = () => {
               icon={faEllipsis}
             />
           </span>
-        </div>
+        </div> */}
       </div>
 
       <p className="text-2xl font-bold text-left my-8"> {Title}</p>
