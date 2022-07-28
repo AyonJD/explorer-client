@@ -174,7 +174,7 @@ const ArticleDetails = () => {
 
       <p className="text-2xl font-bold text-left my-8"> {Title}</p>
       <img
-        className="w-full h-[70vh]"
+        className="w-full lg:h-[70vh] md:h[50vh] sm:h[50vh] object-cover"
         src="https://placeimg.com/192/192/people?fbclid=IwAR3I707HDlKOYfnctNwHpvlQjBBW6yrRafMT-7gMxgjQOQH_urWgeQgWuK4"
         alt=""
       />
