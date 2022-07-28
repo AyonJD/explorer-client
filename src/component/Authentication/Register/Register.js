@@ -71,10 +71,11 @@ const Register = () => {
         name: authUser?.displayName,
         photoURL: authUser?.photoURL
     }
-    //Handle google signin
+
+    //Handle google signing
+
     const handleGoogleSigning = async () => {
         await signInWithGoogle();
-
 
         //PUT API for updating users image
         const url = `http://localhost:5000/users/${email}`
@@ -89,6 +90,8 @@ const Register = () => {
             })
         })
     }
+
+
 
     return (
         <div className='mid-container lg:my-10'>
