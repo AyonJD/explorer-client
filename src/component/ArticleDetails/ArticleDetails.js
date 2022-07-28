@@ -123,7 +123,8 @@ const ArticleDetails = () => {
             <li>
               <span>
                 <FontAwesomeIcon
-                  className="icon text-secondary ml-4"
+                  className="icon text-secondary ml-4 "
+                  title="Share"
                   icon={faShareNodes}
                 />
               </span>
@@ -132,6 +133,7 @@ const ArticleDetails = () => {
               <span>
                 <FontAwesomeIcon
                   className="icon text-secondary ml-4"
+                  title="Copy"
                   icon={faLink}
                 />
               </span>
@@ -140,6 +142,7 @@ const ArticleDetails = () => {
               <span>
                 <FontAwesomeIcon
                   className="icon text-secondary mx-4"
+                  title="More"
                   icon={faEllipsis}
                 />
               </span>
