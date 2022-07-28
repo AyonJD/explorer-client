@@ -78,7 +78,7 @@ const Register = () => {
         await signInWithGoogle();
 
         //PUT API for updating users image
-        const url = `http://localhost:5000/users/${email}`
+        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
         console.log(url)
         fetch(url, {
             method: 'PUT',
