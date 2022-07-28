@@ -28,12 +28,13 @@ const ArticleDetails = () => {
       .then((data) => setArticle(data));
   }, [articleId]);
   // distructuring article details
-  const { Title, Category, img, desc, author } = article;
-  // date format for article
-  const date = new Date(article.date);
-  const dateFormat = `${date.getDate()}/${
-    date.getMonth() + 1
-  }/${date.getFullYear()}`;
+  const { Title, Category, img, desc, author, date } = article;
+  // today's date
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, "0");
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const yyyy = today.getFullYear();
+  const todayDate = `${yyyy}-${mm}-${dd}`;
 
   // add article to favourite
   // const [favourite, setFavourite] = useState(false);
@@ -113,7 +114,7 @@ const ArticleDetails = () => {
             </p>
 
             <p className="text-xs mt-2 font-medium ">
-              published on : {dateFormat}
+              published on : {date ? date : todayDate}
             </p>
           </div>
         </div>
