@@ -3,7 +3,7 @@ import { articleDataContext } from '../../App';
 import LatestArticleItem from './LatestArticleItem';
 
 const LatestArticle = () => {
-    const [articles] = useContext(articleDataContext);
+    const valueObj = useContext(articleDataContext);
 
     return (
         <div className='mid-container'>
@@ -16,7 +16,7 @@ const LatestArticle = () => {
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2  gap-7 mt-14'>
 
                 {
-                    articles.map(article => <LatestArticleItem
+                    valueObj.articles.map(article => <LatestArticleItem
                         key={article._id}
                         article={article}
                     ></LatestArticleItem>)

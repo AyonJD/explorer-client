@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightArrowLeft, faBarsProgress, faBlog, faBurger, faCartShopping, faContactBook, faHeart, faHome, faList, faListCheck, faRightFromBracket, faStar, faUser, faUserAlt, faUtensils } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
@@ -8,17 +8,23 @@ import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import blankUser from '../../../assets/blank user.webp'
 import Search from './Search';
+import { articleDataContext } from '../../../App';
 
 const Header = ({ setDark, dark, setTheme }) => {
-    //Set the theme in local storage
 
+    const valueObj = useContext(articleDataContext)
     const [user] = useAuthState(auth);
-    // console.log(user?.photoURL);
-
-    // console.log(user)
     const logout = () => {
         signOut(auth);
     };
+    const DBUsers = valueObj;
+
+    //FIlter with useMemo users based on firebase user
+    let filteredUsers = DBUsers?.users?.filter(userDB => userDB?.userInfo?.email === user?.email)
+
+    if (filteredUsers?.length > 0 && filteredUsers) {
+        valueObj?.setSignedInUser(filteredUsers[0]?.userInfo)
+    }
 
 
     return (
@@ -71,14 +77,14 @@ const Header = ({ setDark, dark, setTheme }) => {
                         <label tabIndex="1">
                             <div className="avatar p-2">
                                 <div className="w-10 rounded-full">
-                                    <img src={user.photoURL ? user.photoURL : blankUser} alt={user?.displayName} />
+                                    <img src={filteredUsers[0]?.userInfo?.photoURL} alt={user?.displayName} />
                                 </div>
                             </div>
                         </label>
                         <ul tabIndex="1" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 border border-info">
                             <li className='mb-1'><Link to='/profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
-                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>My Orders</span></Link></li>
-                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>My Wishlist</span></Link></li>
+                            <li className='mb-1'><Link to='/post-article'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Post Article</span></Link></li>
+                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Manage Article</span></Link></li>
                             <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faStar} /> <span className='item'>My Reviews</span></Link></li>
                             <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Returns & Cancellation</span></Link></li>
                             <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>

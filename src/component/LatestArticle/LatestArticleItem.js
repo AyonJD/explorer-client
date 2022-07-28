@@ -10,7 +10,7 @@ const LatestArticleItem = ({ article }) => {
                     <div className='text-sm'>Jan 24, 2022</div>
                 </div>
                 <h1 className='text-xl font-bold'>{article.Title}</h1>
-                <p className='text-sm'>{article.desc}...</p>
+                <p className='text-sm'>{article?.desc?.slice(0, 100)}...</p>
             </div>
         </div>
     );

@@ -3,8 +3,8 @@ import { articleDataContext } from '../../App';
 import ArticleItem from './ArticleItem';
 
 const RecentArticla = () => {
-    const [articles] = useContext(articleDataContext);
-    // console.log(articles);
+    const valueObj = useContext(articleDataContext);
+    const { articles } = valueObj;
     const articleCopy = [...articles];
 
     return (
