@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import image from '../../../assets/icon/Google.png'
 import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { async } from '@firebase/util';
+import { articleDataContext } from '../../../App';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -19,7 +20,8 @@ const Register = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
     const [authUser] = useAuthState(auth);
-    console.log(authUser?.email);
+    const valueObj = useContext(articleDataContext);
+    // console.log(authUser?.email);
 
     if (user || gUser) {
         navigate(from, { replace: true })
@@ -65,7 +67,7 @@ const Register = () => {
     // console.log(authUser?.email)
 
     const email = authUser?.email;
-    console.log(email);
+    // console.log(email);
     userInfo = {
         email: authUser?.email,
         name: authUser?.displayName,
@@ -76,7 +78,9 @@ const Register = () => {
 
     const handleGoogleSigning = async () => {
         await signInWithGoogle();
+    }
 
+    useEffect(() => {
         //PUT API for updating users image
         const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
         console.log(url)
@@ -89,9 +93,17 @@ const Register = () => {
                 userInfo
             })
         })
-    }
+    }, [userInfo, email, authUser])
 
+    // console.log(valueObj?.users)
 
+    // const compareUser = useMemo(() => {
+    //     return valueObj?.users.find(user => user?.userInfo?.email === authUser?.email)
+    // }, [authUser, valueObj])
+
+    // useEffect(() => {
+    //     valueObj?.setSignedInUser(compareUser?.userInfo?.photoURL)
+    // }, [compareUser, valueObj])
 
     return (
         <div className='mid-container lg:my-10'>
