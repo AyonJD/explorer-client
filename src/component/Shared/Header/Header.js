@@ -17,16 +17,18 @@ const Header = ({ setDark, dark, setTheme }) => {
     const logout = () => {
         signOut(auth);
     };
-    const DBUsers = valueObj;
+    // const DBUsers = valueObj;
 
+    let userProfile = valueObj?.signedInUser?.photoURL
+    
     //FIlter with useMemo users based on firebase user
-    let filteredUsers = DBUsers?.users?.filter(userDB => userDB?.userInfo?.email === user?.email)
+    let filteredUsers = valueObj?.users?.filter(userDB => userDB?.userInfo?.email === user?.email)
 
     if (filteredUsers?.length > 0 && filteredUsers) {
         valueObj?.setSignedInUser(filteredUsers[0]?.userInfo)
     }
 
-
+    
     return (
         <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0">
 
@@ -77,7 +79,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                         <label tabIndex="1">
                             <div className="avatar p-2">
                                 <div className="w-10 rounded-full">
-                                    <img src={filteredUsers[0]?.userInfo?.photoURL} alt={user?.displayName} />
+                                    <img src={userProfile} alt={user?.displayName} />
                                 </div>
                             </div>
                         </label>
@@ -93,7 +95,6 @@ const Header = ({ setDark, dark, setTheme }) => {
                 </>
                     : <Link to="/login"><button className='btn btn-sm btn-success btn-outline'>Login</button></Link>}
             </div>
-
         </div>
     );
 };

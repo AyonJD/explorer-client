@@ -83,7 +83,7 @@ const Register = () => {
     useEffect(() => {
         //PUT API for updating users image
         const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
-        console.log(url)
+        // console.log(url)
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -97,13 +97,14 @@ const Register = () => {
 
     // console.log(valueObj?.users)
 
-    const compareUser = useMemo(() => {
-        return valueObj?.users.find(user => user?.userInfo?.email === authUser?.email)
-    }, [authUser, valueObj])
+    // const compareUser = useMemo(() => {
+    //     return valueObj?.users.find(user => user?.userInfo?.email === authUser?.email)
+    // }, [authUser, valueObj])
 
-    useEffect(() => {
-        valueObj?.setSignedInUser(compareUser?.userInfo?.photoURL)
-    }, [compareUser, valueObj])
+    // useEffect(() => {
+    //     valueObj?.setSignedInUser(compareUser?.userInfo?.photoURL)
+    // }, [compareUser, valueObj])
+
 
     return (
         <div className='mid-container lg:my-10'>
