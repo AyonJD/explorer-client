@@ -1,12 +1,11 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRightArrowLeft, faBarsProgress, faBlog, faBurger, faCartShopping, faContactBook, faHeart, faHome, faList, faListCheck, faRightFromBracket, faStar, faUser, faUserAlt, faUtensils } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightArrowLeft, faBurger, faContactBook, faHeart, faHome, faList,  faRightFromBracket, faStar, faUserAlt,} from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
-import blankUser from '../../../assets/blank user.webp'
 import Search from './Search';
 import { articleDataContext } from '../../../App';
 
@@ -28,7 +27,7 @@ const Header = ({ setDark, dark, setTheme }) => {
         valueObj?.setSignedInUser(filteredUsers[0]?.userInfo)
     }
 
-    
+
     return (
         <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0">
 

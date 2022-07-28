@@ -20,7 +20,6 @@ const Register = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
     const [authUser] = useAuthState(auth);
-    const valueObj = useContext(articleDataContext);
     // console.log(authUser?.email);
 
     if (user || gUser) {
