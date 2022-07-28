@@ -19,44 +19,45 @@ const PostArticle = () => {
         })
             .then(res => res.json())
             .then(result => {
+                // console.log(result)
                 if (result.success) {
                     const img = result.data.url;
-                    console.log(img, 'img-url');
-                    const tools = {
+                    // console.log(img, 'img-url');
+                    const blogs = {
                         Title: data.title,
                         category: data.category,
                         premium: data.access,
                         tags: [data.tags],
-                        details: data.details,
+                        desc: data.details,
                         img: img,
                         date: new Date().toLocaleDateString(),
 
                     }
                     //send data to db
-                    // fetch(`https://stormy-bayou-62598.herokuapp.com/tools`, {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'content-type': 'application/json',
-                    //         authorization: `Bearer ${localStorage.getItem('token')}`
-                    //     },
-                    //     body: JSON.stringify(tools)
-                    // })
-                    //     .then(res => res.json())
-                    //     .then(inserted => {
+                    fetch(`https://floating-ocean-13139.herokuapp.com/blogs`, {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                            // authorization: `Bearer ${localStorage.getItem('token')}`
+                        },
+                        body: JSON.stringify(blogs)
+                    })
+                        .then(res => res.json())
+                        .then(inserted => {
 
-                    //         if (inserted.insertedId) {
-                    //             toast.success(`Hurray!!New tools.${data.name} added successfully`);
+                            if (inserted.insertedId) {
+                                toast.success(`Hurray!!New tools.${data.title.slice(0, 10)}... added successfully`);
 
-                    //             reset()
-                    //         }
-                    //         else {
-                    //             toast.error('Failed to add a tools')
-                    //         }
-                    //     }
+                                reset()
+                            }
+                            else {
+                                toast.error('Failed to add a Article')
+                            }
+                        }
 
 
-                    //     )
-                    // console.log(tools);
+                        )
+                    // console.log(blogs);
                 }
 
             })
@@ -161,6 +162,10 @@ const PostArticle = () => {
                         {errors.details?.type === 'required' && <span className="label-text-alt text-red-500">{errors.details.message}</span>}
                     </label>
                 </div>
+
+
+
+
 
                 <div className="form-control w-full">
                     <label className="label">
