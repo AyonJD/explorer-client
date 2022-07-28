@@ -11,6 +11,7 @@ import Register from "./component/Authentication/Register/Register";
 import Profile from "./Dashboard/Profile/Profile";
 import { clear } from "@testing-library/user-event/dist/clear";
 import PostArticle from "./Dashboard/PostArticle/PostArticle";
+import ArticleDetails from "./component/ArticleDetails/ArticleDetails";
 
 const articleDataContext = createContext();
 function App() {
@@ -89,6 +90,10 @@ function App() {
           <Route path="/post-article" element={<PostArticle />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route
+            path="/article/:articleId"
+            element={<ArticleDetails />}
+          ></Route>
           <Route path="/post-article" element={<PostArticle />}></Route>
         </Routes>
         <Footer />

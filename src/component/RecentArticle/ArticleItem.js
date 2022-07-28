@@ -1,10 +1,22 @@
 import React from "react";
-import "./ArticleItem.css";
 import { useNavigate } from "react-router-dom";
+import "./ArticleItem.css";
 
 const ArticleItem = ({ article }) => {
+  // destructuring the article details
+  const { Title, _id, desc, author, date, popularity } = article;
+  // navigate to the article detail page
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/article/${_id}`);
+  };
+  console.log(article);
+
   return (
-    <div className=" bg-neutral shadow rounded card-parent hover:shadow-xl ease-in-out duration-300 pointer">
+    <div
+      className=" bg-neutral shadow rounded card-parent hover:shadow-xl ease-in-out duration-300 pointer"
+      onClick={() => handleClick(_id)}
+    >
       <figure className="card-img">
         <img
           className="w-full rounded-t card-image"

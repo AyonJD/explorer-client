@@ -3,8 +3,6 @@ import img1 from "../../assets/blog-img/news-1.jpg";
 import "./PopularArticle.css";
 
 const PopularArticleItem = ({ article }) => {
-  // distructuring article details
-  const { Title, Category, img, desc } = article;
   // console.log(article);
   return (
     <div>

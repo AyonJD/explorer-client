@@ -5,8 +5,8 @@ blockquote {
   margin: 50px auto;
   font-family: Open Sans;
   font-style: italic;
-  padding: 1.2em 0px 1.2em 75px;
-  border-left: 8px double gray;
+  padding: 1em 0px 1em 2em;
+  border-left: 8px double #f7a222;
   line-height: 2;
   position: relative;
 }
@@ -14,20 +14,20 @@ blockquote {
 blockquote::before {
   font-family: Arial;
   content: "\201C";
-  color: gray;
+  color: #f7a222;
   font-size: 4em;
   position: absolute;
-  left: 10px;
-  top: -10px;
+  left: 5px;
+  top: -40px;
 }
 
 blockquote::after {
   content: "";
 }
 
-blockquote span {
+/* blockquote span {
   display: block;
   font-style: normal;
   font-weight: bold;
   margin-top: 1em;
-}
+} */
