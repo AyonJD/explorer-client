@@ -182,6 +182,7 @@ const ArticleDetails = () => {
         <p className="opacity-80">{desc}</p>
         <span className="block font-bold text-2xl mt-4 ">{Category}</span>
       </blockquote>
+      <p>comment box upcoming</p>
     </section>
   );
 };
