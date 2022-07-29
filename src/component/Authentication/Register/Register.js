@@ -96,15 +96,6 @@ const Register = () => {
 
     // console.log(valueObj?.users)
 
-    // const compareUser = useMemo(() => {
-    //     return valueObj?.users.find(user => user?.userInfo?.email === authUser?.email)
-    // }, [authUser, valueObj])
-
-    // useEffect(() => {
-    //     valueObj?.setSignedInUser(compareUser?.userInfo?.photoURL)
-    // }, [compareUser, valueObj])
-
-
     return (
         <div className='mid-container lg:my-10'>
             {/* <div className='w-full flex order-2'>
