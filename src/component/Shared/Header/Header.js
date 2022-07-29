@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRightArrowLeft, faBarsProgress, faBlog, faBurger, faCartShopping, faContactBook, faHeart, faHome, faList, faListCheck, faRightFromBracket, faStar, faUser, faUserAlt, faUtensils } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightArrowLeft, faBurger, faContactBook, faHeart, faHome, faList,  faRightFromBracket, faStar, faUserAlt,} from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
-import blankUser from '../../../assets/blank user.webp'
 import Search from './Search';
 import { articleDataContext } from '../../../App';
 
@@ -18,10 +17,12 @@ const Header = ({ setDark, dark, setTheme }) => {
     const logout = () => {
         signOut(auth);
     };
-    const DBUsers = valueObj;
+    // const DBUsers = valueObj;
 
+    let userProfile = valueObj?.signedInUser?.photoURL
+    
     //FIlter with useMemo users based on firebase user
-    let filteredUsers = DBUsers?.users?.filter(userDB => userDB?.userInfo?.email === user?.email)
+    let filteredUsers = valueObj?.users?.filter(userDB => userDB?.userInfo?.email === user?.email)
 
     if (filteredUsers?.length > 0 && filteredUsers) {
         valueObj?.setSignedInUser(filteredUsers[0]?.userInfo)
@@ -100,7 +101,6 @@ const Header = ({ setDark, dark, setTheme }) => {
                 </>
                     : <Link to="/login"><button className='btn btn-sm btn-success btn-outline'>Login</button></Link>}
             </div>
-
         </div>
     );
 };

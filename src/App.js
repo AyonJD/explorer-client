@@ -79,6 +79,7 @@ function App() {
     setArticles,
     setSearchValue,
     users,
+    signedInUser,
     setSignedInUser,
     signedInUser
   };

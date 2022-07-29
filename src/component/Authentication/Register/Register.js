@@ -20,7 +20,6 @@ const Register = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
     const [authUser] = useAuthState(auth);
-    const valueObj = useContext(articleDataContext);
     // console.log(authUser?.email);
 
     if (user || gUser) {
@@ -83,7 +82,7 @@ const Register = () => {
     useEffect(() => {
         //PUT API for updating users image
         const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
-        console.log(url)
+        // console.log(url)
         fetch(url, {
             method: 'PUT',
             headers: {
