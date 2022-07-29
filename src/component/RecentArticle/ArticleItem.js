@@ -1,7 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./ArticleItem.css";
+
+
+
+
 const ArticleItem = ({ article }) => {
+
+
+  console.log(article)
+
   const goToDetails = useNavigate();
   const handleNavigate = () => {
     goToDetails(`/article/${article._id}`);
@@ -10,7 +18,7 @@ const ArticleItem = ({ article }) => {
   return (
     <div
       onClick={() => handleNavigate(article._id)}
-      className=" bg-neutral shadow rounded card-parent hover:shadow-xl ease-in-out duration-300 pointer"
+      className=" bg-neutral shadow rounded card-parent hover:shadow-xl ease-in-out duration-300 cursor-pointer"
     >
       <figure className="card-img">
         <img
@@ -21,11 +29,11 @@ const ArticleItem = ({ article }) => {
       </figure>
       <div className="card-body   p-5">
         <p className="text-warning text-sm">{article.date}</p>
-        <h1 className="text-xl font-bold text-warning mb-2 cursor-pointer hover:underline duration-300">
+        <h1 className="text-xl font-bold text-warning mb-2 duration-300 hover:text-primary">
           {article.Title}
         </h1>
         <p
-          className="text-sm text-warning hover:underline duration-300 cursor-pointer"
+          className="text-sm text-warning duration-300 "
           title={article?.desc}
         >
           {article?.desc?.slice(0, 150)}...
@@ -38,7 +46,7 @@ const ArticleItem = ({ article }) => {
             </div>
           </div>
           <div className="text-warning">
-            <h1 className="font-bold cursor-pointer">{article.author}</h1>
+            <h1 className="font-bold cursor-pointer hover:text-primary duration-300">{article?.author}</h1>
             <h1 className="text-sm">Study power CEO</h1>
           </div>
         </div>
