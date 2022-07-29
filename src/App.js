@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./component/Home/Home";
@@ -12,6 +12,8 @@ import Profile from "./Dashboard/Profile/Profile";
 import { clear } from "@testing-library/user-event/dist/clear";
 import PostArticle from "./Dashboard/PostArticle/PostArticle";
 import ArticleDetails from "./component/ArticleDetails/ArticleDetails";
+import auth from "./firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const articleDataContext = createContext();
 function App() {
@@ -19,6 +21,7 @@ function App() {
   const [searchValue, setSearchValue] = useState(null);
   const [users, setUsers] = useState([]);
   const [signedInUser, setSignedInUser] = useState(null);
+  const [authUser] = useAuthState(auth);
   useEffect(() => {
     AOS.init();
   }, []);
@@ -77,8 +80,19 @@ function App() {
     setSearchValue,
     users,
     setSignedInUser,
+    signedInUser
   };
-  console.log(signedInUser)
+  // console.log(signedInUser)
+
+  const compareUser = useMemo(() => {
+    return valueObj?.users.find(user => user?.userInfo?.email === authUser?.email)
+  }, [authUser, valueObj])
+
+  useEffect(() => {
+    setSignedInUser(compareUser?.userInfo?.photoURL)
+    // console.log(signedInUser);
+  }, [compareUser])
+
 
   return (
     <div data-theme={dark ? "dark" : "light"}>

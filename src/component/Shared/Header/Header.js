@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightArrowLeft, faBarsProgress, faBlog, faBurger, faCartShopping, faContactBook, faHeart, faHome, faList, faListCheck, faRightFromBracket, faStar, faUser, faUserAlt, faUtensils } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
@@ -14,6 +14,7 @@ const Header = ({ setDark, dark, setTheme }) => {
 
     const valueObj = useContext(articleDataContext)
     const [user] = useAuthState(auth);
+    const [userImg, setUserImg] = useState('')
     const logout = () => {
         signOut(auth);
     };
@@ -25,6 +26,12 @@ const Header = ({ setDark, dark, setTheme }) => {
     if (filteredUsers?.length > 0 && filteredUsers) {
         valueObj?.setSignedInUser(filteredUsers[0]?.userInfo)
     }
+
+    
+    useEffect(() => {
+        setUserImg(valueObj?.signedInUser?.photoURL)
+    }, [valueObj.signedInUser]);
+    // console.log(userImg)
 
 
     return (
@@ -77,7 +84,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                         <label tabIndex="1">
                             <div className="avatar p-2">
                                 <div className="w-10 rounded-full">
-                                    <img src={filteredUsers[0]?.userInfo?.photoURL} alt={user?.displayName} />
+                                    <img src={userImg} alt={user?.displayName} />
                                 </div>
                             </div>
                         </label>
