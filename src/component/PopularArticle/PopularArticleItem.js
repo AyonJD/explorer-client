@@ -42,7 +42,7 @@ const PopularArticleItem = ({ article }) => {
               </div>
               <div>
                 <h2 className="font-semibold text-sm cursor-pointer">
-                  Bithika Abhedancada
+                  {author}
                 </h2>
                 <p className="text-sm font-medium">
                   <small>Study Power CEO</small>
