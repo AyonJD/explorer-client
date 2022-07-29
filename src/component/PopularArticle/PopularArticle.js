@@ -22,8 +22,6 @@ const PopularArticle = () => {
       popularArticleArr.push(article);
     }
   });
-  // console.log(popularArticleArr);
-  // redirect to article details page
 
   return (
     <div className="mid-container">
@@ -46,8 +44,8 @@ const PopularArticle = () => {
           ))}
         </div>
         <div className="lg:w-1/4 grid  ml-5 gap-5">
-          <div class="card  bg-base-100 shadow-xl border">
-            <div class="card-body">
+          <div className="card  bg-base-100 shadow-xl border">
+            <div className="card-body">
               <h2 className="text-xl font-bold text-center"> All Category</h2>
               <ul className="pl-5 mt-5 ">
                 <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
@@ -144,8 +142,8 @@ const PopularArticle = () => {
               </ul>
             </div>
           </div>
-          <div class="card shadow-xl register-card">
-            <div class="card-body text-center">
+          <div className="card shadow-xl register-card">
+            <div className="card-body text-center">
               <h2 className="font-bold text-center text-warning ">
                 Join Membership
               </h2>
@@ -158,11 +156,11 @@ const PopularArticle = () => {
               </p>
               <button
                 onClick="/register"
-                class="btn rounded-full text-white register-btn"
+                className="btn rounded-full text-white register-btn"
               >
                 Register Now
               </button>
-              <button class="btn btn-outline  rounded-full text-warning ">
+              <button className="btn btn-outline  rounded-full text-warning ">
                 Contact Us
               </button>
             </div>
