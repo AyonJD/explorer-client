@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const PopularArticle = () => {
   const valueObj = useContext(articleDataContext);
+  const navigate = useNavigate();
   // console.log(articles);
   const countPoplular = 20;
   const popularArticle = valueObj?.articles?.map((element) => {
@@ -155,7 +156,7 @@ const PopularArticle = () => {
                 detailed description{" "}
               </p>
               <button
-                onClick="/register"
+                onClick={() => navigate("/register")}
                 className="btn rounded-full text-white register-btn"
               >
                 Register Now

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import image from '../../../assets/icon/Google.png'
@@ -6,6 +6,8 @@ import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } 
 import auth from '../../../firebase.init';
 import { async } from '@firebase/util';
 import { articleDataContext } from '../../../App';
+import useToken from '../../Hooks/useToken';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -20,7 +22,15 @@ const Register = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
     const [authUser] = useAuthState(auth);
+    const [userName, setUserName] = useState('');
+    const [token] = useToken(user, userName);
     // console.log(authUser?.email);
+
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true })
+        }
+    })
 
     if (user || gUser) {
         navigate(from, { replace: true })
@@ -37,7 +47,11 @@ const Register = () => {
 
     let userInfo = {}
     const onSubmit = async data => {
+        //set display name in state for token and update name in firebase
+        const displayName = data.displayName;
         await createUserWithEmailAndPassword(data.email, data.password);
+        setUserName(displayName);
+        await updateProfile({ displayName });
 
         userInfo = {
             email: data.email,

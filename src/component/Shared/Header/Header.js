@@ -12,6 +12,7 @@ import { articleDataContext } from '../../../App';
 const Header = ({ setDark, dark, setTheme }) => {
 
     const valueObj = useContext(articleDataContext)
+    const { setSignedInUser, users, signedInUser } = valueObj;
     const [user] = useAuthState(auth);
     const [userImg, setUserImg] = useState('')
     const logout = () => {
@@ -19,19 +20,20 @@ const Header = ({ setDark, dark, setTheme }) => {
     };
     // const DBUsers = valueObj;
 
-    let userProfile = valueObj?.signedInUser?.photoURL
+    let userProfile = signedInUser?.photoURL
 
     //FIlter with useMemo users based on firebase user
-    let filteredUsers = valueObj?.users?.filter(userDB => userDB?.userInfo?.email === user?.email)
 
-    if (filteredUsers?.length > 0 && filteredUsers) {
-        valueObj?.setSignedInUser(filteredUsers[0]?.userInfo)
-    }
 
-    
+
     useEffect(() => {
+        let filteredUsers = users?.filter(userDB => userDB?.userInfo?.email === user?.email)
+
+        if (filteredUsers?.length > 0 && filteredUsers) {
+            setSignedInUser(filteredUsers[0]?.userInfo)
+        }
         setUserImg(valueObj?.signedInUser?.photoURL)
-    }, [valueObj.signedInUser]);
+    }, [valueObj, users]);
     // console.log(userImg)
 
 
