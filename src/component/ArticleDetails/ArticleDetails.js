@@ -95,8 +95,8 @@ const ArticleDetails = () => {
     <section className="mid-container">
       <div className="flex justify-between ">
         <div className="flex items-center">
-          <div className="avatar ">
-            <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <div class="avatar ">
+            <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img
                 src="https://placeimg.com/192/192/people?fbclid=IwAR3I707HDlKOYfnctNwHpvlQjBBW6yrRafMT-7gMxgjQOQH_urWgeQgWuK4"
                 alt=""
@@ -107,14 +107,14 @@ const ArticleDetails = () => {
             <p className="antialiased  text-lg  font-normal">
               {author ? author : "MD. Mozammel Hoq 🌚"}{" "}
               <span>
-                <div className="badge badge-xs  badge-primary  ml-3 p-2">
+                <div class="badge badge-xs  badge-primary  ml-3 p-2">
                   Author
                 </div>
               </span>
             </p>
 
             <p className="text-xs mt-2 font-medium ">
-              published on : {date ? date : todayDate}
+              Published: {date ? date : todayDate}
             </p>
           </div>
         </div>
@@ -175,14 +175,14 @@ const ArticleDetails = () => {
       <p className="text-2xl font-bold text-left my-8"> {Title}</p>
       <img
         className="w-full lg:h-[70vh] md:h[50vh] sm:h[50vh] object-cover"
-        src="https://placeimg.com/192/192/people?fbclid=IwAR3I707HDlKOYfnctNwHpvlQjBBW6yrRafMT-7gMxgjQOQH_urWgeQgWuK4"
+        src={img}
         alt=""
       />
       <blockquote>
         <p className="opacity-80">{desc}</p>
         <span className="block font-bold text-2xl mt-4 ">{Category}</span>
       </blockquote>
-      <p>comment box upcoming</p>
+      <p>Comment box up-coming...</p>
     </section>
   );
 };
