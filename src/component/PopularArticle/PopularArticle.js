@@ -23,8 +23,8 @@ const PopularArticle = () => {
     }
   });
   // console.log(popularArticleArr);
+  // redirect to article details page
 
-  const navigate = useNavigate();
   return (
     <div className="mid-container">
       <div className="flex w-full items-center ">
