@@ -1,17 +1,16 @@
 import React from "react";
-import img1 from "../../assets/blog-img/news-1.jpg";
 import "./PopularArticle.css";
 
 const PopularArticleItem = ({ article }) => {
     // console.log(article);
-    
+
     return (
-        <div class="hero border-b-2 pb-5 popular-card">
-            <div class="hero-content grid lg:grid-cols-2 md:grid-cols-1 p-0 ">
+        <div className="hero border-b-2 pb-5 popular-card">
+            <div className="hero-content grid lg:grid-cols-2 md:grid-cols-1 p-0 ">
                 <div>
                     <img
-                        src={img1}
-                        class="lg:max-w-sm md:max-w-sm w-full  rounded-lg shadow-2xl"
+                        src={article.img}
+                        className="lg:max-w-sm md:max-w-sm w-full  rounded-lg shadow-2xl"
                         alt="" />
                 </div>
                 <div className="p-3 flex items-center">

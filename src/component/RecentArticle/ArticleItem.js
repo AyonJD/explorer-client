@@ -2,6 +2,7 @@ import React from 'react';
 import './ArticleItem.css';
 
 const ArticleItem = ({ article }) => {
+    // console.log(article);
     return (
         <div className=" bg-neutral shadow rounded card-parent hover:shadow-xl ease-in-out duration-300 pointer">
             <figure className='card-img'><img className='w-full h-60 rounded-t card-image' src={article.img} alt="author-img" /></figure>

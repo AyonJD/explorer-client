@@ -31,9 +31,8 @@ const ArticleDetails = () => {
   const { Title, Category, img, desc, author } = article;
   // date format for article
   const date = new Date(article.date);
-  const dateFormat = `${date.getDate()}/${
-    date.getMonth() + 1
-  }/${date.getFullYear()}`;
+  const dateFormat = `${date.getDate()}/${date.getMonth() + 1
+    }/${date.getFullYear()}`;
 
   // add article to favourite
   // const [favourite, setFavourite] = useState(false);
@@ -94,8 +93,8 @@ const ArticleDetails = () => {
     <section className="mid-container">
       <div className="flex justify-between ">
         <div className="flex items-center">
-          <div class="avatar ">
-            <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <div className="avatar ">
+            <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img
                 src="https://placeimg.com/192/192/people?fbclid=IwAR3I707HDlKOYfnctNwHpvlQjBBW6yrRafMT-7gMxgjQOQH_urWgeQgWuK4"
                 alt=""
@@ -106,7 +105,7 @@ const ArticleDetails = () => {
             <p className="antialiased  text-lg  font-normal">
               {author}{" "}
               <span>
-                <div class="badge badge-xs  badge-primary  ml-3 p-2">
+                <div className="badge badge-xs  badge-primary  ml-3 p-2">
                   Author
                 </div>
               </span>
