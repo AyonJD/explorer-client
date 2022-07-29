@@ -23,7 +23,6 @@ const PopularArticle = () => {
     }
   });
 
-  const navigate = useNavigate();
   return (
     <div className="mid-container">
       <div className="flex w-full items-center ">

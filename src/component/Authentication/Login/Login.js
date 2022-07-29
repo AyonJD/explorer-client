@@ -18,9 +18,7 @@ const Login = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
 
-    // useEffect(() => {
-    //         navigate(from, { replace: true })
-    // }, [from, navigate])
+   
 
 
     if (user || gUser) {
@@ -54,7 +52,7 @@ const Login = () => {
                                 </label>
                                 <input
                                     type="email"
-                                    placeholder="Your Email"
+                                    placeholder="Enter Your Email"
                                     className="input input-bordered focus:outline-none"
                                     {...register("email", {
                                         required: {
@@ -79,7 +77,7 @@ const Login = () => {
                                 <input
                                     autoComplete='on'
                                     type="password"
-                                    placeholder="Password"
+                                    placeholder="Enter Your Password"
                                     className="input input-bordered focus:outline-none"
                                     {...register("password", {
                                         required: {
@@ -100,7 +98,7 @@ const Login = () => {
                             {signInError}
                             <input className='btn w-full btn-primary font-bold' type="submit" value="LOGIN" />
                         </form>
-                        <p className='py-3 text-center '>New Customer?  <Link to="/register" ><span className=' link text-primary ml-1'> Create New Account</span></Link></p>
+                        <p className='py-3 text-center '>New Explorer?  <Link to="/register" ><span className=' link text-primary ml-1'> Create New Account</span></Link></p>
                         <div className="divider">OR</div>
                         <button onClick={() => signInWithGoogle()} className="btn btn-outline font-bold "> <img className='w-7 mr-2' src={image} alt="" /> Continue with google</button>
                         {socialError}

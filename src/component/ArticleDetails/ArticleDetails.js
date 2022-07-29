@@ -28,11 +28,21 @@ const ArticleDetails = () => {
       .then((data) => setArticle(data));
   }, [articleId]);
   // distructuring article details
+<<<<<<< HEAD
   const { Title, Category, img, desc, author } = article;
   // date format for article
   const date = new Date(article.date);
   const dateFormat = `${date.getDate()}/${date.getMonth() + 1
     }/${date.getFullYear()}`;
+=======
+  const { Title, Category, img, desc, author, date } = article;
+  // today's date
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, "0");
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const yyyy = today.getFullYear();
+  const todayDate = `${yyyy}-${mm}-${dd}`;
+>>>>>>> adfb935c5e1f2b8b62383586f81d063401451643
 
   // add article to favourite
   // const [favourite, setFavourite] = useState(false);
@@ -103,7 +113,7 @@ const ArticleDetails = () => {
           </div>
           <div className="ml-6">
             <p className="antialiased  text-lg  font-normal">
-              {author}{" "}
+              {author ? author : "MD. Mozammel Hoq 🌚"}{" "}
               <span>
                 <div className="badge badge-xs  badge-primary  ml-3 p-2">
                   Author
@@ -112,11 +122,42 @@ const ArticleDetails = () => {
             </p>
 
             <p className="text-xs mt-2 font-medium ">
-              published on : {dateFormat}
+              published on : {date ? date : todayDate}
             </p>
           </div>
         </div>
-        <div className="">
+        <div class=" breadcrumbs">
+          <ul>
+            <li>
+              <span>
+                <FontAwesomeIcon
+                  className="icon text-secondary ml-4 "
+                  title="Share"
+                  icon={faShareNodes}
+                />
+              </span>
+            </li>
+            <li>
+              <span>
+                <FontAwesomeIcon
+                  className="icon text-secondary ml-4"
+                  title="Copy"
+                  icon={faLink}
+                />
+              </span>
+            </li>
+            <li>
+              <span>
+                <FontAwesomeIcon
+                  className="icon text-secondary mx-4"
+                  title="More"
+                  icon={faEllipsis}
+                />
+              </span>
+            </li>
+          </ul>
+        </div>
+        {/* <div className="">
           <span>
             <FontAwesomeIcon
               className="icon text-secondary ml-4"
@@ -136,12 +177,12 @@ const ArticleDetails = () => {
               icon={faEllipsis}
             />
           </span>
-        </div>
+        </div> */}
       </div>
 
       <p className="text-2xl font-bold text-left my-8"> {Title}</p>
       <img
-        className="w-full h-[70vh]"
+        className="w-full lg:h-[70vh] md:h[50vh] sm:h[50vh] object-cover"
         src="https://placeimg.com/192/192/people?fbclid=IwAR3I707HDlKOYfnctNwHpvlQjBBW6yrRafMT-7gMxgjQOQH_urWgeQgWuK4"
         alt=""
       />
@@ -149,6 +190,7 @@ const ArticleDetails = () => {
         <p className="opacity-80">{desc}</p>
         <span className="block font-bold text-2xl mt-4 ">{Category}</span>
       </blockquote>
+      <p>comment box upcoming</p>
     </section>
   );
 };
