@@ -1,6 +1,6 @@
 import React, { useContext, } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRightArrowLeft, faBurger, faContactBook, faHeart, faHome, faList,  faRightFromBracket, faStar, faUserAlt,} from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightArrowLeft, faBurger, faContactBook, faHeart, faHome, faList, faRightFromBracket, faStar, faUserAlt, } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -19,7 +19,7 @@ const Header = ({ setDark, dark, setTheme }) => {
     // const DBUsers = valueObj;
 
     let userProfile = valueObj?.signedInUser?.photoURL
-    
+
     //FIlter with useMemo users based on firebase user
     let filteredUsers = valueObj?.users?.filter(userDB => userDB?.userInfo?.email === user?.email)
 
@@ -62,7 +62,7 @@ const Header = ({ setDark, dark, setTheme }) => {
 
             <div className="navbar-end">
                 <Search />
-                <label className="swap swap-rotate mr-2 dark-mode bg-accent hover:bg-primary ">
+                <label className="swap swap-rotate mx-2 dark-mode bg-accent hover:bg-primary ">
 
                     <input type="checkbox" onClick={() => setTheme()} />
 
