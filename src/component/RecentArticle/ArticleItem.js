@@ -8,7 +8,7 @@ import "./ArticleItem.css";
 const ArticleItem = ({ article }) => {
 
 
-  console.log(article)
+  // console.log(article)
 
   const goToDetails = useNavigate();
   const handleNavigate = () => {

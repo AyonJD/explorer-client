@@ -5,7 +5,7 @@ import "./PopularArticle.css";
 
 const PopularArticleItem = ({ article }) => {
   const { Title, Category, img, desc, author, _id } = article;
-  console.log(" popular article : ", article);
+  // console.log(" popular article : ", article);
   // redirect to article details page
   const goToDetails = useNavigate();
   const handleClick = () => {
