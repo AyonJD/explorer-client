@@ -23,7 +23,7 @@ const ArticleDetails = () => {
   // fetch article details
   const [article, setArticle] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/blogs/${articleId}`)
+    fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
   }, [articleId]);
@@ -40,7 +40,7 @@ const ArticleDetails = () => {
   // const [favourite, setFavourite] = useState(false);
   // useEffect(() => {
   //   if (user) {
-  //     fetch(`http://localhost:5000/favourite/${user.uid}`)
+  //     fetch(`https://floating-ocean-13139.herokuapp.com/favourite/${user.uid}`)
   //       .then((res) => res.json())
   //       .then((data) => {
   //         if (data.includes(articleId)) {
@@ -53,7 +53,7 @@ const ArticleDetails = () => {
   //   if (user) {
   //     if (favourite) {
   //       fetch(
-  //         `http://localhost:5000/favourite/${user.uid}`,
+  //         `https://floating-ocean-13139.herokuapp.com/favourite/${user.uid}`,
   //         {
   //           method: "DELETE",
   //           headers: {
@@ -70,7 +70,7 @@ const ArticleDetails = () => {
   //         });
   //     } else {
   //       fetch(
-  //         `http://localhost:5000/favourite/${user.uid}`,
+  //         `https://floating-ocean-13139.herokuapp.com/favourite/${user.uid}`,
   //         {
   //           method: "POST",
   //           headers: {
