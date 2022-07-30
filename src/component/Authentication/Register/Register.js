@@ -71,7 +71,7 @@ const Register = () => {
         }
         // console.log(userInfo)
         // POST API
-        fetch('http://localhost:5000/users', {
+        fetch('floating-ocean-13139.herokuapp.com/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ const Register = () => {
 
     useEffect(() => {
         //PUT API for updating users image
-        const url = `http://localhost:5000/users/${email}`
+        const url = `floating-ocean-13139.herokuapp.com/users/${email}`
         // console.log(url)
         if (email && !btnState) {
             fetch(url, {
