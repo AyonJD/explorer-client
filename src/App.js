@@ -105,7 +105,6 @@ function App() {
             path="/article/:articleId"
             element={<ArticleDetails />}
           ></Route>
-          <Route path="/post-article" element={<PostArticle />}></Route>
         </Routes>
         <Footer />
       </articleDataContext.Provider>
