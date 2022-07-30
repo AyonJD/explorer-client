@@ -71,7 +71,7 @@ const Register = () => {
         }
         // console.log(userInfo)
         // POST API
-        fetch('floating-ocean-13139.herokuapp.com/users', {
+        fetch('https://floating-ocean-13139.herokuapp.com/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ const Register = () => {
 
     useEffect(() => {
         //PUT API for updating users image
-        const url = `floating-ocean-13139.herokuapp.com/users/${email}`
+        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
         // console.log(url)
         if (email && !btnState) {
             fetch(url, {
@@ -123,7 +123,7 @@ const Register = () => {
                 })
             })
         }
-    }, [userInfo, email])
+    }, [userInfo, email, btnState])
 
     // console.log(valueObj?.users)
 

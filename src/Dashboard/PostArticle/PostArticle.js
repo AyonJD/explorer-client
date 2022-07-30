@@ -34,7 +34,7 @@ const PostArticle = () => {
 
                     }
                     //send data to db
-                    fetch(`floating-ocean-13139.herokuapp.com/blogs`, {
+                    fetch(`https://floating-ocean-13139.herokuapp.com/blogs`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
