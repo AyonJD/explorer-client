@@ -84,7 +84,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                     <div className="dropdown dropdown-end dropdown-items">
                         <label tabIndex="1">
                             <div className="avatar p-2">
-                                <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-1">
+                                <div className="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-1">
                                     <img src={userImg} alt={user?.displayName} />
                                 </div>
                             </div>
