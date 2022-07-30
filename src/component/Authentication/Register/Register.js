@@ -70,21 +70,21 @@ const Register = () => {
             photoURL: data.img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
         }
         // console.log(userInfo)
-        // POST API
-        // fetch('http://localhost:5000/users', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         userInfo
-        //     })
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         // console.log(data);
-        //     }
-        //     )
+        // PUT API
+        fetch(`http://localhost:5000/users/${data.email}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userInfo
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            }
+            )
 
     }
     // console.log(authUser?.email)
