@@ -20,9 +20,6 @@ const Login = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
 
-
-
-
     if (user || gUser) {
         navigate(from, { replace: true })
     }
@@ -78,7 +75,8 @@ const Login = () => {
                 })
             })
         }
-    }, [userInfo, email])
+    }, [userInfo, email, btnState])
+
     return (
         <div className='mid-container lg:my-10'>
             <div className='flex justify-center items-center'>
