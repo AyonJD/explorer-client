@@ -81,19 +81,18 @@ function App() {
     users,
     signedInUser,
     setSignedInUser,
-    signedInUser
   };
-  // console.log(articles)
+  // console.log(users)
 
   const compareUser = useMemo(() => {
-    return valueObj?.users.find(user => user?.userInfo?.email === authUser?.email)
-  }, [authUser, valueObj])
+    return valueObj?.users.find(user => users?.userInfo?.email === authUser?.email)
+  }, [authUser, valueObj, users])
 
   useEffect(() => {
     setSignedInUser(compareUser?.userInfo?.photoURL)
-    // console.log(signedInUser);
   }, [compareUser])
 
+  // console.log(compareUser);
 
   return (
     <div data-theme={dark ? "dark" : "light"}>

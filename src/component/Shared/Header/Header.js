@@ -20,11 +20,9 @@ const Header = ({ setDark, dark, setTheme }) => {
     };
     // const DBUsers = valueObj;
 
-    let userProfile = signedInUser?.photoURL
+    // let userProfile = signedInUser?.photoURL
 
     //FIlter with useMemo users based on firebase user
-
-
 
     useEffect(() => {
         let filteredUsers = users?.filter(userDB => userDB?.userInfo?.email === user?.email)
@@ -33,7 +31,7 @@ const Header = ({ setDark, dark, setTheme }) => {
             setSignedInUser(filteredUsers[0]?.userInfo)
         }
         setUserImg(valueObj?.signedInUser?.photoURL)
-    }, [valueObj, users]);
+    }, [valueObj, users, setSignedInUser, user]);
     // console.log(userImg)
 
 
@@ -86,7 +84,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                     <div className="dropdown dropdown-end dropdown-items">
                         <label tabIndex="1">
                             <div className="avatar p-2">
-                                <div className="w-10 rounded-full">
+                                <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-1">
                                     <img src={userImg} alt={user?.displayName} />
                                 </div>
                             </div>
