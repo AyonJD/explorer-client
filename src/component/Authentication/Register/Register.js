@@ -24,16 +24,16 @@ const Register = () => {
     const from = location.state?.from?.pathname || "/";
     const [authUser] = useAuthState(auth);
     const [userName, setUserName] = useState('');
-    // const [token] = useToken(user, userName);
+    const [token] = useToken(user || gUser, userName || gUser?.displayName);
     // console.log(authUser?.email);
 
-    // console.log(token)
+    // console.log(gUser)
 
-    // useEffect(() => {
-    //     if (token) {
-    //         navigate(from, { replace: true })
-    //     }
-    // })
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true })
+        }
+    })
 
     if (user || gUser) {
         navigate(from, { replace: true })
@@ -53,7 +53,7 @@ const Register = () => {
         setBtnState(true);
         //set display name in state for token and update name in firebase
         const displayName = data.name;
-        console.log(displayName);
+        // console.log(displayName);
         await createUserWithEmailAndPassword(data.email, data.password);
         setUserName(displayName);
         // await updateProfile( {displayName} );
@@ -70,9 +70,9 @@ const Register = () => {
             photoURL: data.img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
         }
         // console.log(userInfo)
-        // POST API
-        fetch('https://floating-ocean-13139.herokuapp.com/users', {
-            method: 'POST',
+        // PUT API
+        fetch(`https://floating-ocean-13139.herokuapp.com/users/${data.email}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
