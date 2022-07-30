@@ -24,16 +24,16 @@ const Register = () => {
     const from = location.state?.from?.pathname || "/";
     const [authUser] = useAuthState(auth);
     const [userName, setUserName] = useState('');
-    // const [token] = useToken(user, userName);
+    const [token] = useToken(user || gUser, userName || gUser?.displayName);
     // console.log(authUser?.email);
 
-    // console.log(token)
+    // console.log(gUser)
 
-    // useEffect(() => {
-    //     if (token) {
-    //         navigate(from, { replace: true })
-    //     }
-    // })
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true })
+        }
+    })
 
     if (user || gUser) {
         navigate(from, { replace: true })
@@ -53,7 +53,7 @@ const Register = () => {
         setBtnState(true);
         //set display name in state for token and update name in firebase
         const displayName = data.name;
-        console.log(displayName);
+        // console.log(displayName);
         await createUserWithEmailAndPassword(data.email, data.password);
         setUserName(displayName);
         // await updateProfile( {displayName} );
@@ -71,20 +71,20 @@ const Register = () => {
         }
         // console.log(userInfo)
         // POST API
-        fetch('http://localhost:5000/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                userInfo
-            })
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            }
-            )
+        // fetch('http://localhost:5000/users', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         userInfo
+        //     })
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         // console.log(data);
+        //     }
+        //     )
 
     }
     // console.log(authUser?.email)
