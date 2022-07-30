@@ -23,7 +23,7 @@ const ArticleDetails = () => {
   // fetch article details
   const [article, setArticle] = useState({});
   useEffect(() => {
-    fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`)
+    fetch(`http://localhost:5000/blogs/${articleId}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
   }, [articleId]);
@@ -40,7 +40,7 @@ const ArticleDetails = () => {
   // const [favourite, setFavourite] = useState(false);
   // useEffect(() => {
   //   if (user) {
-  //     fetch(`https://floating-ocean-13139.herokuapp.com/favourite/${user.uid}`)
+  //     fetch(`http://localhost:5000/favourite/${user.uid}`)
   //       .then((res) => res.json())
   //       .then((data) => {
   //         if (data.includes(articleId)) {
@@ -53,7 +53,7 @@ const ArticleDetails = () => {
   //   if (user) {
   //     if (favourite) {
   //       fetch(
-  //         `https://floating-ocean-13139.herokuapp.com/favourite/${user.uid}`,
+  //         `http://localhost:5000/favourite/${user.uid}`,
   //         {
   //           method: "DELETE",
   //           headers: {
@@ -70,7 +70,7 @@ const ArticleDetails = () => {
   //         });
   //     } else {
   //       fetch(
-  //         `https://floating-ocean-13139.herokuapp.com/favourite/${user.uid}`,
+  //         `http://localhost:5000/favourite/${user.uid}`,
   //         {
   //           method: "POST",
   //           headers: {
@@ -95,8 +95,8 @@ const ArticleDetails = () => {
     <section className="mid-container">
       <div className="flex justify-between ">
         <div className="flex items-center">
-          <div class="avatar ">
-            <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <div className="avatar ">
+            <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img
                 src="https://placeimg.com/192/192/people?fbclid=IwAR3I707HDlKOYfnctNwHpvlQjBBW6yrRafMT-7gMxgjQOQH_urWgeQgWuK4"
                 alt=""
@@ -107,7 +107,7 @@ const ArticleDetails = () => {
             <p className="antialiased  text-lg  font-normal">
               {author ? author : "MD. Mozammel Hoq 🌚"}{" "}
               <span>
-                <div class="badge badge-xs  badge-primary  ml-3 p-2">
+                <div className="badge badge-xs  badge-primary  ml-3 p-2">
                   Author
                 </div>
               </span>
@@ -118,7 +118,7 @@ const ArticleDetails = () => {
             </p>
           </div>
         </div>
-        <div class=" breadcrumbs">
+        <div className=" breadcrumbs">
           <ul>
             <li>
               <span>
