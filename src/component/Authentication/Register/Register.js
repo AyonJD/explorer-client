@@ -11,6 +11,7 @@ import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [btnState, setBtnState] = useState(false);
     const [
         createUserWithEmailAndPassword,
         user,
@@ -23,14 +24,16 @@ const Register = () => {
     const from = location.state?.from?.pathname || "/";
     const [authUser] = useAuthState(auth);
     const [userName, setUserName] = useState('');
-    const [token] = useToken(user, userName);
+    // const [token] = useToken(user, userName);
     // console.log(authUser?.email);
 
-    useEffect(() => {
-        if (token) {
-            navigate(from, { replace: true })
-        }
-    })
+    // console.log(token)
+
+    // useEffect(() => {
+    //     if (token) {
+    //         navigate(from, { replace: true })
+    //     }
+    // })
 
     if (user || gUser) {
         navigate(from, { replace: true })
@@ -47,11 +50,13 @@ const Register = () => {
 
     let userInfo = {}
     const onSubmit = async data => {
+        setBtnState(true);
         //set display name in state for token and update name in firebase
-        const displayName = data.displayName;
+        const displayName = data.name;
+        console.log(displayName);
         await createUserWithEmailAndPassword(data.email, data.password);
         setUserName(displayName);
-        await updateProfile({ displayName });
+        // await updateProfile( {displayName} );
 
         userInfo = {
             email: data.email,
@@ -66,7 +71,7 @@ const Register = () => {
         }
         // console.log(userInfo)
         // POST API
-        fetch('https://floating-ocean-13139.herokuapp.com/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -75,6 +80,11 @@ const Register = () => {
                 userInfo
             })
         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            }
+            )
 
     }
     // console.log(authUser?.email)
@@ -84,7 +94,12 @@ const Register = () => {
     userInfo = {
         email: authUser?.email,
         name: authUser?.displayName,
-        photoURL: authUser?.photoURL
+        photoURL: authUser?.photoURL,
+        role: 'user',
+        ocupation: "N/A",
+        dob: "N/A",
+        phone: "N/A",
+        address: "N/A"
     }
 
     //Handle google signing
@@ -95,18 +110,20 @@ const Register = () => {
 
     useEffect(() => {
         //PUT API for updating users image
-        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+        const url = `http://localhost:5000/users/${email}`
         // console.log(url)
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                userInfo
+        if (email && !btnState) {
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userInfo
+                })
             })
-        })
-    }, [userInfo, email, authUser])
+        }
+    }, [userInfo, email])
 
     // console.log(valueObj?.users)
 
