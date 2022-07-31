@@ -16,7 +16,7 @@ const LatestArticle = () => {
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2  gap-7 mt-14'>
 
                 {
-                    valueObj.articles.map(article => <LatestArticleItem
+                    valueObj.articles.slice(0, 3).map(article => <LatestArticleItem
                         key={article._id}
                         article={article}
                     ></LatestArticleItem>)

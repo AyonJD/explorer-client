@@ -27,15 +27,12 @@ const ArticleItem = ({ article }) => {
           alt="author-img"
         />
       </figure>
-      <div className="card-body   p-5">
+      <div className="card-body p-5">
         <p className="text-warning text-sm">{article.date}</p>
         <h1 className="text-xl font-bold text-warning mb-2 duration-300 hover:text-primary">
           {article.Title}
         </h1>
-        <p
-          className="text-sm text-warning duration-300 "
-          title={article?.desc}
-        >
+        <p className="text-sm text-warning duration-300" title={article?.desc}>
           {article?.desc?.slice(0, 150)}...
         </p>
 
