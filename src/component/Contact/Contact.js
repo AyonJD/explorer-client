@@ -1,4 +1,5 @@
 import React from 'react';
+import img from "../../assets/animation_500_l6988a4t.gif"
 
 const Contact = () => {
     return (
@@ -16,7 +17,10 @@ const Contact = () => {
             </p>
 
             <div className="flex sm:flex-nowrap flex-wrap mt-12">
-                <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+                <div>
+                    <img src={img} alt="" />
+                </div>
+                {/* <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
                     <iframe title='map' width="100%" height="100%" class="absolute inset-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37144.03679128258!2d91.0921473!3d22.87236290000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3754a4f60180b351%3A0xaf35df91820c2a37!2sMaijdee!5e1!3m2!1sen!2sbd!4v1653831893740!5m2!1sen!2sbd" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md">
                         <div className="lg:w-1/2 px-6">
@@ -30,7 +34,7 @@ const Contact = () => {
                             <p className="leading-relaxed">123-456-7890</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className=" py-10 px-8 lg:w-2/4 md:w-1/2 flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0 border border-gray-300 rounded-lg shadow-2xl">
                     <h2 className=" text-lg mb-1 font-medium title-font">Contact Us</h2>
                     <p className="leading-relaxed mb-5 text-sm text-gray-500">Post-ironic portland shabby chic echo park, banjo fashion axe</p>

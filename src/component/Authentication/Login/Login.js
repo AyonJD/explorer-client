@@ -20,12 +20,12 @@ const Login = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
 
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     if (user || gUser) {
         navigate(from, { replace: true })
     }
@@ -68,7 +68,7 @@ const Login = () => {
 
     useEffect(() => {
         //PUT API for updating users image
-        const url = `http://localhost:5000/users/${email}`
+        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
         // console.log(url)
         if (email && !btnState) {
             fetch(url, {

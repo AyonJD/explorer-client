@@ -71,7 +71,7 @@ const Register = () => {
         }
         // console.log(userInfo)
         // PUT API
-        fetch(`http://localhost:5000/users/${data.email}`, {
+        fetch(`https://floating-ocean-13139.herokuapp.com/users/${data.email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -87,7 +87,7 @@ const Register = () => {
             )
 
     }
-  
+
 
     const email = authUser?.email;
 
@@ -110,7 +110,7 @@ const Register = () => {
 
     useEffect(() => {
         //PUT API for updating users image
-        const url = `http://localhost:5000/users/${email}`
+        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
         // console.log(url)
         if (email && !btnState) {
             fetch(url, {
@@ -129,7 +129,7 @@ const Register = () => {
 
     return (
         <div className='mid-container lg:my-10'>
-           
+
             <div className='flex justify-center items-center'>
                 <div className="card flex-shrink-0 w-full lg:max-w-lg md:max-w-lg sm:max-w-lg max-w-sm shadow-2xl bg-base-100 ">
                     <div className="card-body border rounded-2xl ">
