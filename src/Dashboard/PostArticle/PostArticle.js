@@ -30,11 +30,12 @@ const PostArticle = () => {
                         tags: [data.tags],
                         desc: data.details,
                         img: img,
+                        likes: [],
                         date: new Date().toLocaleDateString(),
 
                     }
                     //send data to db
-                    fetch(`http://localhost:5000/blogs`, {
+                    fetch(`https://floating-ocean-13139.herokuapp.com/blogs`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

@@ -26,7 +26,7 @@ const ArticleDetails = () => {
   const [article, setArticle] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/blogs/${articleId}`)
+    fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
   }, [articleId, article]);
@@ -45,7 +45,7 @@ const ArticleDetails = () => {
   //Handle Like button
   const handleLike = id => {
     if (likes.includes(signedInUser?._id) === false && signedInUser?._id !== undefined) {
-      fetch(`http://localhost:5000/blogs/${id}`, {
+      fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -72,7 +72,7 @@ const ArticleDetails = () => {
   //Handle Unlike button
   const handleUnlike = id => {
     if (likes.includes(signedInUser._id)) {
-      fetch(`http://localhost:5000/blogs/${id}`, {
+      fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
