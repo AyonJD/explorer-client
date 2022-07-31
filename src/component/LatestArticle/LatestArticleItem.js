@@ -10,20 +10,20 @@ const LatestArticleItem = ({ article }) => {
   };
 
   return (
-    <div onClick={() => handleClick(_id)} class="card shadow-xl bg-neutral">
+    <div onClick={() => handleClick(_id)} className="card shadow-xl bg-neutral">
       <figure>
         <img
-          className="w-full"
-          src="https://placeimg.com/400/225/arch"
+          className="w-full h-60"
+          src={img}
           alt="blog"
         />
       </figure>
-      <div class="card-body text-warning px-5 py-8">
+      <div className="card-body text-warning px-5 py-8">
         <div className="flex justify-between items-center">
-          <div class="badge bg-primary ">Lifestyle</div>
+          <div className="badge bg-primary ">Lifestyle</div>
           <div className="text-sm">Jan 24, 2022</div>
         </div>
-        <h1 className="text-xl font-bold">{article.Title}</h1>
+        <h1 className="text-xl font-bold">{article?.Title?.slice(0, 30)}...</h1>
         <p className="text-sm">{article?.desc?.slice(0, 100)}...</p>
       </div>
     </div>

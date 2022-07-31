@@ -21,8 +21,6 @@ const LatestArticle = () => {
                         article={article}
                     ></LatestArticleItem>)
                 }
-
-
             </div>
         </div>
     );

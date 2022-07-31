@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import image from '../../../assets/icon/Google.png'
@@ -6,9 +6,12 @@ import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } 
 import auth from '../../../firebase.init';
 import { async } from '@firebase/util';
 import { articleDataContext } from '../../../App';
+import useToken from '../../Hooks/useToken';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [btnState, setBtnState] = useState(false);
     const [
         createUserWithEmailAndPassword,
         user,
@@ -20,7 +23,17 @@ const Register = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
     const [authUser] = useAuthState(auth);
+    const [userName, setUserName] = useState('');
+    const [token] = useToken(user || gUser, userName || gUser?.displayName);
     // console.log(authUser?.email);
+
+    // console.log(gUser)
+
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true })
+        }
+    })
 
     if (user || gUser) {
         navigate(from, { replace: true })
@@ -37,7 +50,13 @@ const Register = () => {
 
     let userInfo = {}
     const onSubmit = async data => {
+        setBtnState(true);
+        //set display name in state for token and update name in firebase
+        const displayName = data.name;
+        // console.log(displayName);
         await createUserWithEmailAndPassword(data.email, data.password);
+        setUserName(displayName);
+        // await updateProfile( {displayName} );
 
         userInfo = {
             email: data.email,
@@ -50,9 +69,10 @@ const Register = () => {
             address: data.address || "N/A",
             photoURL: data.img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
         }
-        
-        fetch('https://floating-ocean-13139.herokuapp.com/users', {
-            method: 'POST',
+        // console.log(userInfo)
+        // PUT API
+        fetch(`http://localhost:5000/users/${data.email}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -60,6 +80,11 @@ const Register = () => {
                 userInfo
             })
         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            }
+            )
 
     }
   
@@ -69,7 +94,12 @@ const Register = () => {
     userInfo = {
         email: authUser?.email,
         name: authUser?.displayName,
-        photoURL: authUser?.photoURL
+        photoURL: authUser?.photoURL,
+        role: 'user',
+        ocupation: "N/A",
+        dob: "N/A",
+        phone: "N/A",
+        address: "N/A"
     }
 
     //Handle google signing
@@ -80,20 +110,22 @@ const Register = () => {
 
     useEffect(() => {
         //PUT API for updating users image
-        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+        const url = `http://localhost:5000/users/${email}`
         // console.log(url)
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                userInfo
+        if (email && !btnState) {
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userInfo
+                })
             })
-        })
-    }, [userInfo, email, authUser])
+        }
+    }, [userInfo, email, btnState])
 
-   
+    // console.log(valueObj?.users)
 
     return (
         <div className='mid-container lg:my-10'>

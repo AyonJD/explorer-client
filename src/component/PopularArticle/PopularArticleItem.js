@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import img1 from "../../assets/blog-img/news-1.jpg";
 import "./PopularArticle.css";
 
 const PopularArticleItem = ({ article }) => {
   const { Title, Category, img, desc, author, _id } = article;
-  console.log(" popular article : ", article);
+  // console.log(" popular article : ", article);
   // redirect to article details page
   const goToDetails = useNavigate();
   const handleClick = () => {
@@ -15,13 +14,13 @@ const PopularArticleItem = ({ article }) => {
   return (
     <div
       onClick={() => handleClick(_id)}
-      class="hero border-b-2 pb-5 popular-card"
+      className="hero border-b-2 pb-5 popular-card"
     >
-      <div class="hero-content grid lg:grid-cols-2 md:grid-cols-1 p-0 ">
+      <div className="hero-content grid lg:grid-cols-2 md:grid-cols-1 p-0 ">
         <div>
           <img
-            src={img1}
-            class="lg:max-w-sm md:max-w-sm w-full  rounded-lg shadow-2xl"
+            src={img}
+            className="lg:max-w-sm md:max-w-sm w-full  rounded-lg shadow-2xl"
             alt=""
           />
         </div>
@@ -29,11 +28,10 @@ const PopularArticleItem = ({ article }) => {
           <div>
             <p className="text-sm">Jan 24, 2022</p>
             <h2 className="font-bold my-2 hover:text-primary duration-300 cursor-pointer">
-              Stimulation Child's Sensory and Motor Development
+              {Title}
             </h2>
             <p className="text-sm">
-              The objective of this study is to assess the findings of selected
-              articles regarding the therapeutic...
+              {desc.slice(0, 100)}...
             </p>
             <div className="flex gap-5 items-center mt-5">
               <div className="avatar">
@@ -43,7 +41,7 @@ const PopularArticleItem = ({ article }) => {
               </div>
               <div>
                 <h2 className="font-semibold text-sm cursor-pointer">
-                  Bithika Abhedancada
+                  {author}
                 </h2>
                 <p className="text-sm font-medium">
                   <small>Study Power CEO</small>

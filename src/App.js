@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./component/Home/Home";
@@ -12,6 +12,8 @@ import Profile from "./Dashboard/Profile/Profile";
 import { clear } from "@testing-library/user-event/dist/clear";
 import PostArticle from "./Dashboard/PostArticle/PostArticle";
 import ArticleDetails from "./component/ArticleDetails/ArticleDetails";
+import auth from "./firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 import Contact from "./component/Contact/Contact";
 
 const articleDataContext = createContext();
@@ -20,6 +22,7 @@ function App() {
   const [searchValue, setSearchValue] = useState(null);
   const [users, setUsers] = useState([]);
   const [signedInUser, setSignedInUser] = useState(null);
+  const [authUser] = useAuthState(auth);
   useEffect(() => {
     AOS.init();
   }, []);
@@ -28,7 +31,7 @@ function App() {
   const [dark, setDark] = useState(false);
   // localStorage.setItem('theme', dark);
   useEffect(() => {
-    fetch("https://floating-ocean-13139.herokuapp.com/theme")
+    fetch("http://localhost:5000/theme")
       .then((res) => res.json())
       .then((data) => {
         setDark(data[0].theme);
@@ -37,7 +40,7 @@ function App() {
 
   const setTheme = () => {
     fetch(
-      "https://floating-ocean-13139.herokuapp.com/theme/62d829c706b5a80f8247a020",
+      "http://localhost:5000/theme/62d829c706b5a80f8247a020",
       {
         method: "PUT",
         headers: {
@@ -56,21 +59,20 @@ function App() {
 
   // fetching all articles
   useEffect(() => {
-    fetch("https://floating-ocean-13139.herokuapp.com/blogs")
+    fetch("http://localhost:5000/blogs")
       .then((res) => res.json())
       .then((data) => setArticles(data));
   }, []);
 
   // fetching all users
   useEffect(() => {
-    fetch("https://floating-ocean-13139.herokuapp.com/users")
+    fetch("http://localhost:5000/users")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
       });
   }, []);
 
-  // console.log(users);
   const valueObj = {
     articles,
     searchValue,
@@ -80,7 +82,16 @@ function App() {
     signedInUser,
     setSignedInUser,
   };
-  // console.log(signedInUser)
+
+  const compareUser = useMemo(() => {
+    return users?.find(user => user?.userInfo?.email === authUser?.email)
+  }, [authUser, users])
+
+  // console.log(compareUser)
+  useEffect(() => {
+    setSignedInUser(compareUser)
+  }, [compareUser])
+
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
@@ -97,7 +108,6 @@ function App() {
             path="/article/:articleId"
             element={<ArticleDetails />}
           ></Route>
-          <Route path="/post-article" element={<PostArticle />}></Route>
         </Routes>
         <Footer />
       </articleDataContext.Provider>

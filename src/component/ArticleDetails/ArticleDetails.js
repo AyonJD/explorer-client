@@ -10,25 +10,33 @@ import {
   faShareNodes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import "./ArticleDetails.css";
+import { articleDataContext } from "../../App";
 
 const ArticleDetails = () => {
-  const user = useAuthState(auth);
-  // load article details by useParams
   const { articleId } = useParams();
+  const [upsertCount, setUpsertCount] = useState(false);
+  const valueObj = useContext(articleDataContext);
+  const { signedInUser } = valueObj;
+  // console.log(signedInUser._id);
+
   // fetch article details
   const [article, setArticle] = useState({});
+
   useEffect(() => {
-    fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`)
+    fetch(`http://localhost:5000/blogs/${articleId}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
   }, [articleId]);
-  // distructuring article details
-  const { Title, Category, img, desc, author, date } = article;
+
+
+  const { Title, Category, img, desc, author, date, likes } = article;
+  console.log(likes)
   // today's date
   const today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
@@ -36,67 +44,36 @@ const ArticleDetails = () => {
   const yyyy = today.getFullYear();
   const todayDate = `${yyyy}-${mm}-${dd}`;
 
-  // add article to favourite
-  // const [favourite, setFavourite] = useState(false);
-  // useEffect(() => {
-  //   if (user) {
-  //     fetch(`https://floating-ocean-13139.herokuapp.com/favourite/${user.uid}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         if (data.includes(articleId)) {
-  //           setFavourite(true);
-  //         }
-  //       });
-  //   }
-  // }, [articleId, user]);
-  // const addFavourite = () => {
-  //   if (user) {
-  //     if (favourite) {
-  //       fetch(
-  //         `https://floating-ocean-13139.herokuapp.com/favourite/${user.uid}`,
-  //         {
-  //           method: "DELETE",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({
-  //             articleId,
-  //           }),
-  //         }
-  //       )
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           setFavourite(false);
-  //         });
-  //     } else {
-  //       fetch(
-  //         `https://floating-ocean-13139.herokuapp.com/favourite/${user.uid}`,
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({
-  //             articleId,
-  //           }),
-  //         }
-  //       )
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           setFavourite(true);
-  //         });
-  //     }
-  //   }
-  // };
-
-  console.log(article);
+  //Handle Like button
+  const handleLike = id => {
+    if (likes.includes(id) === false && signedInUser) {
+      fetch(`http://localhost:5000/blogs/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          likes: [...article.likes, signedInUser._id],
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+          if (data.acknowledged && likes.includes(id)) {
+            setUpsertCount(true);
+          } else {
+            setUpsertCount(false);
+          }
+        }).catch(err => console.log(err));
+    }
+  }
 
   return (
     <section className="mid-container">
       <div className="flex justify-between ">
         <div className="flex items-center">
-          <div class="avatar ">
-            <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <div className="avatar ">
+            <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img
                 src="https://placeimg.com/192/192/people?fbclid=IwAR3I707HDlKOYfnctNwHpvlQjBBW6yrRafMT-7gMxgjQOQH_urWgeQgWuK4"
                 alt=""
@@ -107,18 +84,18 @@ const ArticleDetails = () => {
             <p className="antialiased  text-lg  font-normal">
               {author ? author : "MD. Mozammel Hoq 🌚"}{" "}
               <span>
-                <div class="badge badge-xs  badge-primary  ml-3 p-2">
+                <div className="badge badge-xs  badge-primary  ml-3 p-2">
                   Author
                 </div>
               </span>
             </p>
 
             <p className="text-xs mt-2 font-medium ">
-              published on : {date ? date : todayDate}
+              Published: {date ? date : todayDate}
             </p>
           </div>
         </div>
-        <div class=" breadcrumbs">
+        <div className=" breadcrumbs">
           <ul>
             <li>
               <span>
@@ -149,40 +126,32 @@ const ArticleDetails = () => {
             </li>
           </ul>
         </div>
-        {/* <div className="">
-          <span>
-            <FontAwesomeIcon
-              className="icon text-secondary ml-4"
-              icon={faShareNodes}
-            />
-          </span>
-          <span>
-            <FontAwesomeIcon
-              className="icon text-secondary ml-4"
-              icon={faLink}
-            />
-          </span>
-
-          <span>
-            <FontAwesomeIcon
-              className="icon text-secondary mx-4"
-              icon={faEllipsis}
-            />
-          </span>
-        </div> */}
       </div>
 
       <p className="text-2xl font-bold text-left my-8"> {Title}</p>
       <img
         className="w-full lg:h-[70vh] md:h[50vh] sm:h[50vh] object-cover"
-        src="https://placeimg.com/192/192/people?fbclid=IwAR3I707HDlKOYfnctNwHpvlQjBBW6yrRafMT-7gMxgjQOQH_urWgeQgWuK4"
+        src={img}
         alt=""
       />
+      <div className="flex items-center  mt-5">
+        <p className="text-primary mr-4">10 likes</p>
+        {
+          upsertCount ?
+            <IoMdThumbsDown className="thumbs_down h-8 w-8" />
+            :
+            <IoMdThumbsUp className="thumbs_up mr-2 h-8 w-8 cursor-pointer"
+              onClick={() => handleLike(articleId)}
+            />
+        }
+
+
+      </div>
       <blockquote>
         <p className="opacity-80">{desc}</p>
         <span className="block font-bold text-2xl mt-4 ">{Category}</span>
       </blockquote>
-      <p>comment box upcoming</p>
+      <p>Comment box up-coming...</p>
     </section>
   );
 };

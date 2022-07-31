@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import image from '../../../assets/icon/Google.png'
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [btnState, setBtnState] = useState(false);
+    const [authUser] = useAuthState(auth);
     const [
         signInWithEmailAndPassword,
         user,
@@ -18,9 +20,12 @@ const Login = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
 
-   
-
-
+    
+    
+    
+    
+    
+    
     if (user || gUser) {
         navigate(from, { replace: true })
     }
@@ -37,8 +42,47 @@ const Login = () => {
 
 
     const onSubmit = data => {
+        setBtnState(true);
         signInWithEmailAndPassword(data.email, data.password)
     }
+
+
+    const email = authUser?.email;
+    // console.log(email);
+    const userInfo = {
+        email: authUser?.email,
+        name: authUser?.displayName,
+        photoURL: authUser?.photoURL,
+        role: 'user',
+        ocupation: "N/A",
+        dob: "N/A",
+        phone: "N/A",
+        address: "N/A"
+    }
+
+    //Handle google signing
+
+    const handleGoogleSigning = async () => {
+        await signInWithGoogle();
+    }
+
+    useEffect(() => {
+        //PUT API for updating users image
+        const url = `http://localhost:5000/users/${email}`
+        // console.log(url)
+        if (email && !btnState) {
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userInfo
+                })
+            })
+        }
+    }, [userInfo, email, btnState])
+
     return (
         <div className='mid-container lg:my-10'>
             <div className='flex justify-center items-center'>
@@ -100,7 +144,7 @@ const Login = () => {
                         </form>
                         <p className='py-3 text-center '>New Explorer?  <Link to="/register" ><span className=' link text-primary ml-1'> Create New Account</span></Link></p>
                         <div className="divider">OR</div>
-                        <button onClick={() => signInWithGoogle()} className="btn btn-outline font-bold "> <img className='w-7 mr-2' src={image} alt="" /> Continue with google</button>
+                        <button onClick={handleGoogleSigning} className="btn btn-outline font-bold "> <img className='w-7 mr-2' src={image} alt="" /> Continue with google</button>
                         {socialError}
                     </div>
                 </div>

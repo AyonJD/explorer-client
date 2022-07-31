@@ -1,31 +1,34 @@
-import React, { useContext, } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRightArrowLeft, faBurger, faContactBook, faHeart, faHome, faList,  faRightFromBracket, faStar, faUserAlt,} from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightArrowLeft, faBurger, faContactBook, faHeart, faHome, faList, faRightFromBracket, faStar, faUserAlt, } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import Search from './Search';
+import logo from '../../../assets/Screenshot 2022-07-30 144339.png'
 import { articleDataContext } from '../../../App';
 
 const Header = ({ setDark, dark, setTheme }) => {
 
     const valueObj = useContext(articleDataContext)
+    const { setSignedInUser, users, signedInUser } = valueObj;
     const [user] = useAuthState(auth);
+    const [userImg, setUserImg] = useState('')
     const logout = () => {
         signOut(auth);
     };
-    // const DBUsers = valueObj;
 
-    let userProfile = valueObj?.signedInUser?.photoURL
-    
     //FIlter with useMemo users based on firebase user
-    let filteredUsers = valueObj?.users?.filter(userDB => userDB?.userInfo?.email === user?.email)
+    useEffect(() => {
+        let filteredUsers = users?.filter(userDB => userDB?.userInfo?.email === user?.email)
 
-    if (filteredUsers?.length > 0 && filteredUsers) {
-        valueObj?.setSignedInUser(filteredUsers[0]?.userInfo)
-    }
+        if (filteredUsers?.length > 0 && filteredUsers) {
+            setSignedInUser(filteredUsers[0])
+        }
+        setUserImg(signedInUser?.userInfo?.photoURL)
+    }, [valueObj, users, setSignedInUser, signedInUser, user]);
 
 
     return (
@@ -49,7 +52,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                         </li>
                     </ul>
                 </div>
-                <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link></h1>
+                <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link> </h1>
             </div>
 
             <div className="navbar-start hidden lg:flex">
@@ -62,7 +65,7 @@ const Header = ({ setDark, dark, setTheme }) => {
 
             <div className="navbar-end">
                 <Search />
-                <label className="swap swap-rotate mr-2 dark-mode bg-accent hover:bg-primary ">
+                <label className="swap swap-rotate mx-2 dark-mode bg-accent hover:bg-primary ">
 
                     <input type="checkbox" onClick={() => setTheme()} />
 
@@ -77,8 +80,8 @@ const Header = ({ setDark, dark, setTheme }) => {
                     <div className="dropdown dropdown-end dropdown-items">
                         <label tabIndex="1">
                             <div className="avatar p-2">
-                                <div className="w-10 rounded-full">
-                                    <img src={userProfile} alt={user?.displayName} />
+                                <div className="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-1">
+                                    <img src={userImg} alt={user?.displayName} />
                                 </div>
                             </div>
                         </label>
