@@ -31,9 +31,8 @@ const ArticleDetails = () => {
   const { Title, Category, img, desc, author } = article;
   // date format for article
   const date = new Date(article.date);
-  const dateFormat = `${date.getDate()}/${
-    date.getMonth() + 1
-  }/${date.getFullYear()}`;
+  const dateFormat = `${date.getDate()}/${date.getMonth() + 1
+    }/${date.getFullYear()}`;
 
   // add article to favourite
   // const [favourite, setFavourite] = useState(false);
@@ -140,7 +139,7 @@ const ArticleDetails = () => {
         </div>
       </div>
 
-      <p className="text-2xl font-bold text-left my-8"> {Title}</p>
+      <p className="text-2xl font-bold text-left my-8"> {Title} Who Are You?</p>
       <img
         className="w-full h-[70vh]"
         src="https://placeimg.com/192/192/people?fbclid=IwAR3I707HDlKOYfnctNwHpvlQjBBW6yrRafMT-7gMxgjQOQH_urWgeQgWuK4"
@@ -150,6 +149,12 @@ const ArticleDetails = () => {
         <p className="opacity-80">{desc}</p>
         <span className="block font-bold text-2xl mt-4 ">{Category}</span>
       </blockquote>
+
+      <div>
+        <p>Your Comment</p>
+        <input type="text" placeholder="Type here" class="input input-bordered input-lg w-full max-w-xs" />
+      </div>
+
     </section>
   );
 };

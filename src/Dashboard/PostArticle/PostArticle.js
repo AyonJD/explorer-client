@@ -9,7 +9,7 @@ const PostArticle = () => {
     const imageSotrageKey = `0ca5c9cdb23add3ecfaff014d8e4ad9c`
 
     const handleAddProduct = async data => {
-        const image = data.image[0]
+        const image = data.image[0];
         const url = `https://api.imgbb.com/1/upload?key=${imageSotrageKey}`
         const formData = new FormData();
         formData.append('image', image);
