@@ -14,6 +14,7 @@ import PostArticle from "./Dashboard/PostArticle/PostArticle";
 import ArticleDetails from "./component/ArticleDetails/ArticleDetails";
 import auth from "./firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
+import AllArticle from "./component/Article/AllArticle/AllArticle";
 
 const articleDataContext = createContext();
 function App() {
@@ -103,6 +104,7 @@ function App() {
           <Route path="/post-article" element={<PostArticle />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/all-article" element={<AllArticle />}></Route>
           <Route
             path="/article/:articleId"
             element={<ArticleDetails />}
