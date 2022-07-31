@@ -11,9 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
-import auth from "../../firebase.init";
 import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import "./ArticleDetails.css";
 import { articleDataContext } from "../../App";
@@ -23,7 +21,6 @@ const ArticleDetails = () => {
   const [upsertCount, setUpsertCount] = useState(false);
   const valueObj = useContext(articleDataContext);
   const { signedInUser } = valueObj;
-  // console.log(signedInUser._id);
 
   // fetch article details
   const [article, setArticle] = useState({});
@@ -32,11 +29,12 @@ const ArticleDetails = () => {
     fetch(`http://localhost:5000/blogs/${articleId}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
-  }, [articleId]);
+  }, [articleId, article]);
 
 
   const { Title, Category, img, desc, author, date, likes } = article;
-  console.log(likes)
+  // console.log(likes)
+
   // today's date
   const today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
@@ -46,7 +44,7 @@ const ArticleDetails = () => {
 
   //Handle Like button
   const handleLike = id => {
-    if (likes.includes(id) === false && signedInUser) {
+    if (likes.includes(signedInUser?._id) === false && signedInUser?._id !== undefined) {
       fetch(`http://localhost:5000/blogs/${id}`, {
         method: "PUT",
         headers: {
@@ -58,7 +56,33 @@ const ArticleDetails = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
+          // console.log(data)
+          if (data.acknowledged && likes.includes(id)) {
+            setUpsertCount(true);
+          } else {
+            setUpsertCount(false);
+          }
+        }).catch(err => console.log(err));
+    }
+    else {
+      alert("Please login to like this article")
+    }
+  }
+
+  //Handle Unlike button
+  const handleUnlike = id => {
+    if (likes.includes(signedInUser._id)) {
+      fetch(`http://localhost:5000/blogs/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          likes: likes?.filter(like => like !== signedInUser._id),
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
           if (data.acknowledged && likes.includes(id)) {
             setUpsertCount(true);
           } else {
@@ -135,10 +159,12 @@ const ArticleDetails = () => {
         alt=""
       />
       <div className="flex items-center  mt-5">
-        <p className="text-primary mr-4">10 likes</p>
+        <p className="text-primary mr-4">{likes?.length} likes</p>
         {
-          upsertCount ?
-            <IoMdThumbsDown className="thumbs_down h-8 w-8" />
+          likes?.includes(signedInUser?._id) || upsertCount ?
+            <IoMdThumbsDown className="thumbs_down h-8 w-8 cursor-pointer"
+              onClick={() => handleUnlike(articleId)}
+            />
             :
             <IoMdThumbsUp className="thumbs_up mr-2 h-8 w-8 cursor-pointer"
               onClick={() => handleLike(articleId)}
