@@ -44,7 +44,7 @@ const ArticleDetails = () => {
 
   //Handle Like button
   const handleLike = id => {
-    if (likes.includes(signedInUser._id) === false) {
+    if (likes.includes(signedInUser?._id) === false && signedInUser?._id !== undefined) {
       fetch(`http://localhost:5000/blogs/${id}`, {
         method: "PUT",
         headers: {
@@ -63,6 +63,9 @@ const ArticleDetails = () => {
             setUpsertCount(false);
           }
         }).catch(err => console.log(err));
+    }
+    else {
+      alert("Please login to like this article")
     }
   }
 
