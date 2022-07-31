@@ -1,5 +1,5 @@
 import React from 'react';
-import img from "../../assets/banner-img/freelancer.png"
+import img from "../../assets/banner-img/animation_640_l69d6up0.gif"
 import './Banner.css'
 
 const Banner = () => {
@@ -11,12 +11,12 @@ const Banner = () => {
                         <div className='flex justify-center items-center'>
                             <div className='lg:text-start md:text-start sm:text-center text-center pt-12'>
                                 <span className='bg-neutral p-2 rounded-xl text-warning border-primary border'><button className="btn btn-xs btn-primary">New</button> Becoming a new Program Online</span>
-                                <h1 className='lg:text-5xl md:text-5xl sm:text-5xl text-3xl font-bold my-5 '>Find the Best Article Online for your Thesis</h1>
+                                <h1 className='lg:text-5xl md:text-4xl sm:text-5xl text-3xl font-bold my-5 '>Find the Best Article Online for your Thesis</h1>
                                 <p className='text-sm lg:hidden md:hidden'>The right source of knowledge can be powerful professional growth, dark up right three</p>
                             </div>
                         </div>
-                        <div className='flex justify-end items-center'>
-                            <img src={img} alt="" />
+                        <div className='flex justify-end items-center w-full'>
+                            <img className='w-full' src={img} alt="" />
                         </div>
                     </div>
 
