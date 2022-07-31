@@ -19,21 +19,16 @@ const Header = ({ setDark, dark, setTheme }) => {
     const logout = () => {
         signOut(auth);
     };
-    // const DBUsers = valueObj;
-
-    // let userProfile = signedInUser?.photoURL
 
     //FIlter with useMemo users based on firebase user
-
     useEffect(() => {
         let filteredUsers = users?.filter(userDB => userDB?.userInfo?.email === user?.email)
 
         if (filteredUsers?.length > 0 && filteredUsers) {
-            setSignedInUser(filteredUsers[0]?.userInfo)
+            setSignedInUser(filteredUsers[0])
         }
-        setUserImg(valueObj?.signedInUser?.photoURL)
-    }, [valueObj, users, setSignedInUser, user]);
-    // console.log(userImg)
+        setUserImg(signedInUser?.userInfo?.photoURL)
+    }, [valueObj, users, setSignedInUser, signedInUser, user]);
 
 
     return (
