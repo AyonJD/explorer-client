@@ -93,6 +93,16 @@ function App() {
   }, [compareUser])
 
 
+  const compareUser = useMemo(() => {
+    return valueObj?.users.find(user => user?.userInfo?.email === authUser?.email)
+  }, [authUser, valueObj])
+
+  useEffect(() => {
+    setSignedInUser(compareUser?.userInfo?.photoURL)
+    // console.log(signedInUser);
+  }, [compareUser])
+
+
   return (
     <div data-theme={dark ? "dark" : "light"}>
       <articleDataContext.Provider value={valueObj}>
