@@ -7,6 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import Search from './Search';
+import logo from '../../../assets/Screenshot 2022-07-30 144339.png'
 import { articleDataContext } from '../../../App';
 
 const Header = ({ setDark, dark, setTheme }) => {
@@ -56,7 +57,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                         </li>
                     </ul>
                 </div>
-                <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link></h1>
+                <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link> </h1>
             </div>
 
             <div className="navbar-start hidden lg:flex">
