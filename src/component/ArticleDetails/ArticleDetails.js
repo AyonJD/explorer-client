@@ -29,12 +29,12 @@ const ArticleDetails = () => {
     fetch(`http://localhost:5000/blogs/${articleId}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
-  }, [articleId]);
+  }, [articleId, article]);
 
 
   const { Title, Category, img, desc, author, date, likes } = article;
   // console.log(likes)
-  
+
   // today's date
   const today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
@@ -80,11 +80,10 @@ const ArticleDetails = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
           if (data.acknowledged && likes.includes(id)) {
-            setUpsertCount(false);
-          } else {
             setUpsertCount(true);
+          } else {
+            setUpsertCount(false);
           }
         }).catch(err => console.log(err));
     }
