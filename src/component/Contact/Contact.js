@@ -1,4 +1,7 @@
 import React from 'react';
+import { MdOutgoingMail } from "react-icons/md";
+import {TbPhoneCall } from "react-icons/tb";
+
 
 const Contact = () => {
     return (
@@ -15,9 +18,9 @@ const Contact = () => {
                             </div>
                             <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
                                 <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
-                                <a className="text-indigo-500 leading-relaxed">explorer@gmail.com</a>
+                                <a className="text-indigo-500 leading-relaxed"><MdOutgoingMail></MdOutgoingMail>explorer@gmail.com</a>
                                 <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
-                                <p className="leading-relaxed">123-456-7890</p>
+                                <p className="leading-relaxed"><TbPhoneCall></TbPhoneCall>123-456-7890</p>
                             </div>
                         </div>
                     </div>
