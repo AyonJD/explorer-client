@@ -56,7 +56,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                 <ul className="menu menu-horizontal p-0">
                     <li className='mr-1 hover:text-primary'><Link to='/'>Home</Link></li>
                     <li className='mr-1 hover:text-primary'><Link to='/about'>About</Link></li>
-                    <li className='mr-2 hover:text-primary'><Link to='/contact'>Contact</Link></li>
+                    <li className='mr-2 hover:text-primary'><Link to='/contact'>Contact Us</Link></li>
                 </ul>
             </div>
 

@@ -50,8 +50,7 @@ const Register = () => {
             address: data.address || "N/A",
             photoURL: data.img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
         }
-        // console.log(userInfo)
-        // POST API
+        
         fetch('https://floating-ocean-13139.herokuapp.com/users', {
             method: 'POST',
             headers: {
@@ -63,10 +62,10 @@ const Register = () => {
         })
 
     }
-    // console.log(authUser?.email)
+  
 
     const email = authUser?.email;
-    // console.log(email);
+
     userInfo = {
         email: authUser?.email,
         name: authUser?.displayName,
@@ -94,22 +93,11 @@ const Register = () => {
         })
     }, [userInfo, email, authUser])
 
-    // console.log(valueObj?.users)
-
-    // const compareUser = useMemo(() => {
-    //     return valueObj?.users.find(user => user?.userInfo?.email === authUser?.email)
-    // }, [authUser, valueObj])
-
-    // useEffect(() => {
-    //     valueObj?.setSignedInUser(compareUser?.userInfo?.photoURL)
-    // }, [compareUser, valueObj])
-
+   
 
     return (
         <div className='mid-container lg:my-10'>
-            {/* <div className='w-full flex order-2'>
-                <img className='w-full shrink-0' src={image} alt="" />
-            </div> */}
+           
             <div className='flex justify-center items-center'>
                 <div className="card flex-shrink-0 w-full lg:max-w-lg md:max-w-lg sm:max-w-lg max-w-sm shadow-2xl bg-base-100 ">
                     <div className="card-body border rounded-2xl ">
