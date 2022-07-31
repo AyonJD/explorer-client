@@ -81,17 +81,15 @@ function App() {
     users,
     signedInUser,
     setSignedInUser,
-    signedInUser
   };
-  // console.log(articles)
 
   const compareUser = useMemo(() => {
-    return valueObj?.users.find(user => user?.userInfo?.email === authUser?.email)
-  }, [authUser, valueObj])
+    return users?.find(user => user?.userInfo?.email === authUser?.email)
+  }, [authUser, users])
 
+  // console.log(compareUser)
   useEffect(() => {
-    setSignedInUser(compareUser?.userInfo?.photoURL)
-    // console.log(signedInUser);
+    setSignedInUser(compareUser)
   }, [compareUser])
 
 

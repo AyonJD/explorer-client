@@ -10,25 +10,33 @@ import {
   faShareNodes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import "./ArticleDetails.css";
+import { articleDataContext } from "../../App";
 
 const ArticleDetails = () => {
-  const user = useAuthState(auth);
-  // load article details by useParams
   const { articleId } = useParams();
+  const [upsertCount, setUpsertCount] = useState(false);
+  const valueObj = useContext(articleDataContext);
+  const { signedInUser } = valueObj;
+  // console.log(signedInUser._id);
+
   // fetch article details
   const [article, setArticle] = useState({});
+
   useEffect(() => {
     fetch(`http://localhost:5000/blogs/${articleId}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
   }, [articleId]);
-  // distructuring article details
-  const { Title, Category, img, desc, author, date } = article;
+
+
+  const { Title, Category, img, desc, author, date, likes } = article;
+  console.log(likes)
   // today's date
   const today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
@@ -36,60 +44,29 @@ const ArticleDetails = () => {
   const yyyy = today.getFullYear();
   const todayDate = `${yyyy}-${mm}-${dd}`;
 
-  // add article to favourite
-  // const [favourite, setFavourite] = useState(false);
-  // useEffect(() => {
-  //   if (user) {
-  //     fetch(`http://localhost:5000/favourite/${user.uid}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         if (data.includes(articleId)) {
-  //           setFavourite(true);
-  //         }
-  //       });
-  //   }
-  // }, [articleId, user]);
-  // const addFavourite = () => {
-  //   if (user) {
-  //     if (favourite) {
-  //       fetch(
-  //         `http://localhost:5000/favourite/${user.uid}`,
-  //         {
-  //           method: "DELETE",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({
-  //             articleId,
-  //           }),
-  //         }
-  //       )
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           setFavourite(false);
-  //         });
-  //     } else {
-  //       fetch(
-  //         `http://localhost:5000/favourite/${user.uid}`,
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({
-  //             articleId,
-  //           }),
-  //         }
-  //       )
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           setFavourite(true);
-  //         });
-  //     }
-  //   }
-  // };
-
-  console.log(article);
+  //Handle Like button
+  const handleLike = id => {
+    if (likes.includes(id) === false && signedInUser) {
+      fetch(`http://localhost:5000/blogs/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          likes: [...article.likes, signedInUser._id],
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+          if (data.acknowledged && likes.includes(id)) {
+            setUpsertCount(true);
+          } else {
+            setUpsertCount(false);
+          }
+        }).catch(err => console.log(err));
+    }
+  }
 
   return (
     <section className="mid-container">
@@ -149,27 +126,6 @@ const ArticleDetails = () => {
             </li>
           </ul>
         </div>
-        {/* <div className="">
-          <span>
-            <FontAwesomeIcon
-              className="icon text-secondary ml-4"
-              icon={faShareNodes}
-            />
-          </span>
-          <span>
-            <FontAwesomeIcon
-              className="icon text-secondary ml-4"
-              icon={faLink}
-            />
-          </span>
-
-          <span>
-            <FontAwesomeIcon
-              className="icon text-secondary mx-4"
-              icon={faEllipsis}
-            />
-          </span>
-        </div> */}
       </div>
 
       <p className="text-2xl font-bold text-left my-8"> {Title}</p>
@@ -178,6 +134,19 @@ const ArticleDetails = () => {
         src={img}
         alt=""
       />
+      <div className="flex items-center  mt-5">
+        <p className="text-primary mr-4">10 likes</p>
+        {
+          upsertCount ?
+            <IoMdThumbsDown className="thumbs_down h-8 w-8" />
+            :
+            <IoMdThumbsUp className="thumbs_up mr-2 h-8 w-8 cursor-pointer"
+              onClick={() => handleLike(articleId)}
+            />
+        }
+
+
+      </div>
       <blockquote>
         <p className="opacity-80">{desc}</p>
         <span className="block font-bold text-2xl mt-4 ">{Category}</span>
