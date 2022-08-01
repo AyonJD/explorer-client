@@ -4,6 +4,10 @@ import LatestArticleItem from './LatestArticleItem';
 
 const LatestArticle = () => {
     const valueObj = useContext(articleDataContext);
+    const { users, signedInUser } = valueObj;
+    console.log(users);
+    // const userCheck = users.userInfo.address;
+    // console.log(userCheck);
 
     return (
         <div className='mid-container'>
