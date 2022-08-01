@@ -43,7 +43,7 @@ const AllArticle = () => {
                 <button
                     key={number}
                     onClick={() => setPageNumber(number)}
-                    className={"btn mx-1 text-xs md:text-base"}
+                    className={"w-full text-xs md:text-lg font-bold"}
                     href
                 >
                     {number}
@@ -56,23 +56,23 @@ const AllArticle = () => {
         <div class="pagination_container container mx-auto">
             <ul class="pagination">
                 <li>
-                    <button disabled={pageNumber === 1 && true} onClick={() => setPageNumber(pageNumber - 1)} class="btn btn-outline mx-2">Previous</button>
+                    <button disabled={pageNumber === 1 && true} onClick={() => setPageNumber(pageNumber - 1)} class="btn bg-transparent outline-0 border-none mx-2">PRE</button>
                 </li>
                 {
                     button.slice(0, 2).map(user => user)
                 }
-                <li>
+                {/* <li> */}
                     <button>.....</button>
-                </li>
+                {/* </li> */}
                 {
                     pageNumber > 2 &&
                     <li>
-                        <button className={`btn mx-1 text-xs md:text-base ${active ? "btn-primary" : ""}`}>{pageNumber} </button>
+                        <button className={` mx-1 text-xs md:text-base ${active ? "btn-primary" : ""}`}>{pageNumber} </button>
                     </li>
                 }
 
                 <li>
-                    <button onClick={() => setPageNumber(pageNumber + 1)} class="btn btn-outline">Next</button>
+                    <button onClick={() => setPageNumber(pageNumber + 1)} class="btn bg-transparent outline-0 border-none mx-2">NEX</button>
                 </li>
 
                 <div>

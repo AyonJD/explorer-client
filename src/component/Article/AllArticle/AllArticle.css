@@ -3,6 +3,7 @@
 .pagination_container {
     background: #dde1e7;
     padding: 25px;
+    width: 50vw;
     border-radius: 3px;
     box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
 }
@@ -13,7 +14,9 @@
 }
 
 .pagination li {
+    width: fit-content !important;
     flex: 1;
+    text-align: center;
     margin: 0px 5px;
     background: #dde1e7;
     border-radius: 3px;
@@ -25,11 +28,13 @@
 }
 
 .pagination li button {
+    display: block;
+    margin: 0 auto;
     font-size: 18px;
     text-decoration: none;
     color: #4d3252;
     height: 45px;
-    width: fit-content;
+    width: 100%;
     display: block;
     line-height: 45px;
     font-family: "Poppins", sans-serif;
@@ -40,13 +45,13 @@
     color: #6f6cde;
 }
 
-.pagination li:first-child button {
+/* .pagination li:first-child button {
     width: 120px;
 }
 
 .pagination li:last-child button {
     width: 100px;
-}
+} */
 
 .pagination li.active {
     box-shadow: inset -3px -3px 7px #ffffff73,
@@ -54,8 +59,8 @@
 }
 
 .pagination li.active button {
-    font-size: 17px;
-    color: #6f6cde;
+    /* font-size: 17px;
+    color: #6f6cde; */
 }
 
 .pagination li:first-child {
