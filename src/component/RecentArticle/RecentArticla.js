@@ -16,7 +16,7 @@ const RecentArticla = () => {
             <p className='text-sm mt-2'>Popular articles are selected based on the number of readers</p>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 mt-10 gap-7 ">
                 {
-                    articleCopy.reverse().slice(0, 3).map(article => <ArticleItem
+                    articleCopy?.reverse().slice(0, 3).map(article => <ArticleItem
                         key={article._id}
                         article={article}
                     ></ArticleItem>)

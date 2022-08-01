@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic);
+
 blockquote {
   font-size: 1.2em;
   width: 100%;
@@ -31,3 +32,10 @@ blockquote::after {
   font-weight: bold;
   margin-top: 1em;
 } */
+
+.thumbs_up {
+  color: green !important;
+}
+.thumbs_down {
+  color: red !important;
+}

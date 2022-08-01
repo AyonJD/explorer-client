@@ -4,7 +4,8 @@ h1 {
   font-family: 'Playfair Display', serif;
 }
 
-h2, p {
+h2,
+p {
   font-family: 'Poppins', sans-serif;
 }
 
@@ -19,4 +20,12 @@ h2, p {
   .mid-container {
     padding: 1rem;
   }
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  -ms-overflow-style: none;
 }

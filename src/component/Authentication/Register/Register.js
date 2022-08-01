@@ -1,13 +1,17 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import image from '../../../assets/icon/Google.png'
 import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { async } from '@firebase/util';
+import { articleDataContext } from '../../../App';
+import useToken from '../../Hooks/useToken';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [btnState, setBtnState] = useState(false);
     const [
         createUserWithEmailAndPassword,
         user,
@@ -19,7 +23,17 @@ const Register = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
     const [authUser] = useAuthState(auth);
-    console.log(authUser?.email);
+    const [userName, setUserName] = useState('');
+    const [token] = useToken(user || gUser, userName || gUser?.displayName);
+    // console.log(authUser?.email);
+
+    // console.log(gUser)
+
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true })
+        }
+    })
 
     if (user || gUser) {
         navigate(from, { replace: true })
@@ -36,7 +50,13 @@ const Register = () => {
 
     let userInfo = {}
     const onSubmit = async data => {
+        setBtnState(true);
+        //set display name in state for token and update name in firebase
+        const displayName = data.name;
+        // console.log(displayName);
         await createUserWithEmailAndPassword(data.email, data.password);
+        setUserName(displayName);
+        // await updateProfile( {displayName} );
 
         userInfo = {
             email: data.email,
@@ -50,37 +70,8 @@ const Register = () => {
             photoURL: data.img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
         }
         // console.log(userInfo)
-        // POST API
-        fetch('https://floating-ocean-13139.herokuapp.com/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                userInfo
-            })
-        })
-
-    }
-    // console.log(authUser?.email)
-
-    const email = authUser?.email;
-    console.log(email);
-    userInfo = {
-        email: authUser?.email,
-        name: authUser?.displayName,
-        photoURL: authUser?.photoURL
-    }
-
-    //Handle google signing
-
-    const handleGoogleSigning = async () => {
-        await signInWithGoogle();
-
-        //PUT API for updating users image
-        const url = `http://localhost:5000/users/${email}`
-        console.log(url)
-        fetch(url, {
+        // PUT API
+        fetch(`https://floating-ocean-13139.herokuapp.com/users/${data.email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -89,15 +80,56 @@ const Register = () => {
                 userInfo
             })
         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            }
+            )
+
     }
 
 
+    const email = authUser?.email;
+
+    userInfo = {
+        email: authUser?.email,
+        name: authUser?.displayName,
+        photoURL: authUser?.photoURL,
+        role: 'user',
+        ocupation: "N/A",
+        dob: "N/A",
+        phone: "N/A",
+        address: "N/A"
+    }
+
+    //Handle google signing
+
+    const handleGoogleSigning = async () => {
+        await signInWithGoogle();
+    }
+
+    useEffect(() => {
+        //PUT API for updating users image
+        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+        // console.log(url)
+        if (email && !btnState) {
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userInfo
+                })
+            })
+        }
+    }, [userInfo, email, btnState])
+
+    // console.log(valueObj?.users)
 
     return (
         <div className='mid-container lg:my-10'>
-            {/* <div className='w-full flex order-2'>
-                <img className='w-full shrink-0' src={image} alt="" />
-            </div> */}
+
             <div className='flex justify-center items-center'>
                 <div className="card flex-shrink-0 w-full lg:max-w-lg md:max-w-lg sm:max-w-lg max-w-sm shadow-2xl bg-base-100 ">
                     <div className="card-body border rounded-2xl ">
