@@ -15,15 +15,18 @@ import { useParams } from "react-router-dom";
 import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import "./ArticleDetails.css";
 import { articleDataContext } from "../../App";
+import Comment from "./Comment/Comment";
 
 const ArticleDetails = () => {
   const { articleId } = useParams();
   const [upsertCount, setUpsertCount] = useState(false);
   const valueObj = useContext(articleDataContext);
   const { signedInUser } = valueObj;
+  // console.log(signedInUser);
 
   // fetch article details
   const [article, setArticle] = useState({});
+  console.log(article);
 
   useEffect(() => {
     fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`)
@@ -32,7 +35,7 @@ const ArticleDetails = () => {
   }, [articleId, article]);
   // console.log(articleId);
 
-  const { Title, Category, img, desc, author, date, likes } = article;
+  const { Title, Category, img, desc, author, date, likes, comments } = article;
   // console.log(likes)
 
   // today's date
@@ -101,7 +104,29 @@ const ArticleDetails = () => {
     e.preventDefault();
     // input value
     const comment = e.target.comment.value;
-    console.log(comment);
+    // console.log(comment);
+    // clear input value
+    e.target.comment.value = "";
+    // send comment to server with user info
+    fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        comments: [...article.comments, { comment, author: signedInUser }],
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          setUpsertCount(true);
+        } else {
+          setUpsertCount(false);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -189,6 +214,12 @@ const ArticleDetails = () => {
           <p className="opacity-80">{desc}</p>
           <span className="block font-bold text-2xl mt-4 ">{Category}</span>
         </blockquote>
+      </section>
+      comment show in ui
+      <section>
+        {comments?.map((comment) => (
+          <Comment comment={comment}></Comment>
+        ))}
       </section>
       <section>
         <form
