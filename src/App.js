@@ -16,6 +16,7 @@ import auth from "./firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Contact from "./component/Contact/Contact";
 
+
 const articleDataContext = createContext();
 function App() {
   const [articles, setArticles] = useState([]);
@@ -97,7 +98,7 @@ function App() {
     <div data-theme={dark ? "dark" : "light"}>
       <articleDataContext.Provider value={valueObj}>
         <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
-        <Routes  preserverScrollPosition={false}>
+        <Routes preserverScrollPosition={false}>
           <Route path="/" element={<Home />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/post-article" element={<PostArticle />}></Route>
