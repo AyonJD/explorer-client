@@ -21,8 +21,8 @@ const RecentArticla = () => {
             </div>
             <p className='text-sm mt-2'>Recent articles are selected based on update published</p>
             <div className="mt-10 lg:flex md:flex">
-                <div className='lg:w-[70%] pr-10 py-5 border-r-[1px]'>
-                    <div className=" grid grid-cols-2 gap-7 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
+                <div className='lg:w-[70%] lg:pr-10 md:pr-5 lg:py-5 md:py-5 lg:border-r-[1px] md:border-r-[1px]'>
+                    <div className=" grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 gap-7 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
                         {articles.slice(3, 5).map((article) => (
                             <ArticleItem
                                 key={article._id}
@@ -31,7 +31,7 @@ const RecentArticla = () => {
                         ))}
                     </div>
 
-                    <div className="mt-5 grid grid-cols-2 gap-x-7 gap-y-4">
+                    <div className="mt-5 grid lg:grid-cols-2 md:grid-cols-2 gap-x-7 gap-y-4">
                         {articles.slice(0, 6).map((article) => (
                             <RecentArticleItems
                                 key={article._id}
@@ -40,7 +40,7 @@ const RecentArticla = () => {
                         ))}
                     </div>
                 </div>
-                <div className="lg:w-[30%] grid  ml-5">
+                <div className="lg:w-[30%] grid  lg:ml-5 md:ml-5 mt-10 lg:mt-0 md:mt-0">
                     <div>
                         <h2 className='bg-black text-white py-2 pl-3 rounded'>OUR PICKS</h2>
                     </div>
@@ -52,7 +52,7 @@ const RecentArticla = () => {
                             ></RecentArticleRight>
                         ))}
                     </div>
-                    <div className='mt-3'>
+                    <div className='mt-3 grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-x-5'>
                         <div className=' flex items-center justify-between bg-[#1a6dd4] rounded pr-3 mb-3'>
                             <span className='font-bold text-white h-10 w-10 bg-[#1865c5] flex items-center rounded justify-center'><ImFacebook /></span>
                             <h2 className='font-semibold text-white'>Facebook</h2>
