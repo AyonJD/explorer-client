@@ -30,6 +30,7 @@ const PostArticle = () => {
                         tags: [data.tags],
                         desc: data.details,
                         img: img,
+                        likes: [],
                         date: new Date().toLocaleDateString(),
 
                     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const RecentArticleItems = ({ article }) => {
+const RecentArticleRight = ({article}) => {
 
     const goToDetails = useNavigate();
     const handleNavigate = () => {
@@ -10,7 +10,7 @@ const RecentArticleItems = ({ article }) => {
 
     return (
         <div
-            className='flex items-center gap-3'
+            className='flex items-center gap-3 border-b-[1px] py-3'
             onClick={() => handleNavigate(article._id)}>
             <div className='w-[35%]'>
                 <img className='w-full h-20' src={article.img} alt={article.img} />
@@ -23,4 +23,4 @@ const RecentArticleItems = ({ article }) => {
     );
 };
 
-export default RecentArticleItems;
+export default RecentArticleRight;
