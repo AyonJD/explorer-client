@@ -18,35 +18,23 @@ const ArticleItem = ({ article }) => {
   return (
     <div
       onClick={() => handleNavigate(article._id)}
-      className=" bg-neutral shadow rounded card-parent hover:shadow-xl ease-in-out duration-300 cursor-pointer"
+      className=" rounded card-parent  ease-in-out duration-300 cursor-pointer"
     >
-      <figure className="card-img">
+      <figure className="card-img w-full">
         <img
-          className="w-full h-60 rounded-t card-image"
+          className="w-full h-52 rounded-t card-image"
           src={article.img}
           alt="author-img"
         />
       </figure>
-      <div className="card-body p-5">
-        <p className="text-warning text-sm">{article.date}</p>
-        <h1 className="text-xl font-bold text-warning mb-2 duration-300 hover:text-primary">
-          {article.Title}
-        </h1>
-        <p className="text-sm text-warning duration-300" title={article?.desc}>
-          {article?.desc?.slice(0, 150)}...
+      <div className="card-body p-0">
+        <h2 className="h-12 font-semibold hover:text-primary mt-2">
+          {article.Title.slice(0, 50)}...
+        </h2>
+        <p className="text-xs">By <span className="text-primary">{article.author}</span> - January 10, 2021</p>
+        <p className="text-sm font-normal" title={article?.desc}>
+          {article?.desc?.slice(0, 70)}...
         </p>
-
-        <div className="flex items-center gap-5 mt-2 pb-3">
-          <div className="avatar ">
-            <div className="w-12 mt-2 rounded-full ring ring-primary ring-offset-base-100 ">
-              <img src="https://placeimg.com/192/192/people" alt="" />
-            </div>
-          </div>
-          <div className="text-warning">
-            <h1 className="font-bold cursor-pointer hover:text-primary duration-300">{article?.author}</h1>
-            <h1 className="text-sm">Study power CEO</h1>
-          </div>
-        </div>
       </div>
     </div>
   );
