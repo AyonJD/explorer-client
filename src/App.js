@@ -83,7 +83,7 @@ function App() {
     signedInUser,
     setSignedInUser,
   };
-
+  // console.log(articles);
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)
   }, [authUser, users])
