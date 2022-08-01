@@ -1,0 +1,45 @@
+
+.start-btn{
+    background: linear-gradient(to right, #ff0300 0%, #ff8f00 100%);
+    display: inline-block;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 14px 40px;
+    font-weight: 400;
+    overflow: hidden;
+    border-radius: 6px;
+    text-transform: capitalize;
+    transition: .5s !important;
+    margin-right: 10px;
+}
+.start-btn:hover{
+    background: linear-gradient(to left, #ff0300 0%, #ff8f00 100%);
+}
+
+.contact-btn{
+    font-size: 16px;
+    color: #ffffff;
+    padding: 14px 30px;
+    font-weight: 400;
+    overflow: hidden;
+    background: linear-gradient(to right, #00bbff 0%, #006aff 100%);
+    border-radius: 6px;
+    text-transform: capitalize;
+    transition: .5s;
+}
+.contact-btn:hover{
+    background: linear-gradient(to left, #00bbff 0%, #006aff 100%);
+}
+.banner-img img{
+    width: 900px;
+}
+
+.icon-box::before{
+    position: absolute;
+    content: '';
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: url(../../assets/About\ Page) no-repeat;
+}
