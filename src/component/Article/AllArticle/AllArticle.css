@@ -20,22 +20,31 @@
     box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
 }
 
-.pagination li a {
+.pagination li.active {
+    box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgb(94 104 121 / 29%);
+}
+
+.pagination li button {
     font-size: 18px;
     text-decoration: none;
     color: #4d3252;
     height: 45px;
-    width: 55px;
+    width: fit-content;
     display: block;
     line-height: 45px;
     font-family: "Poppins", sans-serif;
 }
 
-.pagination li:first-child a {
+.pagination li.active button {
+    font-size: 17px;
+    color: #6f6cde;
+}
+
+.pagination li:first-child button {
     width: 120px;
 }
 
-.pagination li:last-child a {
+.pagination li:last-child button {
     width: 100px;
 }
 
@@ -44,7 +53,7 @@
         inset 3px 3px 5px rgba(94, 104, 121, 0.288);
 }
 
-.pagination li.active a {
+.pagination li.active button {
     font-size: 17px;
     color: #6f6cde;
 }
