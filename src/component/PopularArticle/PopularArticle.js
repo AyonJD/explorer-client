@@ -11,9 +11,9 @@ const PopularArticle = () => {
   const valueObj = useContext(articleDataContext);
   const navigate = useNavigate();
   // console.log(articles);
-  const countPoplular = 20;
+  const countPoplular = 0;
   const popularArticle = valueObj?.articles?.map((element) => {
-    if (element.popularity > countPoplular) {
+    if (element.likes.length > countPoplular) {
       return element;
     }
   });
