@@ -15,7 +15,7 @@ import ArticleDetails from "./component/ArticleDetails/ArticleDetails";
 import auth from "./firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Contact from "./component/Contact/Contact";
-
+import { Toaster } from 'react-hot-toast';
 
 const articleDataContext = createContext();
 function App() {
@@ -115,6 +115,7 @@ function App() {
         </Routes>
         <Footer />
       </articleDataContext.Provider>
+      <Toaster />
     </div>
   );
 }

@@ -1,13 +1,17 @@
 import React, { useContext } from 'react';
 import { articleDataContext } from '../../App';
-import LatestArticleItem from './LatestArticleItem';
+import PremiumArticleItem from './PremiumArticleItem';
 
-const LatestArticle = () => {
+const PremiumArticles = () => {
     const valueObj = useContext(articleDataContext);
-    const { users, signedInUser } = valueObj;
-    console.log(users);
-    // const userCheck = users.userInfo.address;
-    // console.log(userCheck);
+    const { articles } = valueObj;
+    // console.log(articles);
+    const premiumArticles = articles.filter(article => {
+        if (article.premium === "Premium") {
+            return article;
+        }
+    });
+    console.log(premiumArticles);
 
     return (
         <div className='mid-container'>
@@ -20,14 +24,14 @@ const LatestArticle = () => {
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2  gap-7 mt-14'>
 
                 {
-                    valueObj.articles.slice(0, 3).map(article => <LatestArticleItem
+                    premiumArticles.slice(0, 3).map(article => <PremiumArticleItem
                         key={article._id}
                         article={article}
-                    ></LatestArticleItem>)
+                    ></PremiumArticleItem>)
                 }
             </div>
         </div>
     );
 };
 
-export default LatestArticle;
+export default PremiumArticles;
