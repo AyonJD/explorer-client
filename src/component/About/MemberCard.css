@@ -1,0 +1,65 @@
+.inner-box {
+    position: relative;
+    
+}
+
+.inner-icon .icon {
+    width: 36px;
+    height: 36px;
+    padding: 7px;
+    margin: 10px 0 10px 0;
+    border-radius: 50%;
+    background-color: #ffffff;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.inner-img {
+    position: absolute;
+    margin-left: 90px;
+    margin-top: -40px;
+    transition: .3s;
+}
+
+.inner-img img {
+    width: 280px;
+}
+
+.inner-box:hover .inner-img{
+    color: white;
+}
+
+.inner-box::before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 0%;
+    left: 0;
+    bottom: 0px;
+    border-radius: 10px;
+    background: #ff0300;
+    background: -webkit-linear-gradient(to right, #ff0300 0%, #ff8f00 100%);
+    background: -moz-linear-gradient(to right, #ff0300 0%, #ff8f00 100%);
+    background: linear-gradient(to right, #ff0300 0%, #ff8f00 100%);
+    -webkit-transition: all 600ms ease;
+    -moz-transition: all 600ms ease;
+    -ms-transition: all 600ms ease;
+    -o-transition: all 600ms ease;
+    transition: all 600ms ease;
+}
+
+.inner-box:hover::before {
+    width: 100%;
+    left: 0;
+    height: 100%;
+    border-radius: 10px;
+    -webkit-transition: all 600ms ease;
+    -moz-transition: all 600ms ease;
+    -ms-transition: all 600ms ease;
+    -o-transition: all 600ms ease;
+    transition: all 600ms ease;
+    background: #ff0300;
+    background: -webkit-linear-gradient(to right, #ff0300 0%, #ff8f00 100%);
+    background: -moz-linear-gradient(to right, #ff0300 0%, #ff8f00 100%);
+    background: linear-gradient(to right, #ff0300 0%, #ff8f00 100%);
+}
