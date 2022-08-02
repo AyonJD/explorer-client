@@ -12,7 +12,7 @@ import './MemberCard.css'
 
 const MemberCard = () => {
     return (
-        <div>
+        <div className='member'>
             <div className='text-center'>
                 <h1 className='font-bold text-2xl'>OUR TEAM</h1>
                 <h1 className='text-3xl font-bold'>Our Expert Leadership</h1>
