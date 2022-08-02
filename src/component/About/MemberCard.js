@@ -14,8 +14,8 @@ const MemberCard = () => {
     return (
         <div className='member'>
             <div className='text-center'>
-                <h1 className='font-bold text-2xl'>OUR TEAM</h1>
-                <h1 className='text-3xl font-bold'>Our Expert Leadership</h1>
+                <h2 className='font-semibold text-2xl'>OUR TEAM</h2>
+                <h2 className='text-3xl font-semibold'>Our Expert Leadership</h2>
             </div>
             <div className='mt-24'>
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-16'>
@@ -29,7 +29,7 @@ const MemberCard = () => {
                                     <RiLinkedinFill className='icon text-[#0077b5]' />
                                 </div>
                                 <div className="inner-img w-full">
-                                    <div className=' w-full h-96'>
+                                    <div className=' h-96'>
                                         <img className='h-full rounded-xl' src={armin} alt="" />
                                     </div>
                                     <div className='mt-4 px-5 '>
@@ -50,7 +50,7 @@ const MemberCard = () => {
                                     <RiLinkedinFill className='icon text-[#0077b5]' />
                                 </div>
                                 <div className="inner-img w-full">
-                                    <div className=' w-full h-96'>
+                                    <div className='h-96'>
                                         <img className='h-full rounded-xl' src={ayon} alt="" />
                                     </div>
                                     <div className='mt-4 px-5 '>
@@ -71,7 +71,7 @@ const MemberCard = () => {
                                     <RiLinkedinFill className='icon text-[#0077b5]' />
                                 </div>
                                 <div className="inner-img w-full">
-                                    <div className=' w-full h-96'>
+                                    <div className='h-96'>
                                         <img className='h-full rounded-xl' src={imran} alt="" />
                                     </div>
                                     <div className='mt-4 px-5 '>
