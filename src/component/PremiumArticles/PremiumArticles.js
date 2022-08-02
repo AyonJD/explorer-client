@@ -1,18 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { articleDataContext } from '../../App';
 import PremiumArticleItem from './PremiumArticleItem';
 
 const PremiumArticles = () => {
     const valueObj = useContext(articleDataContext);
     const { articles } = valueObj;
-    // console.log(articles);
     const premiumArticles = articles.filter(article => {
         if (article.premium === "Premium") {
             return article;
         }
     });
-    console.log(premiumArticles);
-
+    // console.log(premiumArticles);
+    const [noOfPremiumArticles, setnoOfPremiumArticles] = useState(3);
+    const slicePremiumArticles = premiumArticles.slice(0, noOfPremiumArticles)
+    const loadMorePremiumArticles = () => {
+        setnoOfPremiumArticles(noOfPremiumArticles + noOfPremiumArticles)
+    }
     return (
         <div className='mid-container'>
             <div className='flex w-full items-center'>
@@ -24,13 +27,15 @@ const PremiumArticles = () => {
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2  gap-7 mt-14'>
 
                 {
-                    premiumArticles.slice(0, 3).map(article => <PremiumArticleItem
+                    slicePremiumArticles.map(article => <PremiumArticleItem
                         key={article._id}
                         article={article}
                     ></PremiumArticleItem>)
+
                 }
             </div>
-        </div>
+            <button className='btn rounded-full text-white register-btn' onClick={() => loadMorePremiumArticles()}>Show More..</button>
+        </div >
     );
 };
 

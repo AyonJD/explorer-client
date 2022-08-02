@@ -1,7 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './PostArticle.css';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
+import toast from "react-hot-toast";
 import { HiArrowNarrowRight } from 'react-icons/hi';
 const PostArticle = () => {
     const { register, handleSubmit, watch, formState: { errors }, trigger, reset } = useForm();
@@ -47,8 +48,8 @@ const PostArticle = () => {
                         .then(inserted => {
 
                             if (inserted.insertedId) {
-                                alert('Succuessfully posted')
-                                toast.success(`Hurray!!New tools.${data.title.slice(0, 10)}... added successfully`);
+                                // alert('Succuessfully posted')
+                                toast.success(`Your post ${data.title.slice(0, 5)}... added successfully.`);
 
                                 reset()
                             }

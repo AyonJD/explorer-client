@@ -15,7 +15,7 @@ const PremiumArticleItem = ({ article }) => {
       navigate(`/article/${article._id}`);
     }
     else {
-      toast.error("Get premium");
+      toast.error("You have to purchase premium articles");
     }
 
     // navigate(`/article/${article._id}`);
@@ -38,6 +38,7 @@ const PremiumArticleItem = ({ article }) => {
         <h1 className="text-xl font-bold">{article?.Title?.slice(0, 30)}...</h1>
         <p className="text-sm">{article?.desc?.slice(0, 100)}...</p>
       </div>
+
     </div>
   );
 };
