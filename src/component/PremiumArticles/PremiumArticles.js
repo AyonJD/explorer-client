@@ -5,16 +5,16 @@ import PremiumArticleItem from './PremiumArticleItem';
 const PremiumArticles = () => {
     const valueObj = useContext(articleDataContext);
     const { articles } = valueObj;
-    const premiumArticles = articles.filter(article => {
-        if (article.premium === "Premium") {
-            return article;
+    const premiumArticles = articles.filter(premiumArticle => {
+        if (premiumArticle.premium === "Premium") {
+            return premiumArticle;
         }
     });
     // console.log(premiumArticles);
     const [noOfPremiumArticles, setnoOfPremiumArticles] = useState(3);
     const slicePremiumArticles = premiumArticles.slice(0, noOfPremiumArticles)
     const loadMorePremiumArticles = () => {
-        setnoOfPremiumArticles(noOfPremiumArticles + noOfPremiumArticles)
+        setnoOfPremiumArticles(noOfPremiumArticles + noOfPremiumArticles);
     }
     return (
         <div className='mid-container'>
@@ -34,7 +34,9 @@ const PremiumArticles = () => {
 
                 }
             </div>
-            <button className='btn rounded-full text-white register-btn' onClick={() => loadMorePremiumArticles()}>Show More..</button>
+            <div className='flex lg:justify-end md:justify-center sm:justify-center pt-3'>
+                <button className='btn rounded-full text-white register-btn' onClick={() => loadMorePremiumArticles()}>Show More..</button>
+            </div>
         </div >
     );
 };
