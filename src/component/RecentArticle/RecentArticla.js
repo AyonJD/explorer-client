@@ -21,7 +21,7 @@ const RecentArticla = () => {
             <div className="mt-10 lg:flex md:flex">
                 <div className='lg:w-[70%] lg:pr-10 md:pr-5 lg:py-5 md:py-5 lg:border-r-[1px] md:border-r-[1px]'>
                     <div className=" grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 gap-7 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
-                        {articles.slice(3, 5).map((article) => (
+                        {articleCopy.reverse().slice(0, 2).map((article) => (
                             <ArticleItem
                                 key={article._id}
                                 article={article}
