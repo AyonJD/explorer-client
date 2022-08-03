@@ -15,7 +15,7 @@ const MemberCard = () => {
         <div className='member'>
             <div className='text-center'>
                 <h6 className='font-extrabold text-2xl'>OUR TEAM</h6>
-                <h2 className='text-3xl font-semibold'>Our Expert Leadership</h2>
+                <h2 className='text-3xl font-semibold mt-2'>Our Expert Leadership</h2>
             </div>
             <div className='mt-24'>
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-16'>

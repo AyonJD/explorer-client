@@ -11,7 +11,7 @@ const Services = () => {
         <div>
             <div className='text-center'>
                 <h6 className='text-xl font-extrabold'>OUR SERVICES</h6>
-                <h2 className='text-3xl font-semibold'>You Take Growth For Business</h2>
+                <h2 className='text-3xl font-semibold mt-2'>You Take Growth For Business</h2>
             </div>
 
             <div className='grid grid-cols-3 gap-7 mt-10'>
