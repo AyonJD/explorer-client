@@ -9,28 +9,28 @@ const Project = () => {
     return (
         <div>
             <div className='text-center'>
-                <h6 className='font-extrabold text-2xl'>OUR TEAM PROJECTS</h6>
+                <h6 className='font-extrabold text-xl'>OUR TEAM PROJECTS</h6>
                 <h2 className='text-3xl font-semibold mt-2'>Appropriately foster efficient ideas.</h2>
             </div>
 
             <div className='grid grid-cols-3 gap-5 mt-12'>
-                <div className='w-full overflow-hidden shadow-xl rounded-xl'>
-                    <img className='w-full' src={project1} alt="" />
+                <div className='w-full overflow-hidden shadow-xl rounded-xl card-parent'>
+                    <img className='w-full card-image' src={project1} alt="" />
                 </div>
-                <div className='w-full overflow-hidden shadow-xl rounded-xl'>
-                    <img className='w-full rounded-xl shadow-xl' src={project2} alt="" />
+                <div className='w-full overflow-hidden shadow-xl rounded-xl card-parent'>
+                    <img className='w-full card-image' src={project2} alt="" />
                 </div>
-                <div className='w-full overflow-hidden shadow-xl rounded-xl'>
-                    <img className='w-full rounded-xl shadow-xl' src={project3} alt="" />
+                <div className='w-full overflow-hidden shadow-xl rounded-xl card-parent'>
+                    <img className='w-full card-image' src={project3} alt="" />
                 </div>
-                <div className='w-full overflow-hidden shadow-xl rounded-xl'>
-                    <img className='w-full' src={project4} alt="" />
+                <div className='w-full overflow-hidden shadow-xl rounded-xl card-parent'>
+                    <img className='w-full card-image' src={project4} alt="" />
                 </div>
-                <div className='w-full overflow-hidden shadow-xl rounded-xl'>
-                    <img className='w-full' src={project5} alt="" />
+                <div className='w-full overflow-hidden shadow-xl rounded-xl card-parent'>
+                    <img className='w-full card-image' src={project5} alt="" />
                 </div>
-                <div className='w-full overflow-hidden shadow-xl rounded-xl'>
-                    <img className='w-full ' src={project6} alt="" />
+                <div className='w-full overflow-hidden shadow-xl rounded-xl card-parent'>
+                    <img className='w-full card-image' src={project6} alt="" />
                 </div>
             </div>
         </div>
