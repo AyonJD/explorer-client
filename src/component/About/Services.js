@@ -10,7 +10,7 @@ const Services = () => {
     return (
         <div>
             <div className='text-center'>
-                <h2 className='text-2xl font-semibold'>OUR SERVICES</h2>
+                <h6 className='text-xl font-extrabold'>OUR SERVICES</h6>
                 <h2 className='text-3xl font-semibold'>You Take Growth For Business</h2>
             </div>
 

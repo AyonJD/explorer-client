@@ -14,7 +14,7 @@ const MemberCard = () => {
     return (
         <div className='member'>
             <div className='text-center'>
-                <h2 className='font-semibold text-2xl'>OUR TEAM</h2>
+                <h6 className='font-extrabold text-2xl'>OUR TEAM</h6>
                 <h2 className='text-3xl font-semibold'>Our Expert Leadership</h2>
             </div>
             <div className='mt-24'>

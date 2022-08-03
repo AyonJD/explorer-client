@@ -20,7 +20,7 @@ const PopularArticleItem = ({ article }) => {
         <div className="h-52 w-full">
           <img
             src={img}
-            className=" h-52 lg:max-w-sm md:max-w-sm w-full  rounded-lg shadow-2xl"
+            className=" h-52 lg:max-w-sm md:max-w-lg w-full  rounded-lg shadow-2xl mx-auto"
             alt=""
           />
         </div>
