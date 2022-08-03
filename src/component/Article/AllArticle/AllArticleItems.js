@@ -2,8 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const AllArticleItems = ({ article }) => {
-    const { Title, Category, img, desc, author, _id } = article;
+    const { Title, Category, img, desc, author, _id, } = article;
 
+    console.log(article);
     const goToDetails = useNavigate();
     const handleClick = () => {
         goToDetails(`/article/${article._id}`);
