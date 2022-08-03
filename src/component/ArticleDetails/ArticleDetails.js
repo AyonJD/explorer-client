@@ -26,7 +26,7 @@ const ArticleDetails = () => {
 
   // fetch article details
   const [article, setArticle] = useState({});
-  console.log(article);
+  // console.log(article);
 
   useEffect(() => {
     fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`)

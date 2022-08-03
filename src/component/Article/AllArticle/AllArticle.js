@@ -59,7 +59,7 @@ const AllArticle = () => {
     return (
         <>
             <div className='mt-10 lg:flex md:flex mid-container'>
-                <div className="lg:w-3/4 md:w-[70%] grid gap-5 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
+                <div className="lg:w-[70%] md:w-[70%] grid gap-5 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
                     {articles.map((article) => (
                         <AllArticleItems
                             key={article._id}
@@ -68,7 +68,7 @@ const AllArticle = () => {
                     ))}
                 </div>
 
-                <div className="lg:w-1/4 md:w-[30%]">
+                <div className="lg:w-[30%] md:w-[30%]">
                     <div className=' grid lg:ml-5 md:ml-5 gap-5'>
                         {articles.slice(0, 4).map((article) => (
                             <AllArticleItemsRight
