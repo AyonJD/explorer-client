@@ -32,7 +32,7 @@ const PostArticle = () => {
                         tags: [data.tags],
                         desc: data.details,
                         img: img,
-                        likes: [],
+                        comments: [],
                         date: new Date().toLocaleDateString(),
                     }
                     //send data to db

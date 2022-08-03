@@ -26,7 +26,7 @@ const ArticleDetails = () => {
 
   // fetch article details
   const [article, setArticle] = useState({});
-  console.log(article);
+  // console.log(article);
 
   useEffect(() => {
     fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`)
@@ -177,15 +177,10 @@ const ArticleDetails = () => {
                   />
                 </span>
               </li>
-              <li>
-                <span>
-                  <FontAwesomeIcon
-                    className="icon text-secondary mx-4"
-                    title="More"
-                    icon={faEllipsis}
-                  />
-                </span>
+
+              <li> <span><FontAwesomeIcon className="icon text-secondary mx-4" title="More" icon={faEllipsis}/></span>
               </li>
+
             </ul>
           </div>
         </div>
@@ -221,11 +216,7 @@ const ArticleDetails = () => {
           <Comment comment={comment}></Comment>
         ))}
       </section>
-      <section>
-        <form
-          onSubmit={handleComment}
-          className="flex flex-col  items-center space-y-6"
-        >
+      <section><form onSubmit={handleComment} className="flex flex-col  items-center space-y-6">
           <textarea
             className="textarea textarea-primary w-full max-w-md"
             placeholder="Drop Your Comment Here"

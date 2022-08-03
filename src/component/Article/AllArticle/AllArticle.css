@@ -70,3 +70,7 @@
 .pagination li:last-child {
     margin: 0 0 0 15px;
 }
+
+.allArticle-card:nth-child(4) {
+    border-bottom: 0 !important;
+  }
