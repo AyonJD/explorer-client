@@ -7,7 +7,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import Search from './Search';
-import logo from '../../../assets/icon/animation_500_l69iv6v1.gif'
 import { articleDataContext } from '../../../App';
 
 const Header = ({ setDark, dark, setTheme }) => {

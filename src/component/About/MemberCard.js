@@ -7,7 +7,7 @@ import ayon from '../../assets/about/Member/ayon.jpg'
 import armin from '../../assets/about/Member/291753181_1326861554506308_4174174933119289480_n.jpg'
 import imran from '../../assets/about/Member/B612_20210323_173713_393-01-01-01.jpeg'
 import mozammel from '../../assets/about/Member/Mozammel.jpg'
-import hasan from '../../assets/about/Member/Hasan kamrul.jpg'
+import hasan from '../../assets/about/Member/Hasan kamrul2.jpg'
 import './MemberCard.css'
 
 const MemberCard = () => {
