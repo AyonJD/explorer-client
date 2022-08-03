@@ -29,7 +29,7 @@ const useToken = (user, userName) => {
 
         }
         getToken()
-    }, [user])
+    }, [user, userName])
     return [token]
 };
 

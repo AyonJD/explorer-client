@@ -87,10 +87,10 @@ const Register = () => {
             )
 
     }
-    // console.log(authUser?.email)
+
 
     const email = authUser?.email;
-    // console.log(email);
+
     userInfo = {
         email: authUser?.email,
         name: authUser?.displayName,
@@ -123,15 +123,13 @@ const Register = () => {
                 })
             })
         }
-    }, [userInfo, email])
+    }, [userInfo, email, btnState])
 
     // console.log(valueObj?.users)
 
     return (
         <div className='mid-container lg:my-10'>
-            {/* <div className='w-full flex order-2'>
-                <img className='w-full shrink-0' src={image} alt="" />
-            </div> */}
+
             <div className='flex justify-center items-center'>
                 <div className="card flex-shrink-0 w-full lg:max-w-lg md:max-w-lg sm:max-w-lg max-w-sm shadow-2xl bg-base-100 ">
                     <div className="card-body border rounded-2xl ">

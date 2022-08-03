@@ -21,8 +21,6 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
 
-
-
     if (user || gUser) {
         navigate(from, { replace: true })
     }
@@ -42,7 +40,6 @@ const Login = () => {
         setBtnState(true);
         signInWithEmailAndPassword(data.email, data.password)
     }
-
 
     const email = authUser?.email;
     // console.log(email);
@@ -78,7 +75,8 @@ const Login = () => {
                 })
             })
         }
-    }, [userInfo, email])
+    }, [userInfo, email, btnState])
+
     return (
         <div className='mid-container lg:my-10'>
             <div className='flex justify-center items-center'>

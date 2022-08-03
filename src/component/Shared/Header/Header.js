@@ -7,6 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import Search from './Search';
+import logo from '../../../assets/icon/animation_500_l69iv6v1.gif'
 import { articleDataContext } from '../../../App';
 
 const Header = ({ setDark, dark, setTheme }) => {
@@ -27,13 +28,13 @@ const Header = ({ setDark, dark, setTheme }) => {
             setSignedInUser(filteredUsers[0])
         }
         setUserImg(signedInUser?.userInfo?.photoURL)
-    }, [valueObj, users]);
+    }, [valueObj, users, setSignedInUser, signedInUser, user]);
 
     // console.log(userImg)
 
 
     return (
-        <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0">
+        <div className="sticky top-0 z-50 shadow navbar-content navbar bg-base-100 p-0">
 
             <div className="navbar-start">
                 <div className="dropdown dropdown-items">
@@ -54,7 +55,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                         </li>
                     </ul>
                 </div>
-                <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link></h1>
+                <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link> </h1> 
             </div>
 
             <div className="navbar-start hidden lg:flex">
@@ -62,7 +63,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                     <li className='mr-1 hover:text-primary'><Link to='/'>Home</Link></li>
                     <li className='mr-1 hover:text-primary'><Link to='/all-article'>All Articles</Link></li>
                     <li className='mr-1 hover:text-primary'><Link to='/about'>About</Link></li>
-                    <li className='mr-2 hover:text-primary'><Link to='/contact'>Contact</Link></li>
+                    <li className='mr-2 hover:text-primary'><Link to='/contact'>Contact Us</Link></li>
                 </ul>
             </div>
 
@@ -83,7 +84,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                     <div className="dropdown dropdown-end dropdown-items">
                         <label tabIndex="1">
                             <div className="avatar p-2">
-                                <div className="w-10 rounded-full">
+                                <div className="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-1">
                                     <img src={userImg} alt={user?.displayName} />
                                 </div>
                             </div>

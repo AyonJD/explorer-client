@@ -15,9 +15,13 @@ import ArticleDetails from "./component/ArticleDetails/ArticleDetails";
 import auth from "./firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AllArticle from "./component/Article/AllArticle/AllArticle";
+import Contact from "./component/Contact/Contact";
+import { Toaster } from 'react-hot-toast';
+import About from "./component/About/About";
 
 const articleDataContext = createContext();
 function App() {
+
   const [articles, setArticles] = useState([]);
   const [searchValue, setSearchValue] = useState(null);
   const [users, setUsers] = useState([]);
@@ -73,7 +77,6 @@ function App() {
       });
   }, []);
 
-  // console.log(users);
   const valueObj = {
     articles,
     searchValue,
@@ -83,7 +86,7 @@ function App() {
     signedInUser,
     setSignedInUser,
   };
-
+  // console.log(articles);
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)
   }, [authUser, users])
@@ -92,27 +95,31 @@ function App() {
   useEffect(() => {
     setSignedInUser(compareUser)
   }, [compareUser])
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
       <articleDataContext.Provider value={valueObj}>
         <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
-        <Routes>
+        <Routes preserverScrollPosition={false}>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/post-article" element={<PostArticle />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all-article" element={<AllArticle />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
           <Route
             path="/article/:articleId"
             element={<ArticleDetails />}
           ></Route>
-          <Route path="/post-article" element={<PostArticle />}></Route>
         </Routes>
         <Footer />
       </articleDataContext.Provider>
+      <Toaster />
     </div>
   );
 }
