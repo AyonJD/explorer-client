@@ -52,6 +52,35 @@ const AllArticle = () => {
         );
     }
 
+
+    useEffect(() => {
+        const $button = document.querySelector(".svg_button");
+
+        let debounce = false;
+        $button.addEventListener("click", () => {
+            if (debounce) return;
+            debounce = true;
+            buttonAnimate();
+            createWave();
+        });
+
+        const buttonAnimate = () => {
+            $button.classList.add("clicked");
+            setTimeout(() => {
+                $button.classList.remove("clicked");
+                debounce = false;
+            }, 700);
+        };
+
+        const createWave = () => {
+            const wave = document.createElement("div");
+            wave.classList.add("wave overflow-hidden");
+            $button.appendChild(wave);
+            setTimeout(() => wave.remove(), 7000);
+        };
+    }, []);
+
+
     return (
         <div class="pagination_container container mx-auto">
             <ul class="pagination">
@@ -71,7 +100,10 @@ const AllArticle = () => {
                     </li>
                 }
                 <li>
-                    <button onClick={() => setPageNumber(pageNumber + 1)} class="btn bg-transparent outline-0 border-none mx-2">NEX</button>
+                    <button onClick={() => setPageNumber(pageNumber + 1)} class="svg_button btn bg-transparent outline-0 border-none mx-2">
+
+                        <p id='svg_id' className='inline-block'>AAA</p>
+                    </button>
                 </li>
 
                 <div>
