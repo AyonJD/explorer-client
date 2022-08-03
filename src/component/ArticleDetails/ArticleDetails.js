@@ -16,6 +16,7 @@ import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import "./ArticleDetails.css";
 import { articleDataContext } from "../../App";
 import Comment from "./Comment/Comment";
+import { data } from "autoprefixer";
 
 const ArticleDetails = () => {
   const { articleId } = useParams();
@@ -26,7 +27,8 @@ const ArticleDetails = () => {
 
   // fetch article details
   const [article, setArticle] = useState({});
-  console.log(article);
+  const { Title, category, img, desc, date, likes, comments } = article;
+  // console.log(article);
 
   useEffect(() => {
     fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`)
@@ -35,7 +37,6 @@ const ArticleDetails = () => {
   }, [articleId, article]);
   // console.log(articleId);
 
-  const { Title, Category, img, desc, author, date, likes, comments } = article;
   // console.log(likes)
 
   // today's date
@@ -105,28 +106,33 @@ const ArticleDetails = () => {
     // input value
     const comment = e.target.comment.value;
     // console.log(comment);
-    // clear input value
-    e.target.comment.value = "";
-    // send comment to server with user info
-    fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        comments: [...article.comments, { comment, author: signedInUser }],
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.acknowledged) {
-          setUpsertCount(true);
-        } else {
-          setUpsertCount(false);
-        }
+
+    if (!signedInUser) {
+      alert("Please login to comment");
+    } else {
+      // send comment to server with user info
+      fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          comments: [...article.comments, { comment, author: signedInUser }],
+        }),
       })
-      .catch((err) => console.log(err));
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          if (data.acknowledged) {
+            setUpsertCount(true);
+            // clear input value
+            e.target.comment.value = "";
+          } else {
+            setUpsertCount(false);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -144,7 +150,7 @@ const ArticleDetails = () => {
             </div>
             <div className="ml-6">
               <p className="antialiased  text-lg  font-normal">
-                {author ? author : "MD. Mozammel Hoq 🌚"}{" "}
+                {"MD. Mozammel Hoq 🌚"}{" "}
                 <span>
                   <div className="badge badge-xs  badge-primary  ml-3 p-2">
                     Author
@@ -152,9 +158,7 @@ const ArticleDetails = () => {
                 </span>
               </p>
 
-              <p className="text-xs mt-2 font-medium ">
-                Published: {date ? date : todayDate}
-              </p>
+              <p className="text-xs mt-2 font-medium ">Published: {date}</p>
             </div>
           </div>
           <div className=" breadcrumbs">
@@ -192,7 +196,7 @@ const ArticleDetails = () => {
 
         <p className="text-2xl font-bold text-left my-8"> {Title}</p>
         <img
-          className="w-full lg:h-[70vh] md:h[50vh] sm:h[50vh] object-cover"
+          className="w-full lg:h-[70vh] md:h[50vh] sm:h[50vh] "
           src={img}
           alt=""
         />
@@ -212,13 +216,13 @@ const ArticleDetails = () => {
         </div>
         <blockquote>
           <p className="opacity-80">{desc}</p>
-          <span className="block font-bold text-2xl mt-4 ">{Category}</span>
+          <span className="block font-bold text-2xl mt-4 ">{category}</span>
         </blockquote>
       </section>
       comment show in ui
       <section>
-        {comments?.map((comment) => (
-          <Comment comment={comment}></Comment>
+        {comments?.slice(-3).map((comment) => (
+          <Comment key={comments.index} comment={comment}></Comment>
         ))}
       </section>
       <section>
