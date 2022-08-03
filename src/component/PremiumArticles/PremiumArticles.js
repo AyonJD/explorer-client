@@ -15,7 +15,8 @@ const PremiumArticles = () => {
     const slicePremiumArticles = premiumArticles.slice(0, noOfPremiumArticles)
     const loadMorePremiumArticles = () => {
         setnoOfPremiumArticles(noOfPremiumArticles + noOfPremiumArticles);
-    }
+    };
+    const [show, setShow] = useState(false);
     return (
         <div className='mid-container'>
             <div className='flex w-full items-center'>
