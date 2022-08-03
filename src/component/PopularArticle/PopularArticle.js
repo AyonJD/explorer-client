@@ -13,7 +13,7 @@ const PopularArticle = () => {
   // console.log(articles);
   const countPoplular = 0;
   const popularArticle = valueObj?.articles?.map((element) => {
-    if (element.likes.length > countPoplular) {
+    if (element?.blogs?.likes?.length > countPoplular) {
       return element;
     }
   });
