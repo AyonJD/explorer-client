@@ -10,10 +10,10 @@ const AllArticleItemsRight = ({article}) => {
 
     return (
         <div
-        className='flex items-center gap-3 border-b-[1px] py-3'
+        className='flex items-center gap-3 border-b-[1px] pb-3'
         onClick={() => handleNavigate(article._id)}>
-        <div className='w-[35%]'>
-            <img className='w-full h-20' src={article?.img} alt={article?.img} />
+        <div className='w-[35%] h-20 overflow-hidden'>
+            <img className='w-full h-full' src={article?.img} alt={article?.img} />
         </div>
         <div className='w-[65%] p-2'>
             <h2 className='text-sm font-semibold'>{article?.Title?.slice(0, 50)}</h2>

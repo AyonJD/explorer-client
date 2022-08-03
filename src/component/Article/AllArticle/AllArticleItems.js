@@ -13,7 +13,7 @@ const AllArticleItems = ({ article }) => {
     return (
         <div
             onClick={() => handleClick(_id)}
-            className="hero border-b-2 pb-5 popular-card"
+            className="hero border-b-2 pb-5 allArticle-card"
         >
             <div className="hero-content grid lg:grid-cols-2 md:grid-cols-1 p-0 ">
                 <div className="h-52 w-full">
