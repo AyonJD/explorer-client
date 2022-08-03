@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { articleDataContext } from "../../App";
 
-const LatestArticleItem = ({ article }) => {
+const PremiumArticleItem = ({ article }) => {
   // article distructuring
   const { Title, Category, img, desc, author, date, _id } = article;
-  const goToDetails = useNavigate();
+  const valueObj = useContext(articleDataContext);
+  const { signedInUser } = valueObj;
+  // console.log(signedInUser);
+  const navigate = useNavigate();
   const handleClick = () => {
-    goToDetails(`/article/${article._id}`);
+    if (signedInUser?.userInfo?.premium) {
+      navigate(`/article/${article._id}`);
+    }
+    else {
+      toast.error("You have to purchase premium articles");
+    }
+
+    // navigate(`/article/${article._id}`);
   };
 
   return (
@@ -26,8 +38,9 @@ const LatestArticleItem = ({ article }) => {
         <h1 className="text-xl font-bold">{article?.Title?.slice(0, 30)}...</h1>
         <p className="text-sm">{article?.desc?.slice(0, 100)}...</p>
       </div>
+
     </div>
   );
 };
 
-export default LatestArticleItem;
+export default PremiumArticleItem;

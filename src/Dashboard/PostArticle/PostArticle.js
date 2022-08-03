@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import "./PostArticle.css";
-import { toast } from "react-toastify";
+// import { toast } from 'react-toastify';
+import toast from "react-hot-toast";
 import { HiArrowNarrowRight } from "react-icons/hi";
 const PostArticle = () => {
   const {
@@ -32,12 +33,12 @@ const PostArticle = () => {
           // console.log(img, 'img-url');
           const blogs = {
             Title: data.title,
+            likes: [],
             category: data.category,
             premium: data.access,
             tags: [data.tags],
             desc: data.details,
             img: img,
-            likes: [],
             comments: [],
             date: new Date().toLocaleDateString(),
           };
@@ -53,11 +54,9 @@ const PostArticle = () => {
             .then((res) => res.json())
             .then((inserted) => {
               if (inserted.insertedId) {
+                // alert('Succuessfully posted')
                 toast.success(
-                  `Hurray!!New tools.${data.title.slice(
-                    0,
-                    10
-                  )}... added successfully`
+                  `Your post ${data.title.slice(0, 5)}... added successfully.`
                 );
 
                 reset();

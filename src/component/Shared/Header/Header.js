@@ -7,7 +7,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import Search from './Search';
-import logo from '../../../assets/icon/animation_500_l69iv6v1.gif'
 import { articleDataContext } from '../../../App';
 
 const Header = ({ setDark, dark, setTheme }) => {
@@ -34,7 +33,7 @@ const Header = ({ setDark, dark, setTheme }) => {
 
 
     return (
-        <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0">
+        <div className="sticky top-0 z-50 shadow navbar-content navbar bg-base-100 p-0">
 
             <div className="navbar-start">
                 <div className="dropdown dropdown-items">

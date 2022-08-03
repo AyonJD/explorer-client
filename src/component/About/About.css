@@ -11,6 +11,7 @@
   transition: 0.5s !important;
   margin-right: 10px;
 }
+
 .start-btn:hover {
   background: linear-gradient(to left, #ff0300 0%, #ff8f00 100%);
 }
@@ -26,19 +27,7 @@
   text-transform: capitalize;
   transition: 0.5s;
 }
+
 .contact-btn:hover {
   background: linear-gradient(to left, #00bbff 0%, #006aff 100%);
-}
-.banner-img img {
-  width: 900px;
-}
-
-.icon-box::before {
-  position: absolute;
-  content: "";
-  left: 0px;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  /* background: url(../../assets/About\ Page) no-repeat; */
 }
