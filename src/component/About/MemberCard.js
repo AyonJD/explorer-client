@@ -22,7 +22,7 @@ const MemberCard = () => {
                     <div className='inner-box bg-neutral rounded-xl text-warning'>
                         <div className='pb-52 rounded-xl'>
                             <div className='flex'>
-                                <div className="inner-icon pt-10 px-5 z-50">
+                                <div className="inner-icon pt-10 px-5 z-30">
                                     <ImFacebook className='icon text-[#3b5998]' />
                                     <FaTwitter className='icon text-[#1da1f2]' />
                                     <FiGithub className='icon text-[#3b5998]' />
@@ -43,7 +43,7 @@ const MemberCard = () => {
                     <div className='inner-box bg-neutral rounded-xl text-warning'>
                         <div className='pb-52 rounded-xl'>
                             <div className='flex'>
-                                <div className="inner-icon pt-10 px-5 z-50">
+                                <div className="inner-icon pt-10 px-5 z-30">
                                     <ImFacebook className='icon text-[#3b5998]' />
                                     <FaTwitter className='icon text-[#1da1f2]' />
                                     <FiGithub className='icon text-[#3b5998]' />
@@ -64,7 +64,7 @@ const MemberCard = () => {
                     <div className='inner-box bg-neutral rounded-xl text-warning'>
                         <div className='pb-52 rounded-xl'>
                             <div className='flex'>
-                                <div className="inner-icon pt-10 px-5 z-50">
+                                <div className="inner-icon pt-10 px-5 z-30">
                                     <ImFacebook className='icon text-[#3b5998]' />
                                     <FaTwitter className='icon text-[#1da1f2]' />
                                     <FiGithub className='icon text-[#3b5998]' />
@@ -88,7 +88,7 @@ const MemberCard = () => {
                         <div className='inner-box bg-neutral rounded-xl text-warning'>
                             <div className='pb-52 rounded-xl'>
                                 <div className='flex'>
-                                    <div className="inner-icon pt-10 px-5 z-50">
+                                    <div className="inner-icon pt-10 px-5 z-30">
                                         <ImFacebook className='icon text-[#3b5998]' />
                                         <FaTwitter className='icon text-[#1da1f2]' />
                                         <FiGithub className='icon text-[#3b5998]' />
@@ -111,7 +111,7 @@ const MemberCard = () => {
                         <div className='inner-box bg-neutral rounded-xl text-warning'>
                             <div className='pb-52 rounded-xl'>
                                 <div className='flex'>
-                                    <div className="inner-icon pt-10 px-5 z-50">
+                                    <div className="inner-icon pt-10 px-5 z-30">
                                         <ImFacebook className='icon text-[#3b5998]' />
                                         <FaTwitter className='icon text-[#1da1f2]' />
                                         <FiGithub className='icon text-[#3b5998]' />

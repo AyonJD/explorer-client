@@ -36,15 +36,15 @@ const PopularArticle = () => {
         Popular articles are selected based on the number of readers
       </p>
       <div className="mt-10 lg:flex md:flex">
-        <div className="lg:w-3/4 grid gap-5 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
-          {popularArticleArr.slice(0, 4).map((article) => (
+        <div className="lg:w-3/4 md:w-[70%] grid gap-5 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
+          {popularArticleArr.slice(0, 3).map((article) => (
             <PopularArticleItem
               key={article._id}
               article={article}
             ></PopularArticleItem>
           ))}
         </div>
-        <div className="lg:w-1/4 grid  ml-5 gap-5">
+        <div className="lg:w-1/4 md:w-[30%] grid  lg:ml-5 md:ml-5 gap-5">
           <div className="card  bg-base-100 shadow-xl border">
             <div className="card-body">
               <h2 className="text-xl font-bold text-center"> All Category</h2>
