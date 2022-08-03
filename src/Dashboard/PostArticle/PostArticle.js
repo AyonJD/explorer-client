@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import './PostArticle.css';
 // import { toast } from 'react-toastify';
 import toast from "react-hot-toast";
 import { HiArrowNarrowRight } from 'react-icons/hi';
+import { articleDataContext } from '../../App';
 const PostArticle = () => {
+    const valueObj = useContext(articleDataContext);
+    const { signedInUser } = valueObj;
     const { register, handleSubmit, watch, formState: { errors }, trigger, reset } = useForm();
 
     const imageSotrageKey = `0ca5c9cdb23add3ecfaff014d8e4ad9c`
@@ -32,7 +35,7 @@ const PostArticle = () => {
                         tags: [data.tags],
                         desc: data.details,
                         img: img,
-                        likes: [],
+                        comment: [],
                         date: new Date().toLocaleDateString(),
                     }
                     //send data to db
@@ -42,7 +45,7 @@ const PostArticle = () => {
                             'content-type': 'application/json',
                             // authorization: `Bearer ${localStorage.getItem('token')}`
                         },
-                        body: JSON.stringify(blogs)
+                        body: JSON.stringify({ blogs, signedInUser })
                     })
                         .then(res => res.json())
                         .then(inserted => {
