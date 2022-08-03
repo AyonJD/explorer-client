@@ -7,15 +7,15 @@ import ayon from '../../assets/about/Member/ayon.jpg'
 import armin from '../../assets/about/Member/291753181_1326861554506308_4174174933119289480_n.jpg'
 import imran from '../../assets/about/Member/B612_20210323_173713_393-01-01-01.jpeg'
 import mozammel from '../../assets/about/Member/Mozammel.jpg'
-import hasan from '../../assets/about/Member/Hasan kamrul.jpg'
+import hasan from '../../assets/about/Member/Hasan kamrul2.jpg'
 import './MemberCard.css'
 
 const MemberCard = () => {
     return (
         <div className='member'>
             <div className='text-center'>
-                <h2 className='font-semibold text-2xl'>OUR TEAM</h2>
-                <h2 className='text-3xl font-semibold'>Our Expert Leadership</h2>
+                <h6 className='font-extrabold text-2xl'>OUR TEAM</h6>
+                <h2 className='text-3xl font-semibold mt-2'>Our Expert Leadership</h2>
             </div>
             <div className='mt-24'>
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-16'>

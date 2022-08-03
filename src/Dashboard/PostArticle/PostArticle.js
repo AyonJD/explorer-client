@@ -1,7 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './PostArticle.css';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
+import toast from "react-hot-toast";
 import { HiArrowNarrowRight } from 'react-icons/hi';
 const PostArticle = () => {
     const { register, handleSubmit, watch, formState: { errors }, trigger, reset } = useForm();
@@ -9,7 +10,7 @@ const PostArticle = () => {
     const imageSotrageKey = `0ca5c9cdb23add3ecfaff014d8e4ad9c`
 
     const handleAddProduct = async data => {
-        const image = data.image[0]
+        const image = data.image[0];
         const url = `https://api.imgbb.com/1/upload?key=${imageSotrageKey}`
         const formData = new FormData();
         formData.append('image', image);
@@ -25,6 +26,7 @@ const PostArticle = () => {
                     // console.log(img, 'img-url');
                     const blogs = {
                         Title: data.title,
+                        likes: [],
                         category: data.category,
                         premium: data.access,
                         tags: [data.tags],
@@ -46,7 +48,8 @@ const PostArticle = () => {
                         .then(inserted => {
 
                             if (inserted.insertedId) {
-                                toast.success(`Hurray!!New tools.${data.title.slice(0, 10)}... added successfully`);
+                                // alert('Succuessfully posted')
+                                toast.success(`Your post ${data.title.slice(0, 5)}... added successfully.`);
 
                                 reset()
                             }

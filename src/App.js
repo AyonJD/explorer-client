@@ -16,10 +16,12 @@ import auth from "./firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AllArticle from "./component/Article/AllArticle/AllArticle";
 import Contact from "./component/Contact/Contact";
+import { Toaster } from 'react-hot-toast';
 import About from "./component/About/About";
 
 const articleDataContext = createContext();
 function App() {
+
   const [articles, setArticles] = useState([]);
   const [searchValue, setSearchValue] = useState(null);
   const [users, setUsers] = useState([]);
@@ -93,7 +95,9 @@ function App() {
   useEffect(() => {
     setSignedInUser(compareUser)
   }, [compareUser])
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
@@ -115,6 +119,7 @@ function App() {
         </Routes>
         <Footer />
       </articleDataContext.Provider>
+      <Toaster />
     </div>
   );
 }
