@@ -7,7 +7,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import Search from './Search';
-import logo from '../../../assets/icon/animation_500_l69iv6v1.gif'
 import { articleDataContext } from '../../../App';
 
 const Header = ({ setDark, dark, setTheme }) => {
@@ -34,7 +33,7 @@ const Header = ({ setDark, dark, setTheme }) => {
 
 
     return (
-        <div className="sticky top-0 z-10 shadow navbar-content navbar bg-base-100 p-0">
+        <div className="sticky top-0 z-50 shadow navbar-content navbar bg-base-100 p-0">
 
             <div className="navbar-start">
                 <div className="dropdown dropdown-items">
@@ -45,6 +44,7 @@ const Header = ({ setDark, dark, setTheme }) => {
 
                         <li className='mb-1'>
                             <Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHome} /> <span className='item'>Home</span></Link>
+                            <Link to='/all-article'><FontAwesomeIcon className='icon text-secondary' icon={faHome} /> <span className='item'>All Articles</span></Link>
                         </li>
                         <li className='mb-1'>
                             <Link to='/about'><FontAwesomeIcon className='icon text-secondary' icon={faBurger} /> <span className='item'>About</span></Link>
@@ -60,6 +60,7 @@ const Header = ({ setDark, dark, setTheme }) => {
             <div className="navbar-start hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li className='mr-1 hover:text-primary'><Link to='/'>Home</Link></li>
+                    <li className='mr-1 hover:text-primary'><Link to='/all-article'>All Articles</Link></li>
                     <li className='mr-1 hover:text-primary'><Link to='/about'>About</Link></li>
                     <li className='mr-2 hover:text-primary'><Link to='/contact'>Contact Us</Link></li>
                 </ul>

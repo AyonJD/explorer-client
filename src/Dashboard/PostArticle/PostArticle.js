@@ -32,8 +32,8 @@ const PostArticle = () => {
                         tags: [data.tags],
                         desc: data.details,
                         img: img,
+                        likes: [],
                         date: new Date().toLocaleDateString(),
-
                     }
                     //send data to db
                     fetch(`https://floating-ocean-13139.herokuapp.com/blogs`, {
