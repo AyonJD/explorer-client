@@ -152,7 +152,7 @@ const ArticleDetails = () => {
         </div>
       </div>
 
-      <p className="text-2xl font-bold text-left my-8"> {Title}</p>
+      <p className="text-2xl font-bold text-left my-8"> {Title} Who Are You?</p>
       <img
         className="w-full lg:h-[70vh] md:h[50vh] sm:h[50vh] object-cover"
         src={img}

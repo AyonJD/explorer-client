@@ -1,7 +1,7 @@
 import React from 'react';
 import AllArticle from '../Article/AllArticle/AllArticle';
 import Banner from '../Banner/Banner';
-import LatestArticle from '../LatestArticle/LatestArticle';
+import PremiumArticles from '../PremiumArticles/PremiumArticles';
 import PopularArticle from '../PopularArticle/PopularArticle';
 import RecentArticla from '../RecentArticle/RecentArticla';
 
@@ -11,7 +11,7 @@ const Home = () => {
             <Banner />
             <RecentArticla></RecentArticla>
             <PopularArticle />
-            <LatestArticle />
+            <PremiumArticles />
         </div>
     );
 };

@@ -25,3 +25,11 @@ p, h6{
     padding: 1rem;
   }
 }
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  -ms-overflow-style: none;
+}
