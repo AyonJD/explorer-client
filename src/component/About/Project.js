@@ -1,10 +1,10 @@
 import React from 'react';
-import project1 from '../../assets/about/project/project1.png'
-import project2 from '../../assets/about/project/project2.png'
-import project3 from '../../assets/about/project/project3.png'
-import project4 from '../../assets/about/project/project4.png'
-import project5 from '../../assets/about/project/project5.png'
-import project6 from '../../assets/about/project/project6.png'
+import project1 from '../../assets/about/Projects/project1.png'
+import project2 from '../../assets/about/Projects/project2.png'
+import project3 from '../../assets/about/Projects/project3.png'
+import project4 from '../../assets/about/Projects/project4.png'
+import project5 from '../../assets/about/Projects/project5.png'
+import project6 from '../../assets/about/Projects/project6.png'
 const Project = () => {
     return (
         <div>
