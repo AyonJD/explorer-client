@@ -99,6 +99,7 @@ function App() {
     window.scrollTo(0, 0)
   }, [])
 
+  // console.log(articles);
   return (
     <div data-theme={dark ? "dark" : "light"}>
       <articleDataContext.Provider value={valueObj}>
