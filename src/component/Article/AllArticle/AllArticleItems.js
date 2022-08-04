@@ -44,7 +44,7 @@ const AllArticleItems = ({ article }) => {
                                     {article?.signedInUser?.userInfo?.name}
                                 </h2>
                                 <p className="text-sm font-medium">
-                                    <small>Backend Developer</small>
+                                    <small>{article?.signedInUser?.userInfo?.profession}</small>
                                 </p>
                             </div>
                         </div>
