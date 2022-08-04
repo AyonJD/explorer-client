@@ -118,7 +118,7 @@ const ArticleDetails = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        comments: [...article.blogs.comments, { comment, author: signedInUser }],
+        comments: [...article?.comments, { comment, author: signedInUser }],
       }),
     })
       .then((res) => res.json())
@@ -221,8 +221,8 @@ const ArticleDetails = () => {
       </section>
       comment show in ui
       <section>
-        {article?.blogs?.comments?.map((comment) => (
-          <Comment comment={comment}></Comment>
+        {article?.comments?.map((comment) => (
+          <Comment comment={comment.comment}></Comment>
         ))}
       </section>
       <section>
