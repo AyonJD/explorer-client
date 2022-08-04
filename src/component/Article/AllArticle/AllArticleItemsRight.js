@@ -11,9 +11,9 @@ const AllArticleItemsRight = ({ article }) => {
     return (
         <>
             <div
-                className='flex items-center gap-1 '
+                className='flex items-center gap-1 py-3'
                 onClick={() => handleNavigate(article._id)}>
-                <div className='w-[35%] h-16 overflow-hidden'>
+                <div className='w-[35%] h-20 overflow-hidden'>
                     <img className='w-full h-full' src={article?.blogs?.img} alt={article?.blogs?.Title} />
                 </div>
                 <div className='w-[65%] p-2'>

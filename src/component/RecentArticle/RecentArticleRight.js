@@ -10,7 +10,7 @@ const RecentArticleRight = ({ article }) => {
 
     return (
         <div
-            className='flex items-center gap-3 border-b-[1px] py-3'
+            className='flex items-center gap-2 border-b-[1px] py-3'
             onClick={() => handleNavigate(article._id)}>
             <div className='w-[35%]'>
                 <img className='w-full h-20' src={article?.blogs?.img} alt={article?.img} />

@@ -69,7 +69,7 @@ const AllArticle = () => {
                 </div>
 
                 <div className="lg:w-[30%] md:w-[30%]">
-                    <div className=' grid lg:ml-5 md:ml-5 gap-3'>
+                    <div className=' grid lg:ml-5 md:ml-5'>
                         {articles.slice(0, 4).map((article) => (
                             <AllArticleItemsRight
                                 key={article._id}

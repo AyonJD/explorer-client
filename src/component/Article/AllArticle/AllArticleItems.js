@@ -26,28 +26,14 @@ const AllArticleItems = ({ article }) => {
                 </div>
                 <div className="p-3 flex items-center">
                     <div>
-                        <p className="text-sm">{article?.blogs?.date}</p>
+
                         <h2 className="font-semibold text-xl my-2 hover:text-primary duration-300 cursor-pointer">
-                            {article?.blogs?.Title?.slice(0,50)}
+                            {article?.blogs?.Title?.slice(0, 50)}
                         </h2>
+                        <p className="text-xs uppercase pt-1 pb-3">BY <span className='text-primary'>{article?.signedInUser?.userInfo?.name}</span> - {article?.blogs?.date}</p>
                         <p className="text-sm">
                             {article?.blogs?.desc?.slice(0, 100)}...
                         </p>
-                        <div className="flex gap-3 items-center mt-5">
-                            <div className="avatar">
-                                <div className="lg:w-12 md:w-14 sm:w-16 w-14 rounded-full">
-                                    <img src={article?.signedInUser?.userInfo?.photoURL} alt={article?.signedInUser?.userInfo?.name} />
-                                </div>
-                            </div>
-                            <div>
-                                <h2 className="font-semibold text-sm cursor-pointer">
-                                    {article?.signedInUser?.userInfo?.name}
-                                </h2>
-                                <p className="text-sm font-medium">
-                                    <small>{article?.signedInUser?.userInfo?.profession}</small>
-                                </p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -28,12 +28,12 @@ const PopularArticleItem = ({ article }) => {
           <div>
             <p className="text-sm">{article?.blogs?.date}</p>
             <h2 className="font-bold my-2 hover:text-primary duration-300 cursor-pointer">
-              {article?.blogs?.title}
+              {article?.blogs?.Title?.slice(0, 70)}
             </h2>
             <p className="text-sm">
               {article?.blogs?.desc?.slice(0, 100)}...
             </p>
-            <div className="flex gap-5 items-center mt-5">
+            <div className="flex gap-5 items-center mt-3">
               <div className="avatar">
                 <div className="lg:w-12 md:w-14 sm:w-16 w-14 rounded-full">
                   <img src={article?.signedInUser?.userInfo?.photoURL} alt="" />
