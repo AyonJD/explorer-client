@@ -19,19 +19,19 @@ const AllArticleItems = ({ article }) => {
             <div className="hero-content grid lg:grid-cols-2 md:grid-cols-1 p-0 ">
                 <div className="h-52 w-full">
                     <img
-                        src={img}
+                        src={article?.blogs?.img}
                         className=" h-52 lg:max-w-sm md:max-w-lg w-full  rounded-lg shadow-2xl mx-auto"
                         alt=""
                     />
                 </div>
                 <div className="p-3 flex items-center">
                     <div>
-                        <p className="text-sm">Jan 24, 2022</p>
+                        <p className="text-sm">{article?.blogs?.date}</p>
                         <h2 className="font-bold my-2 hover:text-primary duration-300 cursor-pointer">
-                            {Title}
+                            {article?.blogs?.Title}
                         </h2>
                         <p className="text-sm">
-                            {desc?.slice(0, 100)}...
+                            {article?.blogs?.desc?.slice(0, 100)}...
                         </p>
                         <div className="flex gap-5 items-center mt-5">
                             <div className="avatar">
@@ -41,10 +41,10 @@ const AllArticleItems = ({ article }) => {
                             </div>
                             <div>
                                 <h2 className="font-semibold text-sm cursor-pointer">
-                                    {author}
+                                    {article?.signedInUser?.userInfo?.name}
                                 </h2>
                                 <p className="text-sm font-medium">
-                                    <small>Study Power CEO</small>
+                                    <small>Backend Developer</small>
                                 </p>
                             </div>
                         </div>
