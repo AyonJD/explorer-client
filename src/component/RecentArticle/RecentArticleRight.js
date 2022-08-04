@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const RecentArticleRight = ({article}) => {
+const RecentArticleRight = ({ article }) => {
 
     const goToDetails = useNavigate();
     const handleNavigate = () => {
@@ -16,7 +16,7 @@ const RecentArticleRight = ({article}) => {
                 <img className='w-full h-20' src={article.img} alt={article.img} />
             </div>
             <div className='w-[65%] p-2'>
-                <h2 className='text-sm font-semibold'>{article.Title.slice(0, 50)}</h2>
+                <h2 className='text-sm font-semibold'>{article?.blogs?.Title.slice(0, 50)}</h2>
                 <p className='text-xs mt-2 font-light'>January 10, 2021</p>
             </div>
         </div>

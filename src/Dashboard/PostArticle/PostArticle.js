@@ -29,7 +29,6 @@ const PostArticle = () => {
                     // console.log(img, 'img-url');
                     const blogs = {
                         Title: data.title,
-                        likes: [],
                         category: data.category,
                         premium: data.access,
                         tags: [data.tags],
@@ -45,7 +44,7 @@ const PostArticle = () => {
                             'content-type': 'application/json',
                             // authorization: `Bearer ${localStorage.getItem('token')}`
                         },
-                        body: JSON.stringify({ blogs, signedInUser })
+                        body: JSON.stringify({ blogs, signedInUser, likes: [] })
                     })
                         .then(res => res.json())
                         .then(inserted => {
