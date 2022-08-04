@@ -177,15 +177,10 @@ const ArticleDetails = () => {
                   />
                 </span>
               </li>
-              <li>
-                <span>
-                  <FontAwesomeIcon
-                    className="icon text-secondary mx-4"
-                    title="More"
-                    icon={faEllipsis}
-                  />
-                </span>
+
+              <li> <span><FontAwesomeIcon className="icon text-secondary mx-4" title="More" icon={faEllipsis}/></span>
               </li>
+
             </ul>
           </div>
         </div>
@@ -222,11 +217,7 @@ const ArticleDetails = () => {
         ))}
         <button >Show more</button>
       </section>
-      <section>
-        <form
-          onSubmit={handleComment}
-          className="flex flex-col  items-center space-y-6"
-        >
+      <section><form onSubmit={handleComment} className="flex flex-col  items-center space-y-6">
           <textarea
             className="textarea textarea-primary w-full max-w-md"
             placeholder="Drop Your Comment Here"
