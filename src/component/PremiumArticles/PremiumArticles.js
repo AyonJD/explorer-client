@@ -5,8 +5,9 @@ import PremiumArticleItem from './PremiumArticleItem';
 const PremiumArticles = () => {
     const valueObj = useContext(articleDataContext);
     const { articles } = valueObj;
+    console.log(articles)
     const premiumArticles = articles.filter(premiumArticle => {
-        if (premiumArticle.premium === "Premium") {
+        if (premiumArticle?.blogs?.premium === "Premium") {
             return premiumArticle;
         }
     });

@@ -10,9 +10,6 @@ const RecentArticla = () => {
     const valueObj = useContext(articleDataContext);
     const { articles } = valueObj;
     const articleCopy = [...articles];
-    // console.log(articleCopy?.reverse());
-    // let aaa = articleCopy?.reverse()?.slice(0, 2)
-    console.log(articles);
 
 
     return (
