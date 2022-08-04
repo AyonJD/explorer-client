@@ -11,6 +11,7 @@ const RecentArticla = () => {
     const { articles } = valueObj;
     const articleCopy = [...articles];
 
+
     return (
         <section className='mid-container'>
             <div className='flex w-full items-center lg:mt-16 md:mt-36 sm:mt-44 mt-16'>
@@ -21,16 +22,17 @@ const RecentArticla = () => {
             <div className="mt-10 lg:flex md:flex">
                 <div className='lg:w-[70%] lg:pr-10 md:pr-5 lg:py-5 md:py-5 lg:border-r-[1px] md:border-r-[1px]'>
                     <div className=" grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 gap-7 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
-                        {articleCopy.reverse().slice(0, 2).map((article) => (
-                            <ArticleItem
-                                key={article._id}
+                        {articleCopy?.reverse()?.slice(0, 2).map((article, index) => (
+
+                            < ArticleItem
+                                key={index}
                                 article={article}
-                            ></ArticleItem>
+                            />
                         ))}
                     </div>
 
                     <div className="mt-5 grid lg:grid-cols-2 md:grid-cols-2 gap-x-7 gap-y-4">
-                        {articles.slice(0, 6).map((article) => (
+                        {articles?.slice(0, 6).map((article) => (
                             <RecentArticleItems
                                 key={article._id}
                                 article={article}
@@ -55,7 +57,7 @@ const RecentArticla = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 

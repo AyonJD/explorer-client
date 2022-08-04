@@ -22,21 +22,16 @@ const ArticleDetails = () => {
   const [upsertCount, setUpsertCount] = useState(false);
   const valueObj = useContext(articleDataContext);
   const { signedInUser } = valueObj;
-  // console.log(signedInUser);
 
   // fetch article details
   const [article, setArticle] = useState({});
-  // console.log(article);
+  const author = article?.signedInUser?.userInfo?.name;
 
   useEffect(() => {
     fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
   }, [articleId, article]);
-  // console.log(articleId);
-
-  const { Title, Category, img, desc, author, date, likes, comments } = article;
-  // console.log(likes)
 
   // today's date
   const today = new Date();
@@ -48,22 +43,23 @@ const ArticleDetails = () => {
   //Handle Like button
   const handleLike = (id) => {
     if (
-      likes.includes(signedInUser?._id) === false &&
+      article?.likes.includes(signedInUser?._id) === false &&
       signedInUser?._id !== undefined
     ) {
+      // console.log([...article.blogs.likes, signedInUser._id])
       fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          likes: [...article.likes, signedInUser._id],
+          likes: [...article?.likes, signedInUser._id],
         }),
       })
         .then((res) => res.json())
         .then((data) => {
-          // console.log(data)
-          if (data.acknowledged && likes.includes(id)) {
+          console.log(data)
+          if (data.acknowledged && article?.likes.includes(id)) {
             setUpsertCount(true);
           } else {
             setUpsertCount(false);
@@ -77,19 +73,19 @@ const ArticleDetails = () => {
 
   //Handle Unlike button
   const handleUnlike = (id) => {
-    if (likes.includes(signedInUser._id)) {
+    if (article?.likes.includes(signedInUser._id)) {
       fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          likes: likes?.filter((like) => like !== signedInUser._id),
+          likes: article?.likes?.filter(like => like !== signedInUser._id),
         }),
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data.acknowledged && likes.includes(id)) {
+          if (data.acknowledged && article?.likes.includes(id)) {
             setUpsertCount(true);
           } else {
             setUpsertCount(false);
@@ -98,6 +94,8 @@ const ArticleDetails = () => {
         .catch((err) => console.log(err));
     }
   };
+
+  // console.log(article?.likes)
 
   // handle comment button
   const handleComment = (e) => {
@@ -114,7 +112,7 @@ const ArticleDetails = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        comments: [...article.comments, { comment, author: signedInUser }],
+        comments: [...article?.comments, { comment, author: signedInUser }],
       }),
     })
       .then((res) => res.json())
@@ -128,6 +126,8 @@ const ArticleDetails = () => {
       })
       .catch((err) => console.log(err));
   };
+
+
 
   return (
     <div className="mid-container">
@@ -153,7 +153,7 @@ const ArticleDetails = () => {
               </p>
 
               <p className="text-xs mt-2 font-medium ">
-                Published: {date ? date : todayDate}
+                {/* Published: {date ? date : todayDate} */}
               </p>
             </div>
           </div>
@@ -185,15 +185,15 @@ const ArticleDetails = () => {
           </div>
         </div>
 
-        <p className="text-2xl font-bold text-left my-8"> {Title}</p>
+        <p className="text-2xl font-bold text-left my-8"> {article?.blogs?.Title}</p>
         <img
           className="w-full lg:h-[70vh] md:h[50vh] sm:h[50vh] object-cover"
-          src={img}
+          src={article?.blogs?.img}
           alt=""
         />
         <div className="flex items-center  mt-5">
-          <p className="text-primary mr-4">{likes?.length} likes</p>
-          {likes?.includes(signedInUser?._id) || upsertCount ? (
+          <p className="text-primary mr-4">{article?.likes?.length} likes</p>
+          {article?.likes?.includes(signedInUser?._id) || upsertCount ? (
             <IoMdThumbsDown
               className="thumbs_down h-8 w-8 cursor-pointer"
               onClick={() => handleUnlike(articleId)}
@@ -206,15 +206,16 @@ const ArticleDetails = () => {
           )}
         </div>
         <blockquote>
-          <p className="opacity-80">{desc}</p>
-          <span className="block font-bold text-2xl mt-4 ">{Category}</span>
+          <p className="opacity-80">{article?.blogs?.desc}</p>
+          <span className="block font-bold text-2xl mt-4 ">{article?.blogs?.Category}</span>
         </blockquote>
       </section>
-      comment show in ui
+      <h1 className="mb-4"> Recent comments - </h1>
       <section>
-        {comments?.map((comment) => (
+        {article?.comments?.slice(-3).reverse().map((comment) => (
           <Comment comment={comment}></Comment>
         ))}
+        <button >Show more</button>
       </section>
       <section><form onSubmit={handleComment} className="flex flex-col  items-center space-y-6">
           <textarea
