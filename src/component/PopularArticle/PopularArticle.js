@@ -13,7 +13,7 @@ const PopularArticle = () => {
   // console.log(articles);
   const countPoplular = 0;
   const popularArticle = valueObj?.articles?.map((element) => {
-    if (element?.blogs?.likes?.length > countPoplular) {
+    if (element?.likes?.length > countPoplular) {
       return element;
     }
   });
@@ -23,6 +23,8 @@ const PopularArticle = () => {
       popularArticleArr.push(article);
     }
   });
+
+  // console.log(popularArticleArr)
 
   return (
     <div className="mid-container">
