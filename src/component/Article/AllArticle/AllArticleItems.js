@@ -27,7 +27,7 @@ const AllArticleItems = ({ article }) => {
                 <div className="p-3 flex items-center">
                     <div>
 
-                        <h2 className="font-semibold text-xl my-2 hover:text-primary duration-300 cursor-pointer">
+                        <h2 className="font-semibold text-xl my-2 hover:text-[#da334a] cursor-pointer">
                             {article?.blogs?.Title?.slice(0, 50)}
                         </h2>
                         <p className="text-xs uppercase pt-1 pb-3">BY <span className='text-primary'>{article?.signedInUser?.userInfo?.name}</span> - {article?.blogs?.date}</p>

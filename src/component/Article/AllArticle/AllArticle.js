@@ -59,23 +59,37 @@ const AllArticle = () => {
     return (
         <>
             <div className='mt-10 lg:flex md:flex mid-container'>
-                <div className="lg:w-[70%] md:w-[70%] grid gap-5 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
-                    {articles.map((article) => (
-                        <AllArticleItems
-                            key={article._id}
-                            article={article}
-                        ></AllArticleItems>
-                    ))}
+                <div className="lg:w-[70%] md:w-[70%] lg:mb-0 md:mb-0 sm:mb-5 mb-5">
+                    <h6 className="font-extrabold text-xl pb-2 ml-2">
+                        ALL ARTICLES
+                        <hr className='mt-1'/>
+                    </h6>
+
+                    <div className="grid gap-5 mt-3">
+                        {articles.map((article) => (
+                            <AllArticleItems
+                                key={article._id}
+                                article={article}
+                            ></AllArticleItems>
+                        ))}
+                    </div>
                 </div>
 
                 <div className="lg:w-[30%] md:w-[30%]">
-                    <div className=' grid lg:ml-5 md:ml-5'>
-                        {articles.slice(0, 4).map((article) => (
-                            <AllArticleItemsRight
-                                key={article._id}
-                                article={article}
-                            ></AllArticleItemsRight>
-                        ))}
+                    <div className='lg:ml-5 md:ml-5'>
+                        <h6 className="font-extrabold text-xl  pb-2">
+                            TOP ARTICLES
+                            <hr className='mt-1' />
+                        </h6>
+
+                        <div className='grid'>
+                            {articles.slice(0, 4).map((article) => (
+                                <AllArticleItemsRight
+                                    key={article._id}
+                                    article={article}
+                                ></AllArticleItemsRight>
+                            ))}
+                        </div>
                     </div>
                     <div className='lg:ml-5 md:ml-5'>
                         <SocialLinked />
