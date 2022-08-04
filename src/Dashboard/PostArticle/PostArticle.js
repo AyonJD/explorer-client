@@ -34,7 +34,6 @@ const PostArticle = () => {
                         tags: [data.tags],
                         desc: data.details,
                         img: img,
-                        comment: [],
                         date: new Date().toLocaleDateString(),
                     }
                     //send data to db
@@ -44,7 +43,7 @@ const PostArticle = () => {
                             'content-type': 'application/json',
                             // authorization: `Bearer ${localStorage.getItem('token')}`
                         },
-                        body: JSON.stringify({ blogs, signedInUser, likes: [] })
+                        body: JSON.stringify({ blogs, signedInUser, likes: [], comment: [] })
                     })
                         .then(res => res.json())
                         .then(inserted => {
