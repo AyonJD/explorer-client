@@ -221,8 +221,8 @@ const ArticleDetails = () => {
       </section>
       comment show in ui
       <section>
-        {comments?.slice(-3).map((comment) => (
-          <Comment key={comments.index} comment={comment}></Comment>
+        {comments?.slice(-3).map((comment, index) => (
+          <Comment key={index} comment={comment}></Comment>
         ))}
       </section>
       <section>
