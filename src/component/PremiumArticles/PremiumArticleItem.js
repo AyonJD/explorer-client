@@ -8,7 +8,7 @@ const PremiumArticleItem = ({ article }) => {
   const { Title, Category, img, desc, author, date, _id } = article;
   const valueObj = useContext(articleDataContext);
   const { signedInUser } = valueObj;
-  // console.log(signedInUser);
+  console.log(article);
   const navigate = useNavigate();
   const handleClick = () => {
     if (signedInUser?.userInfo?.premium) {
@@ -26,17 +26,17 @@ const PremiumArticleItem = ({ article }) => {
       <figure>
         <img
           className="w-full h-60"
-          src={img}
+          src={article?.blogs?.img}
           alt="blog"
         />
       </figure>
       <div className="card-body text-warning px-5 py-8">
         <div className="flex justify-between items-center">
           <div className="badge bg-primary ">Lifestyle</div>
-          <div className="text-sm">Jan 24, 2022</div>
+          <div className="text-sm">{article?.blogs?.date}</div>
         </div>
-        <h1 className="text-xl font-bold">{article?.Title?.slice(0, 30)}...</h1>
-        <p className="text-sm">{article?.desc?.slice(0, 100)}...</p>
+        <h1 className="text-xl font-bold">{article?.blogs?.Title?.slice(0, 30)}...</h1>
+        <p className="text-sm">{article?.blogs?.desc?.slice(0, 100)}...</p>
       </div>
 
     </div>
