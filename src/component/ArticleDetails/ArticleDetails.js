@@ -1,12 +1,6 @@
 import {
-  faBookmark,
-  faBurger,
-  faDashboard,
   faEllipsis,
   faLink,
-  faPlus,
-  faSave,
-  faShare,
   faShareNodes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
