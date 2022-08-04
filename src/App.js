@@ -18,6 +18,7 @@ import AllArticle from "./component/Article/AllArticle/AllArticle";
 import Contact from "./component/Contact/Contact";
 import { Toaster } from 'react-hot-toast';
 import About from "./component/About/About";
+import ScrollToTop from "./hooks/ScrollToTop";
 
 const articleDataContext = createContext();
 function App() {
@@ -95,13 +96,12 @@ function App() {
   useEffect(() => {
     setSignedInUser(compareUser)
   }, [compareUser])
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+
 
   // console.log(articles);
   return (
     <div data-theme={dark ? "dark" : "light"}>
+      <ScrollToTop/>
       <articleDataContext.Provider value={valueObj}>
         <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
         <Routes preserverScrollPosition={false}>
