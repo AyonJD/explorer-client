@@ -17,7 +17,7 @@ const RecentArticleItems = ({ article }) => {
             </div>
             <div className='w-[65%]'>
                 <h2 className='text-sm font-semibold'>{article?.blogs?.Title.slice(0, 50)}</h2>
-                <p className='text-xs mt-2 font-light'>January 10, 2021</p>
+                <p className='text-xs mt-2 font-light'>{article?.blogs?.date}</p>
             </div>
         </div>
     );

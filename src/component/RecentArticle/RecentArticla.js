@@ -12,7 +12,7 @@ const RecentArticla = () => {
     const articleCopy = [...articles];
     // console.log(articleCopy?.reverse());
     // let aaa = articleCopy?.reverse()?.slice(0, 2)
-    // console.log(aaa);
+    console.log(articles);
 
 
     return (
@@ -38,7 +38,7 @@ const RecentArticla = () => {
                         {articles?.slice(0, 6).map((article) => (
                             <RecentArticleItems
                                 key={article._id}
-                                article={article?.blogs}
+                                article={article}
                             ></RecentArticleItems>
                         ))}
                     </div>
