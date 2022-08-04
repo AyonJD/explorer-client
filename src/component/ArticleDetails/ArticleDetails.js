@@ -22,22 +22,16 @@ const ArticleDetails = () => {
   const [upsertCount, setUpsertCount] = useState(false);
   const valueObj = useContext(articleDataContext);
   const { signedInUser } = valueObj;
-  // console.log(signedInUser);
 
   // fetch article details
   const [article, setArticle] = useState({});
   const author = article?.signedInUser?.userInfo?.name;
-  // console.log(likes)
 
   useEffect(() => {
     fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
   }, [articleId, article]);
-  // console.log(article);
-
-  // const { Title, Category, img, desc, author, date, likes, comments } = article;
-  // console.log(Title)
 
   // today's date
   const today = new Date();
@@ -133,6 +127,8 @@ const ArticleDetails = () => {
       .catch((err) => console.log(err));
   };
 
+
+
   return (
     <div className="mid-container">
       <section>
@@ -219,11 +215,12 @@ const ArticleDetails = () => {
           <span className="block font-bold text-2xl mt-4 ">{article?.blogs?.Category}</span>
         </blockquote>
       </section>
-      comment show in ui
+      <h1 className="mb-4"> Recent comments - </h1>
       <section>
-        {article?.comments?.map((comment) => (
-          <Comment comment={comment.comment}></Comment>
+        {article?.comments?.slice(-3).reverse().map((comment) => (
+          <Comment comment={comment}></Comment>
         ))}
+        <button >Show more</button>
       </section>
       <section>
         <form

@@ -43,7 +43,7 @@ const PostArticle = () => {
                             'content-type': 'application/json',
                             // authorization: `Bearer ${localStorage.getItem('token')}`
                         },
-                        body: JSON.stringify({ blogs, signedInUser, likes: [], comment: [] })
+                        body: JSON.stringify({ blogs, signedInUser, likes: [], comments: [] })
                     })
                         .then(res => res.json())
                         .then(inserted => {
