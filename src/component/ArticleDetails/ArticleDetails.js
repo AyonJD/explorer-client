@@ -198,7 +198,7 @@ const ArticleDetails = () => {
         <h1 className="mb-2 text-xl"> Recent comments</h1> <hr className="mb-7" />
         <section>
           {article?.comments?.slice(-3).reverse().map((comment) => (
-            <Comment comment={comment}></Comment>
+            <Comment comment={comment} ></Comment>
           ))}
           {/* <button >Show more</button> */}
         </section>
