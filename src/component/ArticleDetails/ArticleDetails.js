@@ -137,7 +137,7 @@ const ArticleDetails = () => {
             <div className="avatar ">
               <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img
-                  src="https://placeimg.com/192/192/people?fbclid=IwAR3I707HDlKOYfnctNwHpvlQjBBW6yrRafMT-7gMxgjQOQH_urWgeQgWuK4"
+                  src={article?.signedInUser?.userInfo?.photoURL}
                   alt=""
                 />
               </div>
@@ -151,9 +151,8 @@ const ArticleDetails = () => {
                   </div>
                 </span>
               </p>
-
-              <p className="text-xs mt-2 font-medium ">
-                {/* Published: {date ? date : todayDate} */}
+              <p className="text-xs mt-1 font-medium ">
+                Published: {article?.blogs?.date}
               </p>
             </div>
           </div>
