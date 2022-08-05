@@ -20,7 +20,7 @@ const Comment = ({ comment }) => {
             </div>
           }
         </div>
-        <div className="flex gap-4 text-sm font-semibold mt-1 ml-2">
+        <div className="flex gap-4 text-sm font-semibold mt-1 pl-3">
           <h6 className="cursor-pointer">Like</h6>
           <h6 className="cursor-pointer">Reply</h6>
         </div>
