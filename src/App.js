@@ -9,7 +9,6 @@ import Header from "./component/Shared/Header/Header";
 import Login from "./component/Authentication/Login/Login";
 import Register from "./component/Authentication/Register/Register";
 import Profile from "./Dashboard/Profile/Profile";
-import { clear } from "@testing-library/user-event/dist/clear";
 import PostArticle from "./Dashboard/PostArticle/PostArticle";
 import ArticleDetails from "./component/ArticleDetails/ArticleDetails";
 import auth from "./firebase.init";
@@ -21,9 +20,6 @@ import About from "./component/About/About";
 
 import ScrollToTop from "./hooks/ScrollToTop";
 
-import { useSelector, useDispatch } from "react-redux";
-import getAllArticles from "./source/actions/articlesAction";
-
 const articleDataContext = createContext();
 function App() {
 
@@ -32,14 +28,6 @@ function App() {
   const [users, setUsers] = useState([]);
   const [signedInUser, setSignedInUser] = useState(null);
   const [authUser] = useAuthState(auth);
-
-  const articlesData = useSelector((state) => state.articles);
-  const dispatch = useDispatch();
-
-  // console.log(articlesData);
-  useEffect(() => {
-    dispatch(getAllArticles())
-  }, []);
 
   useEffect(() => {
     AOS.init();
