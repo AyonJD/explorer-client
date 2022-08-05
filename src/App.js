@@ -36,7 +36,7 @@ function App() {
   const articlesData = useSelector((state) => state.articles);
   const dispatch = useDispatch();
 
-  console.log(articlesData);
+  // console.log(articlesData);
   useEffect(() => {
     dispatch(getAllArticles())
   }, []);

@@ -60,7 +60,7 @@ const AllArticle = () => {
     return (
         <>
             <div className='mt-10 lg:flex md:flex mid-container'>
-                <div className="lg:w-[70%] md:w-[70%] lg:mb-0 md:mb-0 sm:mb-5 mb-5">
+                <div className="lg:w-[70%] md:w-[70%] lg:mb-0 md:mb-0 sm:mb-5 mb-5 ">
                     <h1 className="font-bold text-xl pb-2 ml-2">
                         All Articles
                         <hr className='mt-1' />
