@@ -8,7 +8,7 @@ const PremiumArticleItem = ({ article }) => {
   const { Title, Category, img, desc, author, date, _id } = article;
   const valueObj = useContext(articleDataContext);
   const { signedInUser } = valueObj;
-  console.log(article);
+  // console.log(article);
   const navigate = useNavigate();
   const handleClick = () => {
     if (signedInUser?.userInfo?.premium) {
@@ -22,7 +22,7 @@ const PremiumArticleItem = ({ article }) => {
   };
 
   return (
-    <div onClick={() => handleClick(_id)} className="card shadow-xl bg-neutral">
+    <div onClick={() => handleClick(_id)} className="card shadow-xl bg-neutral cursor-pointer">
       <figure>
         <img
           className="w-full h-60"

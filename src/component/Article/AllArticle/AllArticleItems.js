@@ -14,17 +14,17 @@ const AllArticleItems = ({ article }) => {
     return (
         <div
             onClick={() => handleClick(_id)}
-            className="hero border-b-[1px] pb-5 allArticle-card cursor-pointer"
+            className="hero border-b-[1px] pb-5 allArticle-card "
         >
             <div className="hero-content grid lg:grid-cols-2 md:grid-cols-1 p-0 ">
-                <div className="h-52 w-full">
+                <div className="h-52 w-full cursor-pointer">
                     <img
                         src={article?.blogs?.img}
                         className=" h-52 lg:max-w-sm md:max-w-lg w-full  rounded-md shadow-xl mx-auto"
                         alt=""
                     />
                 </div>
-                <div className="p-3 flex items-center">
+                <div className="p-3 flex items-center cursor-pointer">
                     <div>
 
                         <h2 className="font-semibold text-xl my-2 hover:text-[#da334a] cursor-pointer">
