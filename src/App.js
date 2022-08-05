@@ -23,6 +23,7 @@ import ScrollToTop from "./hooks/ScrollToTop";
 
 import { useSelector, useDispatch } from "react-redux";
 import getAllArticles from "./source/actions/articlesAction";
+import Hudai from "./Hudai";
 
 const articleDataContext = createContext();
 function App() {
@@ -36,7 +37,7 @@ function App() {
   const articlesData = useSelector((state) => state.articles);
   const dispatch = useDispatch();
 
-  console.log(articlesData);
+  // console.log(articlesData);
   useEffect(() => {
     dispatch(getAllArticles())
   }, []);
@@ -99,6 +100,7 @@ function App() {
     users,
     signedInUser,
     setSignedInUser,
+    dark
   };
   // console.log(articles);
   const compareUser = useMemo(() => {
@@ -125,6 +127,7 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/hudai" element={<Hudai />}></Route>
           <Route
             path="/article/:articleId"
             element={<ArticleDetails />}
