@@ -8,7 +8,6 @@ const PremiumArticleItem = ({ article }) => {
   const { Title, Category, img, desc, author, date, _id } = article;
   const valueObj = useContext(articleDataContext);
   const { signedInUser } = valueObj;
-  // console.log(article);
   const navigate = useNavigate();
   const handleClick = () => {
     if (signedInUser?.userInfo?.premium) {
@@ -17,7 +16,6 @@ const PremiumArticleItem = ({ article }) => {
     else {
       toast.error("You have to purchase premium articles");
     }
-
     // navigate(`/article/${article._id}`);
   };
 
