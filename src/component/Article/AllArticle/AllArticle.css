@@ -48,7 +48,6 @@
 /* .pagination li:first-child button {
     width: 120px;
 }
-
 .pagination li:last-child button {
     width: 100px;
 } */
@@ -69,4 +68,8 @@
 
 .pagination li:last-child {
     margin: 0 0 0 15px;
+}
+
+.allArticle-card:nth-child(4) {
+    border-bottom: 0 !important;
 }

@@ -6,8 +6,7 @@ import profile from '../../assets/blank user.webp'
 import './Profile.css'
 
 const Profile = () => {
-    const [user] = useAuthState(auth)
-    const name = user?.displayName;
+    // const valueObj = useContext()
 
 
     return (

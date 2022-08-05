@@ -16,15 +16,31 @@ import auth from "./firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AllArticle from "./component/Article/AllArticle/AllArticle";
 import Contact from "./component/Contact/Contact";
+import { Toaster } from 'react-hot-toast';
 import About from "./component/About/About";
+
+import ScrollToTop from "./hooks/ScrollToTop";
+
+import { useSelector, useDispatch } from "react-redux";
+import getAllArticles from "./source/actions/articlesAction";
 
 const articleDataContext = createContext();
 function App() {
+
   const [articles, setArticles] = useState([]);
   const [searchValue, setSearchValue] = useState(null);
   const [users, setUsers] = useState([]);
   const [signedInUser, setSignedInUser] = useState(null);
   const [authUser] = useAuthState(auth);
+
+  const articlesData = useSelector((state) => state.articles);
+  const dispatch = useDispatch();
+
+  console.log(articlesData);
+  useEffect(() => {
+    dispatch(getAllArticles())
+  }, []);
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -97,6 +113,7 @@ function App() {
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
+      <ScrollToTop />
       <articleDataContext.Provider value={valueObj}>
         <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
         <Routes preserverScrollPosition={false}>
@@ -115,6 +132,7 @@ function App() {
         </Routes>
         <Footer />
       </articleDataContext.Provider>
+      <Toaster />
     </div>
   );
 }

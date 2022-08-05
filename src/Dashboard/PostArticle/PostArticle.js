@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import './PostArticle.css';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
+import toast from "react-hot-toast";
 import { HiArrowNarrowRight } from 'react-icons/hi';
+import { articleDataContext } from '../../App';
 const PostArticle = () => {
+    const valueObj = useContext(articleDataContext);
+    const { signedInUser } = valueObj;
     const { register, handleSubmit, watch, formState: { errors }, trigger, reset } = useForm();
 
     const imageSotrageKey = `0ca5c9cdb23add3ecfaff014d8e4ad9c`
 
     const handleAddProduct = async data => {
-        const image = data.image[0]
+        const image = data.image[0];
         const url = `https://api.imgbb.com/1/upload?key=${imageSotrageKey}`
         const formData = new FormData();
         formData.append('image', image);
@@ -30,9 +34,7 @@ const PostArticle = () => {
                         tags: [data.tags],
                         desc: data.details,
                         img: img,
-                        likes: [],
                         date: new Date().toLocaleDateString(),
-
                     }
                     //send data to db
                     fetch(`https://floating-ocean-13139.herokuapp.com/blogs`, {
@@ -41,13 +43,14 @@ const PostArticle = () => {
                             'content-type': 'application/json',
                             // authorization: `Bearer ${localStorage.getItem('token')}`
                         },
-                        body: JSON.stringify(blogs)
+                        body: JSON.stringify({ blogs, signedInUser, likes: [], comments: [] })
                     })
                         .then(res => res.json())
                         .then(inserted => {
 
                             if (inserted.insertedId) {
-                                toast.success(`Hurray!!New tools.${data.title.slice(0, 10)}... added successfully`);
+                                // alert('Succuessfully posted')
+                                toast.success(`Your post ${data.title.slice(0, 5)}... added successfully.`);
 
                                 reset()
                             }
@@ -55,15 +58,9 @@ const PostArticle = () => {
                                 toast.error('Failed to add a Article')
                             }
                         }
-
-
                         )
-                    // console.log(blogs);
                 }
-
             })
-
-
     }
     return (
         <div>

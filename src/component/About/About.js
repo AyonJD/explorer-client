@@ -1,8 +1,9 @@
 import React from 'react';
 import './About.css'
-import banner from '../../assets/About Page/Shape Design/cta.png'
+import banner from '../../assets/about/Shape Design/cta.png'
 import MemberCard from './MemberCard';
 import Services from './Services';
+import Project from './Project';
 
 const About = () => {
     return (
@@ -29,6 +30,10 @@ const About = () => {
 
             <div className='mid-container'>
                 <Services/>
+            </div>
+            
+            <div className='mid-container'>
+                <Project/>
             </div>
         </div>
     );
