@@ -1,7 +1,7 @@
 import { faEllipsis, faLink, faShareNodes, } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import "./ArticleDetails.css";
 import { articleDataContext } from "../../App";
@@ -9,14 +9,19 @@ import Comment from "./Comment/Comment";
 import AllArticleItemsRight from "../Article/AllArticle/AllArticleItemsRight";
 import ArticleItemsRight from "../Article/AllArticle/ArticleItemsRight";
 import SocialLinked from "../RecentArticle/SocialLinked";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const ArticleDetails = () => {
   const { articleId } = useParams();
   const [upsertCount, setUpsertCount] = useState(false);
   const valueObj = useContext(articleDataContext);
   const { signedInUser } = valueObj;
-
+  const authUser = useAuthState(auth)
+  const navigate = useNavigate()
+  const user = authUser[0]?.email
   const articles = valueObj.articles
+  const dark = valueObj.dark
   // fetch article details
   const [article, setArticle] = useState({});
   const author = article?.signedInUser?.userInfo?.name;
@@ -94,6 +99,10 @@ const ArticleDetails = () => {
   // handle comment button
   const handleComment = (e) => {
     e.preventDefault();
+    if (!user) {
+      navigate('/login')
+      return
+    }
     // input value
     const comment = e.target.comment.value;
     // console.log(comment);
@@ -163,9 +172,8 @@ const ArticleDetails = () => {
               </ul>
             </div>
           </div>
-
           <p className="text-2xl font-bold text-left my-8"> {article?.blogs?.Title}</p>
-          <div className="lg:h-[50vh] md:h[50vh] sm:h[50vh] w-full text-center overflow-hidden">
+          <div className="lg:h-[440px] md:h-[360px] sm:h[50vh] w-full text-center overflow-hidden">
             <img className="w-full  mx-auto" src={article?.blogs?.img} alt="" />
           </div>
           <div className="flex items-center  mt-5">
@@ -182,32 +190,30 @@ const ArticleDetails = () => {
               />
             )}
           </div>
-          <blockquote>
-            <p className="opacity-80">{article?.blogs?.desc}</p>
-            <span className="block font-bold text-2xl mt-4 ">{article?.blogs?.Category}</span>
+          <blockquote className="mb-5">
+            <p className="opacity-70 text-normal ">{article?.blogs?.desc}</p>
+            {/* <span className="block font-bold text-2xl mt-4 ">{article?.blogs?.Category}</span> */}
           </blockquote>
         </section>
-        <h1 className="mb-4"> Recent comments - </h1>
+        <h1 className="mb-2 text-xl"> Recent comments</h1> <hr className="mb-7" />
         <section>
           {article?.comments?.slice(-3).reverse().map((comment) => (
             <Comment comment={comment}></Comment>
           ))}
-          <button >Show more</button>
+          {/* <button >Show more</button> */}
         </section>
-        <section><form onSubmit={handleComment} className="flex flex-col  items-center space-y-6">
-          <textarea
-            className="textarea textarea-primary w-full max-w-md"
-            placeholder="Drop Your Comment Here"
-            name="comment"
-            required
-          ></textarea>
-          <button
-            className="btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg"
-            type="submit"
-          >
-            Post Comment
-          </button>
-        </form>
+        <section>
+          <form onSubmit={handleComment} className={dark ? "space-y-6 py-8 px-6 rounded-md " : "space-y-6 py-8 px-6 rounded-md bg-neutral"}>
+            <h6 className="font-semibold">LEAVE A REPLAY</h6>
+            <textarea
+              className="textarea input-bordered focus:outline-none w-full h-36 mt-0"
+              placeholder="Your Comment"
+              name="comment"
+              required>
+            </textarea>
+            <button className="btn btn-primary btn-md" type="submit" > Post Comment
+            </button>
+          </form>
         </section>
       </div>
       <div className="lg:w-[30%] md:w-[30%] lg:pl-8 md:pl-5">

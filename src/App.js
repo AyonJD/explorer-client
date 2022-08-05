@@ -100,6 +100,7 @@ function App() {
     users,
     signedInUser,
     setSignedInUser,
+    dark
   };
   // console.log(articles);
   const compareUser = useMemo(() => {
