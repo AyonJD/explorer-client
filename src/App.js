@@ -19,6 +19,11 @@ import Contact from "./component/Contact/Contact";
 import { Toaster } from 'react-hot-toast';
 import About from "./component/About/About";
 
+import ScrollToTop from "./hooks/ScrollToTop";
+
+import { useSelector, useDispatch } from "react-redux";
+import getAllArticles from "./source/actions/articlesAction";
+
 const articleDataContext = createContext();
 function App() {
 
@@ -27,6 +32,15 @@ function App() {
   const [users, setUsers] = useState([]);
   const [signedInUser, setSignedInUser] = useState(null);
   const [authUser] = useAuthState(auth);
+
+  const articlesData = useSelector((state) => state.articles);
+  const dispatch = useDispatch();
+
+  console.log(articlesData);
+  useEffect(() => {
+    dispatch(getAllArticles())
+  }, []);
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -95,13 +109,11 @@ function App() {
   useEffect(() => {
     setSignedInUser(compareUser)
   }, [compareUser])
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
 
-  // console.log(articles);
+
   return (
     <div data-theme={dark ? "dark" : "light"}>
+      <ScrollToTop />
       <articleDataContext.Provider value={valueObj}>
         <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
         <Routes preserverScrollPosition={false}>
