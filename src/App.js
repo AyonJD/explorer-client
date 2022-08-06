@@ -102,7 +102,13 @@ function App() {
     setSignedInUser,
     dark
   };
-  console.log(users);
+
+
+  const userss = users.map(user => {
+    return user.userInfo.role
+  })
+  // console.log(userss)
+
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)
   }, [authUser, users])
@@ -112,6 +118,7 @@ function App() {
     setSignedInUser(compareUser)
   }, [compareUser])
 
+  console.log(compareUser?.userInfo.role);
 
   return (
     <div data-theme={dark ? "dark" : "light"}>

@@ -19,6 +19,8 @@ const Header = ({ setDark, dark, setTheme }) => {
         signOut(auth);
     };
 
+    // console.log(valueObj?.users?.userInfo)
+
     //FIlter with useMemo users based on firebase user
     useEffect(() => {
         let filteredUsers = users?.filter(userDB => userDB?.userInfo?.email === user?.email)
