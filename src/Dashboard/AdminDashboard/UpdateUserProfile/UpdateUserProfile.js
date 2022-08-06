@@ -2,7 +2,7 @@
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
+import auth from '../../../firebase.init';
 
 const UpdateUserProfile = () => {
     const [user] = useAuthState(auth)
