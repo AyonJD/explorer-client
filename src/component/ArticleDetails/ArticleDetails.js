@@ -11,6 +11,7 @@ import ArticleItemsRight from "../Article/AllArticle/ArticleItemsRight";
 import SocialLinked from "../RecentArticle/SocialLinked";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import RegisterCard from "../PopularArticle/RegisterCard";
 
 const ArticleDetails = () => {
   const { articleId } = useParams();
@@ -131,7 +132,6 @@ const ArticleDetails = () => {
   };
 
 
-
   return (
     <div className="mid-container lg:flex md:flex">
       <div className="lg:w-[70%] md:w-[70%] lg:mb-0 md:mb-0 sm:mb-5 mb-5 lg:border-r-[1px] md:border-r-[1px] lg:pr-8 md:pr-5">
@@ -216,6 +216,8 @@ const ArticleDetails = () => {
           </form>
         </section>
       </div>
+
+
       <div className="lg:w-[30%] md:w-[30%] lg:pl-8 md:pl-5">
         <div>
           <h1 className="font-bold text-xl  pb-2">
@@ -233,6 +235,10 @@ const ArticleDetails = () => {
           </div>
         </div>
 
+        <div className='mt-5'>
+          <SocialLinked />
+        </div>
+
         <div>
           <h1 className="font-bold text-xl pb-5 mt-10">
             Don't Miss
@@ -241,8 +247,8 @@ const ArticleDetails = () => {
           <ArticleItemsRight />
         </div>
 
-        <div className='mt-5'>
-          <SocialLinked />
+        <div className="mt-8">
+          <RegisterCard />
         </div>
       </div>
     </div>

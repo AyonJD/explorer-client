@@ -24,6 +24,7 @@ import ScrollToTop from "./hooks/ScrollToTop";
 import { useSelector, useDispatch } from "react-redux";
 import getAllArticles from "./source/actions/articlesAction";
 import Hudai from "./Hudai";
+import Dashboard from "./Dashboard/AdminDashboard/Dashboard";
 
 const articleDataContext = createContext();
 function App() {
@@ -102,7 +103,13 @@ function App() {
     setSignedInUser,
     dark
   };
-  // console.log(articles);
+
+
+  const userss = users.map(user => {
+    return user.userInfo.role
+  })
+  // console.log(userss)
+
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)
   }, [authUser, users])
@@ -112,6 +119,7 @@ function App() {
     setSignedInUser(compareUser)
   }, [compareUser])
 
+  // console.log(compareUser?.userInfo.role);
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
@@ -128,10 +136,12 @@ function App() {
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/hudai" element={<Hudai />}></Route>
-          <Route
-            path="/article/:articleId"
-            element={<ArticleDetails />}
-          ></Route>
+          <Route path="/article/:articleId" element={<ArticleDetails />}></Route>
+
+          <Route path="dashboard" element={<Dashboard />}>
+            <Route index element={<Profile />} />
+            <Route path="post-Article" element={<PostArticle />} />
+          </Route>
         </Routes>
         <Footer />
       </articleDataContext.Provider>
