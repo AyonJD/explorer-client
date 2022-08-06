@@ -38,7 +38,7 @@ function App() {
   console.log(articlesData);
   useEffect(() => {
     dispatch(getAllArticles());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     AOS.init();
