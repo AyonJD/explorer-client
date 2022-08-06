@@ -20,14 +20,7 @@ const Header = ({ setDark, dark, setTheme }) => {
     };
 
     let userAuthor = (valueObj?.signedInUser?.admin)
-    // useEffect(() => {
-       
-    //     if (userAuthor === true) {
-    //         setAdmin(true)
-    //     }
-    // }, [valueObj])
 
-    console.log(userAuthor)
     //FIlter with useMemo users based on firebase user
     useEffect(() => {
         let filteredUsers = users?.filter(userDB => userDB?.userInfo?.email === user?.email)
@@ -38,7 +31,6 @@ const Header = ({ setDark, dark, setTheme }) => {
         setUserImg(signedInUser?.userInfo?.photoURL)
     }, [valueObj, users, setSignedInUser, signedInUser, user]);
 
-    // console.log(userImg)
 
 
     return (
@@ -98,12 +90,33 @@ const Header = ({ setDark, dark, setTheme }) => {
                             </div>
                         </label>
                         <ul tabIndex="1" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 border border-info">
-                            <li className='mb-1'><Link to='/profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
-                            <li className='mb-1'><Link to='/post-article'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Post Article</span></Link></li>
-                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Manage Article</span></Link></li>
-                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faStar} /> <span className='item'>My Reviews</span></Link></li>
-                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Returns & Cancellation</span></Link></li>
-                            <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>
+                            {
+                                userAuthor ?
+                                    <>
+                                        <li className='mb-1'><Link to='/profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
+                                        
+                                        <li className='mb-1'><Link to='/dashboard'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Dashboard</span></Link></li>
+                                        
+                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Manage Article</span></Link></li>
+
+                                        <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>
+                                    </> :
+                                    <>
+                                        <li className='mb-1'><Link to='/profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
+                                        
+                                        <li className='mb-1'><Link to='/post-article'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Become Premium Member</span></Link></li>
+                                        
+                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Setting</span></Link></li>
+                                       
+                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faStar} /> <span className='item'>FAQ</span></Link></li>
+                                        
+                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Bookmark</span></Link></li>
+                                        
+                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Notification</span></Link></li>
+                                        
+                                        <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>
+                                    </>
+                            }
                         </ul>
                     </div>
                 </>
