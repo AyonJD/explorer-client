@@ -19,8 +19,15 @@ const Header = ({ setDark, dark, setTheme }) => {
         signOut(auth);
     };
 
-    // console.log(valueObj?.users?.userInfo)
+    let userAuthor = (valueObj?.signedInUser?.admin)
+    // useEffect(() => {
+       
+    //     if (userAuthor === true) {
+    //         setAdmin(true)
+    //     }
+    // }, [valueObj])
 
+    console.log(userAuthor)
     //FIlter with useMemo users based on firebase user
     useEffect(() => {
         let filteredUsers = users?.filter(userDB => userDB?.userInfo?.email === user?.email)
@@ -56,7 +63,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                         </li>
                     </ul>
                 </div>
-                <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link> </h1> 
+                <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link> </h1>
             </div>
 
             <div className="navbar-start hidden lg:flex">
