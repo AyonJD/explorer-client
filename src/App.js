@@ -16,17 +16,30 @@ import auth from "./firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AllArticle from "./component/Article/AllArticle/AllArticle";
 import Contact from "./component/Contact/Contact";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 import About from "./component/About/About";
+
+import ScrollToTop from "./hooks/ScrollToTop";
+
+import { useSelector, useDispatch } from "react-redux";
+import getAllArticles from "./source/actions/articlesAction";
 
 const articleDataContext = createContext();
 function App() {
-
   const [articles, setArticles] = useState([]);
   const [searchValue, setSearchValue] = useState(null);
   const [users, setUsers] = useState([]);
   const [signedInUser, setSignedInUser] = useState(null);
   const [authUser] = useAuthState(auth);
+
+  const articlesData = useSelector((state) => state.articles);
+  const dispatch = useDispatch();
+
+  console.log(articlesData);
+  useEffect(() => {
+    dispatch(getAllArticles());
+  }, [dispatch]);
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -88,20 +101,17 @@ function App() {
   };
   // console.log(articles);
   const compareUser = useMemo(() => {
-    return users?.find(user => user?.userInfo?.email === authUser?.email)
-  }, [authUser, users])
+    return users?.find((user) => user?.userInfo?.email === authUser?.email);
+  }, [authUser, users]);
 
   // console.log(compareUser)
   useEffect(() => {
-    setSignedInUser(compareUser)
-  }, [compareUser])
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    setSignedInUser(compareUser);
+  }, [compareUser]);
 
-  // console.log(articles);
   return (
     <div data-theme={dark ? "dark" : "light"}>
+      <ScrollToTop />
       <articleDataContext.Provider value={valueObj}>
         <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
         <Routes preserverScrollPosition={false}>
