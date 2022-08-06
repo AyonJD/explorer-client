@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Comment = ({ comment }) => {
   const [hover, setHover] = useState(false)
-  // console.log(comment?.author?.userInfo);
+  // console.log(comment);
   return (
     <div className="flex gap-3 mb-5 w-full">
       <div>
