@@ -4,6 +4,7 @@ import Banner from '../Banner/Banner';
 import PremiumArticles from '../PremiumArticles/PremiumArticles';
 import PopularArticle from '../PopularArticle/PopularArticle';
 import RecentArticla from '../RecentArticle/RecentArticla';
+import Pricing from '../Pricing/Pricing';
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             <RecentArticla></RecentArticla>
             <PopularArticle />
             <PremiumArticles />
+            <Pricing></Pricing>
         </div>
     );
 };
