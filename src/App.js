@@ -24,6 +24,8 @@ import ScrollToTop from "./hooks/ScrollToTop";
 import { useSelector, useDispatch } from "react-redux";
 import getAllArticles from "./source/actions/articlesAction";
 
+import Dashboard from "./Dashboard/AdminDashboard/Dashboard";
+
 const articleDataContext = createContext();
 function App() {
 
@@ -36,7 +38,7 @@ function App() {
   const articlesData = useSelector((state) => state.articles);
   const dispatch = useDispatch();
 
-  console.log(articlesData);
+  // console.log(articlesData);
   useEffect(() => {
     dispatch(getAllArticles())
   }, []);
@@ -99,8 +101,15 @@ function App() {
     users,
     signedInUser,
     setSignedInUser,
+    dark
   };
-  // console.log(articles);
+
+
+  const userss = users.map(user => {
+    return user.userInfo.role
+  })
+  // console.log(userss)
+
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)
   }, [authUser, users])
@@ -110,6 +119,7 @@ function App() {
     setSignedInUser(compareUser)
   }, [compareUser])
 
+  // console.log(compareUser?.userInfo.role);
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
@@ -125,10 +135,13 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
-          <Route
-            path="/article/:articleId"
-            element={<ArticleDetails />}
-          ></Route>
+          {/* <Route path="/hudai" element={<Hudai />}></Route> */}
+          <Route path="/article/:articleId" element={<ArticleDetails />}></Route>
+
+          <Route path="dashboard" element={<Dashboard />}>
+            <Route index element={<Profile />} />
+            <Route path="post-Article" element={<PostArticle />} />
+          </Route>
         </Routes>
         <Footer />
       </articleDataContext.Provider>

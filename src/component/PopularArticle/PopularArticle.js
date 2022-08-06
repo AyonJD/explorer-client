@@ -5,11 +5,12 @@ import PopularArticleItem from "./PopularArticleItem";
 
 import { RiArrowRightSFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import RegisterCard from "./RegisterCard";
 // RiArrowDropRightFill
 
 const PopularArticle = () => {
   const valueObj = useContext(articleDataContext);
-  const navigate = useNavigate();
+  
   // console.log(articles);
   const countPoplular = 0;
   const popularArticle = valueObj?.articles?.map((element) => {
@@ -145,28 +146,8 @@ const PopularArticle = () => {
               </ul>
             </div>
           </div>
-          <div className="card shadow-xl register-card">
-            <div className="card-body text-center">
-              <h2 className="font-bold text-center text-warning ">
-                Join Membership
-              </h2>
-              <h2 className=" font-bold text-warning text-xl">
-                Want to access our <br /> Premium Content?
-              </h2>
-              <p className="text-[12px] text-warning">
-                Sometimes features require a sort description. This can be
-                detailed description{" "}
-              </p>
-              <button
-                onClick={() => navigate("/register")}
-                className="btn rounded-full text-white register-btn"
-              >
-                Register Now
-              </button>
-              <button className="btn btn-outline  rounded-full text-warning ">
-                Contact Us
-              </button>
-            </div>
+          <div>
+            <RegisterCard/>
           </div>
         </div>
       </div>

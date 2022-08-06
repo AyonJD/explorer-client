@@ -51,7 +51,7 @@ const Login = () => {
         ocupation: "N/A",
         dob: "N/A",
         phone: "N/A",
-        address: "N/A"
+        address: "N/A",
     }
 
     //Handle google signing
