@@ -25,6 +25,12 @@ import { useSelector, useDispatch } from "react-redux";
 import getAllArticles from "./source/actions/articlesAction";
 import Hudai from "./Hudai";
 import Dashboard from "./Dashboard/AdminDashboard/Dashboard";
+import Overview from "./Dashboard/AdminDashboard/OverviewWebsite/Overview";
+import ManageArticle from "./Dashboard/AdminDashboard/ManageArticle/ManageArticle";
+import ManageUser from "./Dashboard/AdminDashboard/ManageUser/ManageUser";
+import Analytics from "./Dashboard/AdminDashboard/Analytics/Analytics";
+import AdminRules from "./Dashboard/AdminDashboard/Analytics/AdminRules";
+import PremiumMember from "./Dashboard/AdminDashboard/PremiumMember/PremiumMember";
 
 const articleDataContext = createContext();
 function App() {
@@ -141,7 +147,14 @@ function App() {
           <Route path="dashboard" element={<Dashboard />}>
             <Route index element={<Profile />} />
             <Route path="post-Article" element={<PostArticle />} />
+            <Route path="overview" element={<Overview />} />
+            <Route path="manage-article" element={<ManageArticle />} />
+            <Route path="manage-user" element={<ManageUser />} />
+            <Route path="analytics" element={<Analytics />} />
+            <Route path="admin-rules" element={<AdminRules />} />
+            <Route path="premium-member" element={<PremiumMember />} />
           </Route>
+
         </Routes>
         <Footer />
       </articleDataContext.Provider>
