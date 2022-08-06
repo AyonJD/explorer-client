@@ -1,28 +1,28 @@
-import {
-  faBookmark,
-  faBurger,
-  faDashboard,
-  faEllipsis,
-  faLink,
-  faPlus,
-  faSave,
-  faShare,
-  faShareNodes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEllipsis, faLink, faShareNodes, } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import "./ArticleDetails.css";
 import { articleDataContext } from "../../App";
 import Comment from "./Comment/Comment";
+import AllArticleItemsRight from "../Article/AllArticle/AllArticleItemsRight";
+import ArticleItemsRight from "../Article/AllArticle/ArticleItemsRight";
+import SocialLinked from "../RecentArticle/SocialLinked";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import RegisterCard from "../PopularArticle/RegisterCard";
 
 const ArticleDetails = () => {
   const { articleId } = useParams();
   const [upsertCount, setUpsertCount] = useState(false);
   const valueObj = useContext(articleDataContext);
   const { signedInUser } = valueObj;
-
+  const authUser = useAuthState(auth)
+  const navigate = useNavigate()
+  const user = authUser[0]?.email
+  const articles = valueObj.articles
+  const dark = valueObj.dark
   // fetch article details
   const [article, setArticle] = useState({});
   const author = article?.signedInUser?.userInfo?.name;
@@ -100,6 +100,10 @@ const ArticleDetails = () => {
   // handle comment button
   const handleComment = (e) => {
     e.preventDefault();
+    if (!user) {
+      navigate('/login')
+      return
+    }
     // input value
     const comment = e.target.comment.value;
     // console.log(comment);
@@ -127,6 +131,7 @@ const ArticleDetails = () => {
       .catch((err) => console.log(err));
   };
 
+<<<<<<< HEAD
   return (
     <div className="mid-container">
       <section>
@@ -135,43 +140,95 @@ const ArticleDetails = () => {
             <div className="avatar ">
               <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img src={article?.signedInUser?.userInfo?.photoURL} alt="" />
+=======
+
+  return (
+    <div className="mid-container lg:flex md:flex">
+      <div className="lg:w-[70%] md:w-[70%] lg:mb-0 md:mb-0 sm:mb-5 mb-5 lg:border-r-[1px] md:border-r-[1px] lg:pr-8 md:pr-5">
+        <section>
+          <div className="flex justify-between ">
+            <div className="flex items-center">
+              <div className="avatar ">
+                <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img src={article?.signedInUser?.userInfo?.photoURL} alt="" />
+                </div>
+              </div>
+              <div className="ml-6">
+                <p className="antialiased  text-lg  font-normal">
+                  {author ? author : "MD. Mozammel Hoq 🌚"}{" "}
+                  <span>
+                    <div className="badge badge-xs  badge-primary  ml-3 p-2"> Author  </div>
+                  </span>
+                </p>
+                <p className="text-xs mt-1 font-medium ">
+                  Published: {article?.blogs?.date}
+                </p>
+>>>>>>> 45af8e99dab647f12ede1d3b3e3c51ca857f8851
               </div>
             </div>
-            <div className="ml-6">
-              <p className="antialiased  text-lg  font-normal">
-                {author ? author : "MD. Mozammel Hoq 🌚"}{" "}
-                <span>
-                  <div className="badge badge-xs  badge-primary  ml-3 p-2">
-                    Author
-                  </div>
-                </span>
-              </p>
-              <p className="text-xs mt-1 font-medium ">
-                Published: {article?.blogs?.date}
-              </p>
+            <div className=" breadcrumbs">
+              <ul>
+                <li>
+                  <span><FontAwesomeIcon className="icon text-secondary ml-4 " title="Share" icon={faShareNodes} /> </span>
+                </li>
+
+                <li>
+                  <span><FontAwesomeIcon className="icon text-secondary ml-4" title="Copy" icon={faLink} /> </span>
+                </li>
+
+                <li>
+                  <span><FontAwesomeIcon className="icon text-secondary mx-4" title="More" icon={faEllipsis} /></span>
+                </li>
+
+              </ul>
             </div>
           </div>
-          <div className=" breadcrumbs">
-            <ul>
-              <li>
-                <span>
-                  <FontAwesomeIcon
-                    className="icon text-secondary ml-4 "
-                    title="Share"
-                    icon={faShareNodes}
-                  />
-                </span>
-              </li>
-              <li>
-                <span>
-                  <FontAwesomeIcon
-                    className="icon text-secondary ml-4"
-                    title="Copy"
-                    icon={faLink}
-                  />
-                </span>
-              </li>
+          <p className="text-2xl font-bold text-left my-8"> {article?.blogs?.Title}</p>
+          <div className="lg:h-[440px] md:h-[360px] sm:h[50vh] w-full text-center overflow-hidden">
+            <img className="w-full  mx-auto" src={article?.blogs?.img} alt="" />
+          </div>
+          <div className="flex items-center  mt-5">
+            <p className="text-primary mr-4">{article?.likes?.length} likes</p>
+            {article?.likes?.includes(signedInUser?._id) || upsertCount ? (
+              <IoMdThumbsDown
+                className="thumbs_down h-8 w-8 cursor-pointer"
+                onClick={() => handleUnlike(articleId)}
+              />
+            ) : (
+              <IoMdThumbsUp
+                className="thumbs_up mr-2 h-8 w-8 cursor-pointer"
+                onClick={() => handleLike(articleId)}
+              />
+            )}
+          </div>
+          <blockquote className="mb-5">
+            <p className="opacity-70 text-normal ">{article?.blogs?.desc}</p>
+            {/* <span className="block font-bold text-2xl mt-4 ">{article?.blogs?.Category}</span> */}
+          </blockquote>
+        </section>
+        <h1 className="mb-2 text-xl"> Recent comments</h1> <hr className="mb-7" />
+        <section>
+          {article?.comments?.slice(-3).reverse().map((comment) => (
+            <Comment comment={comment} ></Comment>
+          ))}
+          {/* <button >Show more</button> */}
+        </section>
+        <section>
+          <form onSubmit={handleComment} className={dark ? "space-y-6 py-8 px-6 rounded-md " : "space-y-6 py-8 px-6 rounded-md bg-neutral"}>
+            <h6 className="font-semibold">LEAVE A REPLAY</h6>
+            <textarea
+              className="textarea input-bordered focus:outline-none w-full h-36 mt-0"
+              placeholder="Your Comment"
+              name="comment"
+              required>
+            </textarea>
+            <button className="btn btn-primary btn-md" type="submit" > Post Comment
+            </button>
+          </form>
+        </section>
+      </div>
 
+<<<<<<< HEAD
               <li>
                 {" "}
                 <span>
@@ -245,6 +302,42 @@ const ArticleDetails = () => {
           </button>
         </form>
       </section>
+=======
+
+      <div className="lg:w-[30%] md:w-[30%] lg:pl-8 md:pl-5">
+        <div>
+          <h1 className="font-bold text-xl  pb-2">
+            Top Articles
+            <hr className='mt-1' />
+          </h1>
+
+          <div className='grid'>
+            {articles.slice(0, 4).map((article) => (
+              <AllArticleItemsRight
+                key={article._id}
+                article={article}
+              ></AllArticleItemsRight>
+            ))}
+          </div>
+        </div>
+
+        <div className='mt-5'>
+          <SocialLinked />
+        </div>
+
+        <div>
+          <h1 className="font-bold text-xl pb-5 mt-10">
+            Don't Miss
+            <hr className='mt-1' />
+          </h1>
+          <ArticleItemsRight />
+        </div>
+
+        <div className="mt-8">
+          <RegisterCard />
+        </div>
+      </div>
+>>>>>>> 45af8e99dab647f12ede1d3b3e3c51ca857f8851
     </div>
   );
 };
