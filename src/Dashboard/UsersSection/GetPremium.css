@@ -82,3 +82,7 @@
 .card-element-hidden {
     display: none;
 }
+
+.card_order_list{
+    list-style: circle;
+}
