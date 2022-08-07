@@ -17,6 +17,7 @@ import AllArticle from "./component/Article/AllArticle/AllArticle";
 import Contact from "./component/Contact/Contact";
 import { Toaster } from 'react-hot-toast';
 import About from "./component/About/About";
+import Hudai from "./Hudai";
 
 import ScrollToTop from "./hooks/ScrollToTop";
 
@@ -113,6 +114,8 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/hudai" element={<Hudai />}></Route>
+
           <Route
             path="/article/:articleId"
             element={<ArticleDetails />}
