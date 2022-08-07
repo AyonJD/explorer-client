@@ -25,10 +25,10 @@ const ManageUser = () => {
                     <table className="table table-compact w-full">
                         <thead>
                             <tr>
-                                <th className='py-4 pl-5 bg-neutral'>Name</th>
+                                <th className='py-4 pl-5 bg-neutral'>User</th>
+                                <th className='py-4 bg-neutral'>Email</th>
                                 <th className='py-4 bg-neutral'>Role</th>
                                 <th className='py-4 bg-neutral'>Plan</th>
-                                <th className='py-4 bg-neutral'>Email</th>
                                 <th className='py-4 bg-neutral'>Status</th>
                                 <th className='py-4 bg-neutral'>Actions</th>
                             </tr>
