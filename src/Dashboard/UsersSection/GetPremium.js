@@ -5,7 +5,7 @@ const GetPremium = () => {
     const navigate = useNavigate();
     return (
         <div className='h-[100vh] text-center'>
-            <button onClick={() => navigate(``)} className='btn btn-primary btn-outline mt-32'>Get This Membership</button>
+            <button onClick={() => navigate(`/payment/id`)} className='btn btn-primary btn-outline mt-32'>Get This Membership</button>
         </div>
     );
 };

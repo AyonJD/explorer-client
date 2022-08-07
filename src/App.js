@@ -26,6 +26,7 @@ import Analytics from "./Dashboard/AdminDashboard/Analytics/Analytics";
 import AdminRules from "./Dashboard/AdminDashboard/Analytics/AdminRules";
 import PremiumMember from "./Dashboard/AdminDashboard/PremiumMember/PremiumMember";
 import GetPremium from "./Dashboard/UsersSection/GetPremium";
+import PaymentCard from "./Dashboard/Payment/PaymentCard";
 
 const articleDataContext = createContext();
 function App() {
@@ -124,6 +125,7 @@ function App() {
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/membership" element={<GetPremium />}></Route>
+          <Route path="/payment/:id" element={<PaymentCard />}></Route>
 
 
           <Route
