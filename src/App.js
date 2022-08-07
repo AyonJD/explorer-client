@@ -17,9 +17,15 @@ import AllArticle from "./component/Article/AllArticle/AllArticle";
 import Contact from "./component/Contact/Contact";
 import { Toaster } from 'react-hot-toast';
 import About from "./component/About/About";
-import Hudai from "./Hudai";
-
 import ScrollToTop from "./hooks/ScrollToTop";
+import Dashboard from "./Dashboard/AdminDashboard/Dashboard";
+import Overview from "./Dashboard/AdminDashboard/OverviewWebsite/Overview";
+import ManageArticle from "./Dashboard/AdminDashboard/ManageArticle/ManageArticle";
+import ManageUser from "./Dashboard/AdminDashboard/ManageUser/ManageUser";
+import Analytics from "./Dashboard/AdminDashboard/Analytics/Analytics";
+import AdminRules from "./Dashboard/AdminDashboard/Analytics/AdminRules";
+import PremiumMember from "./Dashboard/AdminDashboard/PremiumMember/PremiumMember";
+import GetPremium from "./Dashboard/UsersSection/GetPremium";
 
 const articleDataContext = createContext();
 function App() {
@@ -88,8 +94,10 @@ function App() {
     users,
     signedInUser,
     setSignedInUser,
+    dark
   };
-  // console.log(articles);
+
+
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)
   }, [authUser, users])
@@ -99,6 +107,7 @@ function App() {
     setSignedInUser(compareUser)
   }, [compareUser])
 
+  // console.log(compareUser?.userInfo.role);
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
@@ -114,12 +123,26 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/hudai" element={<Hudai />}></Route>
+          <Route path="/membership" element={<GetPremium />}></Route>
+
 
           <Route
             path="/article/:articleId"
             element={<ArticleDetails />}
           ></Route>
+          <Route path="/article/:articleId" element={<ArticleDetails />}></Route>
+
+          <Route path="dashboard" element={<Dashboard />}>
+            <Route index element={<Profile />} />
+            <Route path="post-Article" element={<PostArticle />} />
+            <Route path="overview" element={<Overview />} />
+            <Route path="manage-article" element={<ManageArticle />} />
+            <Route path="manage-user" element={<ManageUser />} />
+            <Route path="analytics" element={<Analytics />} />
+            <Route path="admin-rules" element={<AdminRules />} />
+            <Route path="premium-member" element={<PremiumMember />} />
+          </Route>
+
         </Routes>
         <Footer />
       </articleDataContext.Provider>

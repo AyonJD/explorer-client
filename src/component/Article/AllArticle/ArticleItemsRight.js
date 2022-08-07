@@ -11,7 +11,7 @@ const ArticleItemsRight = () => {
     return (
         <div>
             <div className=" grid gap-7 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
-                {articleCopy?.reverse()?.slice(0, 1).map((article, index) => (
+                {articleCopy?.reverse()?.slice(2, 3).map((article, index) => (
 
                     < ArticleItem
                         key={index}

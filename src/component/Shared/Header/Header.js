@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightArrowLeft, faBurger, faContactBook, faHeart, faHome, faList, faRightFromBracket, faStar, faUserAlt, } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
@@ -11,6 +11,7 @@ import { articleDataContext } from '../../../App';
 
 const Header = ({ setDark, dark, setTheme }) => {
 
+    const { pathname } = useLocation()
     const valueObj = useContext(articleDataContext)
     const { setSignedInUser, users, signedInUser } = valueObj;
     const [user] = useAuthState(auth);
@@ -18,6 +19,8 @@ const Header = ({ setDark, dark, setTheme }) => {
     const logout = () => {
         signOut(auth);
     };
+
+    let userAuthor = (valueObj?.signedInUser?.admin)
 
     //FIlter with useMemo users based on firebase user
     useEffect(() => {
@@ -29,13 +32,12 @@ const Header = ({ setDark, dark, setTheme }) => {
         setUserImg(signedInUser?.userInfo?.photoURL)
     }, [valueObj, users, setSignedInUser, signedInUser, user]);
 
-    // console.log(userImg)
 
 
     return (
         <div className="sticky top-0 z-50 shadow navbar-content navbar bg-base-100 p-0">
 
-            <div className="navbar-start">
+            <div className="navbar-start lg:w-[30%]">
                 <div className="dropdown dropdown-items">
                     <label tabIndex="0" className="btn btn-sm btn-accent btn-square lg:hidden h-9 w-10 mr-3">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
@@ -44,6 +46,10 @@ const Header = ({ setDark, dark, setTheme }) => {
 
                         <li className='mb-1'>
                             <Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHome} /> <span className='item'>Home</span></Link>
+
+
+                        </li>
+                        <li className='mb-1'>
                             <Link to='/all-article'><FontAwesomeIcon className='icon text-secondary' icon={faHome} /> <span className='item'>All Articles</span></Link>
                         </li>
                         <li className='mb-1'>
@@ -54,10 +60,10 @@ const Header = ({ setDark, dark, setTheme }) => {
                         </li>
                     </ul>
                 </div>
-                <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link> </h1> 
+                <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link> </h1>
             </div>
 
-            <div className="navbar-start hidden lg:flex">
+            <div className="navbar-end hidden lg:flex lg:w-[40%]">
                 <ul className="menu menu-horizontal p-0">
                     <li className='mr-1 hover:text-primary'><Link to='/'>Home</Link></li>
                     <li className='mr-1 hover:text-primary'><Link to='/all-article'>All Articles</Link></li>
@@ -66,9 +72,9 @@ const Header = ({ setDark, dark, setTheme }) => {
                 </ul>
             </div>
 
-            <div className="navbar-end">
+            <div className="navbar-end lg:w-[30%]">
                 <Search />
-                <label className="swap swap-rotate mx-2 dark-mode bg-accent hover:bg-primary ">
+                <label className="swap swap-rotate mx-2 dark-mode bg-accent hover:bg-primary">
 
                     <input type="checkbox" onClick={() => setTheme()} />
 
@@ -78,6 +84,14 @@ const Header = ({ setDark, dark, setTheme }) => {
 
                 </label>
 
+
+                <div className='lg:hidden'>
+                    {
+                        pathname.includes("dashboard") && (<label htmlFor="my-drawer-2" tabIndex="1" className="btn btn-ghost ">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                        </label>)
+                    }
+                </div>
 
                 {user ? <>
                     <div className="dropdown dropdown-end dropdown-items">
@@ -89,17 +103,39 @@ const Header = ({ setDark, dark, setTheme }) => {
                             </div>
                         </label>
                         <ul tabIndex="1" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 border border-info">
-                            <li className='mb-1'><Link to='/profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
-                            <li className='mb-1'><Link to='/post-article'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Post Article</span></Link></li>
-                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Manage Article</span></Link></li>
-                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faStar} /> <span className='item'>My Reviews</span></Link></li>
-                            <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Returns & Cancellation</span></Link></li>
-                            <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>
+                            {
+                                userAuthor ?
+                                    <>
+                                        <li className='mb-1'><Link to='/profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
+
+                                        <li className='mb-1'><Link to='/dashboard/overview'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Dashboard</span></Link></li>
+
+                                        <li className='mb-1'><Link to='/dashboard/manage-article'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Manage Article</span></Link></li>
+
+                                        <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>
+                                    </> :
+                                    <>
+                                        <li className='mb-1'><Link to='/profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
+
+                                        <li className='mb-1'><Link to='/post-article'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Become Premium Member</span></Link></li>
+
+                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Setting</span></Link></li>
+
+                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faStar} /> <span className='item'>FAQ</span></Link></li>
+
+                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Bookmark</span></Link></li>
+
+                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Notification</span></Link></li>
+
+                                        <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>
+                                    </>
+                            }
                         </ul>
                     </div>
                 </>
                     : <Link to="/login"><button className='btn btn-sm btn-success btn-outline'>Login</button></Link>}
             </div>
+
         </div>
     );
 };
