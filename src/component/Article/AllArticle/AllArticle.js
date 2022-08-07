@@ -20,7 +20,7 @@ const AllArticle = () => {
 
     //Sending pageNumber and articleCount to the server to get the articles by pagination logic
     useEffect(() => {
-        fetch(`  https://floating-ocean-13139.herokuapp.com/blogs?page=${pageNumber}&count=${articleCount}`)
+        fetch(`  http://localhost:5000/blogs?page=${pageNumber}&count=${articleCount}`)
             .then(res => res.json())
             .then(data => {
                 setArticles(data);
@@ -30,7 +30,7 @@ const AllArticle = () => {
 
     //This is only for getting the 
     useEffect(() => {
-        fetch('  https://floating-ocean-13139.herokuapp.com/blogs-count')
+        fetch('  http://localhost:5000/blogs-count')
             .then(res => res.json())
             .then(data => {
                 setAllArticleCount(data.count);

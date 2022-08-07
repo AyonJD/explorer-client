@@ -45,7 +45,7 @@ function App() {
   const [dark, setDark] = useState(false);
   // localStorage.setItem('theme', dark);
   useEffect(() => {
-    fetch("https://floating-ocean-13139.herokuapp.com/theme")
+    fetch("http://localhost:5000/theme")
       .then((res) => res.json())
       .then((data) => {
         setDark(data[0].theme);
@@ -54,7 +54,7 @@ function App() {
 
   const setTheme = () => {
     fetch(
-      "https://floating-ocean-13139.herokuapp.com/theme/62d829c706b5a80f8247a020",
+      "http://localhost:5000/theme/62d829c706b5a80f8247a020",
       {
         method: "PUT",
         headers: {
@@ -73,14 +73,14 @@ function App() {
 
   // fetching all articles
   useEffect(() => {
-    fetch("https://floating-ocean-13139.herokuapp.com/blogs")
+    fetch("http://localhost:5000/blogs")
       .then((res) => res.json())
       .then((data) => setArticles(data));
   }, []);
 
   // fetching all users
   useEffect(() => {
-    fetch("https://floating-ocean-13139.herokuapp.com/users")
+    fetch("http://localhost:5000/users")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
