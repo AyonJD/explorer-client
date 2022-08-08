@@ -1,17 +1,20 @@
 import React, { useContext } from 'react';
 import { articleDataContext } from '../../../App';
 import cover from '../../../assets/Profile/coverpic.jpg'
+import AboutSection from './AboutSection';
+import ProfileArticle from './ProfileArticle';
 import './UserProfile.css'
 
 
 const UserProfile = () => {
     const valueObj = useContext(articleDataContext);
-    const { signedInUser } = valueObj;
+    const { signedInUser, articles } = valueObj;
 
     const userImg = signedInUser?.userInfo?.photoURL;
 
+    // console.log(articles);
     return (
-        <div className='bg-[#F8F8F8] h-[100vh]'>
+        <div className='bg-[#F8F8F8]'>
             <div className='profile-container'>
                 <div className="cover relative  w-full">
                     <div>
@@ -39,15 +42,28 @@ const UserProfile = () => {
 
                     </div>
                 </div>
-                <div className='profile-container h-32 bg-white shadow-sm rounded-b-xl'/>
-                <div className='profile-container h-32 bg-white mt-10'>
-                    <div className='mt-5'>
-                        dsa
-                    </div>
+                <div className='profile-container h-32 bg-white shadow-md rounded-b-xl' />
+            </div>
+            <div className='profile-container flex gap-6'>
+                <div className='w-[28%]'>
+                    <AboutSection />
+                </div>
+                <div className='mt-5 w-[44%]'>
+                    {articles.slice(3, 6).map((article) => (
+                        <ProfileArticle
+                            key={article._id}
+                            article={article}
+                            signedInUser={signedInUser}
+                        ></ProfileArticle>
+                    ))}
+                    
+                </div>
+                <div className=' w-[28%]'>
+                    <AboutSection />
                 </div>
             </div>
         </div>
-    ); 
+    );
 };
 
 export default UserProfile;
