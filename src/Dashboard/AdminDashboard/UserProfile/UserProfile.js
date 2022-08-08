@@ -2,15 +2,17 @@ import React, { useContext } from 'react';
 import { articleDataContext } from '../../../App';
 import cover from '../../../assets/Profile/coverpic.jpg'
 import AboutSection from './AboutSection';
+import ProfileArticle from './ProfileArticle';
 import './UserProfile.css'
 
 
 const UserProfile = () => {
     const valueObj = useContext(articleDataContext);
-    const { signedInUser } = valueObj;
+    const { signedInUser, articles } = valueObj;
 
     const userImg = signedInUser?.userInfo?.photoURL;
 
+    // console.log(articles);
     return (
         <div className='bg-[#F8F8F8]'>
             <div className='profile-container'>
@@ -46,33 +48,18 @@ const UserProfile = () => {
                 <div className='w-[28%]'>
                     <AboutSection />
                 </div>
-                <div className='mt-5 bg-white rounded-xl shadow-sm w-[44%]'>
-                    <div class="card  bg-base-100 w-full">
-                        <figure class="px-10 pt-10">
-                            <img src="https://placeimg.com/400/225/arch" alt="Shoes" class="rounded-xl" />
-                        </figure>
-                        <div class="card-body items-center text-center">
-                            <h2 class="card-title">Shoes!</h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
-                            <div class="card-actions">
-                                <button class="btn btn-primary">Buy Now</button>
-                            </div>
-                        </div>
-                    </div>
+                <div className='mt-5 w-[44%]'>
+                    {articles.slice(3, 6).map((article) => (
+                        <ProfileArticle
+                            key={article._id}
+                            article={article}
+                            signedInUser={signedInUser}
+                        ></ProfileArticle>
+                    ))}
+                    
                 </div>
-                <div className='mt-5 bg-white rounded-xl shadow-sm w-[28%]'>
-                    <div class="card  bg-base-100 ">
-                        <figure class="px-10 pt-10">
-                            <img src="https://placeimg.com/400/225/arch" alt="Shoes" class="rounded-xl" />
-                        </figure>
-                        <div class="card-body items-center text-center">
-                            <h2 class="card-title">Shoes!</h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
-                            <div class="card-actions">
-                                <button class="btn btn-primary">Buy Now</button>
-                            </div>
-                        </div>
-                    </div>
+                <div className=' w-[28%]'>
+                    <AboutSection />
                 </div>
             </div>
         </div>
