@@ -8,7 +8,7 @@ const FiltersForm = () => {
                     <label class="label pb-1">
                         <p class="label-text ">Role</p>
                     </label>
-                    <select class="select select-bordered focus:outline-none">
+                    <select class="select select-bordered focus:outline-none ">
                         <option disabled selected>Select Role</option>
                         <option>Admin</option>
                         <option>Author</option>
