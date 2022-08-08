@@ -25,7 +25,7 @@ const ArticleItem = ({ article }) => {
         />
       </figure>
       <div className="card-body p-0">
-        <h2 className="lg:h-12 md:h-12 font-semibold hover:text-primary mt-2">
+        <h2 className="lg:h-10 md:h-10 font-semibold mt-2 hover:text-[#da334a]">
           {article?.blogs?.Title?.slice(0, 50)}...
         </h2>
         <p className="text-xs">By <span className="text-primary">{article?.signedInUser?.userInfo?.name}</span> - January 10, 2021</p>

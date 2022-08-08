@@ -58,15 +58,9 @@ const PostArticle = () => {
                                 toast.error('Failed to add a Article')
                             }
                         }
-
-
                         )
-                    // console.log(blogs);
                 }
-
             })
-
-
     }
     return (
         <div>
