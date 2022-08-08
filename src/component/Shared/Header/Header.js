@@ -106,7 +106,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                             {
                                 userAuthor ?
                                     <>
-                                        <li className='mb-1'><Link to='/profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
+                                        <li className='mb-1'><Link to='/user-profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
 
                                         <li className='mb-1'><Link to='/dashboard/overview'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Dashboard</span></Link></li>
 
