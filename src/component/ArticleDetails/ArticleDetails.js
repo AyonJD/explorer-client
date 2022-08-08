@@ -131,6 +131,7 @@ const ArticleDetails = () => {
       .catch((err) => console.log(err));
   };
 
+  // console.log(article?.signedInUser?.userInfo?.photoURL)
 
   return (
     <div className="mid-container lg:flex md:flex">
@@ -203,10 +204,10 @@ const ArticleDetails = () => {
           {/* <button >Show more</button> */}
         </section>
         <section>
-          <form onSubmit={handleComment} className={dark ? "space-y-6 py-8 px-6 rounded-md " : "space-y-6 py-8 px-6 rounded-md bg-neutral"}>
+          <form onSubmit={handleComment} className={dark ? "lg:space-y-6 md:space-y-5 sm:space-y-6 space-y-4 lg:py-8 md:py-8 sm:py-5 py-5 lg:px-6 md:px-6 px-4 rounded-md " : "lg:space-y-6 md:space-y-5 sm:space-y-6 space-y-4 lg:py-8 md:py-8 sm:py-5 py-5 lg:px-6 md:px-6 px-4 rounded-md bg-neutral"}>
             <h6 className="font-semibold">LEAVE A REPLAY</h6>
             <textarea
-              className="textarea input-bordered focus:outline-none w-full h-36 mt-0"
+              className="textarea input-bordered focus:outline-none w-full lg:h-36 md:h-28 sm:h-36 h-24 mt-0"
               placeholder="Your Comment"
               name="comment"
               required>
