@@ -8,11 +8,10 @@ import './UserProfile.css'
 
 const UserProfile = () => {
     const valueObj = useContext(articleDataContext);
-    const { signedInUser, articles } = valueObj;
+    const { signedInUser, articles, users } = valueObj;
 
     const userImg = signedInUser?.userInfo?.photoURL;
 
-    // console.log(articles);
     return (
         <div className='bg-[#F8F8F8]'>
             <div className='profile-container'>
@@ -42,21 +41,24 @@ const UserProfile = () => {
 
                     </div>
                 </div>
-                <div className='profile-container h-32 bg-white shadow-md rounded-b-xl' />
+                <div className='profile-container h-32 bg-base-100 shadow-md rounded-b-xl' />
             </div>
-            <div className='profile-container flex gap-6'>
+            <div className='profile-container flex gap-3'>
                 <div className='w-[28%]'>
-                    <AboutSection />
+                    <AboutSection
+                        signedInUser={signedInUser}
+                        users={users}
+                    />
                 </div>
                 <div className='mt-5 w-[44%]'>
-                    {articles.slice(3, 6).map((article) => (
+                    {articles.slice(3, 5).map((article) => (
                         <ProfileArticle
                             key={article._id}
                             article={article}
-                            signedInUser={signedInUser}
+
                         ></ProfileArticle>
                     ))}
-                    
+
                 </div>
                 <div className=' w-[28%]'>
                     <AboutSection />

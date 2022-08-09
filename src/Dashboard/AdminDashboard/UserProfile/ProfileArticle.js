@@ -15,13 +15,13 @@ const ProfileArticle = ({ article, signedInUser }) => {
     // const authorImg = article?.signedInUser?.userInfo?.photoURL;
     // const authorName = article?.signedInUser?.userInfo?.name;
 
-    console.log(article);
+    // console.log(article);
 
 
 
 
     return (
-        <div class="bg-base-100 w-full rounded-xl shadow-sm mb-5 p-5">
+        <div class="bg-base-100 w-full rounded-xl shadow-sm mb-3 p-5">
             <div className='flex items-center gap-2 '>
                 <div>
                     <img className='rounded-full w-12' src={userImg} alt="" />
