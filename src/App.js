@@ -32,6 +32,7 @@ import Analytics from "./Dashboard/AdminDashboard/Analytics/Analytics";
 import AdminRules from "./Dashboard/AdminDashboard/Analytics/AdminRules";
 import PremiumMember from "./Dashboard/AdminDashboard/PremiumMember/PremiumMember";
 import UserProfile from "./Dashboard/AdminDashboard/UserProfile/UserProfile";
+import UpdateUserProfile from "./Dashboard/AdminDashboard/UserProfile/UpdateUserProfile";
 
 const articleDataContext = createContext();
 function App() {
@@ -138,6 +139,7 @@ function App() {
           <Route path="/about" element={<About />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/user-profile" element={<UserProfile />}></Route>
+          <Route path="/updateUser" element={<UpdateUserProfile />}></Route>
           <Route path="/post-article" element={<PostArticle />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
