@@ -1,6 +1,7 @@
 import React from 'react';
 import './PaymentCart.css';
 import img from '../../assets/card_img.png'
+import img2 from '../../assets/Payment/animation_500_l6ic96or.gif'
 
 const PaymentCart = () => {
     return (
@@ -14,13 +15,18 @@ const PaymentCart = () => {
     
                     <h3 class="title">billing address</h3>
     
-                    <div class="inputBox">
-                        <span>full name :</span>
-                        <input type="text" placeholder="Imran Hossen"/>
-                    </div>
-                    <div class="inputBox">
-                        <span>email :</span>
-                        <input type="email" placeholder="example@example.com"/>
+                <div className=" h-44 w-full ">
+                <img className='pb-32' src={img2} alt="" />
+                </div>
+                   <div class="flex ">
+                        <div class="inputBox">
+                            <span>state :</span>
+                            <input type="text" placeholder="Banglade4sh"/>
+                        </div>
+                        <div class="inputBox">
+                            <span>zip code :</span>
+                            <input type="text" placeholder="123 456"/>
+                        </div>
                     </div>
                     <div class="inputBox">
                         <span>address :</span>
@@ -31,16 +37,7 @@ const PaymentCart = () => {
                         <input type="text" placeholder="Dhaka"/>
                     </div>
     
-                    <div class="flex">
-                        <div class="inputBox">
-                            <span>state :</span>
-                            <input type="text" placeholder="Banglade4sh"/>
-                        </div>
-                        <div class="inputBox">
-                            <span>zip code :</span>
-                            <input type="text" placeholder="123 456"/>
-                        </div>
-                    </div>
+                   
     
                 </div>
     
