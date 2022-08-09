@@ -38,7 +38,6 @@ const UserProfile = () => {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div className='profile-container h-32 bg-base-100 shadow-md rounded-b-xl' />
