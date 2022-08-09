@@ -23,7 +23,7 @@ import ScrollToTop from "./hooks/ScrollToTop";
 
 import { useSelector, useDispatch } from "react-redux";
 import getAllArticles from "./source/actions/articlesAction";
-import Hudai from "./Hudai";
+
 import Dashboard from "./Dashboard/AdminDashboard/Dashboard";
 import Overview from "./Dashboard/AdminDashboard/OverviewWebsite/Overview";
 import ManageArticle from "./Dashboard/AdminDashboard/ManageArticle/ManageArticle";
@@ -143,7 +143,7 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/hudai" element={<Hudai />}></Route>
+          {/* <Route path="/hudai" element={<Hudai />}></Route> */}
           <Route path="/article/:articleId" element={<ArticleDetails />}></Route>
 
           <Route path="dashboard" element={<Dashboard />}>

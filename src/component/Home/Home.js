@@ -4,6 +4,8 @@ import Banner from '../Banner/Banner';
 import PremiumArticles from '../PremiumArticles/PremiumArticles';
 import PopularArticle from '../PopularArticle/PopularArticle';
 import RecentArticla from '../RecentArticle/RecentArticla';
+import Pricing from '../Pricing/Pricing';
+import PaymentCart from '../PaymentCart/PaymentCart';
 
 const Home = () => {
     return (
@@ -12,6 +14,9 @@ const Home = () => {
             <RecentArticla></RecentArticla>
             <PopularArticle />
             <PremiumArticles />
+            <Pricing></Pricing>
+            <PaymentCart></PaymentCart>
+           
         </div>
     );
 };
