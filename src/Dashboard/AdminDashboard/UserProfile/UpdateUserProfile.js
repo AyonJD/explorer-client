@@ -1,16 +1,22 @@
 
+import React, { useContext } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { articleDataContext } from '../../../App';
 import auth from '../../../firebase.init';
 
 const UpdateUserProfile = () => {
+    const valueObj = useContext(articleDataContext);
+    const { signedInUser } = valueObj;
     const [user] = useAuthState(auth)
     const name = user?.displayName;
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const imgStorageKey = 'a7ae0492c3659f35e2c0af7203e883ca'
     const onSubmit = async data => {
+
+
 
         const image = data.img[0];
         const formData = new FormData();
@@ -53,8 +59,10 @@ const UpdateUserProfile = () => {
     }
 
     return (
-        <div className='py-10 '>
-            <h1 className='text-center font-bold text-3xl'>My Profile</h1>
+        <div className='py-10 mid-container'>
+            <div className='flex justify-center w-full'>
+                <img className='rounded-full ' src={signedInUser?.userInfo?.photoURL} alt="" />
+            </div>
             <form className='lg:w-3/4 md:w-4/5 mx-auto' onSubmit={handleSubmit(onSubmit)} >
 
                 <div className="form-control">

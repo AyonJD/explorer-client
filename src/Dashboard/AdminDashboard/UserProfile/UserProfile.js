@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { articleDataContext } from '../../../App';
 import cover from '../../../assets/Profile/coverpic.jpg'
 import AboutSection from './AboutSection';
@@ -11,6 +12,11 @@ const UserProfile = () => {
     const { signedInUser, articles, users } = valueObj;
 
     const userImg = signedInUser?.userInfo?.photoURL;
+
+    const navigate = useNavigate();
+    const handleNavigate = () => {
+        navigate('/updateUser');
+    };
 
     return (
         <div className='bg-[#F8F8F8]'>
@@ -34,7 +40,7 @@ const UserProfile = () => {
                                     <button className='btn btn-sm'>Followers</button>
                                 </div>
                                 <div className='pr-5'>
-                                    <button className='btn btn-sm'>Edit Profile</button>
+                                    <button onClick={()=>handleNavigate()} className='btn btn-sm'>Edit Profile</button>
                                 </div>
                             </div>
                         </div>
