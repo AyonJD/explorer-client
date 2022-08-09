@@ -1,11 +1,11 @@
 import React from 'react';
 
-const UpdateProfile = () => {
+const Overview = () => {
     return (
         <div>
-
+            <h1>Overview</h1>
         </div>
     );
 };
 
-export default UpdateProfile;
+export default Overview;

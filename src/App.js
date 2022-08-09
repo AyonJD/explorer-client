@@ -25,7 +25,15 @@ import { useSelector, useDispatch } from "react-redux";
 import getAllArticles from "./source/actions/articlesAction";
 
 import Dashboard from "./Dashboard/AdminDashboard/Dashboard";
+import Overview from "./Dashboard/AdminDashboard/OverviewWebsite/Overview";
+import ManageArticle from "./Dashboard/AdminDashboard/ManageArticle/ManageArticle";
+import ManageUser from "./Dashboard/AdminDashboard/ManageUser/ManageUser";
+import Analytics from "./Dashboard/AdminDashboard/Analytics/Analytics";
+import AdminRules from "./Dashboard/AdminDashboard/Analytics/AdminRules";
+import PremiumMember from "./Dashboard/AdminDashboard/PremiumMember/PremiumMember";
+import UserProfile from "./Dashboard/AdminDashboard/UserProfile/UserProfile";
 import Faq from "./component/Faq/Faq";
+import UpdateUserProfile from "./Dashboard/AdminDashboard/UserProfile/UpdateUserProfile";
 
 const articleDataContext = createContext();
 function App() {
@@ -131,6 +139,8 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/user-profile" element={<UserProfile />}></Route>
+          <Route path="/updateUserProfile" element={<UpdateUserProfile />}></Route>
           <Route path="/post-article" element={<PostArticle />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
@@ -143,7 +153,14 @@ function App() {
           <Route path="dashboard" element={<Dashboard />}>
             <Route index element={<Profile />} />
             <Route path="post-Article" element={<PostArticle />} />
+            <Route path="overview" element={<Overview />} />
+            <Route path="manage-article" element={<ManageArticle />} />
+            <Route path="manage-user" element={<ManageUser />} />
+            <Route path="analytics" element={<Analytics />} />
+            <Route path="admin-rules" element={<AdminRules />} />
+            <Route path="premium-member" element={<PremiumMember />} />
           </Route>
+
         </Routes>
         <Footer />
       </articleDataContext.Provider>
