@@ -16,7 +16,7 @@ const CheckoutForm = ({ membershipPlan }) => {
 
     // console.log(membershipPlan)
 
-    const { _id, price, plan } = membershipPlan;
+    const { _id, price } = membershipPlan;
     // console.log(_id);
     const { signedInUser } = valueObj;
 
@@ -75,7 +75,6 @@ const CheckoutForm = ({ membershipPlan }) => {
         else {
             setCardError('')
             setTransactionId(paymentIntent.id);
-            console.log(paymentIntent);
             setSuccess('Congrats!!! Your Payment is completed')
 
 
@@ -95,7 +94,6 @@ const CheckoutForm = ({ membershipPlan }) => {
             }).then(res => res.json())
                 .then(data => {
                     setProcessing(false);
-                    console.log(data);
                 })
         }
     }
