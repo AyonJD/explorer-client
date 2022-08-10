@@ -29,7 +29,7 @@ const PaymentCard = () => {
     return (
         <div class="my-container mb-10 mid-container">
 
-            <div  className='payment-form'>
+            <div className='payment-form'>
                 <div class="row">
                     <div class="col relative">
                         <h6 class="title font-bold mb-10">billing address</h6>
@@ -66,7 +66,7 @@ const PaymentCard = () => {
                             <span>name on card :</span>
                             <input type="text" placeholder="mr. Imran Hossen" />
                         </div>
-                        
+
                         <div>
                             <Elements stripe={stripePromise}>
                                 <CheckoutForm membershipPlan={membershipPlan} />

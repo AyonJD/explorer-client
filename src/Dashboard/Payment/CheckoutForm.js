@@ -22,7 +22,7 @@ const CheckoutForm = ({ membershipPlan }) => {
 
     useEffect(() => {
         fetch('https://floating-ocean-13139.herokuapp.com/create-payment-intent', {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'content-type': 'application/json',
                 'authorization': `Bearer ${localStorage.getItem('token')}`
@@ -85,16 +85,20 @@ const CheckoutForm = ({ membershipPlan }) => {
                 transactionId: paymentIntent.id
             }
             fetch(`https://floating-ocean-13139.herokuapp.com/orderPay`, {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
-                    'authorization': `Bearer ${localStorage.getItem('token')}`
+                    'authorization':` Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify(payment)
             }).then(res => res.json())
                 .then(data => {
                     setProcessing(false);
                 })
+        }
+
+        if (transactionId) {
+
         }
     }
 
