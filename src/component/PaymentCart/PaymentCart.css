@@ -3,15 +3,13 @@
     justify-content: center;
     align-items: center;
     width: 100%;
- 
-
   }
-  
   
   .my-container form{
     padding:20px;
     background: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    width: 100%;
   }
   
   .my-container form .row{
