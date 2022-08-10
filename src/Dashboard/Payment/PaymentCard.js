@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import {
     Elements
@@ -9,7 +9,19 @@ import './PaymentCard.css';
 
 const stripePromise = loadStripe('pk_test_51L3PqJCnJiLLpGIeL4Uixr7K4bJ183L3tSUyFg2ENBX5ovRQKSQhaYTR8kG7WbcfvkvyuLa5RfB9eZlBJfohfpYd00PM7gqopw');
 const PaymentCard = () => {
-    // const { id } = useParams();
+    const { id } = useParams();
+    const [membershipPlan, setMembershipPlan] = useState({});
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/membership-plans/${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setMembershipPlan(data);
+            }).catch((err) => {
+                console.log(err);
+            });
+    }, [id]);
+
     return (
         <div className="Payment_card mx-auto container md:mb-0 mb-10">
             <div className='grid grid-cols-1 md:grid-cols-2 mt-10'>
@@ -27,7 +39,7 @@ const PaymentCard = () => {
                 <div className="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100">
                     <div className="card-body">
                         <Elements stripe={stripePromise}>
-                            <CheckoutForm />
+                            <CheckoutForm membershipPlan={membershipPlan} />
                         </Elements>
                     </div>
                 </div>

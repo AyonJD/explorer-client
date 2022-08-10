@@ -23,16 +23,16 @@ const GetPremium = () => {
             {
                 memberrshipPlan?.map((plan, index) => {
                     return (
-                        <div class="card-basic">
-                            <div class="card-header header-basic">
+                        <div className="card-basic">
+                            <div className="card-header header-basic">
                                 <h1>{plan?.plan}</h1>
                             </div>
-                            <div class="card-body">
+                            <div className="card-body">
                                 <p><h2>${plan?.price} / mo</h2></p>
-                                <div class="card-element-hidden-basic">
+                                <div className="card-element-hidden-basic">
                                     <h4>Duration: {plan.duration}</h4>
                                     <h4>{plan.description}</h4>
-                                    <ol class=" card_order_list mt-3">
+                                    <ol className=" card_order_list mt-3">
                                         Features:
                                         {
                                             plan?.features.map((feature, index) => {
@@ -42,7 +42,7 @@ const GetPremium = () => {
                                             })
                                         }
                                     </ol>
-                                    <button onClick={() => navigate(`/payment/${plan._id}`)} class="btn btn-basic">Purches Now</button>
+                                    <button onClick={() => navigate(`/payment/${plan._id}`)} className="btn btn-basic">Purches Now</button>
                                 </div>
                             </div>
                         </div>
