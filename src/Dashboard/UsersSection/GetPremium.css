@@ -30,25 +30,25 @@
 }
 
 .header-basic,
-.btn-basic {
+.btn-basic-basic {
     background: linear-gradient(135deg, rgb(0, 119, 238), #06c766);
 }
 
 .header-standard,
-.btn-standard {
+.btn-basic-standard {
     background: linear-gradient(135deg, #b202c9, #cf087c);
 }
 
 .header-premium,
-.btn-premium {
+.btn-basic-premium {
     background: linear-gradient(135deg, #eea300, #ee5700);
 }
 
-.card-body {
+.payment_card_body {
     padding: 0.5rem 0;
 }
 
-.card-body h2 {
+.payment_card_body h2 {
     font-size: 2rem;
     font-weight: 700;
 }
@@ -58,7 +58,7 @@
     list-style: none;
 }
 
-.btn {
+.btn-basic {
     margin: 0.5rem 0;
     padding: 0.7rem 1rem;
     outline: none;
@@ -71,11 +71,11 @@
     transition: all 0.1ms ease-in-out;
 }
 
-.btn:hover {
+.btn-basic:hover {
     transform: scale(0.95);
 }
 
-.btn:active {
+.btn-basic:active {
     transform: scale(1);
 }
 
@@ -83,6 +83,6 @@
     display: none;
 }
 
-.card_order_list{
+.card_order_list {
     list-style: circle;
 }

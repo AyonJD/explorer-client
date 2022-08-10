@@ -27,7 +27,7 @@ const GetPremium = () => {
                             <div className="card-header header-basic">
                                 <h1>{plan?.plan}</h1>
                             </div>
-                            <div className="card-body">
+                            <div className="card-body payment_card_body">
                                 <p><h2>${plan?.price} / mo</h2></p>
                                 <div className="card-element-hidden-basic">
                                     <h4>Duration: {plan.duration}</h4>
