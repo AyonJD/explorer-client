@@ -40,6 +40,8 @@ const CheckoutForm = ({ membershipPlan }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const user = await signedInUser?.userInfo;
+
         if (!stripe || !elements) {
             return;
         }
@@ -98,9 +100,26 @@ const CheckoutForm = ({ membershipPlan }) => {
         }
 
         if (transactionId) {
-
+            //Update user
+            fetch(`http://localhost:5000/users/${signedInUser?.userInfo?.email}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({
+                    membership: plan
+                })
+            }).then(res => res.json())
+                .then(data => {
+                    setProcessing(false);
+                    console.log(data)
+                }
+                )
         }
     }
+
+    console.log(signedInUser?.userInfo)
 
     return (
         <>

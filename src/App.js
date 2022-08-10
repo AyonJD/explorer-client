@@ -18,8 +18,6 @@ import Contact from "./component/Contact/Contact";
 import { Toaster } from 'react-hot-toast';
 import About from "./component/About/About";
 import ScrollToTop from "./hooks/ScrollToTop";
-import { useSelector, useDispatch } from "react-redux";
-import getAllArticles from "./source/actions/articlesAction";
 import Dashboard from "./Dashboard/AdminDashboard/Dashboard";
 import Overview from "./Dashboard/AdminDashboard/OverviewWebsite/Overview";
 import ManageArticle from "./Dashboard/AdminDashboard/ManageArticle/ManageArticle";
