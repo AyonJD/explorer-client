@@ -16,7 +16,7 @@ const CheckoutForm = ({ membershipPlan }) => {
 
     // console.log(membershipPlan)
 
-    const { _id, price } = membershipPlan;
+    const { _id, price, plan } = membershipPlan;
     // console.log(_id);
     const { signedInUser } = valueObj;
 
