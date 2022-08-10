@@ -31,6 +31,7 @@ import UpdateUserProfile from "./Dashboard/AdminDashboard/UserProfile/UpdateUser
 
 import GetPremium from "./Dashboard/UsersSection/GetPremium";
 import PaymentCard from "./Dashboard/Payment/PaymentCard";
+import SearchCategory from "./component/SearchCategory/SearchCategory";
 
 
 const articleDataContext = createContext();
@@ -41,6 +42,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [signedInUser, setSignedInUser] = useState(null);
   const [authUser] = useAuthState(auth);
+  const [categoryArticle, setCategoryArticle] = useState([]);
 
   useEffect(() => {
     AOS.init();
@@ -100,7 +102,9 @@ function App() {
     users,
     signedInUser,
     setSignedInUser,
-    dark
+    dark,
+    setCategoryArticle,
+    categoryArticle
   };
 
 
@@ -131,6 +135,7 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/search-category" element={<SearchCategory />}></Route>
 
           {/* <Route path="/hudai" element={<Hudai />}></Route> */}
 

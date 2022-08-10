@@ -4,13 +4,15 @@ import "./PopularArticle.css";
 import PopularArticleItem from "./PopularArticleItem";
 
 import { RiArrowRightSFill } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RegisterCard from "./RegisterCard";
 // RiArrowDropRightFill
 
 const PopularArticle = () => {
   const valueObj = useContext(articleDataContext);
-  
+
+  const { setCategoryArticle } = valueObj
+
   // console.log(articles);
   const countPoplular = 0;
   const popularArticle = valueObj?.articles?.map((element) => {
@@ -18,6 +20,7 @@ const PopularArticle = () => {
       return element;
     }
   });
+
   const popularArticleArr = [];
   popularArticle.forEach((article) => {
     if (article) {
@@ -52,102 +55,57 @@ const PopularArticle = () => {
             <div className="card-body">
               <h2 className="text-xl font-bold text-center"> All Category</h2>
               <ul className="pl-5 mt-5 ">
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>{" "}
+
+                <li onClick={() => setCategoryArticle('Fashion')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
                   Fashion
+                </Link>
                 </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>
+
+                <li onClick={() => setCategoryArticle('Photography')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
                   Photography
+                </Link>
                 </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>{" "}
+
+                <li onClick={() => setCategoryArticle('Travel')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
                   Travel
+                </Link>
                 </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>{" "}
+
+                <li onClick={() => setCategoryArticle('Fitness')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
                   Fitness
-                </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>{" "}
+                </Link></li>
+
+                <li onClick={() => setCategoryArticle('Food')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
                   Food
-                </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>{" "}
+                </Link></li>
+
+                <li onClick={() => setCategoryArticle('Beauty')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
                   Beauty
-                </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>
-                  Make Up
-                </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>
+                </Link></li>
+
+                <li onClick={() => setCategoryArticle('MakeUp')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  MakeUp
+                </Link></li>
+                <li onClick={() => setCategoryArticle('Sport')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
                   Sport
-                </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>
+                </Link></li>
+
+                <li onClick={() => setCategoryArticle('Entertainment')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
                   Entertainment
-                </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>
-                  Make Up
-                </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>
-                  LifeStyle
-                </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>
+                </Link></li>
+                
+                <li onClick={() => setCategoryArticle('Lifestyle')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Lifestyle
+                </Link></li>
+
+                <li onClick={() => setCategoryArticle('Home')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
                   Home
-                </li>
-                <li className="flex cursor-pointer hover:text-primary duration-300 mb-1">
-                  {" "}
-                  <span className="mt-1">
-                    <RiArrowRightSFill></RiArrowRightSFill>
-                  </span>
-                  Sport
-                </li>
+                </Link></li>
               </ul>
             </div>
           </div>
           <div>
-            <RegisterCard/>
+            <RegisterCard />
           </div>
         </div>
       </div>
