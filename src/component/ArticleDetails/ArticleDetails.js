@@ -1,4 +1,6 @@
 import { faEllipsis, faLink, faShareNodes, } from "@fortawesome/free-solid-svg-icons";
+import { FacebookShareButton, FacebookIcon, LinkedinShareButton, LinkedinIcon, TwitterShareButton, TwitterIcon } from "react-share";
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
@@ -133,7 +135,8 @@ const ArticleDetails = () => {
   };
 
   // console.log(article?.signedInUser?.userInfo?.photoURL)
-
+  const shareUrl = "https://explorer-bd.web.app/";
+  const url2 = window.location.href;
   return (
     <div className="mid-container lg:flex md:flex">
       <div className="lg:w-[70%] md:w-[70%] lg:mb-0 md:mb-0 sm:mb-5 mb-5 lg:border-r-[1px] md:border-r-[1px] lg:pr-8 md:pr-5">
@@ -160,11 +163,19 @@ const ArticleDetails = () => {
             <div className=" breadcrumbs">
               <ul>
                 <li>
-                  <span><FontAwesomeIcon className="icon text-secondary ml-4 " title="Share" icon={faShareNodes} /> </span>
+                  <span><FontAwesomeIcon className="icon text-secondary ml-4 mx-2" title="Share" icon={faShareNodes} /> </span>
+                  <span> <FacebookShareButton url={shareUrl}><FacebookIcon size={32} round={true}></FacebookIcon>
+                  </FacebookShareButton> </span>
+                  <span> <LinkedinShareButton url={shareUrl}><LinkedinIcon size={32} round={true}></LinkedinIcon>
+                  </LinkedinShareButton> </span>
+                  <span> <TwitterShareButton url={shareUrl}><TwitterIcon size={32} round={true}></TwitterIcon>
+                  </TwitterShareButton> </span>
                 </li>
 
                 <li>
-                  <span><FontAwesomeIcon className="icon text-secondary ml-4" title="Copy" icon={faLink} /> </span>
+                  <span><CopyToClipboard text={url2} url={url2}>
+                    <button><span><FontAwesomeIcon className="icon text-secondary ml-4" title="Copy Link" icon={faLink} /> </span></button>
+                  </CopyToClipboard></span>
                 </li>
 
                 <li>
