@@ -40,6 +40,8 @@ const CheckoutForm = ({ membershipPlan }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const user = await signedInUser?.userInfo;
+
         if (!stripe || !elements) {
             return;
         }
@@ -75,7 +77,6 @@ const CheckoutForm = ({ membershipPlan }) => {
         else {
             setCardError('')
             setTransactionId(paymentIntent.id);
-            console.log(paymentIntent);
             setSuccess('Congrats!!! Your Payment is completed')
 
 
@@ -86,19 +87,39 @@ const CheckoutForm = ({ membershipPlan }) => {
                 transactionId: paymentIntent.id
             }
             fetch(`https://floating-ocean-13139.herokuapp.com/orderPay`, {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
-                    'authorization': `Bearer ${localStorage.getItem('token')}`
+                    'authorization':` Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify(payment)
             }).then(res => res.json())
                 .then(data => {
                     setProcessing(false);
-                    console.log(data);
                 })
         }
+
+        if (transactionId) {
+            //Update user
+            fetch(`http://localhost:5000/users/${signedInUser?.userInfo?.email}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({
+                    membership: plan
+                })
+            }).then(res => res.json())
+                .then(data => {
+                    setProcessing(false);
+                    console.log(data)
+                }
+                )
+        }
     }
+
+    console.log(signedInUser?.userInfo)
 
     return (
         <>

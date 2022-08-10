@@ -17,6 +17,7 @@ const PremiumArticles = () => {
     const loadMorePremiumArticles = () => {
         setnoOfPremiumArticles(noOfPremiumArticles + noOfPremiumArticles);
     }
+    
     return (
         <div className='mid-container'>
             <div className='flex w-full items-center'>

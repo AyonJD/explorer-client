@@ -15,7 +15,7 @@ const Home = () => {
             <PopularArticle />
             <PremiumArticles />
             <Pricing></Pricing>
-            <PaymentCart></PaymentCart>
+            {/* <PaymentCart></PaymentCart> */}
            
         </div>
     );
