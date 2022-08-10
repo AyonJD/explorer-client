@@ -17,11 +17,13 @@ const CheckoutForm = ({ membershipPlan }) => {
     // console.log(membershipPlan)
 
     const { _id, price, plan } = membershipPlan;
-    // console.log(_id);
+    // console.log(plan);
     const { signedInUser } = valueObj;
+    const { email } = signedInUser?.userInfo;
+    const mainUserObject = signedInUser?.userInfo;
 
     useEffect(() => {
-        fetch('https://floating-ocean-13139.herokuapp.com/create-payment-intent', {
+        fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -86,7 +88,7 @@ const CheckoutForm = ({ membershipPlan }) => {
                 service_id: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`https://floating-ocean-13139.herokuapp.com/orderPay`, {
+            fetch(`http://localhost:5000/orderPay`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
@@ -96,30 +98,33 @@ const CheckoutForm = ({ membershipPlan }) => {
             }).then(res => res.json())
                 .then(data => {
                     setProcessing(false);
+
+                    //update user's membership plan
+                    const user = {
+                        userInfo: {
+                            ...mainUserObject,
+                            membershipPlan
+                        }
+                    }
+                    fetch(`http://localhost:5000/users/${email}`, {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('token')}`
+                        },
+                        body: JSON.stringify(user)
+                    }).then(res => res.json())
+                        .then(data => {
+                            // console.log(data);
+                        }
+                        )
                 })
         }
 
-        if (transactionId) {
-            //Update user
-            fetch(`http://localhost:5000/users/${signedInUser?.userInfo?.email}`, {
-                method: 'PUT',
-                headers: {
-                    'content-type': 'application/json',
-                    'authorization': `Bearer ${localStorage.getItem('token')}`
-                },
-                body: JSON.stringify({
-                    membership: plan
-                })
-            }).then(res => res.json())
-                .then(data => {
-                    setProcessing(false);
-                    console.log(data)
-                }
-                )
-        }
+
     }
 
-    console.log(signedInUser?.userInfo)
+    // console.log(signedInUser?.userInfo)
 
     return (
         <>
