@@ -21,7 +21,7 @@ const CheckoutForm = ({ membershipPlan }) => {
     const { signedInUser } = valueObj;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://floating-ocean-13139.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -84,7 +84,7 @@ const CheckoutForm = ({ membershipPlan }) => {
                 service_id: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`http://localhost:5000/orderPay`, {
+            fetch(`https://floating-ocean-13139.herokuapp.com/orderPay`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
