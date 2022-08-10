@@ -17,6 +17,7 @@ const CheckoutForm = ({ membershipPlan }) => {
     // console.log(membershipPlan)
 
     const { _id, price, plan } = membershipPlan;
+    // console.log(_id);
     const { signedInUser } = valueObj;
 
     useEffect(() => {
@@ -80,10 +81,11 @@ const CheckoutForm = ({ membershipPlan }) => {
 
             //store payment on db
             const payment = {
-                myOrder: _id,
+                buyer: signedInUser?.userInfo,
+                service_id: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`http://localhost:5000/orderPay/${_id}`, {
+            fetch(`http://localhost:5000/orderPay`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
@@ -93,14 +95,14 @@ const CheckoutForm = ({ membershipPlan }) => {
             }).then(res => res.json())
                 .then(data => {
                     setProcessing(false);
-                    // console.log(data);
+                    console.log(data);
                 })
         }
     }
 
     return (
         <>
-            <form onSubmit={'handleSubmit'}>
+            <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {
