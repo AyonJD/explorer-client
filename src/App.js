@@ -103,6 +103,7 @@ function App() {
     dark
   };
 
+  console.log(users);
 
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)
