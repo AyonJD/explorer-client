@@ -1,14 +1,21 @@
-import React, { useContext } from 'react';
-import { articleDataContext } from '../../App';
+import React, { useEffect } from 'react';
 import ArticleItem from './ArticleItem';
 import RecentArticleItems from './RecentArticleItems';
 import RecentArticleRight from './RecentArticleRight';
 import SocialLinked from './SocialLinked';
+import { useSelector, useDispatch } from "react-redux";
+import getAllArticles from "../../source/actions/articlesAction";
 
 
 const RecentArticla = () => {
-    const valueObj = useContext(articleDataContext);
-    const { articles } = valueObj;
+
+    const articles = useSelector((state) => state.articles);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllArticles())
+    }, [dispatch]);
+
     const articleCopy = [...articles];
 
 
