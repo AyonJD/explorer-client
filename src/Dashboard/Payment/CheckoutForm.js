@@ -22,7 +22,7 @@ const CheckoutForm = ({ membershipPlan }) => {
 
     useEffect(() => {
         fetch('https://floating-ocean-13139.herokuapp.com/create-payment-intent', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json',
                 'authorization': `Bearer ${localStorage.getItem('token')}`
