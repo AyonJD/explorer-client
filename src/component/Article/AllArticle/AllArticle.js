@@ -129,10 +129,10 @@ const AllArticle = () => {
 
 
 
-            <div class="pagination_container container mx-auto">
-                <ul class="pagination">
+            <div className="pagination_container container mx-auto">
+                <ul className="pagination">
                     <li>
-                        <button disabled={pageNumber === 1 && true} onClick={() => setPageNumber(pageNumber - 1)} class="btn bg-transparent outline-0 border-none mx-2">PRE</button>
+                        <button disabled={pageNumber === 1 && true} onClick={() => setPageNumber(pageNumber - 1)} className="btn bg-transparent outline-0 border-none mx-2">PRE</button>
                     </li>
                     {
                         button.slice(0, 2).map(user => user)
@@ -147,7 +147,7 @@ const AllArticle = () => {
                         </li>
                     }
                     <li>
-                        <button onClick={() => setPageNumber(pageNumber + 1)} class="btn bg-transparent outline-0 border-none mx-2">NEX</button>
+                        <button onClick={() => setPageNumber(pageNumber + 1)} className="btn bg-transparent outline-0 border-none mx-2">NEX</button>
                     </li>
 
                     <div>
