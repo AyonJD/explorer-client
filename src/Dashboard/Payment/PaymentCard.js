@@ -29,7 +29,7 @@ const PaymentCard = () => {
     return (
         <div class="my-container mb-10 mid-container">
 
-            <form action="">
+            <div  className='payment-form'>
                 <div class="row">
                     <div class="col relative">
                         <h6 class="title font-bold mb-10">billing address</h6>
@@ -75,7 +75,7 @@ const PaymentCard = () => {
                     </div>
                 </div>
                 <input type="submit" value="Proceed to Checkout" class="submit-btn" />
-            </form>
+            </div>
         </div>
     );
 };
