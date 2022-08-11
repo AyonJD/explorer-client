@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import FaqRight from './FaqRight';
 import { FiPhoneCall } from 'react-icons/fi';
 import { MdAttachEmail } from 'react-icons/md';
+import { MdPayment } from 'react-icons/md';
+import { TbTruckDelivery } from 'react-icons/tb';
+import { AiOutlineShopping } from 'react-icons/ai';
+import { MdOutlineMiscellaneousServices } from 'react-icons/md';
 
 const Faq = () => {
     const [active, setActive] = useState("first");
@@ -65,7 +69,7 @@ const Faq = () => {
             },
             {
                 question: "How can I cancel my shipment?",
-                answer: "Pastry pudding cookie toffee bonbon jujubes jujubes powder topping. Jelly beans gummi bears sweet roll bonbon muffin liquorice. Wafer lollipop sesame snaps. BJujubes donut marzipan chocolate bar. Jujubes sugar plum jelly beans tiramisu icing cheesecake."
+                answer: "Pastry pudding cookie toffee bonbon jujubes jujubes powder topping. BJujubes donut marzipan chocolate bar. Jujubes sugar plum jelly beans tiramisu icing cheesecake."
             },
             {
                 question: "What documents do I need to carry for self-collection of my shipment?",
@@ -76,14 +80,11 @@ const Faq = () => {
 
     return (
         <div>
-
-
-
             <div className='flex justify-center items-center py-20 bg-neutral'>
                 <div className='text-center'>
                     <h1 className='text-4xl text-violet-500'>Let's answer some questions</h1>
                     <span className=' divider '>Or</span>
-                    <h4 className='font-thin'>Choose a category to quickly find the help you need</h4>
+                    <h4 className='font-thin text-black'>Choose a category to quickly find the help you need</h4>
                     <div className=' py-4 mx-auto'>
                         <input className='input border w-full' type="text" placeholder='Search' />
                     </div>
@@ -91,10 +92,14 @@ const Faq = () => {
             </div>
             <div className='flex mt-12 mid-container gap-10'>
                 <div className='w-1/3'>
-                    <button onClick={() => setActive('first')} className='btn py-2 w-full bg-neutral rounded-xl mb-3'>Payment</button>
-                    <button onClick={() => setActive('second')} className='btn py-2 w-full bg-neutral rounded-xl mb-3'>Delivery</button>
-                    <button onClick={() => setActive('third')} className='btn py-2 w-full bg-neutral rounded-xl mb-3'>Orders</button>
-                    <button onClick={() => setActive('fourth')} className='btn py-2 w-full bg-neutral rounded-xl mb-3'>Services</button>
+
+
+
+                    <button onClick={() => setActive('first')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'> <MdPayment className='mx-4'></MdPayment> Payment</button>
+
+                    <button onClick={() => setActive('second')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><TbTruckDelivery className='mx-4'></TbTruckDelivery>Delivery</button>
+                    <button onClick={() => setActive('third')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><AiOutlineShopping className='mx-4'></AiOutlineShopping>Orders</button>
+                    <button onClick={() => setActive('fourth')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><MdOutlineMiscellaneousServices className='mx-4'></MdOutlineMiscellaneousServices>Services</button>
                 </div>
                 <div className='w-2/3 '>
                     {active === "first" && <FaqRight content={titlePayment} />}
