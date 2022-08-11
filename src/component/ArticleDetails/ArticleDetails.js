@@ -3,7 +3,7 @@ import { FacebookShareButton, FacebookIcon, LinkedinShareButton, LinkedinIcon, T
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import "./ArticleDetails.css";
 import { articleDataContext } from "../../App";
@@ -228,7 +228,7 @@ const ArticleDetails = () => {
             </button>
           </form>
         </section>
-      </div>
+      </div >
 
 
       <div className="lg:w-[30%] md:w-[30%] lg:pl-8 md:pl-5">
@@ -264,7 +264,7 @@ const ArticleDetails = () => {
           <RegisterCard />
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
