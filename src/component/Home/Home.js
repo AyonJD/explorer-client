@@ -5,7 +5,8 @@ import PremiumArticles from '../PremiumArticles/PremiumArticles';
 import PopularArticle from '../PopularArticle/PopularArticle';
 import RecentArticla from '../RecentArticle/RecentArticla';
 import Pricing from '../Pricing/Pricing';
-import PaymentCart from '../PaymentCart/PaymentCart';
+
+import PaymentCard from '../../Dashboard/Payment/PaymentCard';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <PremiumArticles />
             <Pricing></Pricing>
             {/* <PaymentCart></PaymentCart> */}
+            <PaymentCard></PaymentCard>
            
         </div>
     );
