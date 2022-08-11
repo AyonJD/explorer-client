@@ -16,7 +16,7 @@ const Home = () => {
             <PremiumArticles />
             <Pricing></Pricing>
             <PaymentCart></PaymentCart>
-           
+
         </div>
     );
 };

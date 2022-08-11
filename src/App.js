@@ -47,6 +47,7 @@ function App() {
   const articlesData = useSelector((state) => state.articles);
   const dispatch = useDispatch();
 
+
   // console.log(articlesData);
   useEffect(() => {
     dispatch(getAllArticles())
@@ -110,7 +111,7 @@ function App() {
     users,
     signedInUser,
     setSignedInUser,
-    dark
+    dark,
   };
 
 
