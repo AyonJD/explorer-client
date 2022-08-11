@@ -9,7 +9,6 @@ import Header from "./component/Shared/Header/Header";
 import Login from "./component/Authentication/Login/Login";
 import Register from "./component/Authentication/Register/Register";
 import Profile from "./Dashboard/Profile/Profile";
-import { clear } from "@testing-library/user-event/dist/clear";
 import PostArticle from "./Dashboard/PostArticle/PostArticle";
 import ArticleDetails from "./component/ArticleDetails/ArticleDetails";
 import auth from "./firebase.init";
@@ -18,12 +17,7 @@ import AllArticle from "./component/Article/AllArticle/AllArticle";
 import Contact from "./component/Contact/Contact";
 import { Toaster } from 'react-hot-toast';
 import About from "./component/About/About";
-
 import ScrollToTop from "./hooks/ScrollToTop";
-
-import { useSelector, useDispatch } from "react-redux";
-import getAllArticles from "./source/actions/articlesAction";
-
 import Dashboard from "./Dashboard/AdminDashboard/Dashboard";
 import Overview from "./Dashboard/AdminDashboard/OverviewWebsite/Overview";
 import ManageArticle from "./Dashboard/AdminDashboard/ManageArticle/ManageArticle";
@@ -31,8 +25,14 @@ import ManageUser from "./Dashboard/AdminDashboard/ManageUser/ManageUser";
 import Analytics from "./Dashboard/AdminDashboard/Analytics/Analytics";
 import AdminRules from "./Dashboard/AdminDashboard/Analytics/AdminRules";
 import PremiumMember from "./Dashboard/AdminDashboard/PremiumMember/PremiumMember";
+
 import UserProfile from "./Dashboard/AdminDashboard/UserProfile/UserProfile";
 import UpdateUserProfile from "./Dashboard/AdminDashboard/UserProfile/UpdateUserProfile";
+
+import GetPremium from "./Dashboard/UsersSection/GetPremium";
+import PaymentCard from "./Dashboard/Payment/PaymentCard";
+import SearchCategory from "./component/SearchCategory/SearchCategory";
+
 
 const articleDataContext = createContext();
 function App() {
@@ -42,14 +42,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [signedInUser, setSignedInUser] = useState(null);
   const [authUser] = useAuthState(auth);
-
-  const articlesData = useSelector((state) => state.articles);
-  const dispatch = useDispatch();
-
-  // console.log(articlesData);
-  useEffect(() => {
-    dispatch(getAllArticles())
-  }, []);
+  const [categoryArticle, setCategoryArticle] = useState([]);
 
   useEffect(() => {
     AOS.init();
@@ -109,14 +102,11 @@ function App() {
     users,
     signedInUser,
     setSignedInUser,
-    dark
+    dark,
+    setCategoryArticle,
+    categoryArticle
   };
 
-
-  const userss = users.map(user => {
-    return user.userInfo.role
-  })
-  // console.log(userss)
 
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)
@@ -145,7 +135,19 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/search-category" element={<SearchCategory />}></Route>
+
           {/* <Route path="/hudai" element={<Hudai />}></Route> */}
+
+          <Route path="/membership" element={<GetPremium />}></Route>
+          <Route path="/payment/:id" element={<PaymentCard />}></Route>
+
+
+          <Route
+            path="/article/:articleId"
+            element={<ArticleDetails />}
+          ></Route>
+
           <Route path="/article/:articleId" element={<ArticleDetails />}></Route>
 
           <Route path="dashboard" element={<Dashboard />}>

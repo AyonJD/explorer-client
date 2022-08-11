@@ -115,9 +115,9 @@ const Header = ({ setDark, dark, setTheme }) => {
                                         <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>
                                     </> :
                                     <>
-                                        <li className='mb-1'><Link to='/profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
+                                        <li className='mb-1'><Link to='/user-profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
 
-                                        <li className='mb-1'><Link to='/post-article'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Become Premium Member</span></Link></li>
+                                        <li className='mb-1'><Link to='/membership'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Become Premium Member</span></Link></li>
 
                                         <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Setting</span></Link></li>
 

@@ -18,44 +18,44 @@ const UpdateUserProfile = () => {
 
 
 
-        const image = data.img[0];
-        const formData = new FormData();
-        formData.append('image', image)
-        const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(result => {
-                if (result.success) {
-                    const email = user?.email;
-                    const currentUser = { email: email };
-                    const img = result.data.url;
-                    const tools = {
-                        toolName: data.toolName,
-                        description: data.description,
-                        price: data.price,
-                        quantity: data.quantity,
-                        img: img,
-                        education: data.education,
-                        occupation: data.occupation,
-                        linkedIn: data.linkedIn
-                    }
-                    fetch(`https://sheltered-taiga-12711.herokuapp.com/profile/${email}`, {
-                        method: 'PUT',
-                        headers: {
-                            'content-type': 'application/json'
-                        },
-                        body: JSON.stringify(tools, currentUser)
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            toast.success('Profile Updated Successfully.')
-                            reset()
-                        })
-                }
-            })
+        // const image = data.img[0];
+        // const formData = new FormData();
+        // formData.append('image', image)
+        // const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
+        // fetch(url, {
+        //     method: 'POST',
+        //     body: formData
+        // })
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         if (result.success) {
+        //             const email = user?.email;
+        //             const currentUser = { email: email };
+        //             const img = result.data.url;
+        //             const tools = {
+        //                 toolName: data.toolName,
+        //                 description: data.description,
+        //                 price: data.price,
+        //                 quantity: data.quantity,
+        //                 img: img,
+        //                 education: data.education,
+        //                 occupation: data.occupation,
+        //                 linkedIn: data.linkedIn
+        //             }
+        //             fetch(`https://sheltered-taiga-12711.herokuapp.com/profile/${email}`, {
+        //                 method: 'PUT',
+        //                 headers: {
+        //                     'content-type': 'application/json'
+        //                 },
+        //                 body: JSON.stringify(tools, currentUser)
+        //             })
+        //                 .then(res => res.json())
+        //                 .then(data => {
+        //                     toast.success('Profile Updated Successfully.')
+        //                     reset()
+        //                 })
+        //         }
+        //     })
     }
 
     return (
