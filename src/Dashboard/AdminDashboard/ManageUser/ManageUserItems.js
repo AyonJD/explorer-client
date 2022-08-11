@@ -1,6 +1,8 @@
 import React from 'react';
 
-const ManageUserItems = () => {
+const ManageUserItems = ({ user }) => {
+    console.log(user);
+    const { admin, userInfo } = user;
     return (
         <tr>
             <td className='py-5 pl-5'>Imran Hossen</td>
