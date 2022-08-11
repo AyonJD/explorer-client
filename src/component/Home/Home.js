@@ -17,7 +17,7 @@ const Home = () => {
             <PremiumArticles />
             <Pricing></Pricing>
             {/* <PaymentCart></PaymentCart> */}
-            <PaymentCard></PaymentCard>
+            {/* <PayentCard></PayentCard> */}
            
         </div>
     );
