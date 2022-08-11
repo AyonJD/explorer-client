@@ -5,7 +5,7 @@ import img2 from '../../assets/Payment/animation_500_l6ic96or.gif'
 
 const PaymentCart = () => {
     return (
-        <div class="my-container  ">
+        <div class="my-container relative ">
 
         <form action="">
     
