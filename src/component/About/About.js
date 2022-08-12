@@ -12,8 +12,9 @@ const About = () => {
                 <div className='grid grid-cols-2 mid-container'>
                     <div className='about-banner flex items-center'>
                         <div>
-                            <h2 className='font-semibold text-2xl'>What's Your SEO Score</h2>
-                            <h1 className='text-5xl font-semibold mb-14 mt-2'>SEO Services Provide <br /> For Your Agency</h1>
+
+                            <h1 className='text-5xl font-semibold  mt-2'>Who We Are?</h1>
+                            <h2 className='font-semibold text-2xl mb-14 mt-5'>Let's work together and <br /> make awesome site easily</h2>
                             <button className='start-btn'>Let's Start</button>
                             <button className='contact-btn'>Contact Now</button>
                         </div>
@@ -29,11 +30,11 @@ const About = () => {
             </div>
 
             <div className='mid-container'>
-                <Services/>
+                <Services />
             </div>
-            
+
             <div className='mid-container'>
-                <Project/>
+                <Project />
             </div>
         </div>
     );
