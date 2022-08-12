@@ -5,8 +5,9 @@ import PremiumArticles from '../PremiumArticles/PremiumArticles';
 import PopularArticle from '../PopularArticle/PopularArticle';
 import RecentArticla from '../RecentArticle/RecentArticla';
 import Pricing from '../Pricing/Pricing';
-
 import PaymentCard from '../../Dashboard/Payment/PaymentCard';
+
+
 
 const Home = () => {
     return (
@@ -17,7 +18,8 @@ const Home = () => {
             <PremiumArticles />
             <Pricing></Pricing>
             {/* <PaymentCart></PaymentCart> */}
-            {/* <PayentCard></PayentCard> */}
+            {/* <PaymentCard></PaymentCard> */}
+        
            
         </div>
     );

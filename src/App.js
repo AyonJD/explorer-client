@@ -32,6 +32,7 @@ import UpdateUserProfile from "./Dashboard/AdminDashboard/UserProfile/UpdateUser
 import GetPremium from "./Dashboard/UsersSection/GetPremium";
 import PaymentCard from "./Dashboard/Payment/PaymentCard";
 import SearchCategory from "./component/SearchCategory/SearchCategory";
+import NotFound from "./component/NotFound/NotFound";
 
 
 const articleDataContext = createContext();
@@ -136,11 +137,13 @@ function App() {
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/search-category" element={<SearchCategory />}></Route>
+          <Route path="*" element={<NotFound></NotFound>}></Route>
 
           {/* <Route path="/hudai" element={<Hudai />}></Route> */}
 
           <Route path="/membership" element={<GetPremium />}></Route>
           <Route path="/payment/:id" element={<PaymentCard />}></Route>
+        
 
 
           <Route
@@ -160,6 +163,7 @@ function App() {
             <Route path="admin-rules" element={<AdminRules />} />
             <Route path="premium-member" element={<PremiumMember />} />
           </Route>
+        
 
         </Routes>
         <Footer />
