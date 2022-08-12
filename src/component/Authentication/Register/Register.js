@@ -223,30 +223,162 @@
 
 
 
-import toast from 'react-hot-toast';
-import { sendEmailVerification } from 'firebase/auth';
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+// import toast from 'react-hot-toast';
+// import { sendEmailVerification } from 'firebase/auth';
+// import React, { useState } from 'react';
+// import { useForm } from 'react-hook-form';
+// import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
+
+import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { Link, useLocation, useNavigate, } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import image from '../../../assets/icon/Google.png'
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { async } from '@firebase/util';
+import { articleDataContext } from '../../../App';
+import useToken from '../../Hooks/useToken';
+import { updateProfile } from 'firebase/auth';
 import auth from '../../../firebase.init';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
-    const { register, handleSubmit, formState: { errors }, trigger, reset } = useForm();
-    const [createUserWithEmailAndPassword, , loading, error] = useCreateUserWithEmailAndPassword(auth);
-    const [updateProfile] = useUpdateProfile(auth);
+    // const { register, handleSubmit, formState: { errors }, trigger, reset } = useForm();
+    // const [createUserWithEmailAndPassword, , loading, error] = useCreateUserWithEmailAndPassword(auth);
+    // const [updateProfile] = useUpdateProfile(auth);
 
-    const onSubmitParam = async data => {
-        await createUserWithEmailAndPassword(data.email, data.password);
-        sendEmailVerification();
-        await updateProfile({ displayName: data.name });
-        reset();
-        toast.success('Account created successfully. Please verify your email.')
+    // const onSubmitParam = async data => {
+    //     await createUserWithEmailAndPassword(data.email, data.password);
+    //     sendEmailVerification();
+    //     await updateProfile({ displayName: data.name });
+    //     reset();
+    //     toast.success('Account created successfully. Please verify your email.')
+    // }
+
+
+
+    const { register, formState: { errors }, handleSubmit, trigger, reset } = useForm();
+    const [btnState, setBtnState] = useState(false);
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
+    const [authUser] = useAuthState(auth);
+    const [userName, setUserName] = useState('');
+    const [token] = useToken(user || gUser, userName || gUser?.displayName);
+    // console.log(authUser?.email);
+
+    // console.log(gUser)
+
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true })
+        }
+    })
+
+    if (user || gUser) {
+        navigate(from, { replace: true })
     }
+
+    let signUpError;
+    if (error) {
+        signUpError = <p className='text-red-500 py-3'>{error?.message || gError?.message}</p>
+    }
+
+    let socialError
+    if (gError) {
+        socialError = <p className='text-red-500 py-3'>{gError?.message}</p>
+    }
+
+    let userInfo = {}
+    const onSubmit = async data => {
+        setBtnState(true);
+        //set display name in state for token and update name in firebase
+        const displayName = data.name;
+        // console.log(displayName);
+        await createUserWithEmailAndPassword(data.email, data.password);
+        setUserName(displayName);
+        // await updateProfile( {displayName} );
+
+
+        userInfo = {
+            email: data.email,
+            name: data.name,
+            password: data.password,
+            role: 'user',
+            ocupation: data.ocupation || "N/A",
+            dob: data.dob || "N/A",
+            phone: data.phone || "N/A",
+            address: data.address || "N/A",
+            photoURL: data.img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+        }
+        // console.log(userInfo)
+        // PUT API
+        fetch(`http://localhost:5000/users/${data.email}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userInfo
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            }
+            )
+        reset();
+        toast.success('Account created successfully.')
+    }
+
+
+
+    const email = authUser?.email;
+
+    userInfo = {
+        email: authUser?.email,
+        name: authUser?.displayName,
+        photoURL: authUser?.photoURL,
+        role: 'user',
+        ocupation: "N/A",
+        dob: "N/A",
+        phone: "N/A",
+        address: "N/A"
+    }
+
+    //Handle google signing
+
+    const handleGoogleSigning = async () => {
+        await signInWithGoogle();
+    }
+
+    useEffect(() => {
+        //PUT API for updating users image
+        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+        // console.log(url)
+        if (email && !btnState) {
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userInfo
+                })
+            })
+        }
+    }, [userInfo, email, btnState])
     return (
         <div className="sign-up-container">
-            <form className='toggle_form' onSubmit={handleSubmit(onSubmitParam)}>
+            <form className='toggle_form' onSubmit={handleSubmit(onSubmit)}>
                 <h1 className='custom_font'>Create Account</h1>
                 <div className="social-links">
                     <div>
@@ -304,7 +436,7 @@ const Signup = () => {
                 />
                 <small className='text-[#FF4B2B] custom_font custom_font_size'>{errors?.password?.message}</small>
 
-
+                <small className='text-center'>{signUpError}</small>
                 <button type="submit" className="toggle_form_button form_btn">Sign Up</button>
             </form>
         </div>
