@@ -4,8 +4,8 @@ import Comment from '../../../component/ArticleDetails/Comment/Comment';
 
 const ProfileArticle = ({ article, signedInUser }) => {
 
-    const userImg = signedInUser?.userInfo?.photoURL;
-    const name = signedInUser?.userInfo?.name;
+    const userImg = article?.signedInUser?.userInfo?.photoURL;
+    const name = article?.signedInUser?.userInfo?.name;
     const date = article?.blogs.date;
     const articleTitle = article?.blogs?.Title
     const articleDesc = article?.blogs?.desc.slice(0, 200)
@@ -15,7 +15,7 @@ const ProfileArticle = ({ article, signedInUser }) => {
     // const authorImg = article?.signedInUser?.userInfo?.photoURL;
     // const authorName = article?.signedInUser?.userInfo?.name;
 
-    // console.log(article);
+    // console.log(article?.signedInUser?.userInfo?.photoURL);
 
 
 
