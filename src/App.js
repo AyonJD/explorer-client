@@ -44,6 +44,7 @@ function App() {
   const [signedInUser, setSignedInUser] = useState(null);
   const [authUser] = useAuthState(auth);
   const [categoryArticle, setCategoryArticle] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     AOS.init();
@@ -81,16 +82,22 @@ function App() {
 
   // fetching all articles
   useEffect(() => {
+    // setLoader(true);
     fetch("https://floating-ocean-13139.herokuapp.com/blogs")
       .then((res) => res.json())
-      .then((data) => setArticles(data));
+      .then((data) => {
+        setArticles(data);
+        setLoader(false);
+      });
   }, []);
 
   // fetching all users
   useEffect(() => {
+    // setLoader(true);
     fetch("https://floating-ocean-13139.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => {
+        setLoader(false);
         setUsers(data);
       });
   }, []);
@@ -105,7 +112,8 @@ function App() {
     setSignedInUser,
     dark,
     setCategoryArticle,
-    categoryArticle
+    categoryArticle,
+    loader
   };
 
 
