@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import 'reactjs-popup/dist/index.css';
 import './ManageUserItems.css';
 import { articleDataContext } from '../../../App';
+import PopupForDeleteAdmin from './PopupForDeleteAdmin';
 
 const ManageUserItems = ({ user }) => {
     const { register, handleSubmit, formState: { errors }, trigger, reset } = useForm();
@@ -39,6 +40,27 @@ const ManageUserItems = ({ user }) => {
             });
         reset();
     }
+
+    const handleDelete = async data => {
+        setRefetchAdminRole(false);
+        const user = {
+            admin: false,
+        }
+        //delete user by delete api
+        fetch(`http://localhost:5000/users/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        }).then((res) => res.json())
+            .then((data) => {
+                if (data) {
+                    // refetchAdminRole(true)
+                }
+            });
+    }
+
     return (
         <tr>
             <td className='py-5 pl-5'>{name}</td>
@@ -47,25 +69,34 @@ const ManageUserItems = ({ user }) => {
             <td>{membershipPlan ? "Premium" : `${admin || refetchAdminRole ? "All Access" : "Free"}`}</td>
             <td><button className='btn btn-neutral btn-xs text-warning'>Active</button></td>
             <td className='text-xl font-bold cursor-pointer'>
-                <Popup className="popup_content" trigger={<button>...</button>} position="left center">
-                    <form className='py-5 px-3' onSubmit={handleSubmit(onSubmitParam)}>
-                        <input type="text" placeholder='Admin possition' className="input h-8 w-full max-w-xs"
-                            {...register("possition", {
-                                required: true,
-                                minLength: {
-                                    value: 3, message: 'Minimum 3 character required'
-                                }
-                            })}
 
-                            onKeyUp={() => {
-                                trigger('possition')
-                            }}
-                        />
-                        <small className='text-[#FF4B2B] custom_font_size'>{errors?.name?.message}</small>
 
-                        <button className='btn btn-outline btn-primary btn-sm mt-5' type="submit">Make Admin</button>
-                    </form>
-                </Popup>
+                {
+                    admin || !refetchAdminRole ? (
+                        <Popup className="popup_content" trigger={<button>...</button>} position="left center">
+                            <form className='py-5 px-3' onSubmit={handleSubmit(onSubmitParam)}>
+                                <input type="text" placeholder='Admin possition' className="input h-8 w-full max-w-xs"
+                                    {...register("possition", {
+                                        required: true,
+                                        minLength: {
+                                            value: 3, message: 'Minimum 3 character required'
+                                        }
+                                    })}
+
+                                    onKeyUp={() => {
+                                        trigger('possition')
+                                    }}
+                                />
+                                <small className='text-[#FF4B2B] custom_font_size'>{errors?.name?.message}</small>
+
+                                <button className='btn btn-outline btn-primary btn-sm mt-5' type="submit">Make Admin</button>
+                            </form>
+                        </Popup>
+                    )
+                        : (
+                            <PopupForDeleteAdmin handleDelete={handleDelete} />
+                        )
+                }
 
             </td>
         </tr>
