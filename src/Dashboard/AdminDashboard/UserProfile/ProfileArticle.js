@@ -21,7 +21,7 @@ const ProfileArticle = ({ article, signedInUser }) => {
 
 
     return (
-        <div class="bg-base-100 w-full rounded-xl shadow-sm mb-3 p-5">
+        <div className="bg-base-100 w-full rounded-xl shadow-sm mb-3 p-5">
             <div className='flex items-center gap-2 '>
                 <div>
                     <img className='rounded-full w-12' src={userImg} alt="" />

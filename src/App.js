@@ -117,7 +117,7 @@ function App() {
     setSignedInUser(compareUser)
   }, [compareUser])
 
-  // console.log(compareUser?.userInfo.role);
+  // console.log(users);
 
   return (
     <div data-theme={dark ? "dark" : "light"}>

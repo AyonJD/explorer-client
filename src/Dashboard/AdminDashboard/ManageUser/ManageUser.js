@@ -34,7 +34,7 @@ const ManageUser = () => {
                             </tr>
                         </thead>
                         <tbody className=''>
-                            {users.map(user => <ManageUserItems />)}
+                            {users.map(user => <ManageUserItems user={user} key={user._id} />)}
                         </tbody>
                     </table>
                 </div>
