@@ -27,7 +27,7 @@ const ManageUserItems = ({ user }) => {
             }
         }
         //update user by put api
-        fetch(`https://floating-ocean-13139.herokuapp.com/users/${_id}`, {
+        fetch(`http://localhost:5000/users/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const ManageUserItems = ({ user }) => {
             admin: false,
         }
         //delete user by delete api
-        fetch(`https://floating-ocean-13139.herokuapp.com/users/${_id}`, {
+        fetch(`http://localhost:5000/users/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const ManageUserItems = ({ user }) => {
             }
         }
         //update user by put api
-        fetch(`https://floating-ocean-13139.herokuapp.com/users/${_id}`, {
+        fetch(`http://localhost:5000/users/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
