@@ -32,6 +32,7 @@ import UpdateUserProfile from "./Dashboard/AdminDashboard/UserProfile/UpdateUser
 import GetPremium from "./Dashboard/UsersSection/GetPremium";
 import PaymentCard from "./Dashboard/Payment/PaymentCard";
 import SearchCategory from "./component/SearchCategory/SearchCategory";
+import LoginSignupToggle from "./component/Authentication/LoginSignupToggle/LoginSignupToggle";
 
 
 const articleDataContext = createContext();
@@ -139,8 +140,8 @@ function App() {
           <Route path="/user-profile" element={<UserProfile />}></Route>
           <Route path="/updateUser" element={<UpdateUserProfile />}></Route>
           <Route path="/post-article" element={<PostArticle />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
+          <Route path="/join" element={<LoginSignupToggle />}></Route>
+          {/* <Route path="/register" element={<Register />}></Route> */}
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/search-category" element={<SearchCategory />}></Route>
