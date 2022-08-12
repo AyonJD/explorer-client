@@ -121,7 +121,7 @@ const Header = ({ setDark, dark, setTheme }) => {
 
                                         <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Setting</span></Link></li>
 
-                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faStar} /> <span className='item'>FAQ</span></Link></li>
+                                        <li className='mb-1'><Link to='/faq'><FontAwesomeIcon className='icon text-secondary ' icon={faStar} /> <span className='item'>FAQ</span></Link></li>
 
                                         <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Bookmark</span></Link></li>
 

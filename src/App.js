@@ -32,6 +32,7 @@ import UpdateUserProfile from "./Dashboard/AdminDashboard/UserProfile/UpdateUser
 import GetPremium from "./Dashboard/UsersSection/GetPremium";
 import PaymentCard from "./Dashboard/Payment/PaymentCard";
 import SearchCategory from "./component/SearchCategory/SearchCategory";
+import Faq from "./component/Faq/Faq";
 
 
 const articleDataContext = createContext();
@@ -117,7 +118,7 @@ function App() {
     setSignedInUser(compareUser)
   }, [compareUser])
 
-  // console.log(compareUser?.userInfo.role);
+  // console.log(users);
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
@@ -136,6 +137,7 @@ function App() {
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/search-category" element={<SearchCategory />}></Route>
+          <Route path="/faq" element={<Faq />}></Route>
 
           {/* <Route path="/hudai" element={<Hudai />}></Route> */}
 

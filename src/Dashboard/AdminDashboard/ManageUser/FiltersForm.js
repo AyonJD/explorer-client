@@ -4,12 +4,12 @@ const FiltersForm = () => {
     return (
         <div className='flex justify-between gap-10'>
             <div className='w-full'>
-                <div class="form-control w-full">
-                    <label class="label pb-1">
-                        <p class="label-text ">Role</p>
+                <div className="form-control w-full">
+                    <label className="label pb-1">
+                        <p className="label-text ">Role</p>
                     </label>
-                    <select class="select select-bordered focus:outline-none ">
-                        <option disabled selected>Select Role</option>
+                    <select defaultValue={'DEFAULT'} className="select select-bordered focus:outline-none ">
+                        <option disabled value="DEFAULT">Select Role</option>
                         <option>Admin</option>
                         <option>Author</option>
                         <option>Editor</option>
@@ -19,12 +19,12 @@ const FiltersForm = () => {
                 </div>
             </div>
             <div className='w-full'>
-                <div class="form-control w-full">
-                    <label class="label pb-1">
-                        <p class="label-text ">Plan</p>
+                <div className="form-control w-full">
+                    <label className="label pb-1">
+                        <p className="label-text ">Plan</p>
                     </label>
-                    <select class="select select-bordered focus:outline-none">
-                        <option disabled selected>Select Plan</option>
+                    <select defaultValue={'DEFAULT'} className="select select-bordered focus:outline-none">
+                        <option disabled value="DEFAULT">Select Plan</option>
                         <option>Basic</option>
                         <option>Standard</option>
                         <option>Premium</option>
@@ -32,12 +32,12 @@ const FiltersForm = () => {
                 </div>
             </div>
             <div className='w-full'>
-                <div class="form-control w-full">
-                    <label class="label pb-1">
-                        <p class="label-text ">Status</p>
+                <div className="form-control w-full">
+                    <label className="label pb-1">
+                        <p className="label-text ">Status</p>
                     </label>
-                    <select class="select select-bordered focus:outline-none">
-                        <option disabled selected>Select Status</option>
+                    <select defaultValue={'DEFAULT'} className="select select-bordered focus:outline-none">
+                        <option disabled value="DEFAULT">Select Status</option>
                         <option>Pending</option>
                         <option>Active</option>
                         <option>InActive</option>

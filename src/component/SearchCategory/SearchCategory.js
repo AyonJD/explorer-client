@@ -4,9 +4,10 @@ import SearchCategoryItems from './SearchCategoryItems';
 
 const SearchCategory = () => {
     const valueObj = useContext(articleDataContext);
-    const { articles, categoryArticle } = valueObj;
+    const { articles, categoryArticle, searchValue } = valueObj;
 
     // console.log(categoryArticle)
+
 
     let filterArticle = articles.filter(article => {
         if (article?.blogs?.category === categoryArticle) {
@@ -14,7 +15,7 @@ const SearchCategory = () => {
         }
     })
 
-    console.log(filterArticle);
+    // console.log(filterArticle);
 
     return (
         <div className='mid-container'>
