@@ -17,6 +17,10 @@ const UserProfile = () => {
         navigate('/UpdateUserProfile')
     }
 
+    const handleNavigate = () => {
+        navigate('/updateUser');
+    };
+
     return (
         <div className='bg-[#F8F8F8]'>
             <div className='profile-container'>
@@ -39,11 +43,10 @@ const UserProfile = () => {
                                     <button className='btn btn-sm'>Followers</button>
                                 </div>
                                 <div className='pr-5'>
-                                    <button onClick={() => navigateEditProfile()} className='btn btn-sm'>Edit Profile</button>
+                                    <button onClick={() => handleNavigate()} className='btn btn-sm'>Edit Profile</button>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div className='profile-container h-32 bg-base-100 shadow-md rounded-b-xl' />

@@ -1,5 +1,4 @@
-
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -7,59 +6,61 @@ import { articleDataContext } from '../../../App';
 import auth from '../../../firebase.init';
 
 const UpdateUserProfile = () => {
+    const valueObj = useContext(articleDataContext);
+    const { signedInUser } = valueObj;
     const [user] = useAuthState(auth)
     const name = user?.displayName;
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    const valueObj = useContext(articleDataContext);
-    const { signedInUser } = valueObj;
 
     const imgStorageKey = 'a7ae0492c3659f35e2c0af7203e883ca'
     const onSubmit = async data => {
 
-        const image = data.img[0];
-        const formData = new FormData();
-        formData.append('image', image)
-        const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(result => {
-                if (result.success) {
-                    const email = user?.email;
-                    const currentUser = { email: email };
-                    const img = result.data.url;
-                    const tools = {
-                        toolName: data.toolName,
-                        description: data.description,
-                        price: data.price,
-                        quantity: data.quantity,
-                        img: img,
-                        education: data.education,
-                        occupation: data.occupation,
-                        linkedIn: data.linkedIn
-                    }
-                    fetch(`https://sheltered-taiga-12711.herokuapp.com/profile/${email}`, {
-                        method: 'PUT',
-                        headers: {
-                            'content-type': 'application/json'
-                        },
-                        body: JSON.stringify(tools, currentUser)
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            toast.success('Profile Updated Successfully.')
-                            reset()
-                        })
-                }
-            })
+
+
+        // const image = data.img[0];
+        // const formData = new FormData();
+        // formData.append('image', image)
+        // const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
+        // fetch(url, {
+        //     method: 'POST',
+        //     body: formData
+        // })
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         if (result.success) {
+        //             const email = user?.email;
+        //             const currentUser = { email: email };
+        //             const img = result.data.url;
+        //             const tools = {
+        //                 toolName: data.toolName,
+        //                 description: data.description,
+        //                 price: data.price,
+        //                 quantity: data.quantity,
+        //                 img: img,
+        //                 education: data.education,
+        //                 occupation: data.occupation,
+        //                 linkedIn: data.linkedIn
+        //             }
+        //             fetch(`https://sheltered-taiga-12711.herokuapp.com/profile/${email}`, {
+        //                 method: 'PUT',
+        //                 headers: {
+        //                     'content-type': 'application/json'
+        //                 },
+        //                 body: JSON.stringify(tools, currentUser)
+        //             })
+        //                 .then(res => res.json())
+        //                 .then(data => {
+        //                     toast.success('Profile Updated Successfully.')
+        //                     reset()
+        //                 })
+        //         }
+        //     })
     }
 
     return (
-        <div className='py-10 mid-container '>
-            <div className='flex justify-center'>
-                <img src={signedInUser?.userInfo?.photoURL} alt="userPhoto" />
+        <div className='py-10 mid-container'>
+            <div className='flex justify-center w-full'>
+                <img className='rounded-full ' src={signedInUser?.userInfo?.photoURL} alt="" />
             </div>
             <form className='lg:w-3/4 md:w-4/5 mx-auto' onSubmit={handleSubmit(onSubmit)} >
 

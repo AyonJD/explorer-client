@@ -3,44 +3,42 @@
     justify-content: center;
     align-items: center;
     width: 100%;
- 
-
   }
   
-  .my-container form{
+  .my-container .payment-form{
     padding:20px;
-    width:700px;
     background: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    width: 100%;
   }
   
-  .my-container form .row{
+  .my-container .payment-form .row{
     display: flex;
     flex-wrap: wrap;
-    gap:15px;
+    gap:25px;
   }
   
-  .my-container form .row .col{
+  .my-container .payment-form .row .col{
     flex:1 1 250px;
   }
   
-  .my-container form .row .col .title{
+  .my-container .payment-form .row .col .title{
     font-size: 20px;
     color:#333;
     padding-bottom: 5px;
     text-transform: uppercase;
   }
   
-  .my-container form .row .col .inputBox{
+  .my-container .payment-form .row .col .inputBox{
     margin:15px 0;
   }
   
-  .my-container form .row .col .inputBox span{
+  .my-container .payment-form .row .col .inputBox span{
     margin-bottom: 10px;
     display: block;
   }
   
-  .my-container form .row .col .inputBox input{
+  .my-container .payment-form .row .col .inputBox input{
     width: 100%;
     border:1px solid #ccc;
     padding:10px 15px;
@@ -48,26 +46,26 @@
     text-transform: none;
   }
   
-  .my-container form .row .col .inputBox input:focus{
+  .my-container .payment-form .row .col .inputBox input:focus{
     border:1px solid #000;
   }
   
-  .my-container form .row .col .flex{
+  .my-container .payment-form .row .col .flex{
     display: flex;
     gap:15px;
   }
   
-  .my-container form .row .col .flex .inputBox{
+  .my-container .payment-form .row .col .flex .inputBox{
     margin-top: 5px;
   }
   
-  .my-container form .row .col .inputBox img{
+  .my-container .payment-form .row .col .inputBox img{
     height: 34px;
     margin-top: 5px;
     filter: drop-shadow(0 0 1px #000);
   }
   
-  .my-container form .submit-btn{
+  .my-container .payment-form .submit-btn{
     width: 100%;
     padding:12px;
     font-size: 17px;
@@ -77,6 +75,6 @@
     cursor: pointer;
   }
   
-  .my-container form .submit-btn:hover{
+  .my-container .payment-form .submit-btn:hover{
     background: rgb(206, 154, 55);
   }
