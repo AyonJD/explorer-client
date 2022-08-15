@@ -265,7 +265,8 @@ h6 {
   border-radius: 20px;
 }
 
-.popup_table_header td {
+.popup_table_header td,
+.premium_dashboard_table_header th {
   color: #080925 !important;
 }
 

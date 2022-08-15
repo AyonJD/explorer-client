@@ -11,7 +11,7 @@ const PremiumMember = () => {
         <div className="overflow-x-auto shadow-md">
             <table className="table table-compact w-full">
                 <thead>
-                    <tr>
+                    <tr className='premium_dashboard_table_header'>
                         <th className='text-accent py-4 pl-5 bg-neutral'>#</th>
                         <th className='md:col-span-1 col-span-3 text-accent py-4 pl-5 bg-neutral'>User</th>
                         <th className='text-accent py-4 bg-neutral'>Email</th>
