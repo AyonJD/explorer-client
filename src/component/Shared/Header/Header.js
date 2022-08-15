@@ -133,7 +133,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                         </ul>
                     </div>
                 </>
-                    : <Link to="/login"><button className='btn btn-sm btn-success btn-outline'>Login</button></Link>}
+                    : <Link to="/join"><button className='btn btn-sm btn-success btn-outline'>Login</button></Link>}
             </div>
 
         </div>

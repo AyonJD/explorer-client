@@ -71,7 +71,7 @@
 //         }
 //         // console.log(userInfo)
 //         // PUT API
-//         fetch(`https://floating-ocean-13139.herokuapp.com/users/${data.email}`, {
+//         fetch(`http://localhost:5000/users/${data.email}`, {
 //             method: 'PUT',
 //             headers: {
 //                 'Content-Type': 'application/json'
@@ -110,7 +110,7 @@
 
 //     useEffect(() => {
 //         //PUT API for updating users image
-//         const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+//         const url = `http://localhost:5000/users/${email}`
 //         // console.log(url)
 //         if (email && !btnState) {
 //             fetch(url, {
@@ -242,6 +242,7 @@ import useToken from '../../Hooks/useToken';
 import { updateProfile } from 'firebase/auth';
 import auth from '../../../firebase.init';
 import toast from 'react-hot-toast';
+import { error } from 'daisyui/src/colors/colorNames';
 
 const Signup = () => {
     // const { register, handleSubmit, formState: { errors }, trigger, reset } = useForm();
@@ -259,7 +260,7 @@ const Signup = () => {
 
 
     const { register, formState: { errors }, handleSubmit, trigger, reset } = useForm();
-    const [btnState, setBtnState] = useState(false);
+    const [btnState, setBtnState] = useState(true);
     const [
         createUserWithEmailAndPassword,
         user,
@@ -273,9 +274,10 @@ const Signup = () => {
     const [authUser] = useAuthState(auth);
     const [userName, setUserName] = useState('');
     const [token] = useToken(user || gUser, userName || gUser?.displayName);
-    // console.log(authUser?.email);
+    const valueObj = useContext(articleDataContext);
+    const { users } = valueObj;
 
-    // console.log(gUser)
+    // console.log(users)
 
     useEffect(() => {
         if (token) {
@@ -283,15 +285,13 @@ const Signup = () => {
         }
     })
 
-    if (user || gUser) {
-        navigate(from, { replace: true })
-    }
+    useEffect(() => {
+        if (user || gUser) {
+            navigate(from, { replace: true })
+        }
+    }, [user, gUser, from, navigate])
 
     let signUpError;
-    if (error) {
-        signUpError = <p className='text-red-500 py-3'>{error?.message || gError?.message}</p>
-    }
-
     let socialError
     if (gError) {
         socialError = <p className='text-red-500 py-3'>{gError?.message}</p>
@@ -299,73 +299,35 @@ const Signup = () => {
 
     let userInfo = {}
     const onSubmit = async data => {
-        setBtnState(true);
         //set display name in state for token and update name in firebase
         const displayName = data.name;
         // console.log(displayName);
-        await createUserWithEmailAndPassword(data.email, data.password);
+        await createUserWithEmailAndPassword(data.email, data.password)
         setUserName(displayName);
         // await updateProfile( {displayName} );
 
+        const existingUser = users?.find(user => user.userInfo.email === data.email);
+        // console.log(existingUser)
 
-        userInfo = {
-            email: data.email,
-            name: data.name,
-            password: data.password,
-            role: 'user',
-            ocupation: data.ocupation || "N/A",
-            dob: data.dob || "N/A",
-            phone: data.phone || "N/A",
-            address: data.address || "N/A",
-            photoURL: data.img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-        }
-        // console.log(userInfo)
-        // PUT API
-        fetch(`http://localhost:5000/users/${data.email}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                userInfo
-            })
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
+        if (existingUser) {
+            toast.error('Account already exists. Please login.')
+            signUpError = <p className='text-red-500 py-3'>User already exists.</p>
+            return;
+        } else {
+            userInfo = {
+                email: data.email,
+                name: data.name,
+                password: data.password,
+                role: 'user',
+                ocupation: data.ocupation || "N/A",
+                dob: data.dob || "N/A",
+                phone: data.phone || "N/A",
+                address: data.address || "N/A",
+                photoURL: data.img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
             }
-            )
-        reset();
-        toast.success('Account created successfully.')
-    }
-
-
-
-    const email = authUser?.email;
-
-    userInfo = {
-        email: authUser?.email,
-        name: authUser?.displayName,
-        photoURL: authUser?.photoURL,
-        role: 'user',
-        ocupation: "N/A",
-        dob: "N/A",
-        phone: "N/A",
-        address: "N/A"
-    }
-
-    //Handle google signing
-
-    const handleGoogleSigning = async () => {
-        await signInWithGoogle();
-    }
-
-    useEffect(() => {
-        //PUT API for updating users image
-        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
-        // console.log(url)
-        if (email && !btnState) {
-            fetch(url, {
+            // console.log(userInfo)
+            // PUT API
+            fetch(`http://localhost:5000/users/${data.email}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -374,8 +336,57 @@ const Signup = () => {
                     userInfo
                 })
             })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    toast.success('Account created successfully.')
+                }
+                )
+            reset();
         }
-    }, [userInfo, email, btnState])
+
+    }
+
+
+
+
+
+    // const email = authUser?.email;
+
+    // userInfo = {
+    //     email: authUser?.email,
+    //     name: authUser?.displayName,
+    //     photoURL: authUser?.photoURL,
+    //     role: 'user',
+    //     ocupation: "N/A",
+    //     dob: "N/A",
+    //     phone: "N/A",
+    //     address: "N/A"
+    // }
+
+    // //Handle google signing
+
+    // const handleGoogleSigning = async () => {
+    //     setBtnState(false);
+    //     await signInWithGoogle();
+    // }
+
+    // useEffect(() => {
+    //     //PUT API for updating users image
+    //     const url = `http://localhost:5000/users/${email}`
+    //     // console.log(url)
+    //     if (email && !btnState) {
+    //         fetch(url, {
+    //             method: 'PUT',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({
+    //                 userInfo
+    //             })
+    //         })
+    //     }
+    // }, [])
     return (
         <div className="sign-up-container">
             <form className='toggle_form' onSubmit={handleSubmit(onSubmit)}>
@@ -434,7 +445,7 @@ const Signup = () => {
                         trigger('password')
                     }}
                 />
-                <small className='text-[#FF4B2B] custom_font custom_font_size'>{errors?.password?.message}</small>
+                <small className='text-[#FF4B2B] text-center custom_font custom_font_size'>{errors?.password?.message}</small>
 
                 <small className='text-center'>{signUpError}</small>
                 <button type="submit" className="toggle_form_button form_btn">Sign Up</button>
