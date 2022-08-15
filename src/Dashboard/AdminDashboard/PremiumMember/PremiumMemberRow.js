@@ -37,7 +37,7 @@ const PremiumMemberRow = ({ premiumMember, serial }) => {
                             <tbody className=''>
                                 <tr>
                                     <td className='py-5 pl-5'>{plan}</td>
-                                    <td className='py-5 pl-5'>{price}</td>
+                                    <td className='py-5 pl-5'>${price}</td>
                                     <td className='py-5 pl-5'>{duration}</td>
                                     <td className='py-5 pl-5'>{description}</td>
 

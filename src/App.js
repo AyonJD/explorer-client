@@ -45,6 +45,7 @@ function App() {
   const [authUser] = useAuthState(auth);
   const [categoryArticle, setCategoryArticle] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [transactionId, setTransactionId] = useState('');
 
   useEffect(() => {
     AOS.init();
@@ -113,9 +114,12 @@ function App() {
     dark,
     setCategoryArticle,
     categoryArticle,
-    loader
+    loader,
+    transactionId,
+    setTransactionId,
   };
 
+  console.log(transactionId);
 
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)

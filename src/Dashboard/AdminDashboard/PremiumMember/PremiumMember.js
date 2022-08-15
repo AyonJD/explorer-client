@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { articleDataContext } from '../../../App';
 import PremiumMemberRow from './PremiumMemberRow';
 
@@ -6,7 +6,9 @@ const PremiumMember = () => {
     const valueObj = useContext(articleDataContext);
     const { users } = valueObj;
 
-    const premiumMember = users?.filter(user => user.userInfo.membershipPlan);
+    const premiumMember = useMemo(() => {
+        return users?.filter(user => user.userInfo.membershipPlan);
+    }, [users]);
     return (
         <div className="overflow-x-auto shadow-md">
             <table className="table table-compact w-full">
@@ -17,7 +19,6 @@ const PremiumMember = () => {
                         <th className='text-accent py-4 bg-neutral'>Email</th>
                         <th className='text-accent py-4 bg-neutral'>Plan</th>
                         <th className='text-accent py-4 bg-neutral'>Plan Details</th>
-                        <th className='text-accent py-4 bg-neutral'>Actions</th>
                     </tr>
                 </thead>
                 <tbody className=''>
