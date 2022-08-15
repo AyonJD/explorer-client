@@ -254,3 +254,23 @@ h6 {
     padding: 0 20px;
   }
 }
+
+
+/* Popup */
+.popup-content {
+  margin: auto;
+  background: #080925 !important;
+  width: 50vw !important;
+  padding: 15px !important;
+  border-radius: 20px;
+}
+
+.popup_table_header td {
+  color: #080925 !important;
+}
+
+@media only screen and (max-width: 900px) {
+  .popup-content {
+    width: 60vw !important;
+  }
+}

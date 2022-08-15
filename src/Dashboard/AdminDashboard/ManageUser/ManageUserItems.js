@@ -95,7 +95,7 @@ const ManageUserItems = ({ user }) => {
 
                 {
                     !admin ? (
-                        <Popup className="popup_content" trigger={<button>...</button>} position="left center">
+                        <Popup className="popup_content" trigger={<button className='btn btn-xs btn-primary rounded-full font-bold text-white'>Take Action</button>} position="left center">
                             <form className='py-5 px-3' onSubmit={handleSubmit(onSubmitParam)}>
                                 <input type="text" placeholder='Admin possition' className="input h-8 w-full max-w-xs"
                                     {...register("possition", {

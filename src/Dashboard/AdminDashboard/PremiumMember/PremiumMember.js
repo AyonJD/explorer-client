@@ -13,7 +13,7 @@ const PremiumMember = () => {
                 <thead>
                     <tr>
                         <th className='text-accent py-4 pl-5 bg-neutral'>#</th>
-                        <th className='text-accent py-4 pl-5 bg-neutral'>User</th>
+                        <th className='md:col-span-1 col-span-3 text-accent py-4 pl-5 bg-neutral'>User</th>
                         <th className='text-accent py-4 bg-neutral'>Email</th>
                         <th className='text-accent py-4 bg-neutral'>Plan</th>
                         <th className='text-accent py-4 bg-neutral'>Plan Details</th>
