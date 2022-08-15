@@ -351,55 +351,56 @@ const Signup = () => {
 
 
 
-    // const email = authUser?.email;
+    const email = authUser?.email;
 
-    // userInfo = {
-    //     email: authUser?.email,
-    //     name: authUser?.displayName,
-    //     photoURL: authUser?.photoURL,
-    //     role: 'user',
-    //     ocupation: "N/A",
-    //     dob: "N/A",
-    //     phone: "N/A",
-    //     address: "N/A"
-    // }
+    userInfo = {
+        email: authUser?.email,
+        name: authUser?.displayName,
+        photoURL: authUser?.photoURL,
+        role: 'user',
+        ocupation: "N/A",
+        dob: "N/A",
+        phone: "N/A",
+        address: "N/A"
+    }
 
-    // //Handle google signing
+    //Handle google signing
 
-    // const handleGoogleSigning = async () => {
-    //     setBtnState(false);
-    //     await signInWithGoogle();
-    // }
+    const handleGoogleSigning = async () => {
+        setBtnState(false);
+        await signInWithGoogle();
+    }
 
-    // useEffect(() => {
-    //     //PUT API for updating users image
-    //     const url = `http://localhost:5000/users/${email}`
-    //     // console.log(url)
-    //     if (email && !btnState) {
-    //         fetch(url, {
-    //             method: 'PUT',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify({
-    //                 userInfo
-    //             })
-    //         })
-    //     }
-    // }, [])
+    useEffect(() => {
+        //PUT API for updating users image
+        const url = `http://localhost:5000/users/${email}`
+        // console.log(url)
+        if (email && !btnState) {
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userInfo
+                })
+            })
+        }
+    }, [btnState, email, userInfo])
+
     return (
         <div className="sign-up-container">
             <form className='toggle_form' onSubmit={handleSubmit(onSubmit)}>
                 <h1 className='custom_font'>Create Account</h1>
                 <div className="social-links">
-                    <div>
-                        <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
+                    <div onClick={handleGoogleSigning}>
+                        <i class="fa-brands fa-google"></i>
                     </div>
                     <div>
-                        <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+                        <i className="fa fa-facebook" aria-hidden="true"></i>
                     </div>
                     <div>
-                        <a href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <i className="fa fa-linkedin" aria-hidden="true"></i>
                     </div>
                 </div>
                 <span className='custom_font toggle_form_span'>or use your email for registration</span>

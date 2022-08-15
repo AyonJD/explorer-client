@@ -100,13 +100,13 @@ const Login = () => {
                 <h1 className='custom_font'>Sign In</h1>
                 <div className="social-links">
                     <div>
-                        <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
+                        <i class="fa-brands fa-google"></i>
                     </div>
                     <div>
-                        <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+                        <i className="fa fa-facebook" aria-hidden="true"></i>
                     </div>
                     <div>
-                        <a href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <i className="fa fa-linkedin" aria-hidden="true"></i>
                     </div>
                 </div>
                 <span className='custom_font toggle_form_span'>or use your account</span>

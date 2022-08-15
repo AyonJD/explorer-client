@@ -9,7 +9,8 @@ const ManageUserItems = ({ user }) => {
     const { register, handleSubmit, formState: { errors }, trigger, reset } = useForm();
 
     const { admin, userInfo, _id } = user;
-    const { email, name } = userInfo;
+    const email = userInfo?.email;
+    const name = userInfo?.name;
     const membershipPlan = userInfo?.membershipPlan;
     const [refetchAdminRole, setRefetchAdminRole] = useState(false);
 
@@ -27,7 +28,7 @@ const ManageUserItems = ({ user }) => {
             }
         }
         //update user by put api
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`http://localhost:5000/users/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +47,7 @@ const ManageUserItems = ({ user }) => {
             admin: false,
         }
         //delete user by delete api
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`http://localhost:5000/users/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +71,7 @@ const ManageUserItems = ({ user }) => {
             }
         }
         //update user by put api
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`http://localhost:5000/users/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
