@@ -10,7 +10,7 @@ const GetPremium = () => {
     const { transactionId } = valueObj;
 
     useEffect(() => {
-        fetch("http://localhost:5000/membership-plans")
+        fetch("https://floating-ocean-13139.herokuapp.com/membership-plans")
             .then((res) => res.json())
             .then((data) => {
                 setMembershipPlan(data);
@@ -20,15 +20,13 @@ const GetPremium = () => {
             );
     }, []);
 
-    console.log(transactionId)
-
 
     return (
         <>
             {
                 transactionId ? (
                     <div className="flex justify-center items-center screen_height">
-                        <h1>You are already a premium member. Your Transaction ID is : {transactionId?.transactionId}</h1>
+                        <h1>You are already a premium member. Your Transaction ID is : {transactionId}</h1>
                     </div>
                 ) :
                     (

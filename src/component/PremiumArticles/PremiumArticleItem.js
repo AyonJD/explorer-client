@@ -7,10 +7,10 @@ const PremiumArticleItem = ({ article }) => {
   // article distructuring
   const { Title, Category, img, desc, author, date, _id } = article;
   const valueObj = useContext(articleDataContext);
-  const { signedInUser } = valueObj;
+  const { signedInUser, transactionId } = valueObj;
   const navigate = useNavigate();
   const handleClick = () => {
-    if (signedInUser?.userInfo?.premium) {
+    if (transactionId) {
       navigate(`/article/${article._id}`);
     }
     else {
