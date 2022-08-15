@@ -9,6 +9,8 @@ const PremiumMember = () => {
     const premiumMember = useMemo(() => {
         return users?.filter(user => user.userInfo.membershipPlan);
     }, [users]);
+
+
     return (
         <div className="overflow-x-auto shadow-md">
             <table className="table table-compact w-full">

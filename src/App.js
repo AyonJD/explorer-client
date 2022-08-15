@@ -45,7 +45,8 @@ function App() {
   const [authUser] = useAuthState(auth);
   const [categoryArticle, setCategoryArticle] = useState([]);
   const [loader, setLoader] = useState(false);
-  const [transactionId, setTransactionId] = useState('');
+  // const [transactionId, setTransactionId] = useState('');
+  const [premiumMember, setPremiumMember] = useState([]);
 
   useEffect(() => {
     AOS.init();
@@ -103,6 +104,24 @@ function App() {
       });
   }, []);
 
+  //fetching all the premium users
+  useEffect(() => {
+    fetch("http://localhost:5000/purches")
+      .then((res) => res.json())
+      .then((data) => {
+        setPremiumMember(data);
+      }
+      );
+  }, []);
+
+  // console.log(signedInUser);
+  const transactionId = premiumMember?.find((user) => {
+    if (user?.buyer?.email === signedInUser?.email) {
+      return user.transactionId;
+
+    }
+  })
+
   const valueObj = {
     articles,
     searchValue,
@@ -116,10 +135,8 @@ function App() {
     categoryArticle,
     loader,
     transactionId,
-    setTransactionId,
+    premiumMember,
   };
-
-  console.log(transactionId);
 
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)

@@ -275,3 +275,7 @@ h6 {
     width: 60vw !important;
   }
 }
+
+.screen_height {
+  min-height: calc(100vh - 64px);
+}
