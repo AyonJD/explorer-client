@@ -4,20 +4,11 @@ const Comment = ({ comment }) => {
   const [hover, setHover] = useState(false)
   // console.log(comment);
   return (
-<<<<<<< HEAD
-    <div className="flex items-center gap-3 mb-5">
-      <img
-        className="rounded-full w-16"
-        src={comment?.author?.userInfo?.photoURL}
-        alt=""
-      />
-=======
     <div className="flex gap-3 mb-5 w-full">
->>>>>>> 45af8e99dab647f12ede1d3b3e3c51ca857f8851
-      <div>
-        <img className="rounded-full w-10 mt-1" src={comment?.author?.userInfo?.photoURL} alt="" />
+      <div className="w-[8%]">
+        <img className="rounded-full w-full mt-1" src={comment?.author?.userInfo?.photoURL} alt="" />
       </div>
-      <div >
+      <div  className="w-[92%]">
         <div onMouseLeave={() => setHover(false)} className="flex items-center gap-2 w-[100%]">
           <div onMouseEnter={() => setHover(true)} className="bg-neutral py-2 px-3 rounded-2xl text-warning">
             <h6 className="font-bold text-sm cursor-pointer">{comment?.author?.userInfo?.name}</h6>

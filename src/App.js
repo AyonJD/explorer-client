@@ -23,7 +23,7 @@ import ScrollToTop from "./hooks/ScrollToTop";
 
 import { useSelector, useDispatch } from "react-redux";
 import getAllArticles from "./source/actions/articlesAction";
-import Hudai from "./Hudai";
+import Hudai from "./hudai";
 import Dashboard from "./Dashboard/AdminDashboard/Dashboard";
 
 const articleDataContext = createContext();
