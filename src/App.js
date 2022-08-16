@@ -47,6 +47,8 @@ function App() {
   const [authUser] = useAuthState(auth);
   const [categoryArticle, setCategoryArticle] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [transactionId, setTransactionId] = useState('');
+  const [premiumMember, setPremiumMember] = useState([]);
 
   useEffect(() => {
     AOS.init();
@@ -104,6 +106,32 @@ function App() {
       });
   }, []);
 
+  //fetching all the premium users
+  useEffect(() => {
+    fetch("https://floating-ocean-13139.herokuapp.com/purches")
+      .then((res) => res.json())
+      .then((data) => {
+        setPremiumMember(data);
+      }
+      );
+  }, []);
+
+  useEffect(() => {
+    premiumMember?.find((user) => {
+      if (user?.buyer?.email === signedInUser?.email) {
+        setTransactionId(user.transactionId);
+      }
+    }
+    );
+  })
+  // console.log(signedInUser);
+  // const transactionId = premiumMember?.find((user) => {
+  //   if (user?.buyer?.email === signedInUser?.email) {
+  //     return user.transactionId;
+
+  //   }
+  // })
+
   const valueObj = {
     articles,
     searchValue,
@@ -115,9 +143,10 @@ function App() {
     dark,
     setCategoryArticle,
     categoryArticle,
-    loader
+    loader,
+    transactionId,
+    premiumMember,
   };
-
 
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)

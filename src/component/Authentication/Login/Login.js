@@ -1,11 +1,12 @@
 import { useForm } from 'react-hook-form';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import { articleDataContext } from '../../../App';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit, trigger, reset } = useForm();
@@ -20,17 +21,20 @@ const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const location = useLocation();
     const navigate = useNavigate();
+    const valueObj = useContext(articleDataContext);
+    const { users } = valueObj;
     const from = location.state?.from?.pathname || "/";
 
+    useEffect(() => {
+        if (user || gUser) {
+            navigate(from, { replace: true })
+        }
+    }, [user, gUser, navigate, from]);
 
-    console.log(error)
-    if (user || gUser) {
-        navigate(from, { replace: true })
-    }
 
     let signInError;
     if (error) {
-        signInError = <p className='text-red-500 py-3'>Sorry! These credentials do not match our records.</p>
+        signInError = <p className='text-red-500 py-3'>Incorrect Email or Password.</p>
     }
 
     let socialError
@@ -42,59 +46,53 @@ const Login = () => {
     const onSubmit = async data => {
         setBtnState(true);
         await signInWithEmailAndPassword(data.email, data.password)
-        if (error?.message?.includes('auth/user-not-found')) {
-            toast.error('User not found');
+
+        const existingUser = users?.find(user => user.userInfo.email === data.email);
+        if (!existingUser) {
             return;
-        } else if (error?.message?.includes('auth/wrong-password')) {
-            toast.error('Password is incorrect');
-            return;
-        } else if (error || error === undefined) {
-            toast.error('Something went wrong');
+        } else if (existingUser?.userInfo.password !== data.password) {
             return;
         } else {
             reset();
             toast.success('Successfully logged in.');
         }
-
-
-
     }
 
     const email = authUser?.email;
     // console.log(email);
-    const userInfo = {
-        email: authUser?.email,
-        name: authUser?.displayName,
-        photoURL: authUser?.photoURL,
-        role: 'user',
-        ocupation: "N/A",
-        dob: "N/A",
-        phone: "N/A",
-        address: "N/A",
-    }
+    // const userInfo = {
+    //     email: authUser?.email,
+    //     name: authUser?.displayName,
+    //     photoURL: authUser?.photoURL,
+    //     role: 'user',
+    //     ocupation: "N/A",
+    //     dob: "N/A",
+    //     phone: "N/A",
+    //     address: "N/A",
+    // }
 
-    //Handle google signing
+    // //Handle google signing
 
-    const handleGoogleSigning = async () => {
-        await signInWithGoogle();
-    }
+    // const handleGoogleSigning = async () => {
+    //     await signInWithGoogle();
+    // }
 
-    useEffect(() => {
-        //PUT API for updating users image
-        const url = `http://localhost:5000/users/${email}`
-        // console.log(url)
-        if (email && !btnState) {
-            fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    userInfo
-                })
-            })
-        }
-    }, [userInfo, email, btnState])
+    // useEffect(() => {
+    //     //PUT API for updating users image
+    //     const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+    //     // console.log(url)
+    //     if (email && !btnState) {
+    //         fetch(url, {
+    //             method: 'PUT',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({
+    //                 userInfo
+    //             })
+    //         })
+    //     }
+    // }, [userInfo, email, btnState])
 
     return (
         <div className="sign-in-container">
@@ -102,13 +100,13 @@ const Login = () => {
                 <h1 className='custom_font'>Sign In</h1>
                 <div className="social-links">
                     <div>
-                        <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
+                        <i class="fa-brands fa-google"></i>
                     </div>
                     <div>
-                        <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+                        <i className="fa fa-facebook" aria-hidden="true"></i>
                     </div>
                     <div>
-                        <a href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <i className="fa fa-linkedin" aria-hidden="true"></i>
                     </div>
                 </div>
                 <span className='custom_font toggle_form_span'>or use your account</span>
