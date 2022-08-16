@@ -3,6 +3,7 @@ import img from "../../assets/animation_500_l6988a4t.gif"
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2'
+import PaymentCart from '../PaymentCart/PaymentCart';
 
 const Contact = () => {
     const form = useRef();
@@ -93,6 +94,7 @@ const Contact = () => {
                     </form>
                 </div>
             </div>
+
 
 
 

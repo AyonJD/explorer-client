@@ -9,38 +9,44 @@ import Header from "./component/Shared/Header/Header";
 import Login from "./component/Authentication/Login/Login";
 import Register from "./component/Authentication/Register/Register";
 import Profile from "./Dashboard/Profile/Profile";
-import { clear } from "@testing-library/user-event/dist/clear";
 import PostArticle from "./Dashboard/PostArticle/PostArticle";
 import ArticleDetails from "./component/ArticleDetails/ArticleDetails";
 import auth from "./firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AllArticle from "./component/Article/AllArticle/AllArticle";
 import Contact from "./component/Contact/Contact";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from 'react-hot-toast';
 import About from "./component/About/About";
-
 import ScrollToTop from "./hooks/ScrollToTop";
-
-import { useSelector, useDispatch } from "react-redux";
-import getAllArticles from "./source/actions/articlesAction";
-import Hudai from "./hudai";
 import Dashboard from "./Dashboard/AdminDashboard/Dashboard";
+import Overview from "./Dashboard/AdminDashboard/OverviewWebsite/Overview";
+import ManageArticle from "./Dashboard/AdminDashboard/ManageArticle/ManageArticle";
+import ManageUser from "./Dashboard/AdminDashboard/ManageUser/ManageUser";
+import Analytics from "./Dashboard/AdminDashboard/Analytics/Analytics";
+import AdminRules from "./Dashboard/AdminDashboard/Analytics/AdminRules";
+import PremiumMember from "./Dashboard/AdminDashboard/PremiumMember/PremiumMember";
+
+import UserProfile from "./Dashboard/AdminDashboard/UserProfile/UserProfile";
+import UpdateUserProfile from "./Dashboard/AdminDashboard/UserProfile/UpdateUserProfile";
+
+import GetPremium from "./Dashboard/UsersSection/GetPremium";
+import PaymentCard from "./Dashboard/Payment/PaymentCard";
+import SearchCategory from "./component/SearchCategory/SearchCategory";
+import Faq from "./component/Faq/Faq";
+import LoginSignupToggle from "./component/Authentication/LoginSignupToggle/LoginSignupToggle";
+
+
 
 const articleDataContext = createContext();
 function App() {
+
   const [articles, setArticles] = useState([]);
   const [searchValue, setSearchValue] = useState(null);
   const [users, setUsers] = useState([]);
   const [signedInUser, setSignedInUser] = useState(null);
   const [authUser] = useAuthState(auth);
-
-  const articlesData = useSelector((state) => state.articles);
-  const dispatch = useDispatch();
-
-  // console.log(articlesData);
-  useEffect(() => {
-    dispatch(getAllArticles());
-  }, []);
+  const [categoryArticle, setCategoryArticle] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     AOS.init();
@@ -50,7 +56,7 @@ function App() {
   const [dark, setDark] = useState(false);
   // localStorage.setItem('theme', dark);
   useEffect(() => {
-    fetch("https://floating-ocean-13139.herokuapp.com/theme")
+    fetch("http://localhost:5000/theme")
       .then((res) => res.json())
       .then((data) => {
         setDark(data[0].theme);
@@ -59,7 +65,7 @@ function App() {
 
   const setTheme = () => {
     fetch(
-      "https://floating-ocean-13139.herokuapp.com/theme/62d829c706b5a80f8247a020",
+      "http://localhost:5000/theme/62d829c706b5a80f8247a020",
       {
         method: "PUT",
         headers: {
@@ -78,16 +84,22 @@ function App() {
 
   // fetching all articles
   useEffect(() => {
-    fetch("https://floating-ocean-13139.herokuapp.com/blogs")
+    // setLoader(true);
+    fetch("http://localhost:5000/blogs")
       .then((res) => res.json())
-      .then((data) => setArticles(data));
+      .then((data) => {
+        setArticles(data);
+        setLoader(false);
+      });
   }, []);
 
   // fetching all users
   useEffect(() => {
-    fetch("https://floating-ocean-13139.herokuapp.com/users")
+    // setLoader(true);
+    fetch("http://localhost:5000/users")
       .then((res) => res.json())
       .then((data) => {
+        setLoader(false);
         setUsers(data);
       });
   }, []);
@@ -101,23 +113,22 @@ function App() {
     signedInUser,
     setSignedInUser,
     dark,
+    setCategoryArticle,
+    categoryArticle,
+    loader
   };
 
-  const userss = users.map((user) => {
-    return user.userInfo.role;
-  });
-  // console.log(userss)
 
   const compareUser = useMemo(() => {
-    return users?.find((user) => user?.userInfo?.email === authUser?.email);
-  }, [authUser, users]);
+    return users?.find(user => user?.userInfo?.email === authUser?.email)
+  }, [authUser, users])
 
   // console.log(compareUser)
   useEffect(() => {
-    setSignedInUser(compareUser);
-  }, [compareUser]);
+    setSignedInUser(compareUser)
+  }, [compareUser])
 
-  // console.log(compareUser?.userInfo.role);
+  // console.log(users);
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
@@ -128,21 +139,39 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/user-profile" element={<UserProfile />}></Route>
+          <Route path="/updateUser" element={<UpdateUserProfile />}></Route>
           <Route path="/post-article" element={<PostArticle />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
+          <Route path="/join" element={<LoginSignupToggle />}></Route>
+          {/* <Route path="/register" element={<Register />}></Route> */}
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/hudai" element={<Hudai />}></Route>
+          <Route path="/search-category" element={<SearchCategory />}></Route>
+          <Route path="/faq" element={<Faq />}></Route>
+
+
+          <Route path="/membership" element={<GetPremium />}></Route>
+          <Route path="/payment/:id" element={<PaymentCard />}></Route>
+
+
           <Route
             path="/article/:articleId"
             element={<ArticleDetails />}
           ></Route>
 
+          <Route path="/article/:articleId" element={<ArticleDetails />}></Route>
+
           <Route path="dashboard" element={<Dashboard />}>
             <Route index element={<Profile />} />
             <Route path="post-Article" element={<PostArticle />} />
+            <Route path="overview" element={<Overview />} />
+            <Route path="manage-article" element={<ManageArticle />} />
+            <Route path="manage-user" element={<ManageUser />} />
+            <Route path="analytics" element={<Analytics />} />
+            <Route path="admin-rules" element={<AdminRules />} />
+            <Route path="premium-member" element={<PremiumMember />} />
           </Route>
+
         </Routes>
         <Footer />
       </articleDataContext.Provider>

@@ -1,5 +1,4 @@
-import React from 'react';
-import AllArticle from '../Article/AllArticle/AllArticle';
+import React, { useContext, useEffect } from 'react';
 import Banner from '../Banner/Banner';
 import PremiumArticles from '../PremiumArticles/PremiumArticles';
 import PopularArticle from '../PopularArticle/PopularArticle';
@@ -7,6 +6,8 @@ import RecentArticla from '../RecentArticle/RecentArticla';
 import Pricing from '../Pricing/Pricing';
 
 const Home = () => {
+    // const valueObj = useContext(articleDataContext);
+    // const { loader } = valueObj;
     return (
         <div>
             <Banner />
@@ -14,6 +15,9 @@ const Home = () => {
             <PopularArticle />
             <PremiumArticles />
             <Pricing></Pricing>
+
+
+
         </div>
     );
 };

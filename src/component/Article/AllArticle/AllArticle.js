@@ -20,7 +20,7 @@ const AllArticle = () => {
 
     //Sending pageNumber and articleCount to the server to get the articles by pagination logic
     useEffect(() => {
-        fetch(`  https://floating-ocean-13139.herokuapp.com/blogs?page=${pageNumber}&count=${articleCount}`)
+        fetch(`  http://localhost:5000/blogs?page=${pageNumber}&count=${articleCount}`)
             .then(res => res.json())
             .then(data => {
                 setArticles(data);
@@ -30,7 +30,7 @@ const AllArticle = () => {
 
     //This is only for getting the 
     useEffect(() => {
-        fetch('  https://floating-ocean-13139.herokuapp.com/blogs-count')
+        fetch('  http://localhost:5000/blogs-count')
             .then(res => res.json())
             .then(data => {
                 setAllArticleCount(data.count);
@@ -129,10 +129,10 @@ const AllArticle = () => {
 
 
 
-            <div class="pagination_container container mx-auto">
-                <ul class="pagination">
+            <div className="pagination_container container mx-auto">
+                <ul className="pagination">
                     <li>
-                        <button disabled={pageNumber === 1 && true} onClick={() => setPageNumber(pageNumber - 1)} class="btn bg-transparent outline-0 border-none mx-2">PRE</button>
+                        <button disabled={pageNumber === 1 && true} onClick={() => setPageNumber(pageNumber - 1)} className="btn bg-transparent outline-0 border-none mx-2">PRE</button>
                     </li>
                     {
                         button.slice(0, 2).map(user => user)
@@ -147,7 +147,7 @@ const AllArticle = () => {
                         </li>
                     }
                     <li>
-                        <button onClick={() => setPageNumber(pageNumber + 1)} class="btn bg-transparent outline-0 border-none mx-2">NEX</button>
+                        <button onClick={() => setPageNumber(pageNumber + 1)} className="btn bg-transparent outline-0 border-none mx-2">NEX</button>
                     </li>
 
                     <div>
