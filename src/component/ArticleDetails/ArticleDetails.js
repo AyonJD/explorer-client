@@ -29,11 +29,17 @@ const ArticleDetails = () => {
   const author = article?.signedInUser?.userInfo?.name;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/blogs/${articleId}`)
+    fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
   }, [articleId, article]);
 
+  const relatedArticle = articles.filter(item => {
+    if (item?.blogs?.category === article?.blogs?.category) {
+      return item
+    }
+  })
+  console.log(relatedArticle);
   // today's date
   const today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
@@ -48,7 +54,7 @@ const ArticleDetails = () => {
       signedInUser?._id !== undefined
     ) {
       // console.log([...article.blogs.likes, signedInUser._id])
-      fetch(`http://localhost:5000/blogs/${id}`, {
+      fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +81,7 @@ const ArticleDetails = () => {
   //Handle Unlike button
   const handleUnlike = (id) => {
     if (article?.likes.includes(signedInUser._id)) {
-      fetch(`http://localhost:5000/blogs/${id}`, {
+      fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -111,7 +117,7 @@ const ArticleDetails = () => {
     // clear input value
     e.target.comment.value = "";
     // send comment to server with user info
-    fetch(`http://localhost:5000/blogs/${articleId}`, {
+    fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -262,7 +268,7 @@ const ArticleDetails = () => {
         <h1 className="text-3xl font-bold">Related Article</h1><hr className="mb-10 mt-3" />
         <div className=" grid grid-cols-3 gap-5 ">
           {
-            articles.slice(0, 3).map((article) => <RelativeArticle
+            relatedArticle.slice(0, 3).map((article) => <RelativeArticle
               article={article}
             />)
           }
