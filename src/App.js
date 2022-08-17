@@ -42,7 +42,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [signedInUser, setSignedInUser] = useState(null);
   const [authUser] = useAuthState(auth);
-  const [categoryArticle, setCategoryArticle] = useState([]);
+  const [categoryArticle, setCategoryArticle] = useState('');
 
   useEffect(() => {
     AOS.init();

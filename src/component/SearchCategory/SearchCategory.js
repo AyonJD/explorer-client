@@ -14,7 +14,7 @@ const SearchCategory = () => {
         }
     })
 
-    console.log(filterArticle);
+    // console.log(filterArticle);
 
     return (
         <div className='mid-container'>
