@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup';
 const PopupForDeleteAdmin = ({ handleDelete, handleEdit }) => {
 
     return (
-        <Popup className="popup_content" trigger={<button>...</button>} position="left center">
+        <Popup className="popup_content" trigger={<button className='btn btn-xs btn-primary rounded-full font-bold text-white'>Take Action</button>} position="left center">
             <div className='p-4'>
 
 
