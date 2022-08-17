@@ -8,7 +8,7 @@ const ManageUser = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/users")
+        fetch("https://floating-ocean-13139.herokuapp.com/users")
             .then((res) => res.json())
             .then((data) => {
 

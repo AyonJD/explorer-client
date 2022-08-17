@@ -7,7 +7,7 @@ const GetPremium = () => {
     const [memberrshipPlan, setMembershipPlan] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/membership-plans")
+        fetch("https://floating-ocean-13139.herokuapp.com/membership-plans")
             .then((res) => res.json())
             .then((data) => {
                 setMembershipPlan(data);
