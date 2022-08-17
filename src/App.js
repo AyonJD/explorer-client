@@ -32,6 +32,7 @@ import UpdateUserProfile from "./Dashboard/AdminDashboard/UserProfile/UpdateUser
 import GetPremium from "./Dashboard/UsersSection/GetPremium";
 import PaymentCard from "./Dashboard/Payment/PaymentCard";
 import SearchCategory from "./component/SearchCategory/SearchCategory";
+import LoginSignupToggle from "./component/Authentication/LoginSignupToggle/LoginSignupToggle";
 
 
 const articleDataContext = createContext();
@@ -42,7 +43,10 @@ function App() {
   const [users, setUsers] = useState([]);
   const [signedInUser, setSignedInUser] = useState(null);
   const [authUser] = useAuthState(auth);
-  const [categoryArticle, setCategoryArticle] = useState('');
+  const [categoryArticle, setCategoryArticle] = useState([]);
+  const [loader, setLoader] = useState(false);
+  const [transactionId, setTransactionId] = useState('');
+  const [premiumMember, setPremiumMember] = useState([]);
 
   useEffect(() => {
     AOS.init();
@@ -80,19 +84,51 @@ function App() {
 
   // fetching all articles
   useEffect(() => {
+    // setLoader(true);
     fetch("https://floating-ocean-13139.herokuapp.com/blogs")
       .then((res) => res.json())
-      .then((data) => setArticles(data));
+      .then((data) => {
+        setArticles(data);
+        setLoader(false);
+      });
   }, []);
 
   // fetching all users
   useEffect(() => {
+    // setLoader(true);
     fetch("https://floating-ocean-13139.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => {
+        setLoader(false);
         setUsers(data);
       });
   }, []);
+
+  //fetching all the premium users
+  useEffect(() => {
+    fetch("https://floating-ocean-13139.herokuapp.com/purches")
+      .then((res) => res.json())
+      .then((data) => {
+        setPremiumMember(data);
+      }
+      );
+  }, []);
+
+  useEffect(() => {
+    premiumMember?.find((user) => {
+      if (user?.buyer?.email === signedInUser?.email) {
+        setTransactionId(user.transactionId);
+      }
+    }
+    );
+  })
+  // console.log(signedInUser);
+  // const transactionId = premiumMember?.find((user) => {
+  //   if (user?.buyer?.email === signedInUser?.email) {
+  //     return user.transactionId;
+
+  //   }
+  // })
 
   const valueObj = {
     articles,
@@ -104,9 +140,11 @@ function App() {
     setSignedInUser,
     dark,
     setCategoryArticle,
-    categoryArticle
+    categoryArticle,
+    loader,
+    transactionId,
+    premiumMember,
   };
-
 
   const compareUser = useMemo(() => {
     return users?.find(user => user?.userInfo?.email === authUser?.email)
@@ -117,7 +155,7 @@ function App() {
     setSignedInUser(compareUser)
   }, [compareUser])
 
-  // console.log(compareUser?.userInfo.role);
+  // console.log(users);
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
@@ -131,8 +169,8 @@ function App() {
           <Route path="/user-profile" element={<UserProfile />}></Route>
           <Route path="/updateUser" element={<UpdateUserProfile />}></Route>
           <Route path="/post-article" element={<PostArticle />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
+          <Route path="/join" element={<LoginSignupToggle />}></Route>
+          {/* <Route path="/register" element={<Register />}></Route> */}
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/search-category" element={<SearchCategory />}></Route>
