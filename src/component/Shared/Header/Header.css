@@ -1,0 +1,59 @@
+.navbar-content {
+    padding: 8px 9%;
+}
+
+.dark-mode {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    transition: .5s;
+}
+
+.dark-mode:hover .dark-icon {
+    transition: .5s;
+}
+
+.dark-mode:hover .dark-icon {
+    color: aliceblue !important;
+}
+
+.navbar-logo {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+}
+
+.icon {
+    transition: .5s;
+}
+
+.navbar-logo:hover .icon {
+    color: aliceblue;
+}
+
+.navbar-logo .icon {
+    font-size: 20px;
+}
+
+.dropdown-items .item {
+    transition: .3s;
+}
+
+.dropdown-items li:hover .item {
+    color: orange;
+    letter-spacing: 1.5px;
+}
+
+.right_icon {
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 1400px) {
+    .navbar-content {
+        padding: 5px 1rem;
+    }
+}

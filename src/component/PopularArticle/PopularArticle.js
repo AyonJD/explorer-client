@@ -1,43 +1,111 @@
-import React from "react";
-import img1 from "../../assets/blog-img/news-1.jpg";
+import React, { useContext } from "react";
+import { articleDataContext } from "../../App";
+import "./PopularArticle.css";
+import PopularArticleItem from "./PopularArticleItem";
+
+import { RiArrowRightSFill } from "react-icons/ri";
+import { Link, useNavigate } from "react-router-dom";
+import RegisterCard from "./RegisterCard";
+// RiArrowDropRightFill
 
 const PopularArticle = () => {
-  return (
-    <div className="mid-container mt-10">
-      <h1 className="text-3xl font-bold"> Popular Article</h1>
-      <p>
-        <small>
-          Popular articles are selected based on the number of readers .
-        </small>
-      </p>
+  const valueObj = useContext(articleDataContext);
 
-      <div className="mt-10">
-        <div className="card lg:card-side bg-base-100 shadow-xl grid grid-cols-2  border border-info">
-          <figure className="w-full">
-            <img className="w-full" src={img1} alt="Album" />
-          </figure>
-          <div className="p-5 flex items-center">
-            <div>
-              <p className="text-sm">Jan 24, 2022</p>
-              <h1 className="text-2xl font-bold my-2">
-                Stimulation Child's Sensory and Motor Development
-              </h1>
-              <p className="text-sm">
-                The objective of this study is to assess the findings of
-                selected articles regarding the therapeutic...
-              </p>
-              <div className="flex gap-5 items-center mt-5">
-                <div className="avatar">
-                  <div className="lg:w-20 md:w-10 sm:w-10 rounded-full">
-                    <img src="https://placeimg.com/192/192/people" alt="" />
-                  </div>
-                </div>
-                <div>
-                  <h2 className="font-semibold ">Bithika Abhedancada</h2>
-                  <p className="text-sm">Study Power CEO</p>
-                </div>
-              </div>
+  const { setCategoryArticle } = valueObj
+
+  // console.log(articles);
+  const countPoplular = 0;
+  const popularArticle = valueObj?.articles?.map((element) => {
+    if (element?.likes?.length > countPoplular) {
+      return element;
+    }
+  });
+
+  const popularArticleArr = [];
+  popularArticle.forEach((article) => {
+    if (article) {
+      popularArticleArr.push(article);
+    }
+  });
+
+  // console.log(popularArticleArr)
+
+  return (
+    <div className="mid-container">
+      <div className="flex w-full items-center ">
+        <h1 className="text-3xl font-bold  lg:w-72 md:w-96 sm:w-96 ">
+          Popular Article
+        </h1>
+        <span className="bg-primary h-[2px] w-full article-border"></span>
+      </div>
+      <p className="text-sm mt-2">
+        Popular articles are selected based on the number of readers
+      </p>
+      <div className="mt-10 lg:flex md:flex">
+        <div className="lg:w-3/4 md:w-[70%] grid gap-5 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
+          {popularArticleArr.slice(0, 3).map((article) => (
+            <PopularArticleItem
+              key={article._id}
+              article={article}
+            ></PopularArticleItem>
+          ))}
+        </div>
+        <div className="lg:w-1/4 md:w-[30%] grid  lg:ml-5 md:ml-5 gap-5">
+          <div className="card  bg-base-100 shadow-xl border">
+            <div className="card-body">
+              <h2 className="text-xl font-bold text-center"> All Category</h2>
+              <ul className="pl-5 mt-5 ">
+
+                <li onClick={() => setCategoryArticle('Fashion')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Fashion
+                </Link>
+                </li>
+
+                <li onClick={() => setCategoryArticle('Photography')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Photography
+                </Link>
+                </li>
+
+                <li onClick={() => setCategoryArticle('Travel')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Travel
+                </Link>
+                </li>
+
+                <li onClick={() => setCategoryArticle('Fitness')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Fitness
+                </Link></li>
+
+                <li onClick={() => setCategoryArticle('Food')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Food
+                </Link></li>
+
+                <li onClick={() => setCategoryArticle('Beauty')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Beauty
+                </Link></li>
+
+                <li onClick={() => setCategoryArticle('MakeUp')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  MakeUp
+                </Link></li>
+                <li onClick={() => setCategoryArticle('Sport')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Sport
+                </Link></li>
+
+                <li onClick={() => setCategoryArticle('Entertainment')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Entertainment
+                </Link></li>
+                
+                <li onClick={() => setCategoryArticle('Lifestyle')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Lifestyle
+                </Link></li>
+
+                <li onClick={() => setCategoryArticle('Home')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Home
+                </Link></li>
+              </ul>
             </div>
+          </div>
+          <div>
+            <RegisterCard />
           </div>
         </div>
       </div>

@@ -1,85 +1,70 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import ArticleItem from './ArticleItem';
+import RecentArticleItems from './RecentArticleItems';
+import RecentArticleRight from './RecentArticleRight';
+import SocialLinked from './SocialLinked';
+import { useSelector, useDispatch } from "react-redux";
+import getAllArticles from "../../source/actions/articlesAction";
+
 
 const RecentArticla = () => {
-    const today = new Date();
-    const year = today.getFullYear();
+
+    const articles = useSelector((state) => state.articles);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllArticles())
+    }, [dispatch]);
+
+    const articleCopy = [...articles];
+
+
     return (
         <section className='mid-container'>
-            <div className="">
-                <h1 className='text-3xl font-bold mt-24'>Recent Article</h1>
-                <p className='mt-2'>Recent Article are selected based on the number of readers</p>
+            <div className='flex w-full items-center lg:mt-16 md:mt-36 sm:mt-44 mt-16'>
+                <h1 className='text-3xl font-bold lg:w-72 w-72 md:w-96 sm:w-96'>Recent Article</h1>
+                <span className='bg-primary h-[2px] w-full article-border'></span>
             </div>
-            <div className="grid grid-cols-3 mt-10 gap-5 ">
+            <p className='text-sm mt-2'>Recent articles are selected based on update published</p>
+            <div className="mt-10 lg:flex md:flex">
+                <div className='lg:w-[70%] lg:pr-10 md:pr-5 lg:py-5 md:py-5 lg:border-r-[1px] md:border-r-[1px]'>
+                    <div className=" grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 gap-7 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
+                        {articleCopy?.reverse()?.slice(0, 2).map((article, index) => (
 
-                <div className=" bg-neutral shadow-xl rounded-2xl">
-                    <figure><img className='w-full rounded-t' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="text-warning text-sm">
-                            {year}
-                        </h2>
-                        <h1 className='text-2xl font-bold text-warning'>Child's Sensory and Motor, Development</h1>
-                        <p className='text-sm text-warning'>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
+                            < ArticleItem
+                                key={index}
+                                article={article}
+                            />
+                        ))}
+                    </div>
 
-                        <div className="flex items-center gap-5 mt-5">
-                            <div className="avatar ">
-                                <div className="w-20 mt-2 rounded-full ring ring-primary ring-offset-base-100 ">
-                                    <img src="https://placeimg.com/192/192/people" alt='' />
-                                </div>
-                            </div>
-                            <div className=" text-warning">
-                                <h1 className='font-bold text-xl'>Armin Sultana</h1>
-                                <h1 className='text-sm'>Study power CEO</h1>
-                            </div>
-                        </div>
+                    <div className="mt-5 grid lg:grid-cols-2 md:grid-cols-2 gap-x-7 gap-y-4">
+                        {articles?.slice(0, 6).map((article) => (
+                            <RecentArticleItems
+                                key={article._id}
+                                article={article}
+                            ></RecentArticleItems>
+                        ))}
                     </div>
                 </div>
-                <div className=" bg-neutral shadow-xl rounded-2xl">
-                    <figure><img className='w-full rounded-t' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="text-warning text-sm">
-                            {year}
-                        </h2>
-                        <h1 className='text-2xl font-bold text-warning'>Child's Sensory and Motor, Development</h1>
-                        <p className='text-sm text-warning'>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
-
-                        <div className="flex items-center gap-5 mt-5">
-                            <div className="avatar ">
-                                <div className="w-20 mt-2 rounded-full ring ring-primary ring-offset-base-100 ">
-                                    <img src="https://placeimg.com/192/192/people" alt='' />
-                                </div>
-                            </div>
-                            <div className=" text-warning">
-                                <h1 className='font-bold text-xl'>Armin Sultana</h1>
-                                <h1 className='text-sm'>Study power CEO</h1>
-                            </div>
-                        </div>
+                <div className="lg:w-[30%] grid  lg:ml-5 md:ml-5 mt-10 lg:mt-0 md:mt-0">
+                    <div>
+                        <h2 className='bg-black text-white py-2 pl-3 rounded'>OUR PICKS</h2>
+                    </div>
+                    <div className=" grid">
+                        {articles.slice(0, 4).map((article) => (
+                            <RecentArticleRight
+                                key={article._id}
+                                article={article}
+                            ></RecentArticleRight>
+                        ))}
+                    </div>
+                    <div>
+                        <SocialLinked />
                     </div>
                 </div>
-                <div className=" bg-neutral shadow-xl rounded-2xl">
-                    <figure><img className='w-full rounded-t' src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="text-warning text-sm">
-                            {year}
-                        </h2>
-                        <h1 className='text-2xl font-bold text-warning'>Child's Sensory and Motor, Development</h1>
-                        <p className='text-sm text-warning'>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
-
-                        <div className="flex items-center gap-5 mt-5">
-                            <div className="avatar ">
-                                <div className="w-20 mt-2 rounded-full ring ring-primary ring-offset-base-100 ">
-                                    <img src="https://placeimg.com/192/192/people" alt='' />
-                                </div>
-                            </div>
-                            <div className=" text-warning">
-                                <h1 className='font-bold text-xl'>Armin Sultana</h1>
-                                <h1 className='text-sm'>Study power CEO</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </section>
+        </section >
     );
 };
 
