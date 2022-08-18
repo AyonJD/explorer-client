@@ -1,0 +1,82 @@
+#file {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+}
+
+.file_label {
+    background: #FFBE55;
+    width: 20%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    outline: none;
+    /* padding: 1rem 50px; */
+    position: relative;
+    transition: all 0.3s;
+    vertical-align: middle;
+
+
+}
+
+.file_label:hover {
+    background-color: #fdac28;
+}
+
+.file_label.btn-3 {
+    background-color: #FFBE55;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    height: 40px;
+    line-height: 2.6;
+    overflow: hidden;
+}
+
+.file_label.btn-3 span {
+    display: inline-block;
+    height: 100%;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.file_label.btn-3::before {
+    color: #fff;
+    content: "\f1c5";
+    font-family: "Font Awesome 5 Free";
+    font-size: 130%;
+    height: 100%;
+    left: 0;
+    line-height: 1.9;
+    position: absolute;
+    top: -180%;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.file_label.btn-3:hover {
+    background-color: #FFBE55;
+}
+
+.file_label.btn-3:hover span {
+    transform: translateY(300%);
+}
+
+.file_label.btn-3:hover::before {
+    top: 0;
+}
+
+.custom_box_shadow {
+    -webkit-border-radius: 5px !important;
+    border-radius: 5px !important;
+    background: #080925 !important;
+    -webkit-box-shadow: 5px 5px 8px #040514, -5px -5px 8px #0c0d36 !important;
+    box-shadow: 5px 5px 8px #040514, -5px -5px 8px #0c0d36 !important;
+}
