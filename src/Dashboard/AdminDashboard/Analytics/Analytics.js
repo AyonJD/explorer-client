@@ -1,12 +1,12 @@
 import React from 'react';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Tooltip, ComposedChart, CartesianGrid, XAxis, YAxis, Legend, Area, Bar, Line } from 'recharts';
 
 const Analytics = () => {
     const data = [
-        { name: 'Basic Article', value: 400 },
-        { name: 'Travel Article', value: 300 },
-        { name: 'Education Article', value: 300 },
-        { name: 'Premium Article', value: 200 },
+        { name: 'Basic Article', value: 400, uv: 590, pv: 800, amt: 1400 },
+        { name: 'Travel Article', value: 300, uv: 868, pv: 967, amt: 1506 },
+        { name: 'Education Article', value: 300, uv: 1397, pv: 1098, amt: 989 },
+        { name: 'Premium Article', value: 200, uv: 1480, pv: 1200, amt: 1228 },
     ];
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
@@ -53,6 +53,32 @@ const Analytics = () => {
                     </ResponsiveContainer>
                 </div>
             </div >
+
+            <div style={{ width: '100%', height: 300 }}>
+                <ResponsiveContainer>
+                    <ComposedChart
+                        width={500}
+                        height={400}
+                        data={data}
+                        margin={{
+                            top: 20,
+                            right: 20,
+                            bottom: 20,
+                            left: 20,
+                        }}
+                    >
+                        <CartesianGrid stroke="#f5f5f5" />
+                        <XAxis dataKey="name" scale="band" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" />
+                        <Bar dataKey="pv" barSize={20} fill="#413ea0" />
+                        <Line type="monotone" dataKey="uv" stroke="#ff7300" />
+                    </ComposedChart>
+                </ResponsiveContainer>
+            </div>
+
         </div >
     );
 };
