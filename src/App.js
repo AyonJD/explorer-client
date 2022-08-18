@@ -131,9 +131,6 @@ function App() {
   // console.log(users);
 
   return (
-<<<<<<< HEAD
-    <div>
-=======
     <div data-theme={dark ? "dark" : "light"}>
       <ScrollToTop />
       <articleDataContext.Provider value={valueObj}>
@@ -180,7 +177,6 @@ function App() {
         <Footer />
       </articleDataContext.Provider>
       <Toaster />
->>>>>>> 2d77b30389c6f5fb7b44b7137e241f27c250ff23
     </div>
   );
 }
