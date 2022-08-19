@@ -14,10 +14,7 @@ const Home = () => {
             <RecentArticla></RecentArticla>
             <PopularArticle />
             <PremiumArticles />
-            <Pricing></Pricing>
-
-
-
+            {/* <Pricing></Pricing> */}
         </div>
     );
 };

@@ -9,7 +9,8 @@ const ManageUserItems = ({ user }) => {
     const { register, handleSubmit, formState: { errors }, trigger, reset } = useForm();
 
     const { admin, userInfo, _id } = user;
-    const { email, name } = userInfo;
+    const email = userInfo?.email;
+    const name = userInfo?.name;
     const membershipPlan = userInfo?.membershipPlan;
     const [refetchAdminRole, setRefetchAdminRole] = useState(false);
 
@@ -27,7 +28,7 @@ const ManageUserItems = ({ user }) => {
             }
         }
         //update user by put api
-        fetch(`https://floating-ocean-13139.herokuapp.com/users/${_id}`, {
+        fetch(`https://floating-ocean-13139.herokuapp.com/users/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +47,7 @@ const ManageUserItems = ({ user }) => {
             admin: false,
         }
         //delete user by delete api
-        fetch(`https://floating-ocean-13139.herokuapp.com/users/${_id}`, {
+        fetch(`https://floating-ocean-13139.herokuapp.com/users/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +71,7 @@ const ManageUserItems = ({ user }) => {
             }
         }
         //update user by put api
-        fetch(`https://floating-ocean-13139.herokuapp.com/users/${_id}`, {
+        fetch(`https://floating-ocean-13139.herokuapp.com/users/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -94,7 +95,7 @@ const ManageUserItems = ({ user }) => {
 
                 {
                     !admin ? (
-                        <Popup className="popup_content" trigger={<button>...</button>} position="left center">
+                        <Popup className="popup_content" trigger={<button className='btn btn-xs btn-primary rounded-full font-bold text-white'>Take Action</button>} position="left center">
                             <form className='py-5 px-3' onSubmit={handleSubmit(onSubmitParam)}>
                                 <input type="text" placeholder='Admin possition' className="input h-8 w-full max-w-xs"
                                     {...register("possition", {
