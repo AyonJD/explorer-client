@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { articleDataContext } from "../../../App";
 import {
     Container,
@@ -12,10 +13,26 @@ function Search() {
     const [isFocused, setIsFocused] = useState(false);
     const showSearchInput = isHovered || isFocused;
     const valueObj = useContext(articleDataContext);
-    const { setSearchValue } = valueObj;
+    const { setSearchValue, articles, searchValue } = valueObj;
+    const navigate = useNavigate()
+
+
+   
 
     const handleSearchInput = (e) => {
+        // let filterSearch = articles.filter(article => {
+        //     if (article?.blogs?.category?.toLowerCase().includes(e.target.value?.toLowerCase()) || article?.blogs?.Title?.toLowerCase().includes(searchValue?.toLowerCase())) {
+        //         return article
+        //     } 
+        // })
+        // if(filterSearch.length === 0){
+        //     navigate("/")
+        //     return 
+        // }
+
         setSearchValue(e.target.value);
+        navigate("/search-category")
+        // e.target.value= ""
     }
 
 
