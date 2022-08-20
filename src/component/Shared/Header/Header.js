@@ -73,7 +73,7 @@ const Header = ({ setDark, dark, setTheme }) => {
             </div>
 
             <div className="navbar-end lg:w-[30%]">
-                <Search />
+                    <Search />
                 <label className="swap swap-rotate mx-2 dark-mode bg-accent hover:bg-primary">
 
                     <input type="checkbox" onClick={() => setTheme()} />

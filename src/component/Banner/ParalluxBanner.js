@@ -11,11 +11,11 @@ import planet2Image from "../../assets/planet2.png";
 import rocketImage from "../../assets/rocket.png";
 
 const layers = [
-    {
-        name: "text",
-        image: textImage,
-        dataDepth: "0.1"
-    },
+    // {
+    //     name: "text",
+    //     image: textImage,
+    //     dataDepth: "0.1"
+    // },
     {
         name: "astronaut",
         image: astronautImage,

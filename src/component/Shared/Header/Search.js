@@ -21,6 +21,7 @@ function Search() {
 
     return (
         <Container
+            className="search-container"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onFocus={() => setIsFocused(true)}
