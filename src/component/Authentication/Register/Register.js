@@ -71,7 +71,7 @@
 //         }
 //         // console.log(userInfo)
 //         // PUT API
-//         fetch(`https://floating-ocean-13139.herokuapp.com/users/${data.email}`, {
+//         fetch(`http://localhost:5000/users/${data.email}`, {
 //             method: 'PUT',
 //             headers: {
 //                 'Content-Type': 'application/json'
@@ -110,7 +110,7 @@
 
 //     useEffect(() => {
 //         //PUT API for updating users image
-//         const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+//         const url = `http://localhost:5000/users/${email}`
 //         // console.log(url)
 //         if (email && !btnState) {
 //             fetch(url, {
@@ -327,7 +327,7 @@ const Signup = () => {
             }
             // console.log(userInfo)
             // PUT API
-            fetch(`https://floating-ocean-13139.herokuapp.com/users/${data.email}`, {
+            fetch(`http://localhost:5000/users/${data.email}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -373,7 +373,7 @@ const Signup = () => {
 
     useEffect(() => {
         //PUT API for updating users image
-        const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+        const url = `http://localhost:5000/users/${email}`
         // console.log(url)
         if (email && !btnState) {
             fetch(url, {
