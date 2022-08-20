@@ -35,7 +35,7 @@ const Header = ({ setDark, dark, setTheme }) => {
 
 
     return (
-        <div className="sticky top-0 z-50 shadow navbar-content navbar bg-base-100 p-0">
+        <div className="sticky top-0 z-50 shadow navbar-content navbar bg-base-100 p-0 ">
 
             <div className="navbar-start lg:w-[30%]">
                 <div className="dropdown dropdown-items">
@@ -73,7 +73,7 @@ const Header = ({ setDark, dark, setTheme }) => {
             </div>
 
             <div className="navbar-end lg:w-[30%]">
-                <Search />
+                    <Search />
                 <label className="swap swap-rotate mx-2 dark-mode bg-accent hover:bg-primary">
 
                     <input type="checkbox" onClick={() => setTheme()} />
