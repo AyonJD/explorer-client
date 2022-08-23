@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Tooltip, ComposedChart, CartesianGrid, XAxis, YAxis, Legend, Area, Bar, Line } from 'recharts';
+import { articleDataContext } from '../../../App';
 
 const Analytics = () => {
+    const valueObj = useContext(articleDataContext);
+    const { articles, categoryArticle } = valueObj;
+
+    const handleFileterArticle = (category) => {
+        let filterArticle = articles.filter(article => {
+            if (article?.blogs?.category === category) {
+                return article;
+            }
+        })
+        return filterArticle;
+    }
+    // console.log(filterArticle);
+    const handleLikesCount = (callback) => {
+        let likeCount = 0;
+        callback.forEach(article => {
+            likeCount = likeCount + article?.likes?.length;
+        });
+        return likeCount;
+    }
+    const travelLikeCount = handleLikesCount(handleFileterArticle('Travel'));
+    const fashionLikeCount = handleLikesCount(handleFileterArticle('Fashion'));
+
     const data = [
-        { name: 'Basic Article', value: 400, uv: 590, pv: 800, amt: 1400 },
-        { name: 'Travel Article', value: 300, uv: 868, pv: 967, amt: 1506 },
+        { name: 'Travel Article', value: travelLikeCount, uv: 590, pv: 800, amt: 1400 },
+        { name: 'Fashion Article', value: fashionLikeCount, uv: 868, pv: 967, amt: 1506 },
         { name: 'Education Article', value: 300, uv: 1397, pv: 1098, amt: 989 },
         { name: 'Premium Article', value: 200, uv: 1480, pv: 1200, amt: 1228 },
     ];
@@ -18,7 +41,7 @@ const Analytics = () => {
 
         return (
             <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-                {`${(percent * 100).toFixed(0)}%`}
+                {`${100}%`}
             </text>
         );
     };
