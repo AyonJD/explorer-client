@@ -12,8 +12,11 @@ const UserProfile = () => {
     const { signedInUser, articles, users } = valueObj;
 
     const userImg = signedInUser?.userInfo?.photoURL;
-
     const navigate = useNavigate();
+    const navigateEditProfile = () => {
+        navigate('/UpdateUserProfile')
+    }
+
     const handleNavigate = () => {
         navigate('/updateUser');
     };
@@ -40,7 +43,7 @@ const UserProfile = () => {
                                     <button className='btn btn-sm'>Followers</button>
                                 </div>
                                 <div className='pr-5'>
-                                    <button onClick={()=>handleNavigate()} className='btn btn-sm'>Edit Profile</button>
+                                    <button onClick={() => handleNavigate()} className='btn btn-sm'>Edit Profile</button>
                                 </div>
                             </div>
                         </div>
