@@ -1,5 +1,5 @@
 import { faEllipsis, faLink, faShareNodes, } from "@fortawesome/free-solid-svg-icons";
-import { FacebookShareButton, FacebookIcon, LinkedinShareButton, LinkedinIcon, TwitterShareButton, TwitterIcon } from "react-share";
+
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
