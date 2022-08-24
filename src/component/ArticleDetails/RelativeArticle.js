@@ -18,7 +18,7 @@ const RelativeArticle = ({ article }) => {
             </figure>
             <div className="card-body text-warning px-5 py-8">
                 <div className="flex justify-between items-center">
-                    <div className="badge bg-primary ">Lifestyle</div>
+                    <div className="badge bg-primary ">{article?.blogs?.category}</div>
                     <div className="text-sm">{article?.blogs?.date}</div>
                 </div>
                 <h1 className="text-xl font-bold">{article?.blogs?.Title?.slice(0, 30)}...</h1>

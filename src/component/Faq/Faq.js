@@ -90,11 +90,8 @@ const Faq = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex mt-12 mid-container gap-10'>
-                <div className='w-1/3'>
-
-
-
+            <div className='flex mt-12 mid-container gap-10 '>
+                <div className='w-1/3 mt-6'>
                     <button onClick={() => setActive('first')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'> <MdPayment className='mx-4'></MdPayment> Payment</button>
 
                     <button onClick={() => setActive('second')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><TbTruckDelivery className='mx-4'></TbTruckDelivery>Delivery</button>
@@ -109,19 +106,19 @@ const Faq = () => {
                 </div>
             </div>
             <div className='mid-container'>
-                <div className='text-center mb-10'>
-                    <h6 className='text-2xl'>You still have a question?</h6>
-                    <h4>If you cannot find a question in our FAQ, you can always contact us. We will answer to you shortly!</h4>
+                <div className='text-center mb-10 mt-10'>
+                    <h6 className='text-3xl font-bold'>You still have a question?</h6>
+                    <h6>If you cannot find a question in our FAQ, you can always contact us. <br /> We will answer to you shortly!</h6>
                 </div>
-                <div className='grid grid-cols-2 gap-5'>
-                    <div className='flex justify-center items-center py-20 bg-neutral px-10 text-center'>
+                <div className='grid grid-cols-2 gap-10'>
+                    <div className='flex justify-center items-center py-16 bg-neutral px-10 text-center rounded-xl'>
                         <div>
                             <div className='flex justify-center pb-3'> <FiPhoneCall></FiPhoneCall> </div>
                             <h6 className='text-xl'>+ (810) 2548 2568</h6>
                             <h4>We are always happy to help!</h4>
                         </div>
                     </div>
-                    <div className='flex justify-center items-center py-20 bg-neutral px-10 text-center'>
+                    <div className='flex justify-center items-center py-16 bg-neutral px-10 text-center'>
                         <div>
                             <div className='flex justify-center pb-3'><MdAttachEmail></MdAttachEmail></div>
                             <h1>You still have a question?</h1>

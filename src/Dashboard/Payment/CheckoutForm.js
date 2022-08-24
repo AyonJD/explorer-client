@@ -76,6 +76,7 @@ const CheckoutForm = ({ membershipPlan }) => {
             setProcessing(false)
         }
         else {
+            console.log("dfdgfdgfd")
             setCardError('')
             setTransactionId(paymentIntent.id);
             setSuccess('Congrats!!! Your Payment is completed')

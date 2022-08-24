@@ -13,7 +13,7 @@ const Project = () => {
                 <h2 className='text-3xl font-semibold mt-2'>Appropriately foster efficient ideas.</h2>
             </div>
 
-            <div className='grid grid-cols-3 gap-5 mt-12'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-5 mt-12'>
                 <div className='w-full overflow-hidden shadow-xl rounded-xl card-parent'>
                     <img className='w-full card-image' src={project1} alt="" />
                 </div>

@@ -279,3 +279,10 @@ h6 {
 .screen_height {
   min-height: calc(100vh - 64px);
 }
+
+@media only screen and (max-width: 500px) {
+  .search-container{
+    display: none;
+    visibility: hidden;
+  }
+}

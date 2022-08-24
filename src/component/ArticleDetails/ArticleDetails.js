@@ -37,6 +37,12 @@ const ArticleDetails = () => {
       .then((data) => setArticle(data));
   }, [articleId, article]);
 
+  const relatedArticle = articles.filter(item => {
+    if (item?.blogs?.category === article?.blogs?.category) {
+      return item
+    }
+  })
+  console.log(relatedArticle);
   // today's date
   const today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
@@ -266,7 +272,7 @@ const ArticleDetails = () => {
         <h1 className="text-3xl font-bold">Related Article</h1><hr className="mb-10 mt-3" />
         <div className=" grid grid-cols-3 gap-5 ">
           {
-            articles.slice(0, 3).map((article) => <RelativeArticle
+            relatedArticle.slice(0, 3).map((article) => <RelativeArticle
               article={article}
             />)
           }

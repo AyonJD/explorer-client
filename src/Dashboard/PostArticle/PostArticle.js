@@ -180,7 +180,7 @@ const PostArticle = () => {
                             }
                         })}
                     />
-                    <label for="file" className="file_label btn-3 custom_box_shadow">
+                    <label for="file" className="file_label btn-3 ">
                         <span>Choose Photo</span>
                     </label>
                     <label className="label">
@@ -188,14 +188,13 @@ const PostArticle = () => {
                     </label>
                 </div>
 
-                <button className='hover:text-white text-white group bg-[#011e2e] hover:bg-transparent px-6 py-2 my-2 flex items-center text-lg font-bold custom_box_shadow' type="submit">
+                <button className='btn px-6 py-2 my-2 flex items-center text-lg font-bold ' type="submit">
                     Add Article
                     <span className='group-hover:rotate-90 duration-300'>
                         <HiArrowNarrowRight className='ml-3 ' />
                     </span>
                 </button>
             </form>
-
         </div>
     );
 };
