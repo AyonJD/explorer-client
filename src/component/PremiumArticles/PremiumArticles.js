@@ -17,7 +17,7 @@ const PremiumArticles = () => {
     const loadMorePremiumArticles = () => {
         setnoOfPremiumArticles(noOfPremiumArticles + noOfPremiumArticles);
     }
-    
+
     return (
         <div className='mid-container'>
             <div className='flex w-full items-center'>
@@ -37,7 +37,7 @@ const PremiumArticles = () => {
                 }
             </div>
             <div className='flex lg:justify-end md:justify-center sm:justify-center pt-3'>
-                <button className='btn btn-md rounded-xl text-white btn-primary mt-2' onClick={() => loadMorePremiumArticles()}>Show More...</button>
+                <button className='btn btn-md rounded-xl text-white register-btn btn-primary mt-2' onClick={() => loadMorePremiumArticles()}>Show More...</button>
             </div>
         </div >
     );

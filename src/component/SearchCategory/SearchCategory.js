@@ -18,10 +18,11 @@ const SearchCategory = () => {
         }
     })
 
+
     let filterSearch = articles.filter(article => {
         if (article?.blogs?.category?.toLowerCase().includes(searchValue?.toLowerCase()) || article?.blogs?.Title?.toLowerCase().includes(searchValue?.toLowerCase())) {
             return article
-        } 
+        }
         // else {
         //     // toast.error('No Article Found')
         //     navigate("/")

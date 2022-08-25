@@ -1,7 +1,9 @@
 import { faEllipsis, faLink, faShareNodes, } from "@fortawesome/free-solid-svg-icons";
+
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import "./ArticleDetails.css";
 import { articleDataContext } from "../../App";
@@ -26,6 +28,7 @@ const ArticleDetails = () => {
   const dark = valueObj.dark
   // fetch article details
   const [article, setArticle] = useState({});
+  // console.log(article);
   const author = article?.signedInUser?.userInfo?.name;
 
   useEffect(() => {
@@ -139,7 +142,8 @@ const ArticleDetails = () => {
   };
 
   // console.log(article?.signedInUser?.userInfo?.photoURL)
-
+  const shareUrl = "https://explorer-bd.web.app/";
+  const url2 = window.location.href;
   return (
     <div className="mid-container">
       <div className="lg:flex md:flex">
@@ -274,7 +278,7 @@ const ArticleDetails = () => {
           }
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
