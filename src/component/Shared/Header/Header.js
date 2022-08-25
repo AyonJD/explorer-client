@@ -110,7 +110,7 @@ const Header = ({ setDark, dark, setTheme }) => {
 
                                         <li className='mb-1'><Link to='/dashboard/overview'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Dashboard</span></Link></li>
 
-                                        <li className='mb-1'><Link to='/dashboard/manage-article'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Manage Article</span></Link></li>
+                                        {/* <li className='mb-1'><Link to='/dashboard/manage-article'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Manage Article</span></Link></li> */}
 
                                         <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>
                                     </> :
@@ -123,9 +123,9 @@ const Header = ({ setDark, dark, setTheme }) => {
 
                                         <li className='mb-1'><Link to='/faq'><FontAwesomeIcon className='icon text-secondary ' icon={faStar} /> <span className='item'>FAQ</span></Link></li>
 
-                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Bookmark</span></Link></li>
+                                        {/* <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Bookmark</span></Link></li> */}
 
-                                        <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Notification</span></Link></li>
+                                        {/* <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faArrowRightArrowLeft} /> <span className='item'>Notification</span></Link></li> */}
 
                                         <li><Link onClick={logout} to='/'><FontAwesomeIcon className='icon text-secondary ' icon={faRightFromBracket} /> <span className='item'>Log Out</span></Link></li>
                                     </>
