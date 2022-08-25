@@ -5,7 +5,19 @@ import { articleDataContext } from '../../../App';
 const Analytics = () => {
     const valueObj = useContext(articleDataContext);
     const { articles, categoryArticle } = valueObj;
-    // console.log(articles);
+
+    // category value from article data
+    const res = articles?.map(article => {
+        const catValueArray = article?.blogs?.category;
+        return catValueArray;
+
+    });
+    // console.log(res);
+    // unique category value from article data
+    // const uniqueCategory = res.filter((item, index) => res.indexOf(item) === index);
+    // console.log(uniqueCategory);
+    const uniqueCategory = [...new Set(res)];
+    console.log(uniqueCategory);
 
     const handleFileterArticle = (category) => {
         let filterArticle = articles.filter(article => {
@@ -15,6 +27,7 @@ const Analytics = () => {
         })
         return filterArticle;
     }
+
     const handleCatWiseCount = () => {
         let catWiseCount = 0;
         articles.forEach(article => {
@@ -24,7 +37,7 @@ const Analytics = () => {
         });
         return catWiseCount;
     }
-    console.log(handleCatWiseCount());
+    // console.log(handleCatWiseCount());
 
 
 
@@ -40,6 +53,7 @@ const Analytics = () => {
     //     return catWiseCount;
     // }
     // console.log(handleCatWiseCount());
+
     // likecount function for pie chart
     const handleLikesCount = (callback) => {
         let likeCount = 0;
@@ -145,9 +159,9 @@ const Analytics = () => {
 
     return (
         <div>
-            <div className="mid-container flex" >
+            <div className="mid-container flex gap-10" >
                 <div className='mt-4 w-1/2'>
-                    <h5 className='font-bold text-xl'>User Visited</h5>
+                    <h5 className='font-bold text-xl'>User Liked</h5>
                     <div style={{ width: '100%', height: 450 }}>
                         <ResponsiveContainer>
                             <PieChart>
@@ -172,7 +186,7 @@ const Analytics = () => {
                 </div >
 
                 <div className='mt-4 w-1/2'>
-                    <h4 className='font-bold text-xl'>User Liked</h4>
+                    <h4 className='font-bold text-xl'>User Comments</h4>
                     <div style={{ width: '100%', height: 300 }}>
                         <ResponsiveContainer>
                             <ComposedChart
@@ -199,9 +213,10 @@ const Analytics = () => {
                     </div>
                 </div>
             </div >
+
             <div className='mid-container'>
                 <div className='mt-4'>
-                    <h4 className='font-bold text-xl'>Category wise Articles Count</h4>
+                    <h4 className='font-bold text-xl px-10'>Category wise Articles Count</h4>
                     <BarChart
                         width={500}
                         height={300}
@@ -219,10 +234,11 @@ const Analytics = () => {
                         <Tooltip />
                         <Legend />
                         <Bar dataKey="pv" fill="#8884d8" />
-                        <Bar dataKey="uv" fill="#82ca9d" />
+                        {/* <Bar dataKey="uv" fill="#82ca9d" /> */}
                     </BarChart>
                 </div>
             </div>
+
         </div>
 
     );
