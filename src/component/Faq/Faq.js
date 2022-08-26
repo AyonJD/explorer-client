@@ -92,11 +92,11 @@ const Faq = () => {
             </div>
             <div className='flex mt-12 mid-container gap-10 '>
                 <div className='w-1/3 mt-6'>
-                    <button onClick={() => setActive('first')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'> <MdPayment className='mx-4'></MdPayment> Payment</button>
+                    <button onClick={() => setActive('first')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'> <MdPayment className='mx-4' size={25} ></MdPayment> Payment</button>
 
-                    <button onClick={() => setActive('second')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><TbTruckDelivery className='mx-4'></TbTruckDelivery>Delivery</button>
-                    <button onClick={() => setActive('third')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><AiOutlineShopping className='mx-4'></AiOutlineShopping>Orders</button>
-                    <button onClick={() => setActive('fourth')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><MdOutlineMiscellaneousServices className='mx-4'></MdOutlineMiscellaneousServices>Services</button>
+                    <button onClick={() => setActive('second')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><TbTruckDelivery className='mx-4' size={25}></TbTruckDelivery>Delivery</button>
+                    <button onClick={() => setActive('third')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><AiOutlineShopping className='mx-4' size={25}></AiOutlineShopping>Orders</button>
+                    <button onClick={() => setActive('fourth')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><MdOutlineMiscellaneousServices className='mx-4' size={25}></MdOutlineMiscellaneousServices>Services</button>
                 </div>
                 <div className='w-2/3 '>
                     {active === "first" && <FaqRight content={titlePayment} />}
@@ -113,14 +113,14 @@ const Faq = () => {
                 <div className='grid grid-cols-2 gap-10'>
                     <div className='flex justify-center items-center py-16 bg-neutral px-10 text-center rounded-xl'>
                         <div>
-                            <div className='flex justify-center pb-3'> <FiPhoneCall></FiPhoneCall> </div>
+                            <div className='flex justify-center pb-3'> <FiPhoneCall size={30} color="orange"></FiPhoneCall> </div>
                             <h6 className='text-xl'>+ (810) 2548 2568</h6>
                             <h4>We are always happy to help!</h4>
                         </div>
                     </div>
                     <div className='flex justify-center items-center py-16 bg-neutral px-10 text-center'>
                         <div>
-                            <div className='flex justify-center pb-3'><MdAttachEmail></MdAttachEmail></div>
+                            <div className='flex justify-center pb-3'><MdAttachEmail size={30} color="orange"></MdAttachEmail></div>
                             <h1>You still have a question?</h1>
                             <h4>If you cannot find a question in our FAQ, you can always contact us. We will answer to you shortly!</h4>
                         </div>
