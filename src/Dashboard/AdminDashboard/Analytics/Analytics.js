@@ -12,12 +12,10 @@ const Analytics = () => {
         return catValueArray;
 
     });
-    // console.log(catValue);
     // unique category value from article data
     // const uniqueCategory = catValue.filter((item, index) => catValue.indexOf(item) === index);
-    // console.log(uniqueCategory);
     const uniqueCategory = [...new Set(catValue)];
-    // console.log(uniqueCategory);
+
 
     const handleFileterArticle = (category) => {
         let filterArticle = articles.filter(article => {
@@ -37,7 +35,6 @@ const Analytics = () => {
         });
         return catWiseCount;
     }
-    // console.log(handleCatWiseCount());
 
 
 
@@ -52,7 +49,6 @@ const Analytics = () => {
     //     })
     //     return catWiseCount;
     // }
-    // console.log(handleCatWiseCount());
 
     // likecount function for pie chart
     const handleLikesCount = (callback) => {

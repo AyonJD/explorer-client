@@ -11,7 +11,7 @@ import RegisterCard from "./RegisterCard";
 const PopularArticle = () => {
   const valueObj = useContext(articleDataContext);
 
-  const { setCategoryArticle } = valueObj
+  const { articles, setCategoryArticle } = valueObj
 
   // console.log(articles);
   const countPoplular = 0;
@@ -29,6 +29,20 @@ const PopularArticle = () => {
   });
 
   // console.log(popularArticleArr)
+
+  // category wise article count
+  const handleCatWiseCount = (category) => {
+    let catWiseCount = 0;
+    articles.forEach(article => {
+      if (article?.blogs?.category === category) {
+        catWiseCount++;
+      }
+    });
+    return catWiseCount;
+  }
+  const travelCount = handleCatWiseCount("Travel");
+  const photographyCount = handleCatWiseCount("Photography");
+  console.log(photographyCount);
 
   return (
     <div className="mid-container">
@@ -62,12 +76,12 @@ const PopularArticle = () => {
                 </li>
 
                 <li onClick={() => setCategoryArticle('Photography')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  Photography
+                  Photography <span className="mx-2"> ({photographyCount})</span>
                 </Link>
                 </li>
 
                 <li onClick={() => setCategoryArticle('Travel')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  Travel
+                  Travel  <span className="mx-2"> ({travelCount})</span>
                 </Link>
                 </li>
 
