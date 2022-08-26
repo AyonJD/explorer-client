@@ -7,17 +7,17 @@ const Analytics = () => {
     const { articles, categoryArticle } = valueObj;
 
     // category value from article data
-    const res = articles?.map(article => {
+    const catValue = articles?.map(article => {
         const catValueArray = article?.blogs?.category;
         return catValueArray;
 
     });
-    // console.log(res);
+    // console.log(catValue);
     // unique category value from article data
-    // const uniqueCategory = res.filter((item, index) => res.indexOf(item) === index);
+    // const uniqueCategory = catValue.filter((item, index) => catValue.indexOf(item) === index);
     // console.log(uniqueCategory);
-    const uniqueCategory = [...new Set(res)];
-    console.log(uniqueCategory);
+    const uniqueCategory = [...new Set(catValue)];
+    // console.log(uniqueCategory);
 
     const handleFileterArticle = (category) => {
         let filterArticle = articles.filter(article => {
@@ -88,64 +88,64 @@ const Analytics = () => {
     const photographyCommentCount = handleCommentsCount(handleFileterArticle('Photography'));
 
     const data = [
-        { name: 'Travel Article', value: travelLikeCount },
-        { name: 'Fashion Article', value: fashionLikeCount },
-        { name: 'Photography Article', value: photographyLikeCount },
-        { name: 'Fitness Article', value: fitnessLikeCount },
-        { name: 'Food Article', value: foodLikeCount },
-        { name: 'Beauty Article', value: beautyLikeCount },
-        { name: 'Makeup Article', value: makeupLikeCount },
-        { name: 'Sport Article', value: sportLikeCount },
-        { name: 'Entertainment Article', value: entertainmentLikeCount },
-        { name: 'Lifestyle Article', value: lifestyleLikeCount },
-        { name: 'Concepts Article', value: conceptsLikeCount },
+        { name: 'Travel', value: travelLikeCount },
+        { name: 'Fashion', value: fashionLikeCount },
+        { name: 'Photography', value: photographyLikeCount },
+        { name: 'Fitness', value: fitnessLikeCount },
+        { name: 'Food', value: foodLikeCount },
+        { name: 'Beauty', value: beautyLikeCount },
+        { name: 'Makeup', value: makeupLikeCount },
+        { name: 'Sport', value: sportLikeCount },
+        { name: 'Entertainment', value: entertainmentLikeCount },
+        { name: 'Lifestyle', value: lifestyleLikeCount },
+        { name: 'Concepts', value: conceptsLikeCount },
     ];
 
     const data1 = [
-        { name: 'Travel Article', value: travelCommentCount, uv: travelCommentCount, pv: 800, amt: 1400 },
-        { name: 'Fashion Article', value: fashionCommentCount, uv: fashionCommentCount, pv: 967, amt: 1506 },
-        { name: 'Photography Article', value: photographyCommentCount, uv: photographyCommentCount, pv: 1098, amt: 989 },
+        { name: 'Travel', value: travelCommentCount, uv: travelCommentCount, pv: 800, amt: 1400 },
+        { name: 'Fashion', value: fashionCommentCount, uv: fashionCommentCount, pv: 967, amt: 1506 },
+        { name: 'Photography', value: photographyCommentCount, uv: photographyCommentCount, pv: 1098, amt: 989 },
     ];
 
     const data2 = [
         {
-            name: 'Page A',
+            name: 'Travel',
             uv: 4000,
             pv: 2400,
             amt: 2400,
         },
         {
-            name: 'Page B',
+            name: 'Photography',
             uv: 3000,
             pv: 1398,
             amt: 2210,
         },
         {
-            name: 'Page C',
+            name: 'Concepts',
             uv: 2000,
             pv: 9800,
             amt: 2290,
         },
         {
-            name: 'Page D',
+            name: 'Fitness',
             uv: 2780,
             pv: 3908,
             amt: 2000,
         },
         {
-            name: 'Page E',
+            name: 'Food',
             uv: 1890,
             pv: 4800,
             amt: 2181,
         },
         {
-            name: 'Page F',
+            name: 'Sport',
             uv: 2390,
             pv: 3800,
             amt: 2500,
         },
         {
-            name: 'Page G',
+            name: 'Lifestyle',
             uv: 3490,
             pv: 4300,
             amt: 2100,
@@ -230,7 +230,7 @@ const Analytics = () => {
 
             <div className='mid-container'>
                 <div className='mt-4 card-body items-center card-compact shadow-lg'>
-                    <h4 className='font-bold text-xl py-4'>Category wise Articles Count</h4>
+                    <h4 className='font-bold text-xl py-4'>Articles Published</h4>
                     <BarChart
                         width={1000}
                         height={300}
@@ -244,9 +244,9 @@ const Analytics = () => {
                     >
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="name" />
-                        <YAxis />
+                        {/* <YAxis /> */}
                         <Tooltip />
-                        <Legend />
+                        {/* <Legend /> */}
                         <Bar dataKey="pv" fill="#8884d8" />
                         {/* <Bar dataKey="uv" fill="#82ca9d" /> */}
                     </BarChart>
