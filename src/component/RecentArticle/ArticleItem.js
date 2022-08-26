@@ -11,7 +11,7 @@ const ArticleItem = ({ article }) => {
   const navigate = useNavigate();
   const goToDetails = useNavigate();
   const handleNavigate = () => {
-    if (article.blogs.premium !== "Premium") {
+    if (article.blogs.premium === "Premium") {
       toast.error("This is a premium articles");
       navigate(`/membership`);
       return;
