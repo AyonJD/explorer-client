@@ -199,7 +199,7 @@ const Analytics = () => {
                     </div>
                 </div >
 
-                <div className='mt-4 w-1/2'>
+                <div className='mt-4 w-1/2 card-body items-center card-compact shadow-lg'>
                     <h4 className='font-bold text-xl'>User Comments</h4>
                     <div style={{ width: '100%', height: 300 }}>
                         <ResponsiveContainer>
@@ -229,10 +229,10 @@ const Analytics = () => {
             </div >
 
             <div className='mid-container'>
-                <div className='mt-4'>
-                    <h4 className='font-bold text-xl px-10'>Category wise Articles Count</h4>
+                <div className='mt-4 card-body items-center card-compact shadow-lg'>
+                    <h4 className='font-bold text-xl py-4'>Category wise Articles Count</h4>
                     <BarChart
-                        width={500}
+                        width={1000}
                         height={300}
                         data={data2}
                         margin={{
