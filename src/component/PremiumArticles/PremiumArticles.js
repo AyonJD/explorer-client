@@ -21,7 +21,7 @@ const PremiumArticles = () => {
     return (
         <div className='mid-container'>
             <div className='flex w-full items-center border-b-[1px] pb-3 mb-7'>
-                <h1 className='text-2xl font-semibold '>Popular Article</h1>
+                <h1 className='text-2xl font-semibold '>Premium Article</h1>
             </div>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2  gap-7 mt-5'>
 

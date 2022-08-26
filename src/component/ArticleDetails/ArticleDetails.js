@@ -42,7 +42,7 @@ const ArticleDetails = () => {
       return item
     }
   })
-  console.log(relatedArticle);
+  // console.log(relatedArticle);
   // today's date
   const today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
