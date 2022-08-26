@@ -1,15 +1,25 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+
 import "./ArticleItem.css";
 
 
 
 
 const ArticleItem = ({ article }) => {
-
+  const navigate = useNavigate();
   const goToDetails = useNavigate();
   const handleNavigate = () => {
-    goToDetails(`/article/${article._id}`);
+    if (article.blogs.premium !== "Premium") {
+      toast.error("This is a premium articles");
+      navigate(`/membership`);
+      return;
+    } else {
+      goToDetails(`/article/${article._id}`);
+    }
+
+
   };
 
   return (
