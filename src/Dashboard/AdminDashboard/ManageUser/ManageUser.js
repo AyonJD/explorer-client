@@ -1,12 +1,20 @@
-import React, { useContext } from 'react';
-import { articleDataContext } from '../../../App';
+import React, { useEffect, useState } from 'react';
 import AddUserSection from './AddUserSection';
 import FiltersForm from './FiltersForm';
 import ManageUserItems from './ManageUserItems';
 
 const ManageUser = () => {
-    const valueObj = useContext(articleDataContext);
-    const { users } = valueObj;
+    const [users, setUsers] = useState([]);
+
+
+    useEffect(() => {
+        fetch("https://floating-ocean-13139.herokuapp.com/users")
+            .then((res) => res.json())
+            .then((data) => {
+
+                setUsers(data)
+            });
+    }, [users]);
 
 
     return (

@@ -28,7 +28,7 @@ const MemberCard = () => {
                                     <FiGithub className='icon text-[#3b5998]' />
                                     <RiLinkedinFill className='icon text-[#0077b5]' />
                                 </div>
-                                <div className="inner-img w-full">
+                                <div className="inner-img lg:w-full">
                                     <div className=' h-96'>
                                         <img className='h-full rounded-xl' src={armin} alt="" />
                                     </div>
@@ -49,7 +49,7 @@ const MemberCard = () => {
                                     <FiGithub className='icon text-[#3b5998]' />
                                     <RiLinkedinFill className='icon text-[#0077b5]' />
                                 </div>
-                                <div className="inner-img w-full">
+                                <div className="inner-img lg:w-full">
                                     <div className='h-96'>
                                         <img className='h-full rounded-xl' src={ayon} alt="" />
                                     </div>
@@ -70,7 +70,7 @@ const MemberCard = () => {
                                     <FiGithub className='icon text-[#3b5998]' />
                                     <RiLinkedinFill className='icon text-[#0077b5]' />
                                 </div>
-                                <div className="inner-img w-full">
+                                <div className="inner-img lg:w-full">
                                     <div className='h-96'>
                                         <img className='h-full rounded-xl' src={imran} alt="" />
                                     </div>
@@ -83,8 +83,8 @@ const MemberCard = () => {
                         </div>
                     </div>
                 </div>
-                <div className='mt-24 grid grid-cols-2 gap-16 w-[78%] mx-auto'>
-                    <div className='w-[80%]'>
+                <div className='mt-24 grid lg:grid-cols-2 gap-16 lg:w-[78%] mx-auto'>
+                    <div className='lg:w-[80%]'>
                         <div className='inner-box bg-neutral rounded-xl text-warning'>
                             <div className='pb-52 rounded-xl'>
                                 <div className='flex'>
@@ -94,7 +94,7 @@ const MemberCard = () => {
                                         <FiGithub className='icon text-[#3b5998]' />
                                         <RiLinkedinFill className='icon text-[#0077b5]' />
                                     </div>
-                                    <div className="inner-img w-full">
+                                    <div className="inner-img lg:w-full">
                                         <div className=' w-full h-96'>
                                             <img className='h-full rounded-xl' src={mozammel} alt="" />
                                         </div>
@@ -107,7 +107,7 @@ const MemberCard = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='w-[80%]'>
+                    <div className='lg:w-[80%]'>
                         <div className='inner-box bg-neutral rounded-xl text-warning'>
                             <div className='pb-52 rounded-xl'>
                                 <div className='flex'>
@@ -117,7 +117,7 @@ const MemberCard = () => {
                                         <FiGithub className='icon text-[#3b5998]' />
                                         <RiLinkedinFill className='icon text-[#0077b5]' />
                                     </div>
-                                    <div className="inner-img w-full">
+                                    <div className="inner-img ;g:w-full">
                                         <div className=' w-full h-96'>
                                             <img className='h-full rounded-xl' src={hasan} alt="" />
                                         </div>

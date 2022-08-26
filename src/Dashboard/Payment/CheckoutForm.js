@@ -10,7 +10,6 @@ const CheckoutForm = ({ membershipPlan }) => {
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
     const [processing, setProcessing] = useState(false);
-    const [transactionId, setTransactionId] = useState('');
     // console.log(success, transactionId, 'sucess---tramsid');
     const [clientSecret, setClientSecret] = useState('');
 
@@ -18,7 +17,7 @@ const CheckoutForm = ({ membershipPlan }) => {
 
     const { _id, price, plan } = membershipPlan;
     // console.log(plan);
-    const { signedInUser } = valueObj;
+    const { signedInUser, transactionId, setTransactionId } = valueObj;
     const { email } = signedInUser?.userInfo;
     const mainUserObject = signedInUser?.userInfo;
 
@@ -77,6 +76,7 @@ const CheckoutForm = ({ membershipPlan }) => {
             setProcessing(false)
         }
         else {
+            console.log("dfdgfdgfd")
             setCardError('')
             setTransactionId(paymentIntent.id);
             setSuccess('Congrats!!! Your Payment is completed')
