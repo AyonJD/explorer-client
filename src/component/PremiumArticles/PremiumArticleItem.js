@@ -10,7 +10,7 @@ const PremiumArticleItem = ({ article }) => {
   const { signedInUser, transactionId } = valueObj;
   const navigate = useNavigate();
   const handleClick = () => {
-    if (transactionId) {
+    if (transactionId || signedInUser?.admin) {
       navigate(`/article/${article._id}`);
     }
     else {

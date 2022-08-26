@@ -7,7 +7,7 @@ const PremiumArticles = () => {
     const { articles } = valueObj;
     // console.log(articles)
     const premiumArticles = articles.filter(premiumArticle => {
-        if (premiumArticle?.blogs?.premium === "Premium") {
+        if (premiumArticle?.blogs?.premium === "Premium" || premiumArticle?.signedInUser?.admin === true) {
             return premiumArticle;
         }
     });
