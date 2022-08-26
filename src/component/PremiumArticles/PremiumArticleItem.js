@@ -14,7 +14,7 @@ const PremiumArticleItem = ({ article }) => {
       navigate(`/article/${article._id}`);
     }
     else {
-      toast.error("You have to purchase premium articles");
+      navigate(`/membership`);
     }
     // navigate(`/article/${article._id}`);
   };

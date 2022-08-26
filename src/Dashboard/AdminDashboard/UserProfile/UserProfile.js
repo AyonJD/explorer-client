@@ -21,6 +21,12 @@ const UserProfile = () => {
         navigate('/updateUser');
     };
 
+    // signedInUser published articles
+    const publishedArticles = articles?.filter(article => article?.signedInUser?.email === signedInUser?.email);
+    console.log(publishedArticles);
+
+
+
     return (
         <div className='bg-[#F8F8F8]'>
             <div className='profile-container'>
@@ -37,7 +43,7 @@ const UserProfile = () => {
                             <p>Web Developer</p>
                             <div className='mt-4 flex justify-between'>
                                 <div>
-                                    <button className='btn btn-sm mr-2'>Article</button>
+                                    <button className='btn btn-sm mr-2'>Articles</button>
                                     <button className='btn btn-sm mr-2'>About</button>
                                     <button className='btn btn-sm mr-2'>Photos</button>
                                     <button className='btn btn-sm'>Followers</button>
