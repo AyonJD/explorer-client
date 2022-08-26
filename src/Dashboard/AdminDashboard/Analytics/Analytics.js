@@ -73,7 +73,14 @@ const Analytics = () => {
     const travelLikeCount = handleLikesCount(handleFileterArticle('Travel'));
     const fashionLikeCount = handleLikesCount(handleFileterArticle('Fashion'));
     const photographyLikeCount = handleLikesCount(handleFileterArticle('Photography'));
+    const foodLikeCount = handleLikesCount(handleFileterArticle('Food'));
     const fitnessLikeCount = handleLikesCount(handleFileterArticle('Fitness'));
+    const beautyLikeCount = handleLikesCount(handleFileterArticle('Beauty'));
+    const makeupLikeCount = handleLikesCount(handleFileterArticle('Makeup'));
+    const sportLikeCount = handleLikesCount(handleFileterArticle('Sport'));
+    const entertainmentLikeCount = handleLikesCount(handleFileterArticle('Entertainment'));
+    const lifestyleLikeCount = handleLikesCount(handleFileterArticle('LifeStyle'));
+    const conceptsLikeCount = handleLikesCount(handleFileterArticle('Concepts'));
 
     // comment count
     const travelCommentCount = handleCommentsCount(handleFileterArticle('Travel'));
@@ -81,10 +88,17 @@ const Analytics = () => {
     const photographyCommentCount = handleCommentsCount(handleFileterArticle('Photography'));
 
     const data = [
-        { name: 'Travel Article', value: travelLikeCount, uv: 590, pv: 800, amt: 1400 },
-        { name: 'Fashion Article', value: fashionLikeCount, uv: 868, pv: 967, amt: 1506 },
-        { name: 'Photography Article', value: photographyLikeCount, uv: 1397, pv: 1098, amt: 989 },
-        { name: 'Fitness Article', value: fitnessLikeCount, uv: 1480, pv: 1200, amt: 1228 },
+        { name: 'Travel Article', value: travelLikeCount },
+        { name: 'Fashion Article', value: fashionLikeCount },
+        { name: 'Photography Article', value: photographyLikeCount },
+        { name: 'Fitness Article', value: fitnessLikeCount },
+        { name: 'Food Article', value: foodLikeCount },
+        { name: 'Beauty Article', value: beautyLikeCount },
+        { name: 'Makeup Article', value: makeupLikeCount },
+        { name: 'Sport Article', value: sportLikeCount },
+        { name: 'Entertainment Article', value: entertainmentLikeCount },
+        { name: 'Lifestyle Article', value: lifestyleLikeCount },
+        { name: 'Concepts Article', value: conceptsLikeCount },
     ];
 
     const data1 = [
@@ -138,7 +152,7 @@ const Analytics = () => {
         },
     ];
 
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF5733', '#CD5C5C', '#DFFF00', '#9FE2BF', '#40E0D0', '#DE3163', '#CCCCFF'];
 
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
@@ -148,7 +162,7 @@ const Analytics = () => {
 
         return (
             <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-                {`${100}%`}
+                {`${(percent * 100).toFixed(0)}%`}
             </text>
         );
     };
