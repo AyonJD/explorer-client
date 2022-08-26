@@ -174,9 +174,9 @@ const Analytics = () => {
     return (
         <div>
             <div className="mid-container flex gap-10" >
-                <div className='mt-4 w-1/2'>
-                    <h5 className='font-bold text-xl'>User Liked</h5>
-                    <div style={{ width: '100%', height: 450 }}>
+                <div className='mt-4 w-1/2 card-body items-center card-compact shadow-lg'>
+                    <h5 className='font-bold text-xl text-center'>User Liked</h5>
+                    <div style={{ width: '85%', height: 450 }}>
                         <ResponsiveContainer>
                             <PieChart>
                                 <Pie
