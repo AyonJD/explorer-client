@@ -22,17 +22,17 @@ const Dashboard = () => {
                     {/* <!-- Sidebar content here --> */}
 
 
-                   <li className='mb-2'><NavLink to={'/dashboard/overview'}><FontAwesomeIcon icon={faListCheck} /> Overview</NavLink></li>
+                   {/* <li className='mb-2'><NavLink to={'/dashboard/overview'}><FontAwesomeIcon icon={faListCheck} /> Overview</NavLink></li> */}
 
                    <li className='mb-2'><NavLink to={'/dashboard/analytics'}><FontAwesomeIcon icon={faListCheck} /> Analytics</NavLink></li>
 
-                    <li className='mb-2'><NavLink to={'/dashboard/admin-rules'}><FontAwesomeIcon icon={faListCheck} /> Admin Rules</NavLink></li>
+                    {/* <li className='mb-2'><NavLink to={'/dashboard/admin-rules'}><FontAwesomeIcon icon={faListCheck} /> Admin Rules</NavLink></li> */}
 
                     <li className='mb-2'><NavLink to={'/dashboard/premium-member'}><FontAwesomeIcon icon={faListCheck} /> Premium Member</NavLink></li>
 
                     <li className='mb-2'><NavLink to={'/dashboard/manage-user'}><FontAwesomeIcon icon={faListCheck} /> Manage Users</NavLink></li>
 
-                    <li className='mb-2'><NavLink to={'/dashboard/manage-article'}><FontAwesomeIcon icon={faListCheck} /> Manage Article</NavLink></li>
+                    {/* <li className='mb-2'><NavLink to={'/dashboard/manage-article'}><FontAwesomeIcon icon={faListCheck} /> Manage Article</NavLink></li> */}
 
                     <li className='mb-2'><NavLink to={'/dashboard/post-Article'}><FontAwesomeIcon icon={faCalendarPlus} /> Post Article</NavLink></li>
                 </ul>
