@@ -80,7 +80,7 @@ const Faq = () => {
 
     return (
         <div>
-            <div className='flex justify-center items-center py-20 bg-neutral'>
+            <div className='flex justify-center items-center py-20 bg-fuchsia-50'>
                 <div className='text-center'>
                     <h1 className='text-4xl text-violet-500'>Let's answer some questions</h1>
                     <span className=' divider '>Or</span>
@@ -113,14 +113,14 @@ const Faq = () => {
                 <div className='grid grid-cols-2 gap-10'>
                     <div className='flex justify-center items-center py-16 bg-neutral px-10 text-center rounded-xl'>
                         <div>
-                            <div className='flex justify-center pb-3'> <FiPhoneCall size={30} color="orange"></FiPhoneCall> </div>
+                            <div className='flex justify-center pb-3'> <FiPhoneCall size={30} color="fuchsia"></FiPhoneCall> </div>
                             <h6 className='text-xl'>+ (810) 2548 2568</h6>
                             <h4>We are always happy to help!</h4>
                         </div>
                     </div>
                     <div className='flex justify-center items-center py-16 bg-neutral px-10 text-center'>
                         <div>
-                            <div className='flex justify-center pb-3'><MdAttachEmail size={30} color="orange"></MdAttachEmail></div>
+                            <div className='flex justify-center pb-3'><MdAttachEmail size={30} color="fuchsia"></MdAttachEmail></div>
                             <h1>You still have a question?</h1>
                             <h4>If you cannot find a question in our FAQ, you can always contact us. We will answer to you shortly!</h4>
                         </div>

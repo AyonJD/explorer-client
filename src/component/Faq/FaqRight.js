@@ -5,7 +5,7 @@ const FaqRight = ({ content }) => {
 
     return (
         <div>
-            <h4 className='font-bold mb-3 text-xl'>{content.title} </h4>
+            <h4 className='font-bold mb-3 text-xl text-fuchsia-500 text-center'>{content.title} </h4>
             {
                 content?.content?.map((item, index) => {
                     return (<div tabindex={index} class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mb-3">
