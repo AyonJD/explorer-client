@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { articleDataContext } from '../../../App';
 import Comment from '../../../component/ArticleDetails/Comment/Comment';
+import auth from '../../../firebase.init';
 
 const ProfileArticle = ({ article, signedInUser }) => {
-
-    const userImg = signedInUser?.userInfo?.photoURL;
-    const name = signedInUser?.userInfo?.name;
+    const { articleId } = useParams();
+    const userImg = article?.signedInUser?.userInfo?.photoURL;
+    const name = article?.signedInUser?.userInfo?.name;
     const date = article?.blogs.date;
     const articleTitle = article?.blogs?.Title
     const articleDesc = article?.blogs?.desc.slice(0, 200)
@@ -15,9 +18,13 @@ const ProfileArticle = ({ article, signedInUser }) => {
     // const authorImg = article?.signedInUser?.userInfo?.photoURL;
     // const authorName = article?.signedInUser?.userInfo?.name;
 
-    // console.log(article);
+    // console.log(article?.signedInUser?.userInfo?.photoURL);
 
 
+    const handleComment = (e) => {
+        e.preventDefault();
+        e.target.comment.value = "";
+    };
 
 
     return (
@@ -45,7 +52,7 @@ const ProfileArticle = ({ article, signedInUser }) => {
             </section>
 
             <section>
-                <form className={dark ? "lg:space-y-6 md:space-y-5 sm:space-y-6 space-y-4 lg:py-8 md:py-8 sm:py-5 py-5 lg:px-6 md:px-6 px-4 rounded-md " : "lg:space-y-1 md:space-y-1 sm:space-y-1 space-y-1 rounded-md "}>
+                <form onSubmit={handleComment} className={dark ? "lg:space-y-6 md:space-y-5 sm:space-y-6 space-y-4 lg:py-8 md:py-8 sm:py-5 py-5 lg:px-6 md:px-6 px-4 rounded-md " : "lg:space-y-1 md:space-y-1 sm:space-y-1 space-y-1 rounded-md "}>
                     <h6 className="font-semibold text-sm">LEAVE A REPLAY</h6>
                     <textarea
                         className="textarea input-bordered focus:outline-none w-full lg:h-16 md:h-24 sm:h-24 h-24 mt-0"

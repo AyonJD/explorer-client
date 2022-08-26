@@ -93,13 +93,13 @@ const PopularArticle = () => {
                 <li onClick={() => setCategoryArticle('Entertainment')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
                   Entertainment
                 </Link></li>
-                
+
                 <li onClick={() => setCategoryArticle('Lifestyle')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
                   Lifestyle
                 </Link></li>
 
-                <li onClick={() => setCategoryArticle('Home')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  Home
+                <li onClick={() => setCategoryArticle('Concepts')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
+                  Concepts
                 </Link></li>
               </ul>
             </div>
