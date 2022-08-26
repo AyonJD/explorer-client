@@ -42,7 +42,17 @@ const PopularArticle = () => {
   }
   const travelCount = handleCatWiseCount("Travel");
   const photographyCount = handleCatWiseCount("Photography");
-  console.log(photographyCount);
+  const foodCount = handleCatWiseCount("Food");
+  const conceptsCount = handleCatWiseCount("Concepts");
+  const lifestyleCount = handleCatWiseCount("Lifestyle");
+  const fitnessCount = handleCatWiseCount("Fitness");
+  const beautyCount = handleCatWiseCount("Beauty");
+  const fashionCount = handleCatWiseCount("Fashion");
+  const makeupCount = handleCatWiseCount("Makeup");
+  const sportCount = handleCatWiseCount("Sport");
+  const entertainmentCount = handleCatWiseCount("Entertainment");
+
+
 
   return (
     <div className="mid-container">
@@ -71,7 +81,7 @@ const PopularArticle = () => {
               <ul className="pl-5 mt-5 ">
 
                 <li onClick={() => setCategoryArticle('Fashion')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  Fashion
+                  Fashion <span className="mx-2"> ({fashionCount})</span>
                 </Link>
                 </li>
 
@@ -86,34 +96,34 @@ const PopularArticle = () => {
                 </li>
 
                 <li onClick={() => setCategoryArticle('Fitness')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  Fitness
+                  Fitness <span className="mx-2"> ({fitnessCount})</span>
                 </Link></li>
 
                 <li onClick={() => setCategoryArticle('Food')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  Food
+                  Food <span className="mx-2"> ({foodCount})</span>
                 </Link></li>
 
                 <li onClick={() => setCategoryArticle('Beauty')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  Beauty
+                  Beauty <span className="mx-2"> ({beautyCount})</span>
                 </Link></li>
 
                 <li onClick={() => setCategoryArticle('MakeUp')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  MakeUp
+                  MakeUp <span className="mx-2"> ({makeupCount})</span>
                 </Link></li>
                 <li onClick={() => setCategoryArticle('Sport')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  Sport
+                  Sport <span className="mx-2"> ({sportCount})</span>
                 </Link></li>
 
                 <li onClick={() => setCategoryArticle('Entertainment')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  Entertainment
+                  Entertainment <span className="mx-2"> ({entertainmentCount})</span>
                 </Link></li>
 
                 <li onClick={() => setCategoryArticle('Lifestyle')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  Lifestyle
+                  Lifestyle <span className="mx-2"> ({lifestyleCount})</span>
                 </Link></li>
 
                 <li onClick={() => setCategoryArticle('Concepts')} className="cursor-pointer hover:text-primary duration-300 mb-1"><Link className="flex" to='/search-category'> <span className="mt-1"><RiArrowRightSFill /> </span>
-                  Concepts
+                  Concepts <span className="mx-2"> ({conceptsCount})</span>
                 </Link></li>
               </ul>
             </div>
