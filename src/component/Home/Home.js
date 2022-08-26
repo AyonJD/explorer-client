@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <div>
             {/* <Banner /> */}
-            <ParalluxBanner />
+            <Banner />
             <RecentArticla></RecentArticla>
             <PopularArticle />
             <PremiumArticles />

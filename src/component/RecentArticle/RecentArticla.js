@@ -21,7 +21,7 @@ const RecentArticla = () => {
 
     return (
         <section className='mid-container'>
-            <div className='flex w-full items-center lg:mt-16 md:mt-36 sm:mt-44 mt-16'>
+            <div className='flex w-full items-center '>
                 <h1 className='text-3xl font-bold lg:w-72 w-72 md:w-96 sm:w-96'>Recent Article</h1>
                 <span className='bg-primary h-[2px] w-full article-border'></span>
             </div>
@@ -30,7 +30,6 @@ const RecentArticla = () => {
                 <div className='lg:w-[70%] lg:pr-10 md:pr-5 lg:py-5 md:py-5 lg:border-r-[1px] md:border-r-[1px]'>
                     <div className=" grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 gap-7 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
                         {articleCopy?.reverse()?.slice(0, 2).map((article, index) => (
-
                             < ArticleItem
                                 key={index}
                                 article={article}
