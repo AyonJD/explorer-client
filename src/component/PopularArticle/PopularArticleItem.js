@@ -13,13 +13,13 @@ const PopularArticleItem = ({ article }) => {
   return (
     <div
       onClick={() => handleClick(_id)}
-      className="hero border-b-2 pb-5 popular-card "
+      className="hero border-b-[1px] pb-5 popular-card "
     >
       <div className="hero-content grid lg:grid-cols-2 md:grid-cols-1 p-0 ">
         <div className="h-52 w-full cursor-pointer">
           <img
             src={article?.blogs?.img}
-            className=" h-52 lg:max-w-sm md:max-w-lg w-full  rounded-lg shadow-2xl mx-auto"
+            className=" h-52 lg:max-w-sm md:max-w-lg w-full  rounded-lg shadow-2xl "
             alt=""
           />
         </div>

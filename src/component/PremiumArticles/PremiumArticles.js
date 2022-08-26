@@ -7,7 +7,7 @@ const PremiumArticles = () => {
     const { articles } = valueObj;
     // console.log(articles)
     const premiumArticles = articles.filter(premiumArticle => {
-        if (premiumArticle?.blogs?.premium === "Premium") {
+        if (premiumArticle?.blogs?.premium === "Premium" || premiumArticle?.signedInUser?.admin === true) {
             return premiumArticle;
         }
     });
@@ -20,13 +20,10 @@ const PremiumArticles = () => {
 
     return (
         <div className='mid-container'>
-            <div className='flex w-full items-center'>
-                <h1 className='text-3xl font-bold lg:w-72 md:w-96 sm:w-96 '>Premium Article</h1>
-                <span className='bg-primary h-[2px] w-full article-border'></span>
+            <div className='flex w-full items-center border-b-[1px] pb-3 mb-7'>
+                <h1 className='text-2xl font-semibold '>Premium Article</h1>
             </div>
-            <p className='text-sm mt-2'>Popular articles are selected based on the number of readers</p>
-
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2  gap-7 mt-14'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2  gap-7 mt-5'>
 
                 {
                     slicePremiumArticles.map(article => <PremiumArticleItem
