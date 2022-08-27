@@ -21,9 +21,7 @@ const RecentArticla = () => {
 
     return (
         <section className='mid-container'>
-            <div className='flex w-full items-center border-b-[1px] pb-3 mb-7'>
-                <h1 className='text-2xl font-semibold '>Recent Article</h1> 
-            </div>
+             <h1 className='text-2xl font-semibold border-b-[1px] pb-3 mb-5'>Recent Article</h1>
             {/* <p className='text-sm mt-2'>Recent articles are selected based on update published</p> */}
             <div className="lg:flex md:flex">
                 <div className='lg:w-[70%] lg:pr-10 md:pr-5 lg:border-r-[1px] md:border-r-[1px]'>

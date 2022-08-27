@@ -56,9 +56,7 @@ const PopularArticle = () => {
 
   return (
     <div className="mid-container">
-      <div className='flex w-full items-center border-b-[1px] pb-3 mb-5'>
-        <h1 className='text-2xl font-semibold '>Popular Article</h1>
-      </div>
+       <h1 className='text-2xl font-semibold border-b-[1px] pb-3 mb-5'>Popular Article</h1>
       <div className="mt-5 lg:flex md:flex">
         <div className="lg:w-3/4 md:w-[70%] grid gap-5 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
           {popularArticleArr.slice(0, 3).map((article) => (
