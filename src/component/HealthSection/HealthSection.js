@@ -19,9 +19,7 @@ const HealthSection = () => {
 
     return (
         <div className="mid-container">
-            <div className='flex w-full items-center border-b-[1px] pb-3 mb-5'>
-                <h1 className='text-2xl font-semibold '>Healthy Living</h1>
-            </div>
+            <h1 className='text-2xl font-semibold border-b-[1px] pb-3 mb-5'>Healthy Living</h1>
             <div className="mt-5 grid md:grid-cols-2 md:gap-10">
                 <div className=" lg:mb-0 md:mb-0 sm:mb-5 mb-5">
                     {healthArticles.slice(0, 4).map((article) => (

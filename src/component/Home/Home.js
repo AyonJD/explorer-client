@@ -7,6 +7,7 @@ import Pricing from '../Pricing/Pricing';
 import ParalluxBanner from '../Banner/ParalluxBanner';
 import News from '../News/News';
 import HealthSection from '../HealthSection/HealthSection';
+import Editors from '../Editors/Editors';
 
 const Home = () => {
     // const valueObj = useContext(articleDataContext);
@@ -19,6 +20,7 @@ const Home = () => {
             <PopularArticle />
             <News />
             <HealthSection />
+            <Editors />
             <PremiumArticles />
             {/* <Pricing></Pricing> */}
         </div>
