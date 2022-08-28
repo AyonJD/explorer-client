@@ -18,8 +18,8 @@ const Banner = () => {
 
     return (
         <section className='mid-container'>
-            <div className='md:flex flex gap-6'>
-            <div className='md:w-[60%] md:order-2 order-1'>
+            <div className='md:flex  gap-6'>
+                <div className='md:w-[60%] md:order-2 order-1'>
                     <div className='mb-5'>
                         {articles.slice(3, 4).map(article => {
                             return (
@@ -33,7 +33,7 @@ const Banner = () => {
                         })}
                     </div>
                 </div>
-                <div className='md:w-[30%] w-[50%] md:order-1 '>
+                <div className='md:w-[30%] md:order-1 '>
                     <div className='mb-5'>
                         {articles.slice(0, 1).map(article => {
                             return (
@@ -73,7 +73,7 @@ const Banner = () => {
                     </div>
                 </div> */}
 
-                <div className='md:w-[30%] w-[50%] md:order-3 '>
+                <div className='md:w-[30%] md:order-3 '>
                     <div className='mb-5'>
                         {articles.slice(5, 6).map(article => {
                             return (
