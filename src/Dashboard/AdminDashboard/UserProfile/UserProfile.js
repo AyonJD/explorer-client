@@ -4,7 +4,8 @@ import { articleDataContext } from '../../../App';
 import cover from '../../../assets/Profile/coverpic.jpg'
 import AboutSection from './AboutSection';
 import ProfileArticle from './ProfileArticle';
-import './UserProfile.css'
+import './UserProfile.css';
+import { MdModeEdit } from 'react-icons/md';
 
 
 const UserProfile = () => {
@@ -49,7 +50,7 @@ const UserProfile = () => {
                                     <button className='btn btn-sm'>Followers</button>
                                 </div>
                                 <div className='pr-5'>
-                                    <button onClick={() => handleNavigate()} className='btn btn-sm'>Edit Profile</button>
+                                    <button onClick={() => handleNavigate()} className='btn btn-sm'><MdModeEdit size={15} className="mx-1"></MdModeEdit>Edit Profile</button>
                                 </div>
                             </div>
                         </div>
