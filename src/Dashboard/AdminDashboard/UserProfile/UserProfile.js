@@ -34,22 +34,22 @@ const UserProfile = () => {
                     <div>
                         <img className='w-full' src={cover} alt="" />
                     </div>
-                    <div className='absolute bottom-[-115px] pl-10 flex items-center gap-7  w-full'>
+                    <div className='absolute sm:bottom-[-115px] bottom-[-100px] sm:pl-10 pl-5 flex items-center gap-7  w-full'>
                         <div className="profile w-36 rounded-full ring ring-white ring-offset-base-100 ring-offset-2">
                             <img className='w-full rounded-full' src={userImg} alt="" />
                         </div>
                         <div className='mt-10  w-full'>
-                            <h6 className='text-3xl font-extrabold'>{signedInUser?.userInfo?.name}</h6>
-                            <p>Web Developer</p>
+                            <h6 className='sm:text-3xl text-xl font-extrabold'>{signedInUser?.userInfo?.name}</h6>
+                            <p className='text-sm'>Web Developer</p>
                             <div className='mt-4 flex justify-between'>
-                                <div>
-                                    <button className='btn btn-sm mr-2'>Articles</button>
-                                    <button className='btn btn-sm mr-2'>About</button>
-                                    <button className='btn btn-sm mr-2'>Photos</button>
-                                    <button className='btn btn-sm'>Followers</button>
+                                <div className='sm:block hidden'>
+                                    <button className='btn md:btn-sm btn-xs mr-2'>Articles</button>
+                                    <button className='btn md:btn-sm btn-xs mr-2'>About</button>
+                                    <button className='btn md:btn-sm btn-xs mr-2'>Photos</button>
+                                    <button className='btn md:btn-sm btn-xs'>Followers</button>
                                 </div>
                                 <div className='pr-5'>
-                                    <button onClick={() => handleNavigate()} className='btn btn-sm'>Edit Profile</button>
+                                    <button onClick={() => handleNavigate()} className='btn md:btn-sm btn-xs'>Edit Profile</button>
                                 </div>
                             </div>
                         </div>
@@ -57,14 +57,14 @@ const UserProfile = () => {
                 </div>
                 <div className='profile-container h-32 bg-base-100 shadow-md rounded-b-xl' />
             </div>
-            <div className='profile-container flex gap-3'>
-                <div className='w-[28%]'>
+            <div className='profile-container sm:flex gap-3'>
+                <div className='lg:w-[40%] w-[35%] sm:block hidden'>
                     <AboutSection
                         signedInUser={signedInUser}
                         users={users}
                     />
                 </div>
-                <div className='mt-5 w-[44%]'>
+                <div className='mt-5 lg:w-[60%] w-full'>
                     {articles.slice(3, 5).map((article) => (
                         <ProfileArticle
                             key={article._id}
@@ -74,9 +74,9 @@ const UserProfile = () => {
                     ))}
 
                 </div>
-                <div className=' w-[28%]'>
+                {/* <div className=' w-[28%] lg:block hidden'>
                     <AboutSection />
-                </div>
+                </div> */}
             </div>
         </div>
     );
