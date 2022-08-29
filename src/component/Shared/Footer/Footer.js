@@ -8,18 +8,18 @@ const Footer = () => {
                 <footer className="footer py-10 text-base-content grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 grid-cols-1">
                     <div>
                         <span
-                            className="footer-title text-secondary opacity-80">Our Menu</span>
+                            className="footer-title text-secondary opacity-80">Categories</span>
                         <Link
-                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Pizza</Link>
+                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Fashion</Link>
 
                         <Link
-                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Burger</Link>
+                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Photography</Link>
 
                         <Link
-                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Chicken</Link>
+                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Fitness</Link>
 
                         <Link
-                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Pasta</Link>
+                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Entertainment</Link>
                     </div>
                     <div>
                         <span
