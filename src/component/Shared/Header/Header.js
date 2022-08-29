@@ -4,11 +4,13 @@ import { faArrowRightArrowLeft, faBurger, faContactBook, faHeart, faHome, faList
 import './Header.css'
 import { Link, useLocation } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import {MdOutlineDashboard} from 'react-icons/md';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import Search from './Search';
 import { articleDataContext } from '../../../App';
 import TopNav from './TopNav';
+
 
 const Header = ({ setDark, dark, setTheme }) => {
 
@@ -112,7 +114,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                                                 <>
                                                     <li className='mb-1'><Link to='/user-profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
 
-                                                    <li className='mb-1'><Link to='/dashboard/analytics'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Dashboard</span></Link></li>
+                                                    <li className='mb-1'><Link to='/dashboard/analytics'>< MdOutlineDashboard className='flex'/> <span className='item'>Dashboard</span></Link></li>
 
                                                     {/* <li className='mb-1'><Link to='/dashboard/manage-article'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Manage Article</span></Link></li> */}
 

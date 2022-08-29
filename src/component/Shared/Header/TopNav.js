@@ -8,8 +8,8 @@ const TopNav = () => {
         <div className='border-b '>
             <div className='mid-container top_nav_pd hidden md:block'>
                 <div className='logo flex items-center justify-between'>
-                    <div>
-                        <img className="w-[100px]" src={logo} alt="" />
+                    <div className='cursor-pointer'>
+                        <Link to='/'><img className="w-[100px]" src={logo} alt="" /></Link>
                     </div>
                     <div className="nav_content flex items-center justify-between">
                         <ul className="menu menu-horizontal p-0">
