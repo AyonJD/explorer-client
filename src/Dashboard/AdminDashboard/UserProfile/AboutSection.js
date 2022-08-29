@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AboutSection = ({ signedInUser, users }) => {
-    // console.log(signedInUser);
+    console.log(signedInUser);
     // console.log(users);
 
     return (
@@ -17,6 +17,8 @@ const AboutSection = ({ signedInUser, users }) => {
 
                 <h6 className='font-semibold mt-5'>Email</h6>
                 <p className='text-sm'>{signedInUser?.email}</p>
+                <h6 className='font-semibold mt-5'>Linkedin</h6>
+                <p className='text-sm'>{signedInUser?.linkedin ? signedInUser?.linkedin : `${"Update Linkedin"}`}</p>
 
                 <h6 className='font-semibold mt-5'>Occupation</h6>
                 <p className='text-xs'>{signedInUser?.occupation ? signedInUser?.occupation : `${"Update Occupation"}`}</p>

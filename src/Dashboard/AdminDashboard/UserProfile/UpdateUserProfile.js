@@ -8,6 +8,7 @@ import auth from '../../../firebase.init';
 const UpdateUserProfile = () => {
     const valueObj = useContext(articleDataContext);
     const { signedInUser } = valueObj;
+    const userImg = signedInUser?.img || signedInUser?.userInfo?.photoURL || signedInUser?.img;
     const [user] = useAuthState(auth)
     const name = user?.displayName || signedInUser?.userInfo?.name;
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -35,7 +36,7 @@ const UpdateUserProfile = () => {
                         img: img,
                         education: data.education,
                         occupation: data.occupation,
-                        linkedIn: data.linkedIn,
+                        linkedin: data.linkedin,
                         number: data.number
                     }
                     console.log(userInformation);
@@ -61,7 +62,7 @@ const UpdateUserProfile = () => {
     return (
         <div className='py-10 mid-container'>
             <div className='flex justify-center w-full'>
-                <img className='rounded-full ' src={signedInUser?.userInfo?.photoURL || user?.userInformation?.img} alt="" />
+                <img className='rounded-full w-96' src={userImg} alt="" />
             </div>
             <form className='lg:w-3/4 md:w-4/5 mx-auto' onSubmit={handleSubmit(onSubmit)} >
 
@@ -141,7 +142,7 @@ const UpdateUserProfile = () => {
                         type="url"
                         placeholder="Enter Your LinkedIn Profile Link"
                         className="input input-bordered focus:outline-none"
-                        {...register("linkedIn", {
+                        {...register("linkedin", {
                             required: {
                                 value: true,
                                 message: 'LinkedIn Profile Link is Required'
@@ -149,7 +150,7 @@ const UpdateUserProfile = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.linkedIn?.type === 'required' && <span className="label-text-alt text-red-500">{errors.linkedIn.message}</span>}
+                        {errors.linkedin?.type === 'required' && <span className="label-text-alt text-red-500">{errors.linkedin.message}</span>}
                     </label>
                 </div>
 
