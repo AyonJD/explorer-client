@@ -5,7 +5,7 @@ import logo from '../../../assets/logo.png';
 
 const TopNav = () => {
     return (
-        <div className='border-b'>
+        <div className='border-b '>
             <div className='mid-container top_nav_pd hidden md:block'>
                 <div className='logo flex items-center justify-between'>
                     <div>
