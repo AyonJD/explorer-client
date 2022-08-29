@@ -193,7 +193,9 @@ const ArticleDetails = () => {
                     </WhatsappIcon></WhatsappShareButton></span>
                   </li>
                   <li>
-                    <span><FontAwesomeIcon className="icon text-secondary ml-4" title="Copy" icon={faLink} /> </span>
+                    <span><CopyToClipboard text={url}>
+                      <button><FontAwesomeIcon className="icon text-secondary ml-4" title="Copy" icon={faLink} /></button>
+                    </CopyToClipboard> </span>
                   </li>
 
                   <li>
