@@ -15,7 +15,7 @@ const HealthSection = () => {
     // console.log(articles)
 
     const healthArticles = articles.filter(article => article.blogs.category === "Health");
-    console.log(healthArticles)
+    // console.log(healthArticles)
 
     return (
         <div className="mid-container">
