@@ -15,6 +15,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import RegisterCard from "../PopularArticle/RegisterCard";
 import RelativeArticle from "./RelativeArticle";
+import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, WhatsappShareButton } from "react-share";
+import { FacebookIcon, TwitterIcon, LinkedinIcon, WhatsappIcon } from "react-share";
 
 const ArticleDetails = () => {
   const { articleId } = useParams();
@@ -25,7 +27,9 @@ const ArticleDetails = () => {
   const navigate = useNavigate()
   const user = authUser[0]?.email
   const articles = valueObj.articles
-  const dark = valueObj.dark
+  const dark = valueObj.dark;
+  const url = window.location.href;
+
   // fetch article details
   const [article, setArticle] = useState({});
   // console.log(article);
@@ -141,9 +145,8 @@ const ArticleDetails = () => {
       .catch((err) => console.log(err));
   };
 
-  // console.log(article?.signedInUser?.userInfo?.photoURL)
-  const shareUrl = "https://explorer-bd.web.app/";
-  const url2 = window.location.href;
+
+
   return (
     <div className="mid-container">
       <div className="lg:flex md:flex">
@@ -170,10 +173,25 @@ const ArticleDetails = () => {
               </div>
               <div className=" breadcrumbs">
                 <ul>
-                  <li>
+                  {/* <li>
                     <span><FontAwesomeIcon className="icon text-secondary ml-4 " title="Share" icon={faShareNodes} /> </span>
+                  </li> */}
+                  <li>
+                    <span><FacebookShareButton url={url}><FacebookIcon round={true} size={25}>
+                    </FacebookIcon></FacebookShareButton></span>
                   </li>
-
+                  <li>
+                    <span><TwitterShareButton url={url}><TwitterIcon round={true} size={25}>
+                    </TwitterIcon></TwitterShareButton></span>
+                  </li>
+                  <li>
+                    <span><LinkedinShareButton url={url}><LinkedinIcon round={true} size={25}>
+                    </LinkedinIcon></LinkedinShareButton></span>
+                  </li>
+                  <li>
+                    <span><WhatsappShareButton url={url}><WhatsappIcon round={true} size={25}>
+                    </WhatsappIcon></WhatsappShareButton></span>
+                  </li>
                   <li>
                     <span><FontAwesomeIcon className="icon text-secondary ml-4" title="Copy" icon={faLink} /> </span>
                   </li>
