@@ -1,10 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const EditorItems = ({ article }) => {
+
+    const goToDetails = useNavigate();
+    const handleNavigate = () => {
+        goToDetails(`/article/${article._id}`);
+    };
+
+
     return (
-
-
-        <div class="card bg-base-100 rounded-none">
+        <div onClick={() => handleNavigate(article._id)}
+            class="card bg-base-100 rounded-none cursor-pointer">
             <div className='w-full sm:h-52 h-32'>
                 <img className='h-full w-full rounded-none' src={article?.blogs?.img} alt={article.title} />
             </div>

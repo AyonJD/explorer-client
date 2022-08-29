@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { articleDataContext } from '../../../App';
 import cover from '../../../assets/Profile/coverpic.jpg'
@@ -11,8 +11,25 @@ import { MdModeEdit } from 'react-icons/md';
 const UserProfile = () => {
     const valueObj = useContext(articleDataContext);
     const { signedInUser, articles, users } = valueObj;
+    console.log(signedInUser);
 
-    const userImg = signedInUser?.userInfo?.photoURL;
+    const userImg = signedInUser?.img || signedInUser?.userInfo?.photoURL || signedInUser?.img;
+
+    // useEffect(() => {
+    //     fetch(`https://floating-ocean-13139.herokuapp.com/users/${user?.email}`, {
+    //         method: "GET",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             email: `${user?.email}`,
+    //             authorization: `Bearer ${localStorage.getItem("token")}`,
+    //         },
+    //     })
+    //         .then((response) => response.json())
+    //         .then((json) => {
+    //             setUserD(json);
+    //         });
+    // }, [userD?.email]);
+
     const navigate = useNavigate();
     const navigateEditProfile = () => {
         navigate('/UpdateUserProfile')
@@ -24,7 +41,7 @@ const UserProfile = () => {
 
     // signedInUser published articles
     const publishedArticles = articles?.filter(article => article?.signedInUser?.email === signedInUser?.email);
-    console.log(publishedArticles);
+    // console.log(publishedArticles);
 
 
 
@@ -35,22 +52,24 @@ const UserProfile = () => {
                     <div>
                         <img className='w-full' src={cover} alt="" />
                     </div>
-                    <div className='absolute bottom-[-115px] pl-10 flex items-center gap-7  w-full'>
+                    <div className='absolute sm:bottom-[-115px] bottom-[-100px] sm:pl-10 pl-5 flex items-center gap-7  w-full'>
                         <div className="profile w-36 rounded-full ring ring-white ring-offset-base-100 ring-offset-2">
-                            <img className='w-full rounded-full' src={userImg} alt="" />
+                            <img className='w-full rounded-full' src={userImg} alt="userImage" />
                         </div>
                         <div className='mt-10  w-full'>
-                            <h6 className='text-3xl font-extrabold'>{signedInUser?.userInfo?.name}</h6>
-                            <p>Web Developer</p>
+                            <h6 className='sm:text-3xl text-xl font-extrabold'>{signedInUser?.userInfo?.name}</h6>
+                            <p className='text-sm'>{signedInUser?.occupation ? signedInUser?.occupation : `${'Web Developer'}`}</p>
                             <div className='mt-4 flex justify-between'>
-                                <div>
-                                    <button className='btn btn-sm mr-2'>Articles</button>
-                                    <button className='btn btn-sm mr-2'>About</button>
-                                    <button className='btn btn-sm mr-2'>Photos</button>
-                                    <button className='btn btn-sm'>Followers</button>
+                                <div className='sm:block hidden'>
+                                    <button className='btn md:btn-sm btn-xs mr-2'>Articles</button>
+                                    <button className='btn md:btn-sm btn-xs mr-2'>About</button>
+                                    <button className='btn md:btn-sm btn-xs mr-2'>Photos</button>
+                                    <button className='btn md:btn-sm btn-xs'>Followers</button>
                                 </div>
                                 <div className='pr-5'>
+
                                     <button onClick={() => handleNavigate()} className='btn btn-sm'><MdModeEdit size={15} className="mx-1"></MdModeEdit>Edit Profile</button>
+
                                 </div>
                             </div>
                         </div>
@@ -58,14 +77,14 @@ const UserProfile = () => {
                 </div>
                 <div className='profile-container h-32 bg-base-100 shadow-md rounded-b-xl' />
             </div>
-            <div className='profile-container flex gap-3'>
-                <div className='w-[28%]'>
+            <div className='profile-container sm:flex gap-3'>
+                <div className='lg:w-[40%] w-[35%] sm:block hidden'>
                     <AboutSection
                         signedInUser={signedInUser}
                         users={users}
                     />
                 </div>
-                <div className='mt-5 w-[44%]'>
+                <div className='mt-5 lg:w-[60%] w-full'>
                     {articles.slice(3, 5).map((article) => (
                         <ProfileArticle
                             key={article._id}
@@ -75,9 +94,9 @@ const UserProfile = () => {
                     ))}
 
                 </div>
-                <div className=' w-[28%]'>
+                {/* <div className=' w-[28%] lg:block hidden'>
                     <AboutSection />
-                </div>
+                </div> */}
             </div>
         </div>
     );

@@ -8,6 +8,7 @@ import ParalluxBanner from '../Banner/ParalluxBanner';
 import News from '../News/News';
 import HealthSection from '../HealthSection/HealthSection';
 import Editors from '../Editors/Editors';
+import Subscribe from '../Subscribe/Subscribe';
 
 const Home = () => {
     // const valueObj = useContext(articleDataContext);
@@ -19,6 +20,7 @@ const Home = () => {
             <RecentArticla></RecentArticla>
             <PopularArticle />
             <News />
+            <Subscribe />
             <HealthSection />
             <Editors />
             <PremiumArticles />

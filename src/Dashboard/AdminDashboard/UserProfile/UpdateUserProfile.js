@@ -9,58 +9,59 @@ const UpdateUserProfile = () => {
     const valueObj = useContext(articleDataContext);
     const { signedInUser } = valueObj;
     const [user] = useAuthState(auth)
-    const name = user?.displayName;
+    const name = user?.displayName || signedInUser?.userInfo?.name;
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const imgStorageKey = 'a7ae0492c3659f35e2c0af7203e883ca'
-    const onSubmit = async data => {
+    const onSubmit = async (data) => {
+        // console.log(data);
 
-
-
-        // const image = data.img[0];
-        // const formData = new FormData();
-        // formData.append('image', image)
-        // const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
-        // fetch(url, {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        //     .then(res => res.json())
-        //     .then(result => {
-        //         if (result.success) {
-        //             const email = user?.email;
-        //             const currentUser = { email: email };
-        //             const img = result.data.url;
-        //             const tools = {
-        //                 toolName: data.toolName,
-        //                 description: data.description,
-        //                 price: data.price,
-        //                 quantity: data.quantity,
-        //                 img: img,
-        //                 education: data.education,
-        //                 occupation: data.occupation,
-        //                 linkedIn: data.linkedIn
-        //             }
-        //             fetch(`https://sheltered-taiga-12711.herokuapp.com/profile/${email}`, {
-        //                 method: 'PUT',
-        //                 headers: {
-        //                     'content-type': 'application/json'
-        //                 },
-        //                 body: JSON.stringify(tools, currentUser)
-        //             })
-        //                 .then(res => res.json())
-        //                 .then(data => {
-        //                     toast.success('Profile Updated Successfully.')
-        //                     reset()
-        //                 })
-        //         }
-        //     })
+        const image = data?.img[0];
+        const formData = new FormData();
+        formData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const email = user?.email;
+                    const currentUser = { email: email };
+                    const img = result.data.url;
+                    const userInformation = {
+                        userName: data?.name,
+                        img: img,
+                        education: data.education,
+                        occupation: data.occupation,
+                        linkedIn: data.linkedIn,
+                        number: data.number
+                    }
+                    console.log(userInformation);
+                    fetch(`https://floating-ocean-13139.herokuapp.com/users/${email}`, {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json',
+                            email: `${user?.email}`,
+                            authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                        body: JSON.stringify(userInformation, currentUser)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            toast.success('Profile Updated Successfully.')
+                            reset()
+                        })
+                }
+            })
     }
 
     return (
         <div className='py-10 mid-container'>
             <div className='flex justify-center w-full'>
-                <img className='rounded-full ' src={signedInUser?.userInfo?.photoURL} alt="" />
+                <img className='rounded-full ' src={signedInUser?.userInfo?.photoURL || user?.userInformation?.img} alt="" />
             </div>
             <form className='lg:w-3/4 md:w-4/5 mx-auto' onSubmit={handleSubmit(onSubmit)} >
 
@@ -88,7 +89,7 @@ const UpdateUserProfile = () => {
 
                 <div className="form-control mt-5 w-full">
                     <label className="label">
-                        <span className="label-text">Education Level</span>
+                        <span className="label-text">Education</span>
                     </label>
                     <select className="select w-full  select-bordered focus:outline-none"
                         {...register("education", {
@@ -97,13 +98,12 @@ const UpdateUserProfile = () => {
                                 message: 'Education is Required'
                             }
                         })}>
-                        <option>PhD (Doctor of Philosophy)</option>
+                        <option>PHD</option>
                         <option>Masters</option>
-                        <option>Bachelors/Honours</option>
+                        <option>Honours</option>
                         <option>Diploma</option>
                         <option>Higher Secondary</option>
                         <option>Secondary</option>
-                        <option>JSC/JDC/8 pass</option>
                     </select>
                     <label className="label">
                         {errors.education?.type === 'required' && <span className="label-text-alt text-red-500">{errors.education.message}</span>}
@@ -155,7 +155,7 @@ const UpdateUserProfile = () => {
 
                 <div className="form-control ">
                     <label className="label">
-                        <span className="label-text">Number</span>
+                        <span className="label-text">Phone Number</span>
                     </label>
                     <input
                         type="number"

@@ -9,6 +9,8 @@ const PopularArticleItem = ({ article }) => {
   const handleClick = () => {
     goToDetails(`/article/${article._id}`);
   };
+  const authorImg = article?.signedInUser?.userInfo?.photoURL
+  // console.log(authorImg)
 
   return (
     <div
@@ -35,7 +37,7 @@ const PopularArticleItem = ({ article }) => {
             <div className="flex gap-3 items-center mt-3">
               <div className="avatar">
                 <div className="lg:w-12 md:w-14 sm:w-16 w-14 rounded-full">
-                  <img src={article?.signedInUser?.userInfo?.photoURL} alt="" />
+                  <img src={authorImg} alt="" />
                 </div>
               </div>
               <div>
