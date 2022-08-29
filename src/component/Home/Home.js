@@ -13,6 +13,7 @@ import ParalluxBanner from '../Banner/ParalluxBanner';
 import News from '../News/News';
 import HealthSection from '../HealthSection/HealthSection';
 import Editors from '../Editors/Editors';
+import Review from '../Review/Review';
 
 
 const Home = () => {
@@ -28,8 +29,9 @@ const Home = () => {
             <HealthSection />
             <Editors />
             <PremiumArticles />
+            <Review></Review>
 
-            <Pricing></Pricing>
+            {/* <Pricing></Pricing> */}
             {/* <PaymentCart></PaymentCart> */}
             {/* <PaymentCard></PaymentCard> */}
         
