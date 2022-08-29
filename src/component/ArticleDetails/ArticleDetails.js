@@ -42,7 +42,7 @@ const ArticleDetails = () => {
       return item
     }
   })
-  console.log(relatedArticle);
+  // console.log(relatedArticle);
   // today's date
   const today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
@@ -158,7 +158,7 @@ const ArticleDetails = () => {
                 </div>
                 <div className="ml-6">
                   <p className="antialiased  text-lg  font-normal">
-                    {author ? author : "MD. Mozammel Hoq 🌚"}{" "}
+                    {author}{" "}
                     <span>
                       <div className="badge badge-xs  badge-primary  ml-3 p-2"> Author  </div>
                     </span>
