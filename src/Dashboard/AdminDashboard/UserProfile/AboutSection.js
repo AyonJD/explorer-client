@@ -8,17 +8,21 @@ const AboutSection = ({ signedInUser, users }) => {
         <div>
             <div className='mt-5 bg-base-100 rounded-xl shadow-md p-6'>
                 <h6 className='font-semibold'>About</h6>
-                <p className='text-sm'>Tart I love sugar plum I love oat cake. Sweet ⭐️ roll caramels I love jujubes. Topping cake wafer.</p>
+                <p className='text-xs'>{signedInUser?.about ? signedInUser?.about : `${"Update About Yourself"}`}</p>
                 <h6 className='font-semibold mt-5'>Joined</h6>
-                <p className='text-sm'>August 15, 2022</p>
+                <p className='text-xs'>August 15, 2022</p>
 
                 <h6 className='font-semibold mt-5'>Lives</h6>
-                <p className='text-sm'>Chittagong, Bangladesh</p>
+                <p className='text-xs'>{signedInUser?.address ? signedInUser?.address : `${"Update where you lives"}`}</p>
 
                 <h6 className='font-semibold mt-5'>Email</h6>
-                <p className='text-sm'>{signedInUser?.email}</p>
+                <p className='text-xs'>{signedInUser?.email}</p>
+                <h6 className='font-semibold mt-5'>Facebook</h6>
+                <p className='text-xs'>{signedInUser?.facebook ? signedInUser?.facebook : `${"Update Facebook Link"}`}</p>
                 <h6 className='font-semibold mt-5'>Linkedin</h6>
-                <p className='text-sm'>{signedInUser?.linkedin ? signedInUser?.linkedin : `${"Update Linkedin"}`}</p>
+                <p className='text-xs'>{signedInUser?.linkedin ? signedInUser?.linkedin : `${"Update Linkedin Link"}`}</p>
+                <h6 className='font-semibold mt-5'>Phone</h6>
+                <p className='text-xs'>{signedInUser?.number ? signedInUser?.number : `${"Update Linkedin Link"}`}</p>
 
                 <h6 className='font-semibold mt-5'>Occupation</h6>
                 <p className='text-xs'>{signedInUser?.occupation ? signedInUser?.occupation : `${"Update Occupation"}`}</p>

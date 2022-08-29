@@ -34,9 +34,12 @@ const UpdateUserProfile = () => {
                     const userInformation = {
                         userName: data?.name,
                         img: img,
+                        about: data?.about,
                         education: data.education,
                         occupation: data.occupation,
+                        facebook: data.facebook,
                         linkedin: data.linkedin,
+                        address: data.address,
                         number: data.number
                     }
                     console.log(userInformation);
@@ -122,15 +125,55 @@ const UpdateUserProfile = () => {
                                 message: 'Education is Required'
                             }
                         })}>
+                        <option>Student</option>
                         <option>Web Developer</option>
                         <option>Software developer</option>
                         <option>Marketing Manager</option>
-                        <option>Account Executive</option>
+                        <option>Accounts Executive</option>
                         <option>Businessmen</option>
-                        <option>Student</option>
                     </select>
                     <label className="label">
                         {errors.occupation?.type === 'required' && <span className="label-text-alt text-red-500">{errors.occupation.message}</span>}
+                    </label>
+                </div>
+
+                <div className="form-control ">
+                    <label className="label">
+                        <span className="label-text">About</span>
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="About Yourself"
+                        className="input input-bordered focus:outline-none"
+                        {...register("about", {
+                            required: {
+                                value: true,
+                                message: 'about is Required'
+                            }
+                        })}
+                    />
+                    <label className="label">
+                        {errors.about?.type === 'required' && <span className="label-text-alt text-red-500">{errors.about.message}</span>}
+                    </label>
+                </div>
+
+                <div className="form-control ">
+                    <label className="label">
+                        <span className="label-text">Facebook Profile </span>
+                    </label>
+                    <input
+                        type="url"
+                        placeholder="Enter Your Facebook Profile Link"
+                        className="input input-bordered focus:outline-none"
+                        {...register("facebook", {
+                            required: {
+                                value: true,
+                                message: 'Facebook Profile Link is Required'
+                            }
+                        })}
+                    />
+                    <label className="label">
+                        {errors.facebook?.type === 'required' && <span className="label-text-alt text-red-500">{errors.facebook.message}</span>}
                     </label>
                 </div>
 
@@ -153,6 +196,27 @@ const UpdateUserProfile = () => {
                         {errors.linkedin?.type === 'required' && <span className="label-text-alt text-red-500">{errors.linkedin.message}</span>}
                     </label>
                 </div>
+
+                <div className="form-control ">
+                    <label className="label">
+                        <span className="label-text">Address</span>
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Enter Your Current Address"
+                        className="input input-bordered focus:outline-none"
+                        {...register("address", {
+                            required: {
+                                value: true,
+                                message: 'Address is Required'
+                            }
+                        })}
+                    />
+                    <label className="label">
+                        {errors.address?.type === 'required' && <span className="label-text-alt text-red-500">{errors.address.message}</span>}
+                    </label>
+                </div>
+
 
                 <div className="form-control ">
                     <label className="label">
