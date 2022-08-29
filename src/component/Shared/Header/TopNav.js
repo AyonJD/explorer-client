@@ -8,14 +8,14 @@ const TopNav = () => {
         <div className='border-b '>
             <div className='mid-container top_nav_pd hidden md:block'>
                 <div className='logo flex items-center justify-between'>
-                    <div>
-                        <img className="w-[100px]" src={logo} alt="" />
+                    <div className='cursor-pointer'>
+                        <Link to='/'><img className="w-[100px]" src={logo} alt="" /></Link>
                     </div>
                     <div className="nav_content flex items-center justify-between">
                         <ul className="menu menu-horizontal p-0">
-                            <li className='mr-1 hover:text-primary'><Link to='/'><small className='font-normal text-secondary'>Premium Content</small></Link></li>
+                            <li className='mr-1 hover:text-primary'><Link to='/all-article'><small className='font-normal text-secondary'>Premium Content</small></Link></li>
                             <li className='mr-1 hover:text-primary'><Link to='/all-article'><small className='font-normal text-secondary'>Get Premium</small></Link></li>
-                            <li className='mr-1 hover:text-primary'><Link to='/about'><small className='font-normal text-secondary'>Contact</small></Link></li>
+                            <li className='mr-1 hover:text-primary'><Link to='/contact'><small className='font-normal text-secondary'>Contact</small></Link></li>
                         </ul>
 
                         <div className="nav_content_rignt flex items-center justify-between">
