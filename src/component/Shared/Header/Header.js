@@ -9,12 +9,13 @@ import { signOut } from 'firebase/auth';
 import Search from './Search';
 import { articleDataContext } from '../../../App';
 import TopNav from './TopNav';
+import MegaMenu from './MegaMenu';
 
 const Header = ({ setDark, dark, setTheme }) => {
 
     const { pathname } = useLocation()
     const valueObj = useContext(articleDataContext)
-    const { setSignedInUser, users, signedInUser } = valueObj;
+    const { setSignedInUser, users, signedInUser, articles } = valueObj;
     const [user] = useAuthState(auth);
     const [userImg, setUserImg] = useState('')
     const logout = () => {
@@ -64,13 +65,29 @@ const Header = ({ setDark, dark, setTheme }) => {
                                     </li>
                                 </ul>
                             </div>
-                            {/* <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link> </h1> */}
                         </div>
 
                         <div className="navbar-start main_navbar_pd hidden lg:flex lg:w-[55%]">
                             <ul className="menu menu-horizontal p-0">
                                 <li className='mr-1 hover:text-primary'><Link to='/'>Home</Link></li>
-                                <li className='mr-1 hover:text-primary'><Link to='/all-article'>All Articles</Link></li>
+                                <li tabindex="0" className='mr-1 hover:text-primary'><Link to='/all-article'>All Articles</Link>
+                                    {/* <ul class="p-2 bg-base-100">
+                                        <li>
+                                            <>
+                                                {
+                                                    articles?.blogs?.map((article, index) => {
+                                                        return (
+                                                            <a key={index}>
+                                                                <div>
+                                                                    <img src={article?.img} alt="" />
+                                                                </div>
+                                                            </a>
+                                                        )
+                                                    })
+                                                }
+                                            </></li>
+                                    </ul> */}
+                                </li>
                                 <li className='mr-1 hover:text-primary'><Link to='/about'>About</Link></li>
                                 <li className='mr-2 hover:text-primary'><Link to='/contact'>Contact Us</Link></li>
                             </ul>
