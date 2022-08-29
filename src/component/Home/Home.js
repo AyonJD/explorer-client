@@ -10,6 +10,9 @@ import PaymentCard from '../../Dashboard/Payment/PaymentCard';
 
 
 import ParalluxBanner from '../Banner/ParalluxBanner';
+import News from '../News/News';
+import HealthSection from '../HealthSection/HealthSection';
+import Editors from '../Editors/Editors';
 
 
 const Home = () => {
@@ -18,9 +21,12 @@ const Home = () => {
     return (
         <div>
             {/* <Banner /> */}
-            <ParalluxBanner />
+            <Banner />
             <RecentArticla></RecentArticla>
             <PopularArticle />
+            <News />
+            <HealthSection />
+            <Editors />
             <PremiumArticles />
 
             <Pricing></Pricing>

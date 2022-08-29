@@ -160,7 +160,7 @@ function App() {
     setSignedInUser(compareUser)
   }, [compareUser])
 
-  // console.log(users);
+  // console.log(signedInUser);
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
@@ -181,16 +181,17 @@ function App() {
           <Route path="/search-category" element={<SearchCategory />}></Route>
 
           <Route path="*" element={<NotFound></NotFound>}></Route>
-=======
+
           <Route path="/faq" element={<Faq />}></Route>
 
 
-          {/* <Route path="/hudai" element={<Hudai />}></Route> */}
 
+
+
+          {/* <Route path="/hudai" element={<Hudai />}></Route> */}
           <Route path="/membership" element={<GetPremium />}></Route>
           <Route path="/payment/:id" element={<PaymentCard />}></Route>
         
-
 
           <Route
             path="/article/:articleId"

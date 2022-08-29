@@ -1,44 +1,100 @@
-import React from 'react';
-import img from "../../assets/banner-img/website.png"
+import React, { useEffect } from 'react';
 import './Banner.css'
+import { useSelector, useDispatch } from "react-redux";
+import getAllArticles from '../../source/actions/articlesAction';
+
 
 const Banner = () => {
-    return (
-        <section className=' bg-base-200 '>
-            <div className='mid-container'>
-                <div className=' relative banner'>
-                    <div className=' grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 '>
-                        <div className='flex justify-center items-center'>
-                            <div className='lg:text-start md:text-start sm:text-center text-center pt-12'>
-                                <span className='bg-neutral p-2 rounded-xl text-warning border-primary border'><button className="btn btn-xs btn-primary">New</button> Becoming a new Program Online</span>
-                                <h1 className='lg:text-5xl md:text-4xl sm:text-5xl text-3xl font-bold my-5 '>Find the Best Article Online for your Thesis</h1>
-                                <p className='text-sm lg:hidden md:hidden'>The right source of knowledge can be powerful professional growth, dark up right three</p>
-                            </div>
-                        </div>
-                        <div className='flex justify-end items-center w-full'>
-                            <img className='w-full' src={img} alt="" />
-                        </div>
-                    </div>
 
-                    <div className="card lg:w-2/5 md:w-[400px] w-full bg-neutral shadow-xl lg:p-10 md:p-10 sm:p-10 p-5 absolute border-t-8  border-primary border absolute-card">
-                        <div className='grid grid-cols-2 gap-5 text-warning '>
-                            <div className='text-center'>
-                                <h2 className='text-3xl font-semibold'>2000+</h2>
-                                <h2 className='text-sm'>Articles Submitted</h2>
-                            </div>
-                            <div className='text-center '>
-                                <h2 className='text-3xl font-semibold'>150</h2>
-                                <h2 className='text-sm'>Category Listed</h2>
-                            </div>
-                            <div className='text-center'>
-                                <h2 className='text-3xl font-semibold'>300+</h2>
-                                <h2 className='text-sm'>Articles Contributors</h2>
-                            </div>
-                            <div className='text-center'>
-                                <h2 className='text-3xl font-semibold'>90%</h2>
-                                <h2 className='text-sm'>Satisfaction Rate</h2>
-                            </div>
-                        </div>
+    const articles = useSelector((state) => state.articles);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllArticles())
+    }, [dispatch]);
+
+    // const articleCopy = [...articles];
+    // console.log(articles)
+
+    return (
+        <section className='mid-container'>
+            <div className='md:flex  gap-6'>
+                <div className='md:w-[60%] md:order-2 order-1'>
+                    <div className='mb-5'>
+                        {articles.slice(3, 4).map(article => {
+                            return (
+                                <div>
+                                    <img className='w-full' src={article?.blogs?.img} alt="" />
+                                    <h1 className='text-xl font-bold text-center mt-3'>{article?.blogs?.Title}</h1>
+                                    <p className='text-secondary text-center text-sm'>By- <span className='font-bold'>{article?.signedInUser?.userInfo?.name}</span></p>
+                                    <p className='text-secondary text-center px-3 mt-4'>By-{article?.blogs?.desc.slice(0, 200)}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+                <div className='md:w-[30%] md:order-1 '>
+                    <div className='mb-5'>
+                        {articles.slice(0, 1).map(article => {
+                            return (
+                                <div>
+                                    <img className='w-full' src={article?.blogs?.img} alt="" />
+                                    <h1 className='text-xl font-bold text-center mt-3'>{article?.blogs?.Title}</h1>
+                                    <p className='text-secondary text-center text-sm'>By- <span className='font-bold'>{article?.signedInUser?.userInfo?.name}</span></p>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div>
+                        {articles.slice(1, 2).map(article => {
+                            return (
+                                <div>
+                                    <img className='w-full' src={article?.blogs?.img} alt="" />
+                                    <h1 className='text-xl font-bold text-center mt-3'>{article?.blogs?.Title}</h1>
+                                    <p className='text-secondary text-center text-sm'>By- <span className='font-bold'>{article?.signedInUser?.userInfo?.name}</span></p>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+
+                {/* <div className='w-[60%] md:order-2 order-1'>
+                    <div className='mb-5'>
+                        {articles.slice(3, 4).map(article => {
+                            return (
+                                <div>
+                                    <img className='w-full' src={article?.blogs?.img} alt="" />
+                                    <h1 className='text-xl font-bold text-center mt-3'>{article?.blogs?.Title}</h1>
+                                    <p className='text-secondary text-center text-sm'>By- <span className='font-bold'>{article?.signedInUser?.userInfo?.name}</span></p>
+                                    <p className='text-secondary text-center px-3 mt-4'>By-{article?.blogs?.desc.slice(0, 200)}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div> */}
+
+                <div className='md:w-[30%] md:order-3 '>
+                    <div className='mb-5'>
+                        {articles.slice(5, 6).map(article => {
+                            return (
+                                <div>
+                                    <img src={article?.blogs?.img} alt="" />
+                                    <h1 className='text-xl font-bold text-center mt-3'>{article?.blogs?.Title}</h1>
+                                    <p className='text-secondary text-center text-sm'>By- <span className='font-bold'>{article?.signedInUser?.userInfo?.name}</span></p>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div>
+                        {articles.slice(7, 8).map(article => {
+                            return (
+                                <div>
+                                    <img className='w-full' src={article?.blogs?.img} alt="" />
+                                    <h1 className='text-xl font-bold text-center mt-3'>{article?.blogs?.Title}</h1>
+                                    <p className='text-secondary text-center text-sm'>By- <span className='font-bold'>{article?.signedInUser?.userInfo?.name}</span></p>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
@@ -47,6 +103,3 @@ const Banner = () => {
 };
 
 export default Banner;
-
-
-// lg:bottom-[-60px] md:bottom-[-80px] sm:bottom-[-50px] bottom-[-50px] border-t-8
