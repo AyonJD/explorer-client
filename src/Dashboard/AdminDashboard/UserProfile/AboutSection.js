@@ -2,8 +2,7 @@ import React from 'react';
 
 const AboutSection = ({ signedInUser, users }) => {
     // console.log(signedInUser);
-    const { userName, img, education, occupation, linkedIn, number } = signedInUser;
-    // console.log(user)
+    // console.log(users);
 
     return (
         <div>
@@ -17,10 +16,10 @@ const AboutSection = ({ signedInUser, users }) => {
                 <p className='text-sm'>Chittagong, Bangladesh</p>
 
                 <h6 className='font-semibold mt-5'>Email</h6>
-                <p className='text-sm'>imranhossen81m@gmail.com</p>
+                <p className='text-sm'>{signedInUser?.email}</p>
 
-                <h6 className='font-semibold mt-5'>Website</h6>
-                <p className='text-xs'>https://imrankhan81m.github.io/Portfolio-me/</p>
+                <h6 className='font-semibold mt-5'>Occupation</h6>
+                <p className='text-xs'>{signedInUser?.occupation ? signedInUser?.occupation : `${"Update Occupation"}`}</p>
                 <h6 className='font-semibold mt-5'>Education</h6>
                 <p className='text-xs'>{signedInUser?.education ? signedInUser?.education : `${"Update Education"}`}</p>
             </div>
