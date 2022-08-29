@@ -29,6 +29,15 @@ const ArticleDetails = () => {
   const articles = valueObj.articles
   const dark = valueObj.dark;
   const url = window.location.href;
+  const [isCopied, setIsCopied] = useState(false);
+
+  // copy text to clipboard on click of copy button 
+  const handleCopy = () => {
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 1000);
+  }
 
   // fetch article details
   const [article, setArticle] = useState({});
@@ -193,9 +202,12 @@ const ArticleDetails = () => {
                     </WhatsappIcon></WhatsappShareButton></span>
                   </li>
                   <li>
-                    <span><CopyToClipboard text={url}>
+                    <span><CopyToClipboard text={url} onCopy={handleCopy}>
                       <button><FontAwesomeIcon className="icon text-secondary ml-4" title="Copy" icon={faLink} /></button>
                     </CopyToClipboard> </span>
+                    <span className={`copy-feedback text-sm ${isCopied ? "active" : ""}`} style={{ color: "green" }}>
+                      Copied
+                    </span>
                   </li>
 
                   <li>
@@ -286,7 +298,7 @@ const ArticleDetails = () => {
         </div>
 
 
-      </div>
+      </div >
 
       <div className="relative-article mt-10">
         <h1 className="text-3xl font-bold">Related Article</h1><hr className="mb-10 mt-3" />
