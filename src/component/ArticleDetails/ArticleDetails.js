@@ -15,6 +15,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import RegisterCard from "../PopularArticle/RegisterCard";
 import RelativeArticle from "./RelativeArticle";
+import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, WhatsappShareButton } from "react-share";
+import { FacebookIcon, TwitterIcon, LinkedinIcon, WhatsappIcon } from "react-share";
+import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
 
 const ArticleDetails = () => {
   const { articleId } = useParams();
@@ -25,7 +28,18 @@ const ArticleDetails = () => {
   const navigate = useNavigate()
   const user = authUser[0]?.email
   const articles = valueObj.articles
-  const dark = valueObj.dark
+  const dark = valueObj.dark;
+  const url = window.location.href;
+  const [isCopied, setIsCopied] = useState(false);
+
+  // copy text to clipboard on click of copy button 
+  const handleCopy = () => {
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 1000);
+  }
+
   // fetch article details
   const [article, setArticle] = useState({});
   // console.log(article);
@@ -141,9 +155,8 @@ const ArticleDetails = () => {
       .catch((err) => console.log(err));
   };
 
-  // console.log(article?.signedInUser?.userInfo?.photoURL)
-  const shareUrl = "https://explorer-bd.web.app/";
-  const url2 = window.location.href;
+
+
   return (
     <div className="mid-container">
       <div className="lg:flex md:flex">
@@ -170,12 +183,32 @@ const ArticleDetails = () => {
               </div>
               <div className=" breadcrumbs">
                 <ul>
-                  <li>
+                  {/* <li>
                     <span><FontAwesomeIcon className="icon text-secondary ml-4 " title="Share" icon={faShareNodes} /> </span>
-                  </li>
-
+                  </li> */}
                   <li>
-                    <span><FontAwesomeIcon className="icon text-secondary ml-4" title="Copy" icon={faLink} /> </span>
+                    <span><FacebookShareButton url={url}><FacebookIcon round={true} size={25}>
+                    </FacebookIcon></FacebookShareButton></span>
+                  </li>
+                  <li>
+                    <span><TwitterShareButton url={url}><TwitterIcon round={true} size={25}>
+                    </TwitterIcon></TwitterShareButton></span>
+                  </li>
+                  <li>
+                    <span><LinkedinShareButton url={url}><LinkedinIcon round={true} size={25}>
+                    </LinkedinIcon></LinkedinShareButton></span>
+                  </li>
+                  <li>
+                    <span><WhatsappShareButton url={url}><WhatsappIcon round={true} size={25}>
+                    </WhatsappIcon></WhatsappShareButton></span>
+                  </li>
+                  <li>
+                    <span><CopyToClipboard text={url} onCopy={handleCopy}>
+                      <button><FontAwesomeIcon className="icon text-secondary ml-4" title="Copy" icon={faLink} /></button>
+                    </CopyToClipboard> </span>
+                    <span className={`copy-feedback text-sm ${isCopied ? "active" : ""}`} style={{ color: "green" }}>
+                      Copied
+                    </span>
                   </li>
 
                   <li>
@@ -266,11 +299,11 @@ const ArticleDetails = () => {
         </div>
 
 
-      </div>
+      </div >
 
       <div className="relative-article mt-10">
         <h1 className="text-3xl font-bold">Related Article</h1><hr className="mb-10 mt-3" />
-        <div className=" grid grid-cols-3 gap-5 ">
+        <div className=" grid md:grid-cols-3 sm:grid-cols-2 gap-5 mb-3">
           {
             relatedArticle.slice(0, 3).map((article) => <RelativeArticle
               article={article}
@@ -283,3 +316,6 @@ const ArticleDetails = () => {
 };
 
 export default ArticleDetails;
+
+
+
