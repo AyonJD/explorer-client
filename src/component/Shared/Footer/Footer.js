@@ -11,6 +11,7 @@ const Footer = () => {
     const today = new Date()
     const year = today.getFullYear()
     return (
+<<<<<<< HEAD
        <> 
      
    <section className="py-11  ">
@@ -40,6 +41,25 @@ const Footer = () => {
                 <div className = "grid grid-cols-2 gap-3 mb-5">
                     <div className="flex items-center" style={{width:'120px' , height:'100px'}}>
                         <img src={img1} className=" rounded-tl-lg" style={{width:'100%'}} alt=""></img>
+=======
+        <div className=' bg-base-200'>
+            <div className='mid-container'>
+                <footer className="footer py-10 text-base-content grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 grid-cols-1">
+                    <div>
+                        <span
+                            className="footer-title text-secondary opacity-80">Categories</span>
+                        <Link
+                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Fashion</Link>
+
+                        <Link
+                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Photography</Link>
+
+                        <Link
+                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Fitness</Link>
+
+                        <Link
+                            to="/" className="link link-hover hover:no-underline hover:tracking-widest hover:text-primary duration-300">Entertainment</Link>
+>>>>>>> de7fa60be0ecf304ba402f7263a3f87f3fb3f2d2
                     </div>
                     <div>
                         <p className="t">Lorem ipsum dolor

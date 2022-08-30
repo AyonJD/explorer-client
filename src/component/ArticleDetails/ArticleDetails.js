@@ -270,7 +270,7 @@ const ArticleDetails = () => {
 
       <div className="relative-article mt-10">
         <h1 className="text-3xl font-bold">Related Article</h1><hr className="mb-10 mt-3" />
-        <div className=" grid grid-cols-3 gap-5 ">
+        <div className=" grid md:grid-cols-3 sm:grid-cols-2 gap-5 mb-3">
           {
             relatedArticle.slice(0, 3).map((article) => <RelativeArticle
               article={article}
