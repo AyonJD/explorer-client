@@ -7,13 +7,14 @@ import auth from '../../../firebase.init';
 
 const ProfileArticle = ({ article, signedInUser }) => {
     const { articleId } = useParams();
+    const valueObj = useContext(articleDataContext);
     const userImg = article?.signedInUser?.userInfo?.photoURL;
     const name = article?.signedInUser?.userInfo?.name;
+    console.log(article);
     const date = article?.blogs.date;
     const articleTitle = article?.blogs?.Title
     const articleDesc = article?.blogs?.desc.slice(0, 200)
     const articleImg = article?.blogs?.img
-    const valueObj = useContext(articleDataContext);
     const dark = valueObj.dark
     // const authorImg = article?.signedInUser?.userInfo?.photoURL;
     // const authorName = article?.signedInUser?.userInfo?.name;
