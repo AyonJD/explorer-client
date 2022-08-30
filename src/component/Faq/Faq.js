@@ -105,26 +105,30 @@ const Faq = () => {
 
     return (
         <div>
-            <div className='flex justify-center items-center py-20 bg-fuchsia-50'>
-                <div className='text-center'>
-                    <h1 className='text-4xl text-violet-500'>Let's answer some questions</h1>
-                    <span className=' divider '>Or</span>
-                    <h4 className='font-thin text-black'>Choose a category to quickly find the help you need</h4>
-                    <div className=' py-4 mx-auto'>
-                        <input className='input border w-full' type="text" placeholder='Search' />
+            <div className=' bg-fuchsia-50'>
+                <div className=' mid-container flex justify-center items-center '>
+                    <div className='text-center py-20 '>
+                        <h1 className='text-4xl text-violet-500'>Let's answer some questions</h1>
+                        <span className=' divider '>Or</span>
+                        <h4 className='font-thin text-black'>Choose a category to quickly find the help you need</h4>
+                        <div className=' py-4 mx-auto'>
+                            <input className='input border w-full' type="text" placeholder='Search' />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className='flex mt-12 mid-container gap-10 '>
-                <div className='w-1/3 mt-6'>
-                    <button onClick={() => setActive('first')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'> <FaCoins className='mx-4' size={20} ></FaCoins> Payment</button>
+            <div className='md:flex mt-12 mid-container gap-10 '>
+                <div className='md:w-1/3 mt-6 md:grid-cols-none grid sm:grid-cols-3 grid-cols-2 gap-3'>
+                    <div>
+                        <button onClick={() => setActive('first')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'> <FaCoins className='mx-4' size={20} ></FaCoins> Payment</button>
+                    </div>
 
                     <button onClick={() => setActive('second')} className='btn py-2 w-full register-btn text-white  rounded-xl mb-3'><TbTruckDelivery className='mx-4' size={25}></TbTruckDelivery>Delivery</button>
                     <button onClick={() => setActive('third')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><AiOutlineShopping className='mx-4' size={25}></AiOutlineShopping>Orders</button>
                     <button onClick={() => setActive('fourth')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><MdOutlineMiscellaneousServices className='mx-4' size={25}></MdOutlineMiscellaneousServices>Services</button>
                     <button onClick={() => setActive('fifth')} className='btn py-2 w-full register-btn text-white rounded-xl mb-3'><TbDiscount2 className='mx-4' size={25}></TbDiscount2>Promo</button>
                 </div>
-                <div className='w-2/3 '>
+                <div className='md:w-2/3 '>
                     {active === "first" && <FaqRight content={titlePayment} />}
                     {active === "second" && <FaqRight content={titleDelivery} />}
                     {active === "third" && <FaqRight content={titleOrders} />}
@@ -138,7 +142,7 @@ const Faq = () => {
                     <h6 className='text-3xl font-bold'>Need Help?</h6>
                     <h6>We have got you covered</h6>
                 </div>
-                <div className='grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-10 text-center'>
+                <div className='grid lg:grid-cols-4 md:grid-cols-4 grid-cols-3 gap-10 text-center'>
                     <div>
                         <div class="avatar placeholder">
                             <div class="bg-fuchsia-100 text-neutral-content rounded-full w-24">
@@ -210,7 +214,7 @@ const Faq = () => {
                     <h6 className='text-3xl font-bold'>You still have a question?</h6>
                     <h6>If you cannot find a question in our FAQ, you can always contact us. <br /> We will answer to you shortly!</h6>
                 </div>
-                <div className='grid grid-cols-2 gap-10'>
+                <div className='grid md:grid-cols-2 gap-10'>
                     <div className='flex justify-center items-center py-16 bg-neutral px-10 text-center rounded-xl'>
                         <div>
                             <div className='flex justify-center pb-3'> <FiPhoneCall size={30} color="fuchsia"></FiPhoneCall> </div>
