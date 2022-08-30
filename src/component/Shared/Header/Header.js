@@ -39,8 +39,8 @@ const Header = ({ setDark, dark, setTheme }) => {
     return (
         <>
             <TopNav />
-            <div className="border-b z-50 sticky top-0">
-                <div className="mid-container bg-base-100 main_nav_padding">
+            <div className="border-b z-50 sticky bg-base-100 top-0">
+                <div className="mid-container main_nav_padding">
                     <div className="sticky top-0 z-50 navbar-content navbar p-0 ">
                         <div className="">
                             <div className="dropdown dropdown-items">
