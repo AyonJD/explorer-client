@@ -13,12 +13,12 @@ import ParalluxBanner from '../Banner/ParalluxBanner';
 import News from '../News/News';
 import HealthSection from '../HealthSection/HealthSection';
 import Editors from '../Editors/Editors';
-<<<<<<< HEAD
+
 import Review from '../Review/Review';
 
-=======
+
 import Subscribe from '../Subscribe/Subscribe';
->>>>>>> de7fa60be0ecf304ba402f7263a3f87f3fb3f2d2
+
 
 const Home = () => {
     // const valueObj = useContext(articleDataContext);
