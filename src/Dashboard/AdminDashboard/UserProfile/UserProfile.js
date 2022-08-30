@@ -11,24 +11,9 @@ import { MdModeEdit } from 'react-icons/md';
 const UserProfile = () => {
     const valueObj = useContext(articleDataContext);
     const { signedInUser, articles, users } = valueObj;
-    console.log(signedInUser);
+    console.log(articles);
 
-    const userImg = signedInUser?.img || signedInUser?.userInfo?.photoURL || signedInUser?.img;
-
-    // useEffect(() => {
-    //     fetch(`https://floating-ocean-13139.herokuapp.com/users/${user?.email}`, {
-    //         method: "GET",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             email: `${user?.email}`,
-    //             authorization: `Bearer ${localStorage.getItem("token")}`,
-    //         },
-    //     })
-    //         .then((response) => response.json())
-    //         .then((json) => {
-    //             setUserD(json);
-    //         });
-    // }, [userD?.email]);
+    const userImg = signedInUser?.img || signedInUser?.userInfo?.photoURL;
 
     const navigate = useNavigate();
     const navigateEditProfile = () => {
@@ -85,7 +70,7 @@ const UserProfile = () => {
                     />
                 </div>
                 <div className='mt-5 lg:w-[60%] w-full'>
-                    {articles.slice(3, 5).map((article) => (
+                    {articles.slice(0, 3).map((article) => (
                         <ProfileArticle
                             key={article._id}
                             article={article}

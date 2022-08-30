@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AboutSection = ({ signedInUser, users }) => {
-    console.log(signedInUser);
+    // console.log(signedInUser);
     // console.log(users);
 
     return (
@@ -28,6 +28,12 @@ const AboutSection = ({ signedInUser, users }) => {
                 <p className='text-xs'>{signedInUser?.occupation ? signedInUser?.occupation : `${"Update Occupation"}`}</p>
                 <h6 className='font-semibold mt-5'>Education</h6>
                 <p className='text-xs'>{signedInUser?.education ? signedInUser?.education : `${"Update Education"}`}</p>
+            </div>
+            <div className='mt-5 bg-base-100 rounded-xl shadow-md p-6'>
+                <h6 className='font-semibold'>Pinned Articles</h6>
+                <p className='text-xs'>pin your articles</p>
+                <h6 className='font-semibold mt-5'>Featured</h6>
+                <p className='text-xs'>add some feature</p>
             </div>
         </div>
     );
