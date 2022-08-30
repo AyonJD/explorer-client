@@ -162,11 +162,13 @@ function App() {
 
   // console.log(signedInUser);
 
+
   return (
     <div data-theme={dark ? "dark" : "light"}>
       <ScrollToTop />
       <articleDataContext.Provider value={valueObj}>
-        <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
+        <Header setDark={setDark} dark={dark} setTheme={setTheme} />
+
         <Routes preserverScrollPosition={false}>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
