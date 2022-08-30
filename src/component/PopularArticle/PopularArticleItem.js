@@ -10,7 +10,6 @@ const PopularArticleItem = ({ article }) => {
     goToDetails(`/article/${article._id}`);
   };
  const authorImg = article?.signedInUser?.userInfo?.photoURL
-  console.log(authorImg)
 
   return (
     <div

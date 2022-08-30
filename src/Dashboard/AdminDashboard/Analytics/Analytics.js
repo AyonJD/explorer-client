@@ -26,15 +26,16 @@ const Analytics = () => {
         return filterArticle;
     }
 
-    const handleCatWiseCount = () => {
+    const handleCatWiseCount = (cat) => {
         let catWiseCount = 0;
-        articles.forEach(article => {
-            if (article?.blogs?.category === "Travel") {
-                catWiseCount++;
+        const newArticle = articles.filter(article => {
+            if (article?.blogs?.category === cat) {
+                return article;
             }
         });
-        return catWiseCount;
+        return newArticle;
     }
+    console.log(handleCatWiseCount("Travel").length);
 
 
 

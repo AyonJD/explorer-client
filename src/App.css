@@ -284,8 +284,18 @@ h6 {
 }
 
 @media only screen and (max-width: 500px) {
-  .search-container{
+  .search-container {
     display: none;
     visibility: hidden;
   }
+}
+
+/* copy to clipboard */
+.copy-feedback {
+  margin-left: 1rem;
+  visibility: hidden;
+}
+
+.copy-feedback.active {
+  visibility: visible;
 }
