@@ -4,19 +4,20 @@ import { faArrowRightArrowLeft, faBurger, faContactBook, faHeart, faHome, faList
 import './Header.css'
 import { Link, useLocation } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import {MdOutlineDashboard} from 'react-icons/md';
+import { MdOutlineDashboard } from 'react-icons/md';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import Search from './Search';
 import { articleDataContext } from '../../../App';
 import TopNav from './TopNav';
+import MegaMenu from './MegaMenu';
 
 
 const Header = ({ setDark, dark, setTheme }) => {
 
     const { pathname } = useLocation()
     const valueObj = useContext(articleDataContext)
-    const { setSignedInUser, users, signedInUser } = valueObj;
+    const { setSignedInUser, users, signedInUser, articles } = valueObj;
     const [user] = useAuthState(auth);
     const [userImg, setUserImg] = useState('')
     const logout = () => {
@@ -40,8 +41,8 @@ const Header = ({ setDark, dark, setTheme }) => {
     return (
         <>
             <TopNav />
-            <div className="border-b z-50 sticky top-0 shadow">
-                <div className="mid-container bg-base-100 main_nav_padding">
+            <div className="border-b z-50 sticky bg-base-100 top-0">
+                <div className="mid-container main_nav_padding">
                     <div className="sticky top-0 z-50 navbar-content navbar p-0 ">
                         <div className="">
                             <div className="dropdown dropdown-items">
@@ -66,13 +67,29 @@ const Header = ({ setDark, dark, setTheme }) => {
                                     </li>
                                 </ul>
                             </div>
-                            {/* <h1><Link className="logo text-2xl font-bold text-secondary" to={'/'}>Explorer</Link> </h1> */}
                         </div>
 
                         <div className="navbar-start main_navbar_pd hidden lg:flex lg:w-[55%]">
                             <ul className="menu menu-horizontal p-0">
                                 <li className='mr-1 hover:text-primary'><Link to='/'>Home</Link></li>
-                                <li className='mr-1 hover:text-primary'><Link to='/all-article'>All Articles</Link></li>
+                                <li tabindex="0" className='mr-1 hover:text-primary'><Link to='/all-article'>All Articles</Link>
+                                    {/* <ul class="p-2 bg-base-100">
+                                        <li>
+                                            <>
+                                                {
+                                                    articles?.blogs?.map((article, index) => {
+                                                        return (
+                                                            <a key={index}>
+                                                                <div>
+                                                                    <img src={article?.img} alt="" />
+                                                                </div>
+                                                            </a>
+                                                        )
+                                                    })
+                                                }
+                                            </></li>
+                                    </ul> */}
+                                </li>
                                 <li className='mr-1 hover:text-primary'><Link to='/about'>About</Link></li>
                                 <li className='mr-2 hover:text-primary'><Link to='/contact'>Contact Us</Link></li>
                             </ul>
@@ -114,7 +131,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                                                 <>
                                                     <li className='mb-1'><Link to='/user-profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
 
-                                                    <li className='mb-1'><Link to='/dashboard/analytics'>< MdOutlineDashboard className='flex'/> <span className='item'>Dashboard</span></Link></li>
+                                                    <li className='mb-1'><Link to='/dashboard/analytics'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Dashboard</span></Link></li>
 
                                                     {/* <li className='mb-1'><Link to='/dashboard/manage-article'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Manage Article</span></Link></li> */}
 
@@ -123,7 +140,7 @@ const Header = ({ setDark, dark, setTheme }) => {
                                                 <>
                                                     <li className='mb-1'><Link to='/user-profile'><FontAwesomeIcon className='icon text-secondary' icon={faUserAlt} /> <span className='item'>Profile</span></Link></li>
 
-                                                    <li className='mb-1'><Link to='/membership'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Become Premium Member</span></Link></li>
+                                                    <li className='mb-1'><Link to='/membership'><FontAwesomeIcon className='icon text-secondary' icon={faList} /> <span className='item'>Get Premium</span></Link></li>
 
                                                     <li className='mb-1'><Link to='/'><FontAwesomeIcon className='icon text-secondary' icon={faHeart} /> <span className='item'>Setting</span></Link></li>
 
