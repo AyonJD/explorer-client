@@ -79,7 +79,7 @@ const Login = () => {
 
     // useEffect(() => {
     //     //PUT API for updating users image
-    //     const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+    //     const url = `http://localhost:5000/users/${email}`
     //     // console.log(url)
     //     if (email && !btnState) {
     //         fetch(url, {
@@ -99,7 +99,7 @@ const Login = () => {
             <form className='toggle_form' onSubmit={handleSubmit(onSubmit)}>
                 <h1 className='custom_font'>Sign In</h1>
                 <div className="social-links">
-                    <div>
+                    <div onClick={() => signInWithGoogle()}>
                         <i className="fa-brands fa-google"></i>
                     </div>
                     <div>
