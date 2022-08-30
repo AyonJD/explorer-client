@@ -124,7 +124,7 @@ const CheckoutForm = ({ membershipPlan }) => {
 
     }
 
-    // console.log(signedInUser?.userInfo)
+    console.log(transactionId, 'transactionId');
 
     return (
         <>

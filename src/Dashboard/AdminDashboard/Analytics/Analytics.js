@@ -170,11 +170,11 @@ const Analytics = () => {
 
     return (
         <div>
-            <div className="mid-container flex gap-10" >
-                <div className='mt-4 w-1/2 card-body items-center card-compact shadow-lg'>
+            <div className=" lg:grid grid-cols-2 gap-10 p-5" >
+                <div className='mt-4 card-body items-center card-compact shadow-lg'>
                     <h5 className='font-bold text-xl text-center'>User Liked</h5>
-                    <div style={{ width: '85%', height: 450 }}>
-                        <ResponsiveContainer>
+                    <div className='mx-auto' style={{ width: '85%', height: 450 }}>
+                        <ResponsiveContainer >
                             <PieChart>
                                 <Pie
                                     data={data}
@@ -182,7 +182,7 @@ const Analytics = () => {
                                     cy={200}
                                     labelLine={false}
                                     label={renderCustomizedLabel}
-                                    outerRadius={200}
+                                    outerRadius={150}
                                     fill="#8884d8"
                                     dataKey="value"
                                 >
@@ -196,13 +196,13 @@ const Analytics = () => {
                     </div>
                 </div >
 
-                <div className='mt-4 w-1/2 card-body items-center card-compact shadow-lg'>
+                <div className='mt-4 card-body items-center card-compact shadow-lg'>
                     <h4 className='font-bold text-xl'>User Comments</h4>
                     <div style={{ width: '100%', height: 300 }}>
                         <ResponsiveContainer>
                             <ComposedChart
-                                width={500}
-                                height={400}
+                                width={400}
+                                height={300}
                                 data={data1}
                                 margin={{
                                     top: 20,
@@ -225,11 +225,11 @@ const Analytics = () => {
                 </div>
             </div >
 
-            <div className='mid-container'>
+            <div>
                 <div className='mt-4 card-body items-center card-compact shadow-lg'>
                     <h4 className='font-bold text-xl py-4'>Articles Published</h4>
                     <BarChart
-                        width={1000}
+                        width={800}
                         height={300}
                         data={data2}
                         margin={{
