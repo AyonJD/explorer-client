@@ -3,7 +3,7 @@
 .pagination_container {
     background: #dde1e7;
     padding: 25px;
-    width: 50vw;
+    /* width: 50vw; */
     border-radius: 3px;
     box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
 }
@@ -72,4 +72,14 @@
 
 .allArticle-card:nth-child(6) {
     border-bottom: 0 !important;
+}
+
+@media only screen and (max-width: 990px) {
+    .pagination_container {
+        background: #dde1e7;
+        padding: 25px;
+        /* width: 50vw; */
+        border-radius: 3px;
+        box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+    }
 }
