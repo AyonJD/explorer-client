@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import SocialLinked from '../../RecentArticle/SocialLinked';
 import './AllArticle.css';
 import AllArticleItems from './AllArticleItems';
@@ -20,7 +19,7 @@ const AllArticle = () => {
 
     //Sending pageNumber and articleCount to the server to get the articles by pagination logic
     useEffect(() => {
-        fetch(`  http://localhost:5000/blogs?page=${pageNumber}&count=${articleCount}`)
+        fetch(`  https://floating-ocean-13139.herokuapp.com/blogs?page=${pageNumber}&count=${articleCount}`)
             .then(res => res.json())
             .then(data => {
                 setArticles(data);
@@ -30,7 +29,7 @@ const AllArticle = () => {
 
     //This is only for getting the 
     useEffect(() => {
-        fetch('  http://localhost:5000/blogs-count')
+        fetch('  https://floating-ocean-13139.herokuapp.com/blogs-count')
             .then(res => res.json())
             .then(data => {
                 setAllArticleCount(data.count);

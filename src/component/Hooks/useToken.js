@@ -11,7 +11,7 @@ const useToken = (user, userName) => {
             // console.log(userName);
             const currentUser = { email: email, displayName: displayName, photoURL: user?.photoURL }
             if (email) {
-                fetch(`http://localhost:5000/users/${email}`, {
+                fetch(`https://floating-ocean-13139.herokuapp.com/users/${email}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'

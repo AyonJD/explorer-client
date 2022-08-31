@@ -6,8 +6,6 @@ import Footer from "./component/Shared/Footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "./component/Shared/Header/Header";
-import Login from "./component/Authentication/Login/Login";
-import Register from "./component/Authentication/Register/Register";
 import Profile from "./Dashboard/Profile/Profile";
 import PostArticle from "./Dashboard/PostArticle/PostArticle";
 import ArticleDetails from "./component/ArticleDetails/ArticleDetails";
@@ -34,6 +32,7 @@ import PaymentCard from "./Dashboard/Payment/PaymentCard";
 import SearchCategory from "./component/SearchCategory/SearchCategory";
 import Faq from "./component/Faq/Faq";
 import LoginSignupToggle from "./component/Authentication/LoginSignupToggle/LoginSignupToggle";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
@@ -50,6 +49,14 @@ function App() {
   const [transactionId, setTransactionId] = useState('');
   const [premiumMember, setPremiumMember] = useState([]);
 
+  const allArticle = useSelector(state => state.articles);
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch({ type: "GET_ARTICLES_REQUEST" });
+  }, []
+  )
+  console.log(allArticle);
   useEffect(() => {
     AOS.init();
   }, []);
@@ -58,7 +65,7 @@ function App() {
   const [dark, setDark] = useState(false);
   // localStorage.setItem('theme', dark);
   useEffect(() => {
-    fetch("http://localhost:5000/theme")
+    fetch("https://floating-ocean-13139.herokuapp.com/theme")
       .then((res) => res.json())
       .then((data) => {
         setDark(data[0].theme);
@@ -67,7 +74,7 @@ function App() {
 
   const setTheme = () => {
     fetch(
-      "http://localhost:5000/theme/62d829c706b5a80f8247a020",
+      "https://floating-ocean-13139.herokuapp.com/theme/62d829c706b5a80f8247a020",
       {
         method: "PUT",
         headers: {
@@ -87,7 +94,7 @@ function App() {
   // fetching all articles
   useEffect(() => {
     // setLoader(true);
-    fetch("http://localhost:5000/blogs")
+    fetch("https://floating-ocean-13139.herokuapp.com/blogs")
       .then((res) => res.json())
       .then((data) => {
         setArticles(data);
@@ -98,7 +105,7 @@ function App() {
   // fetching all users
   useEffect(() => {
     // setLoader(true);
-    fetch("http://localhost:5000/users")
+    fetch("https://floating-ocean-13139.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => {
         setLoader(false);
@@ -108,7 +115,7 @@ function App() {
 
   //fetching all the premium users
   useEffect(() => {
-    fetch("http://localhost:5000/purches")
+    fetch("https://floating-ocean-13139.herokuapp.com/purches")
       .then((res) => res.json())
       .then((data) => {
         setPremiumMember(data);
@@ -124,13 +131,6 @@ function App() {
     }
     );
   })
-  // console.log(signedInUser);
-  // const transactionId = premiumMember?.find((user) => {
-  //   if (user?.buyer?.email === signedInUser?.email) {
-  //     return user.transactionId;
-
-  //   }
-  // })
 
   const valueObj = {
     articles,
