@@ -4,12 +4,14 @@ import { faArrowRightArrowLeft, faBurger, faContactBook, faHeart, faHome, faList
 import './Header.css'
 import { Link, useLocation } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { MdOutlineDashboard } from 'react-icons/md';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import Search from './Search';
 import { articleDataContext } from '../../../App';
 import TopNav from './TopNav';
 import MegaMenu from './MegaMenu';
+
 
 const Header = ({ setDark, dark, setTheme }) => {
 
