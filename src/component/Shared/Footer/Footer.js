@@ -25,7 +25,7 @@ const Footer = () => {
              </div>
              <div className="footerBorder ml-20">
                <div className="">
-               <h1 className="text-2xl font-medium pb-5">Explore</h1>
+               <h1 className="text-2xl font-medium pb-5">Explorer</h1>
                  <h1 className="t font-medium pb-5">About us</h1>
                  <h1 className=" font-medium pb-5">Meet our Time</h1>
                  <h1 className=" font-medium pb-5">Contact us</h1>
@@ -66,14 +66,14 @@ const Footer = () => {
              <div className="footerContact">
              <h1 className=" text-2xl font-medium pb-5">Contact Info</h1>
              <div className='mb-3 flex'>
-            <span className={`text-[19px] mt-3 `} > <FaAddressCard/></span>
+            <span className={`text-[19px] mt-2 `} > <FaAddressCard/></span>
               <span>
               <span className='font-bold text-[19px] '> Address:</span>
               <span className="ml-2 ">address Dhaka, bangladesh </span>
               </span>
              </div>
              <div className='mb-3 flex '>
-             <span className={`text-[19px]  `}> <MdEmail/></span>
+             <span className={`text-[19px] mt-1 `}> <MdEmail/></span>
              <span>
              <span className='font-bold text-[19px] mt-2 '>Email:</span>
              <span className="ml-2 ">xxxx@gmail.com </span>
