@@ -47,9 +47,6 @@ const ArticleDetails = () => {
   const dark = valueObj.dark;
   const url = window.location.href;
   const [isCopied, setIsCopied] = useState(false);
-  
-  
-
 
   // copy text to clipboard on click of copy button
   const handleCopy = () => {
@@ -61,7 +58,8 @@ const ArticleDetails = () => {
 
   // fetch article details
   const [article, setArticle] = useState({});
-  // console.log(article);
+  console.log(article);
+  console.log(signedInUser);
   const author = article?.signedInUser?.userInfo?.name;
 
   useEffect(() => {
@@ -174,7 +172,6 @@ const ArticleDetails = () => {
       .catch((err) => console.log(err));
   };
 
-  
   // article delete by id from server
   // const handleDelete = (articleId) => {
   //   fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`, {
@@ -191,14 +188,7 @@ const ArticleDetails = () => {
   //     .catch((err) => console.log(err));
   // };
 
-
-
-
-
-
-  
-  
-  
+  // get author id with compare signedInUser id and declared author
 
   return (
     <div className="mid-container">
@@ -247,39 +237,37 @@ const ArticleDetails = () => {
                       tabindex="0"
                       class="dropdown-content menu p-2 drop-shadow-xl  rounded-box  bg-base-200"
                     >
-                      
                       <li>
-                      <a>
-                      <FacebookShareButton url={url}>
-                        <FacebookIcon round={true} size={25}></FacebookIcon>
-                      </FacebookShareButton>
-                      </a>
-                  </li>
-                  <li>
-                      <a>
-                      <TwitterShareButton url={url}>
-                        <TwitterIcon round={true} size={25}></TwitterIcon>
-                      </TwitterShareButton>
-                      </a>
-                  </li>
-                  <li>
-                      <a>
-                      <LinkedinShareButton url={url}>
-                        <LinkedinIcon round={true} size={25}></LinkedinIcon>
-                      </LinkedinShareButton>
-                      </a>
-                  </li>
-                  <li>
-                      <a>
-                      <WhatsappShareButton url={url}>
-                        <WhatsappIcon round={true} size={25}></WhatsappIcon>
-                      </WhatsappShareButton>
-                      </a>
-                  </li>
-                      
+                        <a>
+                          <FacebookShareButton url={url}>
+                            <FacebookIcon round={true} size={25}></FacebookIcon>
+                          </FacebookShareButton>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <TwitterShareButton url={url}>
+                            <TwitterIcon round={true} size={25}></TwitterIcon>
+                          </TwitterShareButton>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <LinkedinShareButton url={url}>
+                            <LinkedinIcon round={true} size={25}></LinkedinIcon>
+                          </LinkedinShareButton>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <WhatsappShareButton url={url}>
+                            <WhatsappIcon round={true} size={25}></WhatsappIcon>
+                          </WhatsappShareButton>
+                        </a>
+                      </li>
                     </ul>
                   </li>
-                  
+
                   <li className="dropdown dropdown-end">
                     <label tabindex="0">
                       <CopyToClipboard text={url} onCopy={handleCopy}>
@@ -297,7 +285,6 @@ const ArticleDetails = () => {
                       class="card compact dropdown-content shadow bg-base-100 rounded-box"
                     >
                       {isCopied ? (
-                        
                         <div class="alert alert-success shadow-lg text-white">
                           <div>
                             <svg
@@ -313,7 +300,7 @@ const ArticleDetails = () => {
                                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                               />
                             </svg>
-                            <span >Copied</span>
+                            <span>Copied</span>
                           </div>
                         </div>
                       ) : (
@@ -337,27 +324,23 @@ const ArticleDetails = () => {
                       tabindex="0"
                       class="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-52"
                     >
-                      
-                      <li>
-                        <a>Edit Article</a>
-                      </li>
+                      {article?.signedInUser?._id === signedInUser?._id ? (
+                        <li>
+                          <a>Edit Article</a>
+                        </li>
+                      ) : (
+                        ""
+                      )}
                       {
-                        
-                        
-                          // signedInUser inside if admin is true ? he can see delete button : else he can't see delete button
-                          signedInUser?.admin === true ? (
-                            <li>
-                              <a >Delete Article</a>
-                            </li>
-                          ) : (
-                            ""
-                          )
-                          
-                        
-                        
-
+                        // signedInUser inside if admin is true ? he can see delete button : else he can't see delete button
+                        signedInUser?.admin === true ? (
+                          <li>
+                            <a>Delete Article</a>
+                          </li>
+                        ) : (
+                          ""
+                        )
                       }
-                      
                     </ul>
                   </li>
                 </ul>
