@@ -9,17 +9,16 @@ const About = () => {
     return (
         <div>
             <div className='mid-container'>
-                <div className='grid grid-cols-2 mid-container'>
-                    <div className='about-banner flex items-center'>
+                <div className='grid lg:grid-cols-2 mid-container'>
+                    <div className='about-banner flex items-center lg:justify-start justify-center lg:order-1 order-2'>
                         <div>
-
                             <h1 className='text-5xl font-semibold  mt-2'>Who We Are?</h1>
                             <h2 className='font-semibold text-2xl mb-14 mt-5'>Let's work together and <br /> make awesome site easily</h2>
                             <button className='start-btn'>Let's Start</button>
                             <button className='contact-btn'>Contact Now</button>
                         </div>
                     </div>
-                    <div className=' flex items-center justify-center'>
+                    <div className=' flex items-center justify-center lg:order-2 order-1'>
                         <img src={banner} alt="" />
                     </div>
                 </div>

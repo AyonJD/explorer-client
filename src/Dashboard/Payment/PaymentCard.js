@@ -16,7 +16,7 @@ const PaymentCard = () => {
     const [membershipPlan, setMembershipPlan] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/membership-plans/${id}`)
+        fetch(`https://floating-ocean-13139.herokuapp.com/membership-plans/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setMembershipPlan(data);
@@ -27,15 +27,15 @@ const PaymentCard = () => {
 
 
     return (
-        <div className="my-container mb-10 mid-container">
+        <div className="my-container mb-10 mid-container mb-20 mt-20">
 
             <div className='payment-form'>
                 <div className="row">
                     <div className="col relative">
                         <h6 className="title font-bold mb-10">billing address</h6>
-                        <div className=" h-44 w-full flex justify-center">
-                            <img className='pb-32 w-80 absolute top-[-40px]  mx-auto' src={img2} alt="" />
-                        </div>
+                        {/* <div className=" h-44 w-full flex justify-center">
+                            <img className='pb-32 w-60 absolute top-[-40px]  mx-auto' src={img2} alt="" />
+                        </div> */}
                         <div className="flex ">
                             <div className="inputBox">
                                 <span>state :</span>
@@ -64,7 +64,7 @@ const PaymentCard = () => {
                         </div>
                         <div className="inputBox">
                             <span>name on card :</span>
-                            <input type="text" placeholder="mr. Imran Hossen" />
+                            <input type="text" placeholder="" />
                         </div>
 
                         <div>

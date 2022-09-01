@@ -32,6 +32,9 @@ import UpdateUserProfile from "./Dashboard/AdminDashboard/UserProfile/UpdateUser
 import GetPremium from "./Dashboard/UsersSection/GetPremium";
 import PaymentCard from "./Dashboard/Payment/PaymentCard";
 import SearchCategory from "./component/SearchCategory/SearchCategory";
+
+import NotFound from "./component/NotFound/NotFound";
+
 import Faq from "./component/Faq/Faq";
 import LoginSignupToggle from "./component/Authentication/LoginSignupToggle/LoginSignupToggle";
 
@@ -58,7 +61,7 @@ function App() {
   const [dark, setDark] = useState(false);
   // localStorage.setItem('theme', dark);
   useEffect(() => {
-    fetch("http://localhost:5000/theme")
+    fetch("https://floating-ocean-13139.herokuapp.com/theme")
       .then((res) => res.json())
       .then((data) => {
         setDark(data[0].theme);
@@ -67,7 +70,7 @@ function App() {
 
   const setTheme = () => {
     fetch(
-      "http://localhost:5000/theme/62d829c706b5a80f8247a020",
+      "https://floating-ocean-13139.herokuapp.com/theme/62d829c706b5a80f8247a020",
       {
         method: "PUT",
         headers: {
@@ -87,7 +90,7 @@ function App() {
   // fetching all articles
   useEffect(() => {
     // setLoader(true);
-    fetch("http://localhost:5000/blogs")
+    fetch("https://floating-ocean-13139.herokuapp.com/blogs")
       .then((res) => res.json())
       .then((data) => {
         setArticles(data);
@@ -98,7 +101,7 @@ function App() {
   // fetching all users
   useEffect(() => {
     // setLoader(true);
-    fetch("http://localhost:5000/users")
+    fetch("https://floating-ocean-13139.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => {
         setLoader(false);
@@ -146,6 +149,7 @@ function App() {
     loader,
     transactionId,
     premiumMember,
+    setTransactionId,
   };
 
   const compareUser = useMemo(() => {
@@ -157,13 +161,15 @@ function App() {
     setSignedInUser(compareUser)
   }, [compareUser])
 
-  // console.log(users);
+  // console.log(signedInUser);
+
 
   return (
     <div data-theme={dark ? "dark" : "light"}>
       <ScrollToTop />
       <articleDataContext.Provider value={valueObj}>
-        <Header setDark={setDark} dark={dark} setTheme={setTheme}></Header>
+        <Header setDark={setDark} dark={dark} setTheme={setTheme} />
+
         <Routes preserverScrollPosition={false}>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
@@ -176,12 +182,19 @@ function App() {
           <Route path="/all-article" element={<AllArticle />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/search-category" element={<SearchCategory />}></Route>
+
+          <Route path="*" element={<NotFound></NotFound>}></Route>
+
           <Route path="/faq" element={<Faq />}></Route>
 
 
+
+
+
+          {/* <Route path="/hudai" element={<Hudai />}></Route> */}
           <Route path="/membership" element={<GetPremium />}></Route>
           <Route path="/payment/:id" element={<PaymentCard />}></Route>
-
+        
 
           <Route
             path="/article/:articleId"
@@ -200,6 +213,7 @@ function App() {
             <Route path="admin-rules" element={<AdminRules />} />
             <Route path="premium-member" element={<PremiumMember />} />
           </Route>
+        
 
         </Routes>
         <Footer />

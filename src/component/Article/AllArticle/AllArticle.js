@@ -20,7 +20,7 @@ const AllArticle = () => {
 
     //Sending pageNumber and articleCount to the server to get the articles by pagination logic
     useEffect(() => {
-        fetch(`  http://localhost:5000/blogs?page=${pageNumber}&count=${articleCount}`)
+        fetch(`  https://floating-ocean-13139.herokuapp.com/blogs?page=${pageNumber}&count=${articleCount}`)
             .then(res => res.json())
             .then(data => {
                 setArticles(data);
@@ -30,7 +30,7 @@ const AllArticle = () => {
 
     //This is only for getting the 
     useEffect(() => {
-        fetch('  http://localhost:5000/blogs-count')
+        fetch('  https://floating-ocean-13139.herokuapp.com/blogs-count')
             .then(res => res.json())
             .then(data => {
                 setAllArticleCount(data.count);
@@ -129,7 +129,7 @@ const AllArticle = () => {
 
 
 
-            <div className="pagination_container container mx-auto">
+            <div className="pagination_container mid-container">
                 <ul className="pagination">
                     <li>
                         <button disabled={pageNumber === 1 && true} onClick={() => setPageNumber(pageNumber - 1)} className="btn bg-transparent outline-0 border-none mx-2">PRE</button>

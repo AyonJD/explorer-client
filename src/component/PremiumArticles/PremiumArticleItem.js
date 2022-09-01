@@ -10,11 +10,11 @@ const PremiumArticleItem = ({ article }) => {
   const { signedInUser, transactionId } = valueObj;
   const navigate = useNavigate();
   const handleClick = () => {
-    if (transactionId) {
+    if (transactionId || signedInUser?.admin) {
       navigate(`/article/${article._id}`);
     }
     else {
-      toast.error("You have to purchase premium articles");
+      navigate(`/membership`);
     }
     // navigate(`/article/${article._id}`);
   };

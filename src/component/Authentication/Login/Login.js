@@ -99,8 +99,8 @@ const Login = () => {
             <form className='toggle_form' onSubmit={handleSubmit(onSubmit)}>
                 <h1 className='custom_font'>Sign In</h1>
                 <div className="social-links">
-                    <div>
-                        <i class="fa-brands fa-google"></i>
+                    <div onClick={() => signInWithGoogle()}>
+                        <i className="fa-brands fa-google"></i>
                     </div>
                     <div>
                         <i className="fa fa-facebook" aria-hidden="true"></i>

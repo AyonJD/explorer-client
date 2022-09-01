@@ -14,7 +14,7 @@ const Services = () => {
                 <h2 className='text-3xl font-semibold mt-2'>You Take Growth For Business</h2>
             </div>
 
-            <div className='grid grid-cols-3 gap-7 mt-10'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-7 mt-10'>
                 <div className='text-center p-10 rounded-3xl shadow-xl'>
                     <img className='w-28 mx-auto' src={marketing} alt="" />
                     <h2 className='text-xl font-semibold my-2'>Content Marketing</h2>
