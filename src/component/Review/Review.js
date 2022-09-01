@@ -6,10 +6,10 @@ import test3 from '../../assets/test3.png'
 
 const Review = () => {
     return (
-        <div className='mid-container mt-10'>
-            <h1 className='text-2xl font-semibold border-b-[1px] pb-3 mb-5'>Customer Review</h1>
+        <div className='mid-container'>
+            <h1 className='text-2xl font-semibold border-b-[1px] pb-3 mb-5'>Review</h1>
             <section class="text-gray-600 body-font">
-                <div class="container px-5 py-24 mx-auto">
+                <div class=" px-5 py-10 mx-auto">
                     <div class="flex flex-wrap -m-4">
                         <div class="lg:w-1/3 lg:mb-0 mb-6 p-4">
                             <div class="h-full text-center">
@@ -17,7 +17,7 @@ const Review = () => {
                                     <img alt="testimonial" class="w-20 h-20 mb-2 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100 mr-2" src={test1} />
 
                                     <div className="">
-                                        <h2 class=" font-medium title-font tracking-wider text-sm">Armin Sultana</h2>
+                                        <h2 class="text-start font-medium title-font tracking-wider text-sm">Armin Sultana</h2>
                                         <p class="text-gray-500 mb-3 ">Kishoregonj, Bangladesh</p>
                                     </div>
 
