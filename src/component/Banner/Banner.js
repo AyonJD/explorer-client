@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './Banner.css'
 import { useSelector, useDispatch } from "react-redux";
 import getAllArticles from '../../source/actions/articlesAction';
+import { useNavigate } from 'react-router-dom';
 
 
 const Banner = () => {
@@ -13,6 +14,7 @@ const Banner = () => {
         dispatch(getAllArticles())
     }, [dispatch]);
 
+
     // const articleCopy = [...articles];
     // console.log(articles)
 
@@ -23,7 +25,7 @@ const Banner = () => {
                     <div className='mb-5'>
                         {articles.slice(3, 4).map(article => {
                             return (
-                                <div>
+                                <div className='cursor-pointer'> className='cursor-pointer'>
                                     <img className='w-full' src={article?.blogs?.img} alt="" />
                                     <h1 className='text-xl font-bold text-center mt-3'>{article?.blogs?.Title}</h1>
                                     <p className='text-secondary text-center text-sm'>By- <span className='font-bold'>{article?.signedInUser?.userInfo?.name}</span></p>
@@ -37,7 +39,7 @@ const Banner = () => {
                     <div className='mb-5'>
                         {articles.slice(0, 1).map(article => {
                             return (
-                                <div>
+                                <div className='cursor-pointer'>
                                     <img className='w-full' src={article?.blogs?.img} alt="" />
                                     <h1 className='text-xl font-bold text-center mt-3'>{article?.blogs?.Title}</h1>
                                     <p className='text-secondary text-center text-sm'>By- <span className='font-bold'>{article?.signedInUser?.userInfo?.name}</span></p>
@@ -48,7 +50,7 @@ const Banner = () => {
                     <div>
                         {articles.slice(1, 2).map(article => {
                             return (
-                                <div>
+                                <div className='cursor-pointer'>
                                     <img className='w-full' src={article?.blogs?.img} alt="" />
                                     <h1 className='text-xl font-bold text-center mt-3'>{article?.blogs?.Title}</h1>
                                     <p className='text-secondary text-center text-sm'>By- <span className='font-bold'>{article?.signedInUser?.userInfo?.name}</span></p>
@@ -77,7 +79,7 @@ const Banner = () => {
                     <div className='mb-5'>
                         {articles.slice(5, 6).map(article => {
                             return (
-                                <div>
+                                <div className='cursor-pointer'>
                                     <img src={article?.blogs?.img} alt="" />
                                     <h1 className='text-xl font-bold text-center mt-3'>{article?.blogs?.Title}</h1>
                                     <p className='text-secondary text-center text-sm'>By- <span className='font-bold'>{article?.signedInUser?.userInfo?.name}</span></p>
@@ -88,7 +90,7 @@ const Banner = () => {
                     <div>
                         {articles.slice(7, 8).map(article => {
                             return (
-                                <div>
+                                <div className='cursor-pointer'>
                                     <img className='w-full' src={article?.blogs?.img} alt="" />
                                     <h1 className='text-xl font-bold text-center mt-3'>{article?.blogs?.Title}</h1>
                                     <p className='text-secondary text-center text-sm'>By- <span className='font-bold'>{article?.signedInUser?.userInfo?.name}</span></p>
