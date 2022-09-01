@@ -129,7 +129,7 @@ const AllArticle = () => {
 
 
 
-            <div className="pagination_container container mx-auto">
+            <div className="pagination_container mid-container">
                 <ul className="pagination">
                     <li>
                         <button disabled={pageNumber === 1 && true} onClick={() => setPageNumber(pageNumber - 1)} className="btn bg-transparent outline-0 border-none mx-2">PRE</button>

@@ -149,6 +149,7 @@ function App() {
     loader,
     transactionId,
     premiumMember,
+    setTransactionId,
   };
 
   const compareUser = useMemo(() => {
