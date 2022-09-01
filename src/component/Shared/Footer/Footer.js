@@ -11,7 +11,7 @@ const Footer = () => {
     const today = new Date()
     const year = today.getFullYear()
     return (
-        <section className="py-11  bg-base-200">
+        <section className="py-11  bg-base-200 mt-20">
         <div className="container mx-auto">
            <div className = "grid lg:grid-cols-4 md:grid-cols-1 gap-4 mb-11">
              <div className='logoBorder' >
