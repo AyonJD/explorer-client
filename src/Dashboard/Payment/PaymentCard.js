@@ -64,7 +64,7 @@ const PaymentCard = () => {
                         </div>
                         <div className="inputBox">
                             <span>name on card :</span>
-                            <input type="text" placeholder="ms. Armin Sultana" />
+                            <input type="text" placeholder="" />
                         </div>
 
                         <div>
