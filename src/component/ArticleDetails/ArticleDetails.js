@@ -237,12 +237,12 @@ const ArticleDetails = () => {
                   </p>
                 </div>
               </div>
-              <div className=" details-menu">
+              <div className=" details-menu ">
                 <ul>
                   {/* <li>
                     <span><FontAwesomeIcon className="icon text-secondary ml-4 " title="Share" icon={faShareNodes} /> </span>
                   </li> */}
-                  <li className="dropdown dropdown-end">
+                  <li className="dropdown dropdown-end ">
                     <label tabindex="0">
                       <FontAwesomeIcon
                         className=" text-[10px] text-secondary  btn btn-xs btn-ghost"
@@ -252,7 +252,7 @@ const ArticleDetails = () => {
                     </label>
                     <ul
                       tabindex="0"
-                      class="dropdown-content menu p-2 drop-shadow-xl  rounded-box  bg-base-200"
+                      class="dropdown-content menu p-2 drop-shadow-xl border rounded-box  bg-white"
                     >
                       <li>
                         <a>
@@ -339,7 +339,7 @@ const ArticleDetails = () => {
                     </label>
                     <ul
                       tabindex="0"
-                      class="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-52"
+                      class="dropdown-content menu p-2 border shadow bg-white rounded-box w-52"
                     >
                       {article?.signedInUser?._id === signedInUser?._id ? (
                         <li>
@@ -379,6 +379,9 @@ const ArticleDetails = () => {
               {" "}
               {article?.blogs?.Title}
             </p>
+            {/* <p className="text-sm font-bold text-left my-2 italic">
+              <span className="bg-secondary px-2 py-1 rounded-xl">{article?.blogs?.category}</span>
+            </p> */}
             <div className="lg:h-[440px] md:h-[360px] sm:h[50vh] w-full text-center overflow-hidden">
               <img
                 className="w-full  mx-auto"
