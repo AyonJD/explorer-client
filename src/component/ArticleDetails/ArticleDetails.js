@@ -1,9 +1,22 @@
 import {
+  faAdd,
   faEdit,
   faEllipsis,
+  faFileCirclePlus,
+  faGrinHearts,
+  faHeart,
+  faHeartbeat,
+  faHeartCircleBolt,
+  faHeartCircleCheck,
+  faHeartCircleExclamation,
+  faHeartCrack,
   faLink,
+  faPenToSquare,
   faShare,
   faShareNodes,
+  faThumbsDown,
+  faThumbsUp,
+  faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -34,6 +47,8 @@ import {
   WhatsappIcon,
 } from "react-share";
 import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
+import { FaHeart } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const ArticleDetails = () => {
   const { articleId } = useParams();
@@ -142,7 +157,8 @@ const ArticleDetails = () => {
   const handleComment = (e) => {
     e.preventDefault();
     if (!user) {
-      navigate("/login");
+      toast.error("Please login for comment");
+      navigate("/join");
       return;
     }
     // input value
@@ -190,6 +206,7 @@ const ArticleDetails = () => {
 
   // get author id with compare signedInUser id and declared author
 
+  // article.likes
   return (
     <div className="mid-container">
       <div className="lg:flex md:flex">
@@ -326,7 +343,10 @@ const ArticleDetails = () => {
                     >
                       {article?.signedInUser?._id === signedInUser?._id ? (
                         <li>
-                          <a>Edit Article</a>
+                          <a>
+                            <FontAwesomeIcon icon={faPenToSquare} />
+                            Edit Article
+                          </a>
                         </li>
                       ) : (
                         ""
@@ -335,12 +355,21 @@ const ArticleDetails = () => {
                         // signedInUser inside if admin is true ? he can see delete button : else he can't see delete button
                         signedInUser?.admin === true ? (
                           <li>
-                            <a>Delete Article</a>
+                            <a>
+                              <FontAwesomeIcon icon={faTrashCan} />
+                              Delete Article
+                            </a>
                           </li>
                         ) : (
                           ""
                         )
                       }
+                      <li>
+                        <a>
+                          <FontAwesomeIcon icon={faFileCirclePlus} /> Add to
+                          favorite
+                        </a>
+                      </li>
                     </ul>
                   </li>
                 </ul>
@@ -358,19 +387,49 @@ const ArticleDetails = () => {
               />
             </div>
             <div className="flex items-center  mt-5">
-              <p className="text-primary mr-4">
-                {article?.likes?.length} likes
-              </p>
+              <small className="text-secondary mr-2 mt-1">
+                {article?.likes?.includes(signedInUser?._id) ? (
+                  <span>
+                    <span>
+                      {article?.likes?.length - 1 <= 0 ? (
+                        <span>You like this</span>
+                      ) : (
+                        <span>
+                          You and {article?.likes?.length - 1} other like this
+                        </span>
+                      )}
+                    </span>
+                  </span>
+                ) : (
+                  <span>{article?.likes?.length} people like this</span>
+                )}
+              </small>
               {article?.likes?.includes(signedInUser?._id) || upsertCount ? (
-                <IoMdThumbsDown
-                  className="thumbs_down h-8 w-8 cursor-pointer"
-                  onClick={() => handleUnlike(articleId)}
-                />
+                <>
+                  {/* <IoMdThumbsDown
+                    className="thumbs_down h-8 w-8 cursor-pointer"
+                    onClick={() => handleUnlike(articleId)}
+                  /> */}
+                  <FontAwesomeIcon
+                    className="text-primary btn btn-xs btn-ghost p-1 rounded-full mt-3"
+                    title="Unlike"
+                    icon={faThumbsDown}
+                    onClick={() => handleUnlike(articleId)}
+                  />
+                </>
               ) : (
-                <IoMdThumbsUp
-                  className="thumbs_up mr-2 h-8 w-8 cursor-pointer"
-                  onClick={() => handleLike(articleId)}
-                />
+                <>
+                  {/* <IoMdThumbsUp
+                    className="thumbs_up mr-2 h-8 w-8 cursor-pointer"
+                    onClick={() => handleLike(articleId)}
+                  /> */}
+                  <FontAwesomeIcon
+                    className="text-primary btn btn-xs btn-ghost p-1 rounded-full"
+                    title="Like"
+                    icon={faThumbsUp}
+                    onClick={() => handleLike(articleId)}
+                  />
+                </>
               )}
             </div>
             <blockquote className="mb-5">
