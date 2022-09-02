@@ -1,0 +1,29 @@
+.footerBorder{
+    border-left: 1px solid white;
+    padding-left: 60px;
+}
+.logoBorder h1{
+    border: 3px solid white;
+    display: inline-block;
+    padding: 5px 6px;
+    margin-bottom: 10px;
+    box-shadow: -2px 2px 0px 0px;
+}
+/* .logoBorder h2{
+    color: r252, 252, 252)gb(;
+} */
+
+.footerContact{
+    padding-left:20px;
+}
+.icon{
+    display: inline-block;
+    margin-top: 6px;
+    padding-right: 6px;
+    
+}
+
+.iconStyle{
+    display:flex;
+    align-items: center;
+}

@@ -1,6 +1,25 @@
-import { faEllipsis, faLink, faShareNodes, } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAdd,
+  faEdit,
+  faEllipsis,
+  faFileCirclePlus,
+  faGrinHearts,
+  faHeart,
+  faHeartbeat,
+  faHeartCircleBolt,
+  faHeartCircleCheck,
+  faHeartCircleExclamation,
+  faHeartCrack,
+  faLink,
+  faPenToSquare,
+  faShare,
+  faShareNodes,
+  faThumbsDown,
+  faThumbsUp,
+  faTrashCan,
+} from "@fortawesome/free-solid-svg-icons";
 
-import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
@@ -15,34 +34,47 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import RegisterCard from "../PopularArticle/RegisterCard";
 import RelativeArticle from "./RelativeArticle";
-import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, WhatsappShareButton } from "react-share";
-import { FacebookIcon, TwitterIcon, LinkedinIcon, WhatsappIcon } from "react-share";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+  WhatsappShareButton,
+} from "react-share";
+import {
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  WhatsappIcon,
+} from "react-share";
 import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
+import { FaHeart } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const ArticleDetails = () => {
   const { articleId } = useParams();
   const [upsertCount, setUpsertCount] = useState(false);
   const valueObj = useContext(articleDataContext);
   const { signedInUser } = valueObj;
-  const authUser = useAuthState(auth)
-  const navigate = useNavigate()
-  const user = authUser[0]?.email
-  const articles = valueObj.articles
+  const authUser = useAuthState(auth);
+  const navigate = useNavigate();
+  const user = authUser[0]?.email;
+  const articles = valueObj.articles;
   const dark = valueObj.dark;
   const url = window.location.href;
   const [isCopied, setIsCopied] = useState(false);
 
-  // copy text to clipboard on click of copy button 
+  // copy text to clipboard on click of copy button
   const handleCopy = () => {
     setIsCopied(true);
     setTimeout(() => {
       setIsCopied(false);
-    }, 1000);
-  }
+    }, 2000);
+  };
 
   // fetch article details
   const [article, setArticle] = useState({});
-  // console.log(article);
+  console.log(article);
+  console.log(signedInUser);
   const author = article?.signedInUser?.userInfo?.name;
 
   useEffect(() => {
@@ -51,11 +83,11 @@ const ArticleDetails = () => {
       .then((data) => setArticle(data));
   }, [articleId, article]);
 
-  const relatedArticle = articles.filter(item => {
+  const relatedArticle = articles.filter((item) => {
     if (item?.blogs?.category === article?.blogs?.category) {
-      return item
+      return item;
     }
-  })
+  });
   // console.log(relatedArticle);
   // today's date
   const today = new Date();
@@ -82,7 +114,7 @@ const ArticleDetails = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
+          console.log(data);
           if (data.acknowledged && article?.likes.includes(id)) {
             setUpsertCount(true);
           } else {
@@ -104,7 +136,7 @@ const ArticleDetails = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          likes: article?.likes?.filter(like => like !== signedInUser._id),
+          likes: article?.likes?.filter((like) => like !== signedInUser._id),
         }),
       })
         .then((res) => res.json())
@@ -125,8 +157,9 @@ const ArticleDetails = () => {
   const handleComment = (e) => {
     e.preventDefault();
     if (!user) {
-      navigate('/login')
-      return
+      toast.error("Please login for comment");
+      navigate("/join");
+      return;
     }
     // input value
     const comment = e.target.comment.value;
@@ -155,8 +188,25 @@ const ArticleDetails = () => {
       .catch((err) => console.log(err));
   };
 
+  // article delete by id from server
+  // const handleDelete = (articleId) => {
+  //   fetch(`https://floating-ocean-13139.herokuapp.com/blogs/${articleId}`, {
+  //     method: "DELETE",
+  //   })
 
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data.deletedCount) {
+  //         navigate("/");
+  //       }
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
+  // get author id with compare signedInUser id and declared author
+
+  // article.likes
   return (
     <div className="mid-container">
       <div className="lg:flex md:flex">
@@ -166,14 +216,20 @@ const ArticleDetails = () => {
               <div className="flex items-center">
                 <div className="avatar ">
                   <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    <img src={article?.signedInUser?.userInfo?.photoURL} alt="" />
+                    <img
+                      src={article?.signedInUser?.userInfo?.photoURL}
+                      alt=""
+                    />
                   </div>
                 </div>
                 <div className="ml-6">
-                  <p className="antialiased  text-lg  font-normal">
+                  <p className="antialiased  text-lg  font-normal flex">
                     {author}{" "}
-                    <span>
-                      <div className="badge badge-xs  badge-primary  ml-3 p-2"> Author  </div>
+                    <span className=" sm:block hidden">
+                      <div className="badge badge-xs badge-primary  ml-3 p-2">
+                        {" "}
+                        Author{" "}
+                      </div>
                     </span>
                   </p>
                   <p className="text-xs mt-1 font-medium ">
@@ -181,59 +237,202 @@ const ArticleDetails = () => {
                   </p>
                 </div>
               </div>
-              <div className=" breadcrumbs">
+              <div className=" details-menu ">
                 <ul>
                   {/* <li>
                     <span><FontAwesomeIcon className="icon text-secondary ml-4 " title="Share" icon={faShareNodes} /> </span>
                   </li> */}
-                  <li>
-                    <span><FacebookShareButton url={url}><FacebookIcon round={true} size={25}>
-                    </FacebookIcon></FacebookShareButton></span>
+                  <li className="dropdown dropdown-end ">
+                    <label tabindex="0">
+                      <FontAwesomeIcon
+                        className=" text-[10px] text-secondary  btn btn-xs btn-ghost"
+                        title="Share"
+                        icon={faShareNodes}
+                      />
+                    </label>
+                    <ul
+                      tabindex="0"
+                      class="dropdown-content menu p-2 drop-shadow-xl border rounded-box  bg-white"
+                    >
+                      <li>
+                        <a>
+                          <FacebookShareButton url={url}>
+                            <FacebookIcon round={true} size={25}></FacebookIcon>
+                          </FacebookShareButton>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <TwitterShareButton url={url}>
+                            <TwitterIcon round={true} size={25}></TwitterIcon>
+                          </TwitterShareButton>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <LinkedinShareButton url={url}>
+                            <LinkedinIcon round={true} size={25}></LinkedinIcon>
+                          </LinkedinShareButton>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <WhatsappShareButton url={url}>
+                            <WhatsappIcon round={true} size={25}></WhatsappIcon>
+                          </WhatsappShareButton>
+                        </a>
+                      </li>
+                    </ul>
                   </li>
-                  <li>
-                    <span><TwitterShareButton url={url}><TwitterIcon round={true} size={25}>
-                    </TwitterIcon></TwitterShareButton></span>
-                  </li>
-                  <li>
-                    <span><LinkedinShareButton url={url}><LinkedinIcon round={true} size={25}>
-                    </LinkedinIcon></LinkedinShareButton></span>
-                  </li>
-                  <li>
-                    <span><WhatsappShareButton url={url}><WhatsappIcon round={true} size={25}>
-                    </WhatsappIcon></WhatsappShareButton></span>
-                  </li>
-                  <li>
-                    <span><CopyToClipboard text={url} onCopy={handleCopy}>
-                      <button><FontAwesomeIcon className="icon text-secondary ml-4" title="Copy" icon={faLink} /></button>
-                    </CopyToClipboard> </span>
-                    <span className={`copy-feedback text-sm ${isCopied ? "active" : ""}`} style={{ color: "green" }}>
+
+                  <li className="dropdown dropdown-end">
+                    <label tabindex="0">
+                      <CopyToClipboard text={url} onCopy={handleCopy}>
+                        <button>
+                          <FontAwesomeIcon
+                            className="icon text-secondary  btn btn-ghost btn-xs"
+                            title="Copy"
+                            icon={faLink}
+                          />
+                        </button>
+                      </CopyToClipboard>{" "}
+                    </label>
+                    <div
+                      tabindex="0"
+                      class="card compact dropdown-content shadow bg-base-100 rounded-box"
+                    >
+                      {isCopied ? (
+                        <div class="alert alert-success shadow-lg text-white">
+                          <div>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="stroke-current flex-shrink-0 h-6 w-6"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                            <span>Copied</span>
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    {/* <span className={`copy-feedback text-sm ${isCopied ? "active" : ""}`} style={{ color: "green" }}>
                       Copied
-                    </span>
+                    </span> */}
                   </li>
-
-                  <li>
-                    <span><FontAwesomeIcon className="icon text-secondary mx-4" title="More" icon={faEllipsis} /></span>
+                  {/* edit and  delete option  */}
+                  <li className="dropdown dropdown-end">
+                    <label tabindex="0">
+                      <FontAwesomeIcon
+                        className="icon text-secondary  btn btn-xs btn-ghost"
+                        title="More"
+                        icon={faEllipsis}
+                      />
+                    </label>
+                    <ul
+                      tabindex="0"
+                      class="dropdown-content menu p-2 border shadow bg-white rounded-box w-52"
+                    >
+                      {article?.signedInUser?._id === signedInUser?._id ? (
+                        <li>
+                          <a>
+                            <FontAwesomeIcon icon={faPenToSquare} />
+                            Edit Article
+                          </a>
+                        </li>
+                      ) : (
+                        ""
+                      )}
+                      {
+                        // signedInUser inside if admin is true ? he can see delete button : else he can't see delete button
+                        signedInUser?.admin === true ? (
+                          <li>
+                            <a>
+                              <FontAwesomeIcon icon={faTrashCan} />
+                              Delete Article
+                            </a>
+                          </li>
+                        ) : (
+                          ""
+                        )
+                      }
+                      <li>
+                        <a>
+                          <FontAwesomeIcon icon={faFileCirclePlus} /> Add to
+                          favorite
+                        </a>
+                      </li>
+                    </ul>
                   </li>
-
                 </ul>
               </div>
             </div>
-            <p className="text-2xl font-bold text-left my-8"> {article?.blogs?.Title}</p>
+            <p className="text-2xl font-bold text-left my-8">
+              {" "}
+              {article?.blogs?.Title}
+            </p>
+            {/* <p className="text-sm font-bold text-left my-2 italic">
+              <span className="bg-secondary px-2 py-1 rounded-xl">{article?.blogs?.category}</span>
+            </p> */}
             <div className="lg:h-[440px] md:h-[360px] sm:h[50vh] w-full text-center overflow-hidden">
-              <img className="w-full  mx-auto" src={article?.blogs?.img} alt="" />
+              <img
+                className="w-full  mx-auto"
+                src={article?.blogs?.img}
+                alt=""
+              />
             </div>
             <div className="flex items-center  mt-5">
-              <p className="text-primary mr-4">{article?.likes?.length} likes</p>
+              <small className="text-secondary mr-2 mt-1">
+                {article?.likes?.includes(signedInUser?._id) ? (
+                  <span>
+                    <span>
+                      {article?.likes?.length - 1 <= 0 ? (
+                        <span>You like this</span>
+                      ) : (
+                        <span>
+                          You and {article?.likes?.length - 1} other like this
+                        </span>
+                      )}
+                    </span>
+                  </span>
+                ) : (
+                  <span>{article?.likes?.length} people like this</span>
+                )}
+              </small>
               {article?.likes?.includes(signedInUser?._id) || upsertCount ? (
-                <IoMdThumbsDown
-                  className="thumbs_down h-8 w-8 cursor-pointer"
-                  onClick={() => handleUnlike(articleId)}
-                />
+                <>
+                  {/* <IoMdThumbsDown
+                    className="thumbs_down h-8 w-8 cursor-pointer"
+                    onClick={() => handleUnlike(articleId)}
+                  /> */}
+                  <FontAwesomeIcon
+                    className="text-primary btn btn-xs btn-ghost p-1 rounded-full mt-3"
+                    title="Unlike"
+                    icon={faThumbsDown}
+                    onClick={() => handleUnlike(articleId)}
+                  />
+                </>
               ) : (
-                <IoMdThumbsUp
-                  className="thumbs_up mr-2 h-8 w-8 cursor-pointer"
-                  onClick={() => handleLike(articleId)}
-                />
+                <>
+                  {/* <IoMdThumbsUp
+                    className="thumbs_up mr-2 h-8 w-8 cursor-pointer"
+                    onClick={() => handleLike(articleId)}
+                  /> */}
+                  <FontAwesomeIcon
+                    className="text-primary btn btn-xs btn-ghost p-1 rounded-full"
+                    title="Like"
+                    icon={faThumbsUp}
+                    onClick={() => handleLike(articleId)}
+                  />
+                </>
               )}
             </div>
             <blockquote className="mb-5">
@@ -241,37 +440,49 @@ const ArticleDetails = () => {
               {/* <span className="block font-bold text-2xl mt-4 ">{article?.blogs?.Category}</span> */}
             </blockquote>
           </section>
-          <h1 className="mb-2 text-xl"> Recent comments</h1> <hr className="mb-7" />
+          <h1 className="mb-2 text-xl"> Recent comments</h1>{" "}
+          <hr className="mb-7" />
           <section>
-            {article?.comments?.slice(-3).reverse().map((comment) => (
-              <Comment comment={comment} ></Comment>
-            ))}
+            {article?.comments
+              ?.slice(-3)
+              .reverse()
+              .map((comment) => (
+                <Comment comment={comment}></Comment>
+              ))}
             {/* <button >Show more</button> */}
           </section>
           <section>
-            <form onSubmit={handleComment} className={dark ? "lg:space-y-6 md:space-y-5 sm:space-y-6 space-y-4 lg:py-8 md:py-8 sm:py-5 py-5 lg:px-6 md:px-6 px-4 rounded-md " : "lg:space-y-6 md:space-y-5 sm:space-y-6 space-y-4 lg:py-8 md:py-8 sm:py-5 py-5 lg:px-6 md:px-6 px-4 rounded-md bg-neutral"}>
+            <form
+              onSubmit={handleComment}
+              className={
+                dark
+                  ? "lg:space-y-6 md:space-y-5 sm:space-y-6 space-y-4 lg:py-8 md:py-8 sm:py-5 py-5 lg:px-6 md:px-6 px-4 rounded-md "
+                  : "lg:space-y-6 md:space-y-5 sm:space-y-6 space-y-4 lg:py-8 md:py-8 sm:py-5 py-5 lg:px-6 md:px-6 px-4 rounded-md bg-neutral"
+              }
+            >
               <h6 className="font-semibold">LEAVE A REPLAY</h6>
               <textarea
                 className="textarea input-bordered focus:outline-none w-full lg:h-36 md:h-28 sm:h-36 h-24 mt-0"
                 placeholder="Your Comment"
                 name="comment"
-                required>
-              </textarea>
-              <button className="btn btn-primary btn-md" type="submit" > Post Comment
+                required
+              ></textarea>
+              <button className="btn btn-primary btn-md" type="submit">
+                {" "}
+                Post Comment
               </button>
             </form>
           </section>
         </div>
 
-
         <div className="lg:w-[30%] md:w-[30%] lg:pl-8 md:pl-5">
           <div>
             <h1 className="font-bold text-xl  pb-2">
               Top Articles
-              <hr className='mt-1' />
+              <hr className="mt-1" />
             </h1>
 
-            <div className='grid'>
+            <div className="grid">
               {articles.slice(0, 4).map((article) => (
                 <AllArticleItemsRight
                   key={article._id}
@@ -281,14 +492,14 @@ const ArticleDetails = () => {
             </div>
           </div>
 
-          <div className='mt-5'>
+          <div className="mt-5">
             <SocialLinked />
           </div>
 
           <div>
             <h1 className="font-bold text-xl pb-5 mt-10">
               Don't Miss
-              <hr className='mt-1' />
+              <hr className="mt-1" />
             </h1>
             <ArticleItemsRight />
           </div>
@@ -297,25 +508,19 @@ const ArticleDetails = () => {
             <RegisterCard />
           </div>
         </div>
-
-
-      </div >
+      </div>
 
       <div className="relative-article mt-10">
-        <h1 className="text-3xl font-bold">Related Article</h1><hr className="mb-10 mt-3" />
+        <h1 className="text-3xl font-bold">Related Article</h1>
+        <hr className="mb-10 mt-3" />
         <div className=" grid md:grid-cols-3 sm:grid-cols-2 gap-5 mb-3">
-          {
-            relatedArticle.slice(0, 3).map((article) => <RelativeArticle
-              article={article}
-            />)
-          }
+          {relatedArticle.slice(0, 3).map((article) => (
+            <RelativeArticle article={article} />
+          ))}
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
 export default ArticleDetails;
-
-
-

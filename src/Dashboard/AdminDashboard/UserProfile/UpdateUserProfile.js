@@ -65,7 +65,7 @@ const UpdateUserProfile = () => {
     return (
         <div className='py-10 mid-container'>
             <div className='flex justify-center w-full'>
-                <img className='rounded-full w-96' src={userImg} alt="" />
+                <img className='rounded-full w-32' src={userImg} alt="" />
             </div>
             <form className='lg:w-3/4 md:w-4/5 mx-auto' onSubmit={handleSubmit(onSubmit)} >
 
