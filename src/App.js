@@ -127,13 +127,6 @@ function App() {
     }
     );
   })
-  // console.log(signedInUser);
-  // const transactionId = premiumMember?.find((user) => {
-  //   if (user?.buyer?.email === signedInUser?.email) {
-  //     return user.transactionId;
-
-  //   }
-  // })
 
   const valueObj = {
     articles,
