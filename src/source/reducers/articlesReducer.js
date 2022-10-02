@@ -7,7 +7,6 @@ const initialState = {
 }
 
 //Where there is need to use the all property of initialState, no need to use the ...state
-
 const articlesReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ARTICLES_REQUEST:
