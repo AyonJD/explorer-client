@@ -43,7 +43,7 @@ const UpdateUserProfile = () => {
                         number: data.number
                     }
                     console.log(userInformation);
-                    fetch(`https://floating-ocean-13139.herokuapp.com/users/${email}`, {
+                    fetch(`https://explorer-server.up.railway.app/users/${email}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

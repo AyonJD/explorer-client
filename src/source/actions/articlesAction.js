@@ -5,7 +5,7 @@ const getAllArticles = () => {
     return async (dispatch) => {
         dispatch({ type: GET_ARTICLES_REQUEST });
         try {
-            const res = await axios.get("https://floating-ocean-13139.herokuapp.com/blogs");
+            const res = await axios.get("https://explorer-server.up.railway.app/blogs");
             dispatch({ type: GET_ARTICLES_SUCCESS, payload: res.data });
         } catch (error) {
             dispatch({ type: GET_ARTICLES_FAILURE, payload: error.message });

@@ -10,7 +10,7 @@ const GetPremium = () => {
     const { transactionId } = valueObj;
 
     useEffect(() => {
-        fetch("https://floating-ocean-13139.herokuapp.com/membership-plans")
+        fetch("https://explorer-server.up.railway.app/membership-plans")
             .then((res) => res.json())
             .then((data) => {
                 setMembershipPlan(data);
@@ -65,7 +65,7 @@ const GetPremium = () => {
                                                 {/* <img className='w-full' src={img1} alt="Shoes" /> */}
                                             </div>
                                             <div className="card-body pt-0">
-                                            {/* <p><h1 className="card-title text-4xl font-bold text-primary mx-auto">
+                                                {/* <p><h1 className="card-title text-4xl font-bold text-primary mx-auto">
                                                      ${plan?.price} / {plan?.plan === "Monthly" ? "mo" : plan?.plan === "Yearly" ? "yr" : plan?.plan === "Lifetime" ? "OneTime" : ""}
                                                </h1></p> */}
 

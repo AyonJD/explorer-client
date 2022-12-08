@@ -16,7 +16,7 @@ const PaymentCard = () => {
     const [membershipPlan, setMembershipPlan] = useState({});
 
     useEffect(() => {
-        fetch(`https://floating-ocean-13139.herokuapp.com/membership-plans/${id}`)
+        fetch(`https://explorer-server.up.railway.app/membership-plans/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setMembershipPlan(data);
