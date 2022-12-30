@@ -22,7 +22,7 @@ const CheckoutForm = ({ membershipPlan }) => {
     const mainUserObject = signedInUser?.userInfo;
 
     useEffect(() => {
-        fetch('https://floating-ocean-13139.herokuapp.com/create-payment-intent', {
+        fetch('https://exclusive-xylia-ayonjd.koyeb.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -88,7 +88,7 @@ const CheckoutForm = ({ membershipPlan }) => {
                 service_id: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`https://floating-ocean-13139.herokuapp.com/orderPay`, {
+            fetch(`https://exclusive-xylia-ayonjd.koyeb.app/orderPay`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
@@ -106,7 +106,7 @@ const CheckoutForm = ({ membershipPlan }) => {
                             membershipPlan
                         }
                     }
-                    fetch(`https://floating-ocean-13139.herokuapp.com/users/${email}`, {
+                    fetch(`https://exclusive-xylia-ayonjd.koyeb.app/users/${email}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

@@ -61,7 +61,7 @@ function App() {
   const [dark, setDark] = useState(false);
   // localStorage.setItem('theme', dark);
   useEffect(() => {
-    fetch("https://floating-ocean-13139.herokuapp.com/theme")
+    fetch("https://exclusive-xylia-ayonjd.koyeb.app/theme")
       .then((res) => res.json())
       .then((data) => {
         setDark(data[0].theme);
@@ -70,7 +70,7 @@ function App() {
 
   const setTheme = () => {
     fetch(
-      "https://floating-ocean-13139.herokuapp.com/theme/62d829c706b5a80f8247a020",
+      "https://exclusive-xylia-ayonjd.koyeb.app/theme/62d829c706b5a80f8247a020",
       {
         method: "PUT",
         headers: {
@@ -90,7 +90,7 @@ function App() {
   // fetching all articles
   useEffect(() => {
     // setLoader(true);
-    fetch("https://floating-ocean-13139.herokuapp.com/blogs")
+    fetch("https://exclusive-xylia-ayonjd.koyeb.app/blogs")
       .then((res) => res.json())
       .then((data) => {
         setArticles(data);
@@ -101,7 +101,7 @@ function App() {
   // fetching all users
   useEffect(() => {
     // setLoader(true);
-    fetch("https://floating-ocean-13139.herokuapp.com/users")
+    fetch("https://exclusive-xylia-ayonjd.koyeb.app/users")
       .then((res) => res.json())
       .then((data) => {
         setLoader(false);
@@ -111,7 +111,7 @@ function App() {
 
   //fetching all the premium users
   useEffect(() => {
-    fetch("https://floating-ocean-13139.herokuapp.com/purches")
+    fetch("https://exclusive-xylia-ayonjd.koyeb.app/purches")
       .then((res) => res.json())
       .then((data) => {
         setPremiumMember(data);

@@ -79,7 +79,7 @@ const Login = () => {
 
     // useEffect(() => {
     //     //PUT API for updating users image
-    //     const url = `https://floating-ocean-13139.herokuapp.com/users/${email}`
+    //     const url = `https://exclusive-xylia-ayonjd.koyeb.app/users/${email}`
     //     // console.log(url)
     //     if (email && !btnState) {
     //         fetch(url, {

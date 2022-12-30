@@ -10,7 +10,7 @@ const GetPremium = () => {
     const { transactionId } = valueObj;
 
     useEffect(() => {
-        fetch("https://floating-ocean-13139.herokuapp.com/membership-plans")
+        fetch("https://exclusive-xylia-ayonjd.koyeb.app/membership-plans")
             .then((res) => res.json())
             .then((data) => {
                 setMembershipPlan(data);
