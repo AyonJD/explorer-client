@@ -78,7 +78,7 @@ const ArticleDetails = () => {
   const author = article?.signedInUser?.userInfo?.name;
 
   useEffect(() => {
-    fetch(`https://explorer-server.up.railway.app/blogs/${articleId}`)
+    fetch(`https://exclusive-xylia-ayonjd.koyeb.app/blogs/${articleId}`)
       .then((res) => res.json())
       .then((data) => setArticle(data));
   }, [articleId, article]);
@@ -103,7 +103,7 @@ const ArticleDetails = () => {
       signedInUser?._id !== undefined
     ) {
       // console.log([...article.blogs.likes, signedInUser._id])
-      fetch(`https://explorer-server.up.railway.app/blogs/${id}`, {
+      fetch(`https://exclusive-xylia-ayonjd.koyeb.app/blogs/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -130,7 +130,7 @@ const ArticleDetails = () => {
   //Handle Unlike button
   const handleUnlike = (id) => {
     if (article?.likes.includes(signedInUser._id)) {
-      fetch(`https://explorer-server.up.railway.app/blogs/${id}`, {
+      fetch(`https://exclusive-xylia-ayonjd.koyeb.app/blogs/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -167,7 +167,7 @@ const ArticleDetails = () => {
     // clear input value
     e.target.comment.value = "";
     // send comment to server with user info
-    fetch(`https://explorer-server.up.railway.app/blogs/${articleId}`, {
+    fetch(`https://exclusive-xylia-ayonjd.koyeb.app/blogs/${articleId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -190,7 +190,7 @@ const ArticleDetails = () => {
 
   // article delete by id from server
   // const handleDelete = (articleId) => {
-  //   fetch(`https://explorer-server.up.railway.app/blogs/${articleId}`, {
+  //   fetch(`https://exclusive-xylia-ayonjd.koyeb.app/blogs/${articleId}`, {
   //     method: "DELETE",
   //   })
 

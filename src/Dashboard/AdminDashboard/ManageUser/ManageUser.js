@@ -8,7 +8,7 @@ const ManageUser = () => {
 
 
     useEffect(() => {
-        fetch("https://explorer-server.up.railway.app/users")
+        fetch("https://exclusive-xylia-ayonjd.koyeb.app/users")
             .then((res) => res.json())
             .then((data) => {
 

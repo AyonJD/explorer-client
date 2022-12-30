@@ -10,7 +10,7 @@ const GetPremium = () => {
     const { transactionId } = valueObj;
 
     useEffect(() => {
-        fetch("https://explorer-server.up.railway.app/membership-plans")
+        fetch("https://exclusive-xylia-ayonjd.koyeb.app/membership-plans")
             .then((res) => res.json())
             .then((data) => {
                 setMembershipPlan(data);

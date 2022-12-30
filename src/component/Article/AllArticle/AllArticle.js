@@ -20,7 +20,7 @@ const AllArticle = () => {
 
     //Sending pageNumber and articleCount to the server to get the articles by pagination logic
     useEffect(() => {
-        fetch(`  https://explorer-server.up.railway.app/blogs?page=${pageNumber}&count=${articleCount}`)
+        fetch(`  https://exclusive-xylia-ayonjd.koyeb.app/blogs?page=${pageNumber}&count=${articleCount}`)
             .then(res => res.json())
             .then(data => {
                 setArticles(data);
@@ -30,7 +30,7 @@ const AllArticle = () => {
 
     //This is only for getting the 
     useEffect(() => {
-        fetch('  https://explorer-server.up.railway.app/blogs-count')
+        fetch('  https://exclusive-xylia-ayonjd.koyeb.app/blogs-count')
             .then(res => res.json())
             .then(data => {
                 setAllArticleCount(data.count);

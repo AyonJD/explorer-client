@@ -37,7 +37,7 @@ const PostArticle = () => {
                         date: new Date().toLocaleDateString(),
                     }
                     //send data to db
-                    fetch(`https://explorer-server.up.railway.app/blogs`, {
+                    fetch(`https://exclusive-xylia-ayonjd.koyeb.app/blogs`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

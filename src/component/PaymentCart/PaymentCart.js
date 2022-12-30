@@ -94,7 +94,7 @@
 //     const [membershipPlan, setMembershipPlan] = useState({});
 
 //     useEffect(() => {
-//         fetch(`https://explorer-server.up.railway.app/membership-plans/${id}`)
+//         fetch(`https://exclusive-xylia-ayonjd.koyeb.app/membership-plans/${id}`)
 //             .then((res) => res.json())
 //             .then((data) => {
 //                 setMembershipPlan(data);
