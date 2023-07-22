@@ -16,7 +16,7 @@ const PaymentCard = () => {
     const [membershipPlan, setMembershipPlan] = useState({});
 
     useEffect(() => {
-        fetch(`https://exclusive-xylia-ayonjd.koyeb.app/membership-plans/${id}`)
+        fetch(`https://explorer-server-8urhaxhsi-ayonjd.vercel.app/membership-plans/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setMembershipPlan(data);

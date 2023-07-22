@@ -22,7 +22,7 @@ const CheckoutForm = ({ membershipPlan }) => {
     const mainUserObject = signedInUser?.userInfo;
 
     useEffect(() => {
-        fetch('https://exclusive-xylia-ayonjd.koyeb.app/create-payment-intent', {
+        fetch('https://explorer-server-8urhaxhsi-ayonjd.vercel.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -88,7 +88,7 @@ const CheckoutForm = ({ membershipPlan }) => {
                 service_id: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`https://exclusive-xylia-ayonjd.koyeb.app/orderPay`, {
+            fetch(`https://explorer-server-8urhaxhsi-ayonjd.vercel.app/orderPay`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
@@ -106,7 +106,7 @@ const CheckoutForm = ({ membershipPlan }) => {
                             membershipPlan
                         }
                     }
-                    fetch(`https://exclusive-xylia-ayonjd.koyeb.app/users/${email}`, {
+                    fetch(`https://explorer-server-8urhaxhsi-ayonjd.vercel.app/users/${email}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

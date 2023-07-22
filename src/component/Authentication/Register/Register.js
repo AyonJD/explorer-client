@@ -85,7 +85,7 @@ const Signup = () => {
             }
             // console.log(userInfo)
             // PUT API
-            fetch(`https://exclusive-xylia-ayonjd.koyeb.app/users/${data.email}`, {
+            fetch(`https://explorer-server-8urhaxhsi-ayonjd.vercel.app/users/${data.email}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -131,7 +131,7 @@ const Signup = () => {
 
     useEffect(() => {
         //PUT API for updating users image
-        const url = `https://exclusive-xylia-ayonjd.koyeb.app/users/${email}`
+        const url = `https://explorer-server-8urhaxhsi-ayonjd.vercel.app/users/${email}`
         // console.log(url)
         if (email && !btnState) {
             fetch(url, {

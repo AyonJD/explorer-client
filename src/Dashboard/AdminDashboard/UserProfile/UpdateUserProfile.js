@@ -43,7 +43,7 @@ const UpdateUserProfile = () => {
                         number: data.number
                     }
                     console.log(userInformation);
-                    fetch(`https://exclusive-xylia-ayonjd.koyeb.app/users/${email}`, {
+                    fetch(`https://explorer-server-8urhaxhsi-ayonjd.vercel.app/users/${email}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

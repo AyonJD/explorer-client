@@ -5,7 +5,7 @@ const getAllArticles = () => {
     return async (dispatch) => {
         dispatch({ type: GET_ARTICLES_REQUEST });
         try {
-            const res = await axios.get("https://exclusive-xylia-ayonjd.koyeb.app/blogs");
+            const res = await axios.get("https://explorer-server-8urhaxhsi-ayonjd.vercel.app/blogs");
             dispatch({ type: GET_ARTICLES_SUCCESS, payload: res.data });
         } catch (error) {
             dispatch({ type: GET_ARTICLES_FAILURE, payload: error.message });

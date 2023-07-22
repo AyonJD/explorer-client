@@ -37,7 +37,7 @@ const PostArticle = () => {
                         date: new Date().toLocaleDateString(),
                     }
                     //send data to db
-                    fetch(`https://exclusive-xylia-ayonjd.koyeb.app/blogs`, {
+                    fetch(`https://explorer-server-8urhaxhsi-ayonjd.vercel.app/blogs`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

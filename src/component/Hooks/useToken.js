@@ -11,7 +11,7 @@ const useToken = (user, userName) => {
             // console.log(userName);
             const currentUser = { email: email, displayName: displayName, photoURL: user?.photoURL }
             if (email) {
-                fetch(`https://exclusive-xylia-ayonjd.koyeb.app/users/${email}`, {
+                fetch(`https://explorer-server-8urhaxhsi-ayonjd.vercel.app/users/${email}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'

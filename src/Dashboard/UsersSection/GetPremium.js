@@ -10,7 +10,7 @@ const GetPremium = () => {
     const { transactionId } = valueObj;
 
     useEffect(() => {
-        fetch("https://exclusive-xylia-ayonjd.koyeb.app/membership-plans")
+        fetch("https://explorer-server-8urhaxhsi-ayonjd.vercel.app/membership-plans")
             .then((res) => res.json())
             .then((data) => {
                 setMembershipPlan(data);

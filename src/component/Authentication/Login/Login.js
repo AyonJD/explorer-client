@@ -79,7 +79,7 @@ const Login = () => {
 
     // useEffect(() => {
     //     //PUT API for updating users image
-    //     const url = `https://exclusive-xylia-ayonjd.koyeb.app/users/${email}`
+    //     const url = `https://explorer-server-8urhaxhsi-ayonjd.vercel.app/users/${email}`
     //     // console.log(url)
     //     if (email && !btnState) {
     //         fetch(url, {
